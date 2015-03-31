@@ -1,0 +1,57 @@
+\documentclass[a4paper,man,natbib]{apa6}
+
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+%%====================HERE
+\title{Your APA6-Style Manuscript}
+\shorttitle{Your APA6-Style Manuscript}
+\author{You}
+\affiliation{Somewhere}
+
+\abstract{Your abstract here.}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+Your introduction goes here! Some examples of commonly used commands and features are listed below, to help you get started.
+
+If you have a question, please use the support box in the bottom right of the screen to get in touch. 
+
+\section{Some \LaTeX{} Examples}
+\label{sec:examples}
+
+\subsection{Sections}
+
+Use section and subsection commands to organize your document. \LaTeX{} handles all the formatting and numbering automatically. Use ref and label commands for cross-references.
+
+\subsection{Comments}
+
+You can add inline TODO comments with the todonotes package, like this:
+\todo[inline, color=green!40]{This is an inline comment.}
+
+\subsection{References}
+
+LaTeX automatically generates a bibliography in the APA style from your .bib file. The citep command generates a formatted citation in parentheses. The cite command generates one without parentheses. LaTeX was first discovered by.
+
+\subsection{Tables and Figures}
+
+Use the table and tabular commands for basic tables --- see , for example. You can upload a figure (JPEG, PNG or PDF) using the files menu. To include it in your document, use the includegraphics command as in the code for  below.
+
+% Commands to include a figure:
+
+
+We hope you find write\LaTeX\ useful, and please let us know if you have any feedback using the help menu above.
+
+\bibliography{example}
+
+\end{document}
+
+%
+% Please see the package documentation for more information
+% on the APA6 document class:
+%
+% http://www.ctan.org/pkg/apa6
+%

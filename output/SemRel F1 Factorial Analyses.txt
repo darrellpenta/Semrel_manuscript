@@ -1,0 +1,65 @@
+  
+BY-SUBJECTS FACTORIAL ANALYSES RUN ON: Mar. 26, 2015 at 20:08:07
+  
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+2X2X2 ANOVA: SEMREL
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+  
+  
+  
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+RELATED ITEMS ANALYSES
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+  
+  
+  
+>>>  RELATED ITEMS PAIRED COMPARISONS
+- - - - - - - - - - - - - - - - - - - - - - - - - 
+  
+  
+  
+>>>  UNRELATED ITEMS PAIRED COMPARISONS
+- - - - - - - - - - - - - - - - - - - - - - - - - 
+  
+  
+  
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+INTEGRATED ITEMS ANALYSES
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+  
+  
+  
+>>>  INTEGRATED ITEMS PAIRED COMPARISONS
+- - - - - - - - - - - - - - - - - - - - - - - - - 
+  
+  
+  
+>>>  UNINTEGRATED ITEMS PAIRED COMPARISONS
+- - - - - - - - - - - - - - - - - - - - - - - - - 
+  
+  
+  
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+VARIOUS PAIRED COMBINATIONS
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+  
+>>>  INTEGRATED -RELATED PAIRED COMPARISONS
+- - - - - - - - - - - - - - - - - - - - - - - - - 
+ [1] - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+[50] -
+  
+>>>  INTEGRATED -UNRELATED PAIRED COMPARISONS
+- - - - - - - - - - - - - - - - - - - - - - - - - 
+  
+  
+  
+>>>  UNINTEGRATED - RELATED PAIRED COMPARISONS
+- - - - - - - - - - - - - - - - - - - - - - - - - 
+  
+  
+  
+>>>  UNINTEGRATED - UNRELATED PAIRED COMPARISONS
+- - - - - - - - - - - - - - - - - - - - - - - - - 
+  
+  
+  

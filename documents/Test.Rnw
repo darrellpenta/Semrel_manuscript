@@ -1,0 +1,9 @@
+\documentclass{a4paper,man,natbib]{apa6}}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+
+
+
+\end{document}
