@@ -1,0 +1,3286 @@
+\documentclass[12pt,titlepage]{article}
+
+\usepackage{mathptmx}  %% Times font for text & math
+
+\usepackage{calc}  %% permits arithmetic expressions in \setlength, etc.
+\usepackage{graphicx}  %% adds graphics inclusion routines incl box 
+                       %% rotation
+%\usepackage{rotating}
+
+%old way of setting margins:
+%\usepackage[myheadings]{fullpage}  %% use 1in margins all around
+
+\usepackage[centering,margin={1in,1in}]{geometry}
+
+\usepackage{setspace}  %% double space text
+\setstretch{1.8}
+
+%\usepackage{array}   %% advanced tabular stuff
+%\usepackage{tabularx} %%more advanced tabular stuff
+\usepackage{dcolumn}  %% allows decimal-centered table columns
+\usepackage{ctable}
+
+%place footnotes at end
+% \usepackage{endnotes}
+% \renewcommand{\notesname}{}
+% \renewcommand{\enotesize}{\normalsize}
+% \renewcommand{\footnote}{\endnote}
+
+%\usepackage{nofigcap}  %% no captions w/figs (for final submission)
+
+%page setup for APA:
+\setcounter{secnumdepth}{-1}  %% don't number any sections
+\pagestyle{myheadings}        %% use user-defined heading (+ page num)
+\markright{{\hfill Hierarchy and Scope of Planning\hspace{2em}}} %% page head
+
+\input{ling.tex}  %% load example-numbering macros, etc.
+\input{stats.tex}  %% load macros for presenting stats
+%\input{epsf.tex}  %% load macros for handling encapsulated postscript
+
+%some declarations:
+
+\newcommand{\bft}{\textbf}  %% \bft{} gives boldface
+\newcommand{\itt}{\textit}  %% \itt{} gives italics
+
+%\usepackage{soul}  %% improved underlining (can break along lines;
+                    %%   fixed depth regardless of specific text)
+                    %% defines new underlining macro (\ul{text})
+%\setuldepth{}
+
+%\newcommand{\phgrp}{\ul}  %% use underlining to mark phrase groups
+\newcommand{\phgrp}[1]{[#1]}  %% use bracketing to mark phrase groups
+
+\newlength{\maxcolwidth}  %% stores col header max width
+\newlength{\Attwidth}  %% stores %N1 Attachment header width
+
+%\newcolumntype{d}[1]{D{.}{.}{#1}}  %% allows col type d which aligns cols
+                                   %% on dec pt; arg is digits on 
+                                   %% either side of dec pt
+\newcolumntype{S}{D{.}{~}{-1}}  %% allows col type S which aligns cols
+                                %% on dec pt & converts dec pt to space
+\newcolumntype{T}[1]{D{!}{~}{#1}}  %% allows col type T which aligns cols
+                                   %% on !, converts ! to space; arg is
+                                   %% dec places around !
+
+%\newsavebox{\savetable}      %% used to store tables so we can get width
+%\newlength{\savetablewidth}  %% stores table width so parboxes are OK
+
+%\newcommand{\possep}{\hspace{6\tabcolsep}}  %% extra horiz sep in tables
+
+\newcommand{\insertnote}[1]{%
+\vspace{\baselineskip}
+\noindent
+\begin{minipage}{\textwidth}
+\begin{center}
+========================= \\
+Insert #1 About Here \\
+========================= \\
+\end{center}
+\vspace{.8\baselineskip}
+\end{minipage}}
+
+%\newcommand{\framefig}[1]{\framebox{#1}}
+\newcommand{\framefig}[1]{#1}
+
+%scale factor for figs that have to be scaled identically (e.g., trees)
+\newcommand{\figscaleset}{.45}
+
+\newcommand{\TODO}[1]{\textbf{*** #1 ***}}  %% boldface stuff to do
+%\newcommand{\TODO}[1]{}  %% this prevents todo stuff from appearing
+
+\newcommand{\NOTE}[1]{\textbf{*** #1 ***}}  %% boldface notes to me
+%\newcommand{\NOTE}[1]{}  %% this version prevents notes from appearing
+
+\newcommand{\GETVAL}{\textbf{*?*}}  %% boldface missing vals
+
+\newcommand{\IGNORE}[1]{} %% text which should not appear in output
+
+\newcommand{\showp}[1]{\IGNORE{#1}} %% text which should not appear in output
+
+%experiment and appx numbering (\@ handles inter-sentence spacing
+%when the number or letter appears at the end of a sentence)
+%
+% \newcommand{\vplbadqs}{1\@}
+% \newcommand{\vplnoprev}{2\@}
+% \newcommand{\vplgoodqs}{3\@}
+% \newcommand{\vpladv}{4\@}
+% \newcommand{\thestim}{A\@}
+% \newcommand{\theadvstim}{B\@}
+% \newcommand{\therawtime}{C\@}
+
+% hyphenation help
+\hyphenation{pros-o-dy}
+
+\begin{document}
+
+%\maketitle  %we'll do it ourselves (below)
+
+\begin{titlepage}
+\thispagestyle{myheadings}  %% include page head on title page
+\begin{center}
+
+\vspace*{\fill}  % equiv of \vfill, but we need the * at bop
+
+% title:
+{\Large Hierarchy and Scope of Planning in Subject-Verb Agreement 
+Production}
+
+\vfill
+
+% authors & affiliations:
+{\large Maureen Gillespie and Neal J. Pearlmutter
+
+Northeastern University
+
+\vfill
+
+% date of LaTeXing
+%\today
+}
+\end{center}
+
+\vfill
+
+\begin{flushleft}
+%Send correspondence to: \\
+
+Mailing address: \\
+Psychology Dept., 125 NI \\
+Northeastern University \\
+Boston, MA 02115 \\[\baselineskip]
+
+E-mail: gillespie.m@neu.edu (Gillespie), pearlmutter@neu.edu (Pearlmutter) \\
+Phone: (617) 373-3798 (Gillespie), (617) 373-3040 (Pearlmutter) \\
+Fax: (617) 373-8714 \\[\baselineskip]
+
+Running head: HIERARCHY AND SCOPE OF PLANNING IN AGREEMENT PRODUCTION
+\\[\baselineskip]
+
+%\today\ DRAFT, comments welcome.
+In press, \itt{Cognition}; comments welcome. \\
+%Please do not cite or quote without permission.
+\end{flushleft}
+
+\end{titlepage}
+
+\begin{abstract}
+\thispagestyle{myheadings}
+\setcounter{page}{2}  %% set page num to 2
+
+Two subject-verb agreement error elicitation studies tested the
+hierarchical feature-passing account of agreement computation in production
+and three timing-based alternatives: linear distance to the head noun,
+semantic integration, and a combined effect of both (a scope of planning
+account).  In Experiment~1, participants completed subject noun phrase (NP)
+stimuli consisting of a head NP followed by two prepositional phrase (PP)
+modifiers, where the first PP modified the first NP, and the second PP
+modified one of the two preceding NPs.  Semantic integration between the
+head noun and the local noun within each PP was held constant across
+structures.  The mismatch error pattern showed an effect of linear distance
+to the head noun and no influence of hierarchical distance.  In
+Experiment~2, participants completed NP PP PP stimuli in which both PPs
+modified the head noun, and both the order of the two PPs and the local
+nouns' degree of semantic integration with the head noun were
+varied.  The pattern of mismatch errors reflected a combination of
+semantic integration and linear distance to the head noun.  These studies
+indicate that agreement processes are strongly constrained by
+grammatical-level scope of planning, with local nouns planned closer to the
+head having a greater chance of interfering with agreement computation.
+
+\vspace{1in}
+
+\noindent Keywords: sentence production; number agreement; syntactic
+planning; semantic integration; hierarchical feature-passing; scope of
+planning; speech errors; subject-verb agreement
+
+\end{abstract}
+
+\section{ } % Introduction
+\setcounter{page}{3}  %% set page num to 3
+
+The study of language production is concerned with how speakers translate
+non-verbal thoughts into meaningful grammatical utterances.  While this is
+a fairly effortless task that requires little conscious consideration on
+behalf of the speaker, the nature of the processes that underlie this task
+are complex.  Most language production models (e.g., Bock \&
+Levelt, 1994) separate the production planning process into three main
+levels: the message level, which represents the speaker's intended meaning;
+the grammatical encoding level, which translates the meaning into a
+sequence of words; and the phonological encoding level, which translates
+the sequence of words into the articulatory plan required to produce the
+utterance.  The current work focuses on the grammatical encoding process
+and specifically on syntactic planning, which is responsible for creating a
+syntactic structure encoding word order, hierarchical syntactic relations,
+and inflections.
+
+Inflectional processes in particular have been investigated in a variety of
+studies, typically by examining the conditions under which subject-verb
+agreement errors can be elicited, as a way of gaining insight into
+syntactic planning (e.g., Bock \& Cutting, 1992; Bock \& Miller, 1991;
+Franck, Lassi, Frauenfelder, \& Rizzi, 2006; Franck, Vigliocco, \& Nicol,
+2002; Hartsuiker, Ant\'{o}n-M\'{e}ndez, \& van Zee, 2001; Solomon \&
+Pearlmutter, 2004b; Vigliocco \& Nicol, 1994, 1998).  Bock and Miller
+(1991) conducted the first study that elicited subject-verb agreement
+errors in a laboratory setting.  They used sentence preambles that were
+composed of a head noun followed by a phrase containing a local noun (e.g.,
+as in~\exref{BM}).  Subject-verb agreement errors are commonly produced in
+sentences containing subject noun phrases with this structure when the head
+and local noun mismatch in number\IGNORE{, an effect referred to as
+\itt{attraction} or \itt{proximity concord}}.  Experimental items in Bock
+and Miller's study manipulated the number marking of the head and local
+nouns to form four number conditions.  Conditions in which the head noun
+(\ext{key}) and local noun (\ext{cabinet}) had different number markings
+(\exref{BMSP}, containing the singular-plural (SP) sequence,
+and~\exref{BMPS}, containing the plural-singular (PS) sequence) were
+considered the mismatch conditions, while conditions in which the head noun
+and local noun had the same number marking (\ref{BMSS},~\ref{BMPP}) were
+considered the match conditions.  Preambles were presented auditorily, and
+participants were required to repeat them and then complete them as full
+sentences.
+
+\begin{myexample}
+\label{BM}
+\begin{examples}
+    
+    \item \label{BMSS} The key to the cabinet \hfill (SS)\hspace{22em}
+    
+    \item \label{BMSP} The key to the cabinets \hfill (SP)\hspace{22em}
+    
+    \item \label{BMPS} The keys to the cabinet \hfill (PS)\hspace{22em}
+
+    \item \label{BMPP} The keys to the cabinets \hfill (PS)\hspace{22em}
+    
+\end{examples}
+\end{myexample}
+
+Nearly all agreement errors\IGNORE{ ($>90\%$)} occurred in the mismatch
+conditions (\ref{BMSP},~\ref{BMPS}).  Within these conditions, agreement
+errors were more common when the head noun was singular and the local noun
+was plural~\exref{BMSP} than when the head noun was plural and the local
+noun was singular~\exref{BMPS}.  This error pattern is referred to as the
+mismatch effect and has been replicated in essentially all studies
+examining subject-verb agreement (e.g., Bock \& Cutting, 1992; Bock \&
+Eberhard, 1993; Bock, Eberhard, Cutting, Meyer, \& Schriefers, 2001; Bock
+\& Miller, 1991; Bock, Nicol, \& Cutting, 1999; Eberhard, 1999; Franck et
+al., 2006; Hartsuiker et al., 2001; Negro, Chanquoy, Fayol, \&
+Louis-Sidney, 2005).  The interference of plural local nouns, and relative
+lack of interference of singular local nouns, on subject-verb agreement
+provides support for the hypothesis that plural noun forms are marked with
+a plural feature, while singular nouns are unmarked (Berent, Pinker,
+Tzelgov, Bibi, \& Goldfarb, 2005; Bock \& Eberhard, 1993; Bock \& Miller,
+1991; Eberhard, 1997; Eberhard, Cutting, \& Bock, 2005; Vigliocco \& Nicol,
+1994, 1998).  While this latter pattern, the plural markedness effect, does
+not provide evidence for a specific mechanism for agreement effects, it
+does show that mismatch effects are not simply a result of agreement with
+the nearest noun and that a more complex mechanism is involved.
+
+Most production research assumes that agreement is implemented through
+hierarchical feature-passing (Eberhard et al., 2005; Franck et al., 2002;
+Hartsuiker et al., 2001; Vigliocco \& Hartsuiker, 2002; Vigliocco \& Nicol,
+1998).  According to this view, agreement is computed once the syntactic
+tree structure of a sentence is formed, with number features being passed
+up through the subject NP to the verb phrase.  Mismatch effects occur when
+a plural feature is inadvertently passed too far up the tree, overwriting
+the number from the head noun with the number from a local noun.  Franck et
+al.\ (2002) provide the most direct test of the hierarchical
+feature-passing hypothesis in an error elicitation experiment using subject
+NP preambles containing two PP modifiers, as
+in~\exref{Franck-ex}.\IGNORE{\footnote{We focus on singular head versions;
+however, Franck et al.\ (2002) did manipulate head noun
+plurality.}\NOTE{think it's OK not to point this out}} Their stimuli had a
+descending hierarchical structure in which each PP modified the immediately
+preceding noun, and the local nouns (\ext{flight} and \ext{canyon}
+in~\exref{Franck-ex}) varied in number.  Figure~\ref{descstruc} shows the
+syntactic structure as well as the path along which an errant feature from
+N2 or N3 would have to pass.
+
+%\insertnote{Figure~\ref{descstruc}}
+
+\begin{figure}[tb]
+
+%    \makebox[\textwidth][c]{\framefig{\includegraphics[width=.75\textwidth]{descstruc}}}
+    \makebox[\textwidth][c]{\framefig{\includegraphics[scale=\figscaleset]{descstruc}}}
+
+\caption{Syntactic path a plural feature must travel to interfere with
+agreement in Franck et al.'s (2002) stimuli.  The route for a feature from
+N2 is shown with solid arrows; the route for a feature from N3 includes the
+route from N2 as well as the dashed arrows, so additional feature-passing
+errors would have to occur before N3's plural feature could influence verb
+number, predicting fewer subject-verb agreement errors when N3 is plural
+compared to when N2 is.}
+
+\label{descstruc}
+\end{figure}
+
+\begin{myexample}
+\label{Franck-ex}
+\begin{examples}
+    
+    \item \label{FranckSSS} The helicopter for the flight over the canyon
+    \hfill (SSS)\hspace{12em}
+    
+    \item \label{FranckSPS} The helicopter for the flights over the canyon
+    \hfill (SPS)\hspace{12em}
+    
+    \item \label{FranckSSP}The helicopter for the flight over the canyons
+    \hfill (SSP)\hspace{12em}
+
+    \item \label{FranckSPP}The helicopter for the flights over the canyons
+    \hfill (SPP)\hspace{12em}
+    
+\end{examples}
+\end{myexample}
+
+The hierarchical feature-passing hypothesis predicts a larger mismatch
+effect for preambles like~\exref{FranckSPS} than for preambles
+like~\exref{FranckSSP}.  Because N2 (\ext{flight(s)}) is hierarchically
+closer to the verb than N3 (\ext{canyon(s)}) is, fewer feature-passing
+errors would have to occur for N2's plural to interfere with agreement
+in~\exref{FranckSPS} than for N3's plural to interfere
+in~\exref{FranckSSP}.  Franck et al.\ (2002) found that the N2 mismatch
+effect was larger than the N3 mismatch effect in both English and French,
+and they thus argued for a hierarchical feature-passing account of
+subject-verb agreement over a linear account in which interference
+increases with (linear) proximity to the verb.\IGNORE{ \NOTE{there's an
+issue in the above arg that's largely ignored (by us and others), which is
+whether it's overall distance that matters (M\&M basically assumes this;
+Franck et al.\ sometimes suggest this), versus the number of nodes that
+would have to incorrectly pass number up/along (so NP might not be such a
+node, b/c number should be allowed to pass up outside of it; but PP would
+be such a node (Franck et al.'s figs 1\&2 suggest this using bold vs roman)
+-- this is on analogy to Romance languages, where the P sometimes needs to
+be num-marked from N w/in the PP)\ldots I think we should probably not
+discuss this here, but it might be relevant for the GD\ldots}}
+
+Current models of agreement computation also assume mechanisms that are
+consistent with a hierarchical feature-passing account (Eberhard et al.,
+2005; Vigliocco \& Hartsuiker, 2002).  Eberhard et al.'s Marking and
+Morphing model was implemented to account for the findings of a number of
+agreement studies.  According to this model, the marking process assigns
+number to the subject NP as a whole based on message-level
+properties\IGNORE{ (this allows conceptual number of the subject phrase to
+have an influence independent of the lexically-specified number of any
+nouns within the phrase)}.  Separately, each noun within the subject NP is
+also assigned a number specification from its lexical entry, and morphing
+then combines the subject NP number value set by marking with the number
+values from all the nouns within the subject NP, to yield an overall
+specification of number for the subject.  This specification in turn
+determines the probability of singular versus plural agreement on the verb.
+The morphing process encodes the hierarchical distance assumption: Nouns
+situated further from the subject NP node in the syntactic tree are
+stipulated to have a weaker influence on the subject NP's number assignment
+than nouns closer to the subject NP\@.  The implemented model handles only
+structures with a head noun and a single local noun at a constant distance
+from the subject NP (within a PP), but the assumption is that a local noun
+in a more syntactically distant PP (e.g., N3 in Franck et al., 2002) would
+have even less of an influence on the subject NP's number assignment.
+
+The hierarchical feature-passing hypothesis can explain various effects
+seen in previous studies (see Franck et al., 2002, for discussion of Bock
+\& Cutting's, 1992, clause-packaging hypothesis; Vigliocco \& Nicol, 1998,
+for additional support from question production; and Hartsuiker et al.,
+2001, for cross-linguistic evidence).  However, it does not take into
+account the fact that language production is at least partially sequential
+or incremental, and that planning of utterances may be as well.  In
+particular, it assumes that a full hierarchical structure for the entire
+subject NP is available through which features can pass.  Although such
+structure must be computed during the course of producing the subject NP,
+it may or may not all be present simultaneously, and the part(s) of the
+structure relevant to creating mismatch errors (the PPs containing the
+local nouns) might not be present at the point in time when the number of
+the subject NP is being computed (for a related suggestion, see Haskell \&
+MacDonald, 2005).  This possibility suggests a memory-encoding-based
+alternative to the hierarchical account: Interference with agreement
+computation might be a function of the extent to which the
+potentially-interfering element is active in memory at the time when the
+number-marking of the subject NP is being computed.  Thus while some local
+nouns might be planned close in time to the head, others may be planned
+relatively later and thus have a smaller likelihood of creating
+interference (see also Pearlmutter \& Solomon, 2007; Solomon \&
+Pearlmutter, 2004b, for more details on such a timing of activation
+account).  The current work considers two factors, linear distance back to
+the head noun and semantic integration (Solomon \& Pearlmutter, 2004b),
+which might be expected to affect the relative time of planning of
+different elements and which would make predictions compatible with Franck
+et al.'s results.
+
+Thus, for example, while Franck et al.\ (2002) showed that a local noun's
+linear proximity to the verb cannot account for mismatch effects, no study
+to date has examined the influence of a local noun's linear distance back
+to the head noun (though see Nicol, 1995, for a related proposal).
+Assuming that the number of the subject NP must be computed and retained in
+memory, elements linearly closer to the head should be more likely to
+interfere with this encoding process, predicting correctly that N2 mismatch
+effects should be larger than N3 mismatch effects for Franck et al.'s
+stimuli.
+
+Also possible is that, instead of order, the relative timing of planning of
+words due to semantic relationships among them may affect agreement
+computation.  Solomon and Pearlmutter (2004b) hypothesized that semantic
+integration (i.e., the degree to which elements within a phrase are linked
+at the message level) affects the timing of planning of elements within a
+phrase, such that elements of more semantically integrated phrases are more
+likely to be planned simultaneously.  More integrated cases thus produce
+more potential interference and a greater possibility for speech errors,
+including mismatch errors in agreement error elicitation (see also
+Pearlmutter \& Solomon, 2007, for evidence from exchange errors).  Solomon
+and Pearlmutter manipulated local noun plurality in NP PP stimuli and
+compared integrated cases (e.g., \ext{The pizza with the yummy topping(s)})
+to corresponding unintegrated ones (e.g., \ext{The pizza with the tasty
+beverage(s)}).  Across a series of experiments, they found larger mismatch
+effects for integrated than for unintegrated conditions, supporting the
+hypothesis that increased semantic integration leads to increases in
+subject-verb agreement mismatch effects by way of increased interference.
+This hypothesis can also account for Franck et al.'s (2002) result, as
+Solomon and Pearlmutter (2004a) obtained ratings of semantic integration
+for Franck et al.'s Experiment~2 (English) stimuli, which showed semantic
+integration to be confounded with syntactic distance: N1 and N2 were
+significantly more integrated than N1 and N3, predicting correctly that the
+N2 mismatch effect should be larger than the N3 mismatch effect, because N1
+and N2 would be more likely to be planned simultaneously than N1 and N3.
+
+An additional possibility is that influences of linear order and semantic
+integration combine to determine the timing of planning of elements, in
+which case nouns linearly closer to the head would be more likely to
+interfere, but the extent of interference would be increased by greater
+integration with the head and decreased with reduced integration.  This
+account suggests that the scope of planning during grammatical encoding may
+have an influence on agreement computation.  Research examining exchange
+errors provides clear evidence that multiple elements of an utterance are
+active simultaneously during production (Garrett, 1975, 1980), suggesting
+that speakers plan parts of their utterances in advance of articulation.
+However, there is little agreement about the size of the planning units
+(cf.\ Allum \& Wheeldon, 2007; Griffin, 2001; Smith \& Wheeldon, 1999,
+2001; Wheeldon \& Lahiri, 2002).  Under a scope of planning account, only
+local nouns that are within the scope of planning of the head noun when the
+number marking of the subject NP is determined would create mismatch
+effects, with both decreased head-local linear distance and increased
+head-local semantic integration contributing to the likelihood of the local
+noun being within the scope of planning of the head, and thus contributing
+to the likelihood of the local noun being active simultaneously with the
+head noun and creating interference in encoding number.  This scope account
+provides an alternative to the hierarchical feature-passing hypothesis
+because in Franck et al.\ (2002), N3 was more likely to have been outside
+the scope of planning of the head noun when agreement was computed (it was
+linearly farthest from the head and weakly integrated with the head).  This
+would predict that N3 would be less likely to produce a mismatch effect (or
+would produce a weaker one than N2), as they found.
+
+The two experiments below examine hierarchical feature-passing and the
+above three alternatives as influences on agreement computation.
+Experiment~1 was a direct test of the hierarchical distance hypothesis
+against a linear distance alternative, manipulating hierarchical
+distance of N3 within preambles (subject NP stimuli) while controlling
+semantic integration.  Experiment~2 manipulated semantic integration and
+linear order within preambles while controlling hierarchical distance.
+
+\section[Experiment~1]{\center Experiment~1}
+
+To examine hierarchical distance directly and address the semantic
+integration confound in Franck et al.'s (2002) stimuli, Experiment~1
+compared two sets of NP PP PP preambles, which controlled semantic
+integration while manipulating hierarchical distance and local noun number,
+as in~\exref{desc} and~\exref{flat}.  (The code following each preamble
+indicates noun number for N1, N2, and N3, with S meaning singular and P
+plural.)  Preambles like~\exref{desc} had a descending hierarchical
+structure, such that the PP containing N3 (\ext{on the leather strap(s)})
+modified N2 (\ext{buckle(s)}), as in Figure~\ref{descstruc} and in Franck
+et al.\ (except that the current stimuli also had an adjective or noun
+modifier of N2 and N3).  Preambles like~\exref{flat} had a flat structure,
+such that both PPs (\ext{to the western suburb(s)}, \ext{with the steel
+guardrail(s)}) modified N1 (\ext{highway}), as illustrated in
+Figure~\ref{flatstruc}.\footnote{The relatively simple, traditional
+(Chomsky, 1965) syntactic structures in Figures~\ref{descstruc}
+and~\ref{flatstruc} are sufficient to illustrate the contrast in attachment
+height (and thus feature-passing distance) of the second PP\@.  Whether
+these structures are correct is unknown, and current syntactic theories
+differ on the details of the structures for both cases.  However, we are
+not aware of any such differences which would alter the general prediction
+that the difference in feature-passing distance between N2 and N3 is larger
+for the descending than the flat cases.  See the General Discussion for
+details on the specific case in which a theory enforces binary branching
+(e.g., Chomsky, 1995) and Solomon and Pearlmutter (2004b) for some
+discussion of variations in feature-passing predictions depending on
+structural details.} Mean semantic integration of the N1-N2 pair was
+matched across structures, as was mean semantic integration of the N1-N3
+pair.
+
+%\insertnote{Figure~\ref{flatstruc}}
+
+\begin{figure}[tb]
+
+%    \makebox[\textwidth][c]{\framefig{\includegraphics[width=.75\textwidth]{flatstruc}}}
+    \makebox[\textwidth][c]{\framefig{\includegraphics[scale=\figscaleset]{flatstruc}}}
+
+\caption{Syntactic structure for flat stimuli, in which both PPs attach to 
+the first NP.}
+
+\label{flatstruc}
+\end{figure}
+
+\begin{myexample}
+\label{desc}
+\begin{examples}
+    
+    \item \label{desc-sss} The backpack with the plastic buckle on the 
+    leather strap \hfill (SSS)\hspace{6em}
+    
+    \item \label{desc-sps}The backpack with the plastic buckles on the 
+    leather strap \hfill (SPS)\hspace{6em}
+    
+    \item \label{desc-ssp} The backpack with the plastic buckle on the 
+    leather straps \hfill (SSP)\hspace{6em}
+    
+\end{examples}
+\end{myexample}
+\vspace{-1\baselineskip}
+
+\begin{myexample}
+\label{flat}
+\begin{examples}
+    
+    \item \label{flat-sss} The highway to the western suburb with the steel
+    guardrail \hfill (SSS)\hspace{6em}
+    
+    \item \label{flat-sps} The highway to the western suburbs with the 
+    steel guardrail \hfill (SPS)\hspace{6em}
+    
+    \item \label{flat-ssp} The highway to the western suburb with the steel
+    guardrails \hfill (SSP)\hspace{6em}
+    
+\end{examples}
+\end{myexample}
+
+If hierarchical distance has an independent effect on agreement
+computation, the difference between the N2 and N3 mismatch effects should
+be smaller for the flat preambles than the descending preambles, because
+the distance N2's plural feature would have to travel to affect agreement
+computation is matched across structures, while the distance N3's plural
+feature would have to travel is shorter in flat structures than in
+descending structures.  On the other hand, if the effects Franck et al.\
+(2002) attributed to hierarchical distance were instead due to linear
+distance back to the head noun, then both flat and descending structures
+should show the pattern Franck et al.\ found for their descending
+structures --- a higher mismatch error rate for N2 mismatches than for N3
+mismatches --- with no interaction between structure and mismatch position.
+Finally, if the effects Franck et al.\ found were due to their stimuli's
+semantic integration confound (alone), then no interaction should be
+observed in this experiment; and in addition, the N2 and N3 mismatch
+effects should differ only to the extent that integration between each of
+those nouns and N1 varies.
+
+\subsection{Method}
+
+\paragraph{Participants.} Fifty-four Northeastern University students and
+community members participated in the on-line experiment.  In this and
+Experiment~2, all participants were native English speakers and received
+either course credit or payment (\$10) for their participation; no
+participant provided data for more than one part of any experiment.
+
+\paragraph{Materials and design.} Twelve descending stimulus items
+like~\exref{desc}, chosen from a candidate set of~29, and twelve flat
+stimulus items like~\exref{flat}, chosen from a candidate set of~34, were
+used as critical items for the experiment.  All preambles consisted of a
+head NP (always \ext{The} and a singular head noun, N1) followed by two
+PPs, each of which consisted of a preposition, the determiner \ext{the}, an
+adjective or modifier noun, and a local noun (N2 or N3).  In the descending
+stimuli, the first PP modified the head NP, and the second PP modified the
+second NP (containing N2); in the flat cases, both PPs modified the head
+NP\@.  All nouns in the stimuli were inanimate and had regular plural
+forms, and each noun's conceptual number matched its grammatical
+number.\IGNORE{\TODO{syllable-length matching?}} The full set of stimuli is
+shown in Appendix~A.
+
+Because simultaneously controlling semantic integration and
+manipulating hierarchical structure limited the total number of
+available items, only the three local noun number conditions critical
+for examining mismatch effects (SSS, SPS, SSP; as shown
+in~\exref{desc} and~\exref{flat}) were included in the critical
+stimuli, to maximize power.  Thus N1 in the critical stimuli was
+always singular, and the three different versions of each item were
+created by varying either N2 or N3 number.
+
+Eighty-eight filler preambles were combined with the critical items.  Eight
+consisted of an NP PP PP sequence with a singular head noun and plural N2
+and N3, in order to balance the SSS, SPS, and SSP critical items; four of
+these fillers had descending structures, and four were flat.  Of the other
+80 fillers, 32 consisted of an NP PP PP sequence (with varying local noun
+number) but had a plural head noun.  The rest had a variety of structures
+varying in head noun number and were similar in length and complexity to
+the critical items.  The critical items and fillers were combined to form
+three counterbalanced lists, each containing all fillers and exactly one
+version of each of the critical items.  Each list was seen by~18 
+participants.
+
+\paragraph{Stimulus norming.} The~24 critical stimuli were chosen from
+the initial~63 candidate stimuli based on two norming studies
+conducted in advance, one for semantic integration and one for
+attachment of the second PP\@.  While the critical stimuli ended up
+instantiating only three local noun number conditions, all four
+possible local noun number combinations were normed (SSS, SPS, SSP,
+SPP)\@.  Both norming surveys also included an additional~24 filler
+stimuli with the same NP PP PP format; local noun number was varied
+between-items in these stimuli (6 items per local noun number
+condition), as was attachment of the second PP (12 were designed to be
+N1-attached and 12 N2-attached), and they were intended to have a
+range of levels of semantic integration between N1, N2, and N3.  
+
+The first norming survey, completed by~117 participants, was used to
+ensure that the preambles controlled semantic integration as desired.
+The~12 different versions of each of the~63 candidate stimulus items
+(4 number conditions $\times$ 3 possible rating pairs (N1-N2, N1-N3,
+N2-N3)), along with the~24 fillers, were rated for integration
+following the procedure described in Solomon and Pearlmutter (2004b).
+Participants rated integration of the two underlined nouns in each
+preamble, using a~1 (loosely linked) to~7 (tightly linked) scale.  The
+instructions included example phrases (\ext{the ketchup or the
+mustard} and \ext{the bracelet made of silver}) and indicated that
+although \ext{ketchup} and \ext{mustard} are similar in meaning, they
+are not closely related in the particular example phrase, in contrast
+to \ext{bracelet} and \ext{silver}, which are closely related in the
+example phrase.  The~12 versions of each candidate item for rating
+were counterbalanced across~12 rating lists such that exactly one
+version of each stimulus item appeared in each list.  The~87 preambles
+in each list were presented over~5 printed pages, and the pages of
+each list were randomized separately for each participant.  Each
+participant rated the stimuli in one list, and~9--10 ratings were thus
+obtained for all but one version of one stimulus item (which had 
+only~8).
+
+Table~\ref{HP7-dat} shows mean ratings by condition and rating pair for
+the~24 critical stimuli used in the on-line experiment.  A 2 (structure)
+$\times$ 3 (number) $\times$ 3 (rating pair) ANOVA on these data revealed
+main effects of structure\footnote{Throughout all experiments, patterns
+reported as reliable were significant at or beyond the .05 level unless
+otherwise noted.} (\Fval{1}{22}{7.71}, \MSe{2.33}\showp{, \p{05}}) and
+rating pair (\Fval{2}{44}{31.39}, \MSe{1.59}\showp{, \p{001}}), and an
+interaction of the two (\Fval{2}{44}{8.98}, \MSe{1.59}\showp{, \p{01}}),
+with no effect nor interactions involving number (all \Fsweak[1.6],
+\psweak[20]).  The main effect of structure and the structure interaction
+with rating pair resulted only from different N2-N3 ratings for descending
+and flat structures (\Fval{1}{22}{31.32}, \MSe{0.49}\showp{, \p{001}}), as
+neither the N1-N2 nor the N1-N3 ratings differed across structures
+(\Fsweak); and an additional structure $\times$ number $\times$ rating pair
+ANOVA, leaving out the N2-N3 rating pair, showed only a main effect of pair
+(N1-N3 more integrated than N1-N2; \Fval{1}{22}{16.17}, \MSe{2.28}\showp{,
+\p{01}}).  The critical rating pair by structure interaction in this ANOVA
+did not approach significance (\Fweak), indicating that N1-N2 versus N1-N3
+integration was matched across structures, as desired.  There were no main
+effects of structure or number (\Fsweak) and no interactions involving
+these factors (\Fsweak[1.3], \psweak[30]).  These results indicate that
+semantic integration was controlled for the critical comparison between the
+N2 and N3 mismatch effects within each structure.  The large difference in
+N2-N3 integration across structures was also expected given the difference
+in attachment of the PP containing N3.
+
+%\insertnote{Table~\ref{HP7-dat}}
+
+{
+%\small  %%use if we need to set the table in 11pt instead of 12pt
+\settowidth{\maxcolwidth}{Uninflected}
+%\settowidth{\maxcolwidth}{999 (99)} %% use this version with Uninfl 
+                                     %% col head
+\settowidth{\Attwidth}{Attachment}
+
+\setstretch{1}  %% single-spacing for the table
+
+\ctable[
+        caption = {\raggedright Experiment~1 Mean Semantic Integration Ratings, 
+                   Mean Attachment Preferences, and Response Counts by 
+                   Condition},
+        cap = {},
+        captionskip=2ex,
+        label = HP7-dat,
+        sideways, 
+        star
+       ]{l l T{4.6} T{4.6} T{4.6} T{4.6} S@{}S@{}S@{}T{5.0}}{
+        \tnote[]{\normalsize\spacer{0}{4}\textit{Note}.
+                 Conditions are indicated by noun number (N1, N2, N3),
+                 with S = singular and P = plural.  Semantic
+                 integration rating scale was 1 (loosely linked) to 7
+                 (tightly linked).  For semantic integration ratings
+                 and attachment, means are computed by-items and
+                 standard deviations are in parentheses.  For response
+                 counts, dysfluency counts are in parentheses.  Misc =
+                 Miscellaneous.}}{%
+        \hline
+            \spacer{-2}{6} & & \multicolumn{3}{c}{Semantic Integration Rating} & 
+            & \multicolumn{4}{c}{Response Count} \\ \cline{3-5} \cline{7-10}
+            \multicolumn{2}{l}{\spacer{-2}{6}Condition} & 
+            \multicolumn{1}{c}{N1--N2} &  \multicolumn{1}{c}{N1--N3} & 
+             \multicolumn{1}{c}{N2--N3} & 
+             \multicolumn{1}{c}{\raisebox{0ex}[0ex][0ex]{\parbox[b]{\Attwidth}{\center \%N1 Attachment}}} & 
+             \multicolumn{1}{c@{}}{\makebox[\maxcolwidth][c]{Error}} &
+             \multicolumn{1}{c@{}}{\makebox[\maxcolwidth][c]{Correct}} &
+             \multicolumn{1}{c@{}}{\makebox[\maxcolwidth][c]{Uninflected}} &
+             \multicolumn{1}{c}{\makebox[\maxcolwidth][c]{Misc}} \\ \hline
+             \multicolumn{4}{l}{\spacer{-2}{6}Descending} \\
+             SSS & & 4.13!(.94) & 5.23!(.49) & 4.46!(.83) & 4.7!(7.01) & 1.(0) & 145.(19) & 37.(5) & 33 \\
+             SPS & & 4.34!(.79) & 5.08!(.47) & 4.22!(.72) & 5.6!(5.57) & 15.(2) & 129.(13) & 29.(5) & 43 \\
+             SSP & & 4.02!(.77) & 5.21!(.45) & 4.20!(.53) & 4.1!(5.52) & 2.(0) & 124.(12) & 31.(5) & 59 \\
+             \spacer{-2}{6}\textit{M} & & 4.16!(.83) & 5.17!(.46) & 4.29!(.70) & 4.8!(5.93) \\ \hline
+             \multicolumn{4}{l}{\spacer{-2}{6}Flat} \\
+             SSS & & 4.21!(1.38) & 5.24!(.98) & 2.81!(.94) & 93.6!(5.68) & 1.(0) & 148.(20) & 38.(4) & 29 \\
+             SPS & & 4.11!(1.36) & 4.96!(.99) & 2.62!(.91) & 91.9!(6.68) & 19.(2) & 114.(10) & 31.(5) & 52 \\
+             SSP & & 3.97!(1.23) & 5.13!(.97) & 2.64!(.75) & 94.4!(5.57) & 5.(2) & 128.(10) & 33.(2) & 49 \\
+             \spacer{-2}{6}\textit{M} & & 4.10!(1.29) & 5.11!(.96) &  2.69!(.85) & 93.3!(5.92) \\ \hline
+             \multicolumn{2}{l}{\spacer{-2}{6}Grand Mean} & 4.13!(1.08) & 5.14!(.75) & 3.49!(1.12) & 49.0!(45.0) \\ \hline
+         }
+}
+
+The second norming survey, completed by~59 participants\IGNORE{actually 60
+Ss; one dropped for ``apparently not understanding the instructions''; may
+want to mention, but probably not critical}, ensured that hierarchical
+distance was manipulated as desired by measuring attachment of the second
+PP to N1 versus N2.  Each preamble was presented followed by a question,
+which was always \ext{What is} plus a PP from the preamble.  The question
+always asked about the final PP for the candidate stimuli (e.g., \ext{What
+is on the leather straps?} for~\exref{desc-ssp}, \ext{What is with the
+steel guardrail?} for~\exref{flat-sss}); for the fillers, the question
+always asked about the first PP (containing N2), to ensure that
+participants paid attention to the full text of each item and not just the
+last PP\@.  Participants were instructed to write down the word from the
+preamble that best answered the question.  The~4 different local noun
+number versions of each candidate preamble were counterbalanced across~4
+lists such that exactly one version of each item appeared in each list.
+The~63 candidate preambles and~24 fillers in each list were presented
+over~8 printed pages, and the pages were randomized separately for each
+participant.  Each participant completed a single list, resulting in 14--15
+usable responses for each version of each candidate stimulus item.
+
+The responses were coded for whether they referred to N1 or to N2 (unclear
+or uninterpretable responses, 1\% of the total\IGNORE{51 ratings out of
+5133 (includes all stim and all 59 Ss)}, were excluded), and
+Table~\ref{HP7-dat} shows mean preference for N1 attachment by condition
+for the~24 critical stimulus items.  A 2 (structure) $\times$ 3 (number)
+ANOVA on the \%N1 attachment data revealed a stronger N1 attachment
+preference for flat stimuli than for descending stimuli
+(\Fval{1}{22}{2201}, \MSe{64.09}\showp{, \p{001}}), as desired.  No main
+effect of local noun number and no interaction were present (\Fsweak[1.2],
+\psweak[30]).  In addition to differing in direction as desired, the flat
+and descending attachment preferences were equally strong in their
+respective directions: In the flat stimuli, the second PP attached to N1
+over 90\% of the time, while the second PP in the descending stimuli
+attached to N1 less than 10\% of the time; the strength of these
+preferences relative to 50\% did not differ (\Fweak[1.1], \p[>]{30}).
+
+\paragraph{Apparatus and procedure.} Each participant was run individually
+in the on-line experiment using the visual-fragment completion paradigm
+(e.g., Bock \& Eberhard, 1993; Solomon \& Pearlmutter, 2004b; Vigliocco,
+Butterworth, \& Garrett, 1996; Vigliocco \& Nicol, 1998; cf.\ Haskell \&
+MacDonald, 2003).  Participants were instructed to begin reading each
+visually-presented preamble aloud as soon as it appeared and add an ending
+that formed a complete sentence.  Participants were not instructed as to
+how they should formulate a completion, only that they should form a
+complete sentence for each preamble.
+
+On each trial, a fixation cross appeared at the left edge of the computer
+screen for 1000~ms, followed by the preamble.  As soon as the preamble
+appeared, the participant began speaking it aloud, continuing it as a
+complete sentence.  Each preamble was presented for the longer of 1000~ms
+or 50~ms/character.  After the preamble disappeared, the screen was blank
+for 2000~ms, followed by a prompt to begin the next trial.  A PC running
+the MicroExperimental Laboratory software package (Schneider, 1988)
+presented the preambles, and participants' responses were recorded
+uncompressed onto CD-R for analysis, using a Shure SM58 microphone
+connected to a Mackie 1202-VLZ Pro mixer/preamp and an Alesis Masterlink
+ML-9600 (OS v2.20) CD recorder.  Five practice items preceded the 112
+trials.  If at any point the participant's speech rate slowed, the
+experimenter encouraged the participant to speak more quickly.
+
+\paragraph{Scoring.} All completions were transcribed and assigned to one
+of four coding categories: (1) correct, if the participant repeated the
+preamble correctly, only once, produced an inflected verb immediately after
+the preamble, and used a verb form that was correctly marked for number;
+(2) error, if all the criteria for a correct response were met, but the
+verb form failed to agree in number with the subject; (3) uninflected, if
+all the criteria for a correct response were met, but the verb was
+uninflected; and (4) miscellaneous, if the participant made an error
+repeating the preamble, if a verb did not immediately follow the preamble,
+or if the response did not fall into any of the other categories.  Trials
+in which a participant made no response were excluded from all analyses.
+If the participant produced a dysfluency (e.g., pauses, coughs) during or
+immediately after producing the preamble and went on to produce a correct,
+error, or uninflected response, the scoring category and the dysfluency
+were recorded.  On miscellaneous trials, dysfluencies were not scored.
+
+\subsection{Results}
+
+Across all critical trials, there were~788 correctly-inflected
+responses,~43 agreement errors,~199 uninflected responses,~265
+miscellaneous cases, and~1 trial with no response.  Table~\ref{HP7-dat}
+shows the counts for each analyzed response type by condition.  Separate
+analyses were performed for error rates (the percentage of error responses
+out of error plus correct responses), the number of uninflected responses,
+and the number of miscellaneous responses.  All analyses except those
+involving miscellaneous counts included dysfluency cases, and unless
+otherwise noted, the statistical patterns were identical if dysfluency
+cases were excluded.  We also computed supplemental analyses on error
+counts and on arcsine-transformed proportions of errors (Cohen \& Cohen,
+1983); these are detailed only when they produced significance patterns
+different from those for the main error rate analyses.  For each of these
+measures, we computed mismatch effects by subtracting from each condition
+with a plural local noun (SPS, SSP) the corresponding (structure-matched)
+singular baseline (SSS)\@.  The relevant mismatch effects for each of the
+measures above were then analyzed in corresponding 2 (structure) $\times$ 2
+(plural position) ANOVAs, one with participants ($F_{1}$) and one with
+items ($F_{2}$; Clark, 1973) as the random factor.\IGNORE{\NOTE{covered in
+fn in Method section} In all analyses, effects reported as reliable were
+significant at or beyond the .05 level\IGNORE{ unless otherwise
+noted}.}\IGNORE{
+
+old stuff describing overall ANOVAs:
+
+For each of these measures, we performed two overall 2 (structure) $\times$
+3 (local noun number) ANOVAs, one with participants ($F_{1}$) and one with
+items ($F_{2}$; Clark, 1973) as the random factor.  However, all
+theoretical predictions specifically concern mismatch effects, so we
+calculated these for each mismatch condition (SPS, SSP) by subtracting out
+its corresponding (structure-matched) singular baseline (SSS)\@.  The
+relevant mismatch effects for each of the measures above were then analyzed
+in corresponding 2 (structure) $\times$ 2 (plural position)
+ANOVAs.\IGNORE{\NOTE{covered in fn in Method section} In all analyses,
+effects reported as reliable were significant at or beyond the .05
+level\IGNORE{ unless otherwise noted}.}
+
+}
+
+\paragraph{Agreement errors.}\IGNORE{
+
+NOTHING IN HERE IS UPDATED FOR S#54
+
+old stuff describing overall ANOVAs:
+
+The analyses of overall agreement error rates
+revealed only a main effect of local noun number
+(\Fs[2]{104}{14.98}{250.56}\showp{, \p{001}};
+\Fi[2]{44}{18.84}{58.13}\showp{, \p{001}}), which arose from a higher error
+rate in the SPS condition than in the SSP (\Fs{52}{17.34}{154.73}\showp{,
+\p{001}}; \Fi{23}{16.43}{87.94}\showp{, \p{001}}) or the SSS condition
+(\Fs{52}{17.01}{172.81}\showp{, \p{001}}; \Fi{23}{25.33}{71.81}\showp{,
+\p{001}}).  The SSP and SSS conditions did not differ (\Fsweak[2.7],
+\psweak[10]), and the ANOVA showed no effect of structure and no
+interaction (all \Fsweak).
+
+}\IGNORE{
+
+NOTHING IN HERE IS UPDATED FOR S#54
+
+pctde \\
+
+overall \\
+  struc:  \Fs{52}{.77}{255.30}, \p{384}; \Fi{22}{.57}{45.43}, \p{456} \\
+  num:  \Fs[2]{104}{14.98}{250.56}, \p{001}; \Fi[2]{44}{18.84}{58.13}, \p{001} \\
+  int:   \Fs[2]{104}{.64}{273.07}, \p{528}; \Fi[2]{44}{.12}{58.13}, \p{881} \\
+
+num pairs \\
+  SPSvSSS:  \Fs{52}{17.01}{172.81}, \p{001}; \Fi{23}{25.33}{71.81}, \p{001} \\
+  SSPvSSS:  \Fs{52}{.12}{48.30}, \p{728}; \Fi{23}{2.68}{8.01}, \p{115} \\
+  SPSvSSP:  \Fs{52}{17.34}{154.73}, \p{001}; \Fi{23}{16.43}{87.94}, \p{001} \\
+
+mismatch \\
+  struc:  \Fs{52}{1.52}{626.66}, \p{223}; \Fi{22}{.38}{73.67}, \p{539} \\
+  num:  \Fs{52}{17.34}{309.45}, \p{001}; \Fi{22}{15.75}{91.70}, \p{01} \\
+  int:  \Fs{52}{.09}{337.24}, \p{757}; \Fi{22}{.05}{91.70}, \p{814} \\
+
+  FSPSvDSPS:  \Fs{52}{.83}{808.41}, \p{367}; \Fi{22}{.03}{149.94}, \p{861} \\
+  FSSPvDSSP:  \Fs{52}{2.03}{15.49}, \p{159}; \Fi{22}{1.89}{15.43}, \p{183} \\
+
+  FSPSvFSSP:  \Fs{52}{7.56}{412.11}, \p{01}; \Fi{11}{4.96}{128.57}, \p{05} \\
+  DSPSvDSSP:  \Fs{52}{9.72}{234.59}, \p{01}; \Fi{11}{14.80}{54.82}, \p{01} \\
+
+diffs for non-dys or for counts or arcsins: \\
+  cntde F1 ssp flat vs desc is marg; all others ns \\
+  F2 cntde, pctde, asnde flat n3 mism effect marg; all others ns \\
+  cntde F2 flat sps vs ssp marg; all others signif \\
+  
+}\IGNORE{
+
+However, the more precise test of the hierarchical account is in terms of
+mismatch effects, and Figure~\ref{HP7mismatch} shows these effects as a
+function of structure and plural position.  The mismatch ANOVA revealed a
+main effect of plural position (statistically equivalent to the SPS vs.\
+SSP comparison within the overall ANOVA's main effect of number), but as in
+the overall ANOVA, the main effect of structure was not significant
+(\Fsweak[1.7], \psweak[15]), and, critically, neither was the interaction
+(\Fsweak).
+
+}Figure~\ref{HP7mismatch} shows the mismatch effects as a function of
+structure and plural position.  N2 plurals produced larger mismatch effects
+than N3 plurals (\Fs{53}{16.04}{313.04}\showp{, \p{001}};
+\Fi{22}{13.92}{93.22}\showp{, \p{01}}), but the main effect of structure
+was not significant (\Fsweak[1.7], \psweak[15]), and, critically, neither
+was the interaction (\Fsweak).
+
+%\insertnote{Figure~\ref{HP7mismatch}}
+
+\begin{figure}[tb]
+    \makebox[\textwidth][c]{\framefig{\includegraphics[width=.75\textwidth]{HP7mismatch}}}
+
+\caption{Experiment~1 grand mean mismatch error rates by structure and
+mismatch position.  Error bars show $\pm1\,$\itt{SEM}, computed from the
+analyses by participants.}
+
+\label{HP7mismatch}
+\end{figure}
+
+\paragraph{Uninflected and miscellaneous responses.} There were no reliable
+main effects or interactions in either the uninflected response count
+analyses (all \Fsweak) or the miscellaneous response count analyses (all
+\Fsweak[2.2], \psweak[15]).\IGNORE{ this next sentence could go here, but
+it's out of place; work it into the discussion (or, maybe better, the GD)
+if needed: The lack of any difference in miscellaneous responses for
+descending versus flat structures suggests that the two structure types did
+not differ in overall complexity or difficulty.}\IGNORE{
+
+NOTHING IN HERE IS UPDATED FOR S#54
+
+old stuff including overall analyses:
+
+\paragraph{Uninflected responses.} Neither the overall nor the
+mismatch ANOVAs revealed any main effects or interactions in
+uninflected response counts (all \Fsweak).
+
+\paragraph{Miscellaneous responses.} In the overall miscellaneous response
+ANOVA, there was a main effect of number (\Fs[2]{104}{9.21}{.56}\showp{,
+\p{001}}; \Fi[2]{44}{6.59}{3.48}\showp{, \p{01}}), because the SSS
+condition produced fewer miscellaneous responses than either the SPS
+(\Fs{52}{8.50}{.27}\showp{, \p{01}}; \Fi{23}{10.59}{1.89}\showp{, \p{01}})
+or the SSP condition (\Fs{52}{16.46}{.30}\showp{, \p{001}};
+\Fi{23}{16.37}{2.69}\showp{, \p{01}}), while the latter two did not differ
+(\Fsweak[2], \psweak[15]).  There was no effect of structure nor an
+interaction (all \Fsweak[1.5], \psweak[20]).  Consistent with the SSS
+condition creating the main effect of number in the overall analysis, the
+mismatch effect ANOVA revealed no main effects and no interaction (all
+\Fsweak[2.2], \psweak[15]).  Together, these patterns suggest that having a
+plural local noun anywhere in the stimulus made production more difficult,
+but this is independent of the critical agreement error patterns.  These 
+results also suggest that the descending and flat structures did not 
+differ in overall complexity or difficulty.
+
+}\IGNORE{
+
+NOTHING IN HERE IS UPDATED FOR S#54
+
+misc cnts: \\
+
+overall \\
+  struc:  \Fs{52}{.08}{.60}, \p{772}; \Fi{22}{.01}{12.07}, \p{893} \\
+  num:  \Fs[2]{104}{9.21}{.56}, \p{001}; \Fi[2]{44}{6.59}{3.48}, \p{01} \\
+  int:  \Fs[2]{104}{1.42}{.66}, \p{245}; \Fi[2]{44}{1.20}{3.48}, \p{310} \\
+
+num pairs \\
+  SPSvSSS:  \Fs{52}{8.50}{.27}, \p{01}; \Fi{23}{10.59}{1.89}, \p{01} \\
+  SSPvSSS:  \Fs{52}{16.46}{.30}, \p{001}; \Fi{23}{16.37}{2.69}, \p{01} \\
+  SPSvSSP:  \Fs{52}{1.92}{.28}, \p{171}; \Fi{23}{.78}{5.95}, \p{384} \\
+
+mismatch \\
+  struc:  \Fs{52}{.36}{1.56}, \p{548};\Fi{22}{.77}{3.25}, \p{388} \\
+  num:  \Fs{52}{1.92}{.55}, \p{171}; \Fi{22}{.79}{5.88}, \p{381} \\
+  int:  \Fs{52}{2.10}{.81}, \p{153}; \Fi{22}{1.28}{5.88}, \p{270} \\
+
+}
+
+\subsection{Discussion}
+
+These error patterns, and especially the lack of an interaction, provide
+strong evidence in favor of a linear distance to the head account of
+agreement errors and against a hierarchical distance account: The linear
+distance account correctly predicted a larger mismatch effect for N2 than
+for N3 mismatches for both descending and flat structures, and it correctly
+predicted that the size of this difference would be equal for the two
+structures.  The hierarchical account also predicted a larger mismatch
+effect for N2 than for N3 mismatches, at least in the descending structure
+cases (following Franck et al., 2002), but it also required an
+interaction\IGNORE{ in the mismatch analyses}, with a larger difference in
+mismatch effects for the descending than the flat cases.
+
+In addition, these results indicate that the semantic integration confound
+in Franck et al.'s (2002) stimuli is not solely responsible for the pattern
+they found, because semantic integration alone cannot account for the
+larger N2 than N3 mismatch effect.  Integration norming showed that N1-N2
+integration was matched across structures, as was N1-N3 integration, and
+N1-N3 integration was higher than N1-N2 integration in both structures.  An
+account of the results based solely on semantic integration thus predicts a
+larger N3 than N2 mismatch effect in both structures (as well as no
+interaction).  However, Experiment~1's results do not rule out the Solomon
+and Pearlmutter (2004b) proposal that semantic integration influences
+agreement computation in combination with other factors; because semantic
+integration was not varied across structures, this proposal is consistent
+with the lack of an interaction in Experiment~1, and the difference between
+N1-N2 and N1-N3 integration may have contributed (equally) to the
+difference between the N2 and N3 mismatch effects in the two structures.
+Experiment~2 was designed to examine this possibility and how semantic
+integration might interact with linear distance to the head.
+
+\section[Experiment~2]{\center Experiment~2}
+
+Experiment~1 suggested that linear distance back to the head noun, rather
+than hierarchical distance, is a critical factor modulating mismatch
+effects, at least in NP PP PP preambles; but it also left open the
+possibility that semantic integration has an influence.  Solomon and
+Pearlmutter (2004b) showed that the size of the mismatch effect for NP PP
+preambles was partially determined by how semantically integrated the head
+noun and local noun were within the subject NP, irrespective of a local
+noun's distance back to the head noun and of hierarchical distance.
+Experiment~2 was thus designed to test whether linear distance to the head
+noun and semantic integration combine to influence agreement error
+production, using flat structures like~\exref{flat} that controlled
+hierarchical distance.  Under a combined linear distance and semantic
+integration account, the likelihood of interference would be a function of
+whether the interfering element was within the scope of planning of the
+head noun; only local nouns planned close enough in time to the head would
+be likely to create mismatch effects, with both decreased head-local linear
+distance and increased head-local semantic integration increasing the
+chance of overlap in planning.  To our knowledge, the effect of scope
+properties on agreement computation has not previously been investigated.
+
+In Experiment~2, each preamble had an NP PP PP structure, and the number of
+N2 and N3 was varied, as in~\exref{HP2}.  One PP (e.g., \ext{with the torn
+page(s)}) was designed to be highly integrated with the head noun, while
+the other (e.g., \ext{by the red pen(s)}) was designed to be weakly
+integrated, and examining both possible PP orderings allowed linear order
+and semantic integration to be manipulated orthogonally.  The stimuli
+equated hierarchical distance between the head noun (and thus also the
+verb) and each of the two local nouns by ensuring that both PPs modified
+the head.
+
+\begin{myexample}
+\label{HP2}
+\begin{examples}
+    
+    \item \label{HP2-early-sss} The book with the torn page by the red
+    pen \hfill (SSS)\hspace{12em}
+    
+    \item \label{HP2-early-sps} The book with the torn pages by the 
+    red pen \hfill (SPS)\hspace{12em}
+
+    \item \label{HP2-early-ssp} The book with the torn page by the red
+    pens \hfill (SSP)\hspace{12em}
+    
+    \item \label{HP2-early-spp} The book with the torn pages by the red
+    pens \hfill (SPP)\hspace{12em}
+    
+    \item \label{HP2-late-sss} The book by the red pen with the torn
+    page \hfill (SSS)\hspace{12em}
+
+    \item \label{HP2-late-sps} The book by the red pens with the torn 
+    page \hfill (SPS)\hspace{12em}
+
+    \item \label{HP2-late-ssp} The book by the red pen with the torn 
+    pages \hfill (SSP)\hspace{12em}
+
+    \item \label{HP2-late-spp} The book by the red pens with the torn 
+    pages \hfill (SPP)\hspace{12em}
+    
+\end{examples}
+\end{myexample}
+
+If only linear distance to the head noun is responsible for agreement error
+rates in these stimuli, the N2 mismatch effect should be larger than the N3
+mismatch effect in both the early- and late-integrated
+versions~(\ref{HP2}a--d and~\ref{HP2}e--h, respectively), as in
+Experiment~1, because N2 would always be planned closer to N1 than N3 would
+be.
+
+Although Experiment~1's results cannot be explained by semantic
+integration, agreement error effects in the Experiment~2 stimuli still
+might only show effects of integration, in which case, collapsing over
+integration version, the N2 and N3 mismatch effects should be equal,
+because the mismatch effect of a given noun should be the same regardless
+of where the noun appears linearly within the stimulus.  However, the N2
+and N3 mismatch effects within each integration condition should differ:
+The N2 mismatch effect should be larger than the N3 mismatch effect for
+early-integrated cases~(\ref{HP2}a--d), because the more integrated noun
+(N2) should be planned with N1, while N3 should be planned later.  For
+late-integrated cases~(\ref{HP2}e--h), the pattern should reverse, because
+N3 is the noun more tightly integrated with N1.
+
+The scope of planning alternative, a combined effect of linear distance to
+the head and semantic integration, predicts that linear distance to the
+head noun will partially determine the timing of planning of nouns within
+the phrase, but semantic integration should shift the relative planning
+time of more and less integrated nouns as well.  Figure~\ref{timeline}A
+shows the timing of planning of nouns according to the order in which they
+are to be produced (this corresponds to the predictions of linear distance
+to the head alone), and Figure~\ref{timeline}B includes the shifting of the
+timing of planning due to semantic integration.  In early-integrated
+cases~(\ref{HP2}a--d), because N2 is more integrated with N1, it would be
+planned at roughly the same time as N1; and because N3 is less integrated
+with N1, N3 would be planned later.  This predicts a large N2 mismatch
+effect and a very small N3 mismatch effect.  In late-integrated
+cases~(\ref{HP2}e--h), because N2 is not very integrated with N1, it would
+be planned later; and because N3 is more integrated with N1, it would be
+planned sooner.  Thus N2 and N3 should be planned at roughly the same time
+and relatively late after N1.  This predicts that the N2 and N3 mismatch
+effects should be about equal and fairly small.
+
+%\insertnote{Figure~\ref{timeline}}
+
+\begin{figure}[tb]
+
+    \makebox[\textwidth][c]{\framefig{\includegraphics[width=.75\textwidth]{timeline}}}
+
+    \caption{Timelines depicting the predicted timing of planning of nouns
+    in the Experiment~2 early-integrated and late-integrated stimuli.
+    Panel~A shows the nouns planned according to the order in which they
+    are to be produced, corresponding to the predictions of the linear
+    distance to the head account.  Panel~B shows the timing of planning of
+    the nouns after semantic integration shifts their relative timing,
+    corresponding to the scope of planning account.}
+
+\label{timeline}
+\end{figure}
+
+\subsection{Method}
+
+\paragraph{Participants.} One hundred five Northeastern University
+students and community members participated in the on-line experiment, but
+the data from one participant were lost because of a CD recording failure.
+
+\paragraph{Materials and design.} Forty stimulus items
+like~\exref{HP2}, chosen from a candidate set of~60, were used as
+critical items.  All preambles consisted of a head NP (always
+\ext{The} and a singular head noun, N1; e.g., \ext{book}
+in~\exref{HP2}) followed by two PPs, each of which consisted of a
+preposition, the determiner \ext{the}, an adjective or modifier noun,
+and a local noun (N2 or N3), as in the Experiment~1 stimuli.  One PP
+always described an attribute of the head noun using the preposition
+\ext{with} (e.g., \ext{with the torn page}), while the other PP
+specified a location for the head noun and used a locative preposition
+(e.g., \ext{by the red pen}).  The eight different versions of an item
+were created by varying N2 and N3 number and PP order, as shown
+in~\exref{HP2}.  The versions with the attribute PP first were the
+early-integrated versions~(\ref{HP2}a--d), and those with the
+attribute PP last were the late-integrated versions~(\ref{HP2}e--h).
+All nouns in the stimuli were inanimate and had regular plural forms,
+and each noun's conceptual number matched its grammatical number.  The
+full set of stimuli is shown in Appendix~B.
+
+The~40 critical stimuli were combined with~80 of the fillers from
+Experiment~1 (all but the~8 SPP fillers used in Experiment~1 to balance the
+critical items' SSS, SPS, and SSP cases) to form~8 counterbalanced
+presentation lists, each containing all the fillers and exactly one version
+of each of the critical items.  One list was seen by~14 participants while
+the other seven were seen by~13 participants each.
+
+\paragraph{Stimulus norming.} Semantic integration and attachment were
+normed similarly to Experiment~1.  In addition to the~60 candidate
+stimuli,~33 NP PP PP fillers were included.  The fillers had a
+descending hierarchical structure and did not have adjectives within
+the PPs; but they varied local noun number as in the candidate
+stimuli, and they included a range of levels of semantic integration
+between N1, N2, and N3.
+
+Semantic integration ratings were obtained from~186 participants, using the
+same procedures and instructions as in Experiment~1.  The~24 different
+versions of the~60 candidate stimuli (2 PP orders $\times$ 4 number
+conditions $\times$ 3 possible rating pairs) were combined with the~33
+fillers in~24 counterbalanced lists, such that each list included exactly
+one version of each item.  The~93 preambles in each list were presented
+over~6 printed pages, which were randomized separately for each
+participant.  Each participant rated the stimuli in one list, yielding~7--8
+ratings for nearly all versions of all critical stimuli~(3 different items
+had only~6 ratings for one of their versions).
+
+Table~\ref{HP2-dat} shows mean ratings by condition and rating pair for
+the~40 critical stimuli used in the on-line experiment.  These were
+analyzed in a 2 (PP order) $\times$ 2 (N2 number) $\times$ 2 (N3 number)
+$\times$ 3 (rating pair) ANOVA, which showed the desired interaction
+between PP order and rating pair (\Fval{2}{78}{1025}, \MSe{.97}\showp{,
+\p{001}}): N1-N2 integration was greater than N1-N3 integration in the
+early-integrated stimuli (\Fval{1}{39}{1137}, \MSe{.22}\showp{, \p{001}}),
+while this pattern reversed in the late-integrated stimuli
+(\Fval{1}{39}{1140}, \MSe{.21}\showp{, \p{001}}), and N2-N3 integration was
+equal for early- and late-integrated cases (\Fweak).  Paired tests also
+confirmed that, as intended, N1-N2 integration was greater for early- than
+for late-integrated versions (\Fval{1}{39}{1157}, \MSe{.22}\showp{,
+\p{001}}), N1-N3 integration was greater for late- than for
+early-integrated versions (\Fval{1}{39}{1016}, \MSe{.24}\showp{, \p{001}}),
+and integration did not differ for the same local noun in different
+positions (i.e., N1-N2 for early-integrated vs.\ N1-N3 for late-integrated,
+and N1-N2 for late-integrated vs.\ N1-N3 for early-integrated; both
+\Fsweak).
+
+%\insertnote{Table~\ref{HP2-dat}}
+
+{
+%\small  %%if we need to set the table in 11pt instead of 12pt
+\settowidth{\maxcolwidth}{Uninflected}
+%\settowidth{\maxcolwidth}{999 (99)} %% use this version with Uninfl 
+                                     %% col head
+\settowidth{\Attwidth}{Attachment}
+
+\setstretch{1}  %% single-spacing for the table
+
+\ctable[
+        caption = {\raggedright Experiment~2 Mean Semantic Integration Ratings, Mean
+            Attachment Preferences, and Response Counts by Condition},
+        cap = {},
+        captionskip=2ex,
+        label = HP2-dat,
+        sideways, 
+        star
+       ]{l l T{4.6} T{4.6} T{4.6} T{4.6} S@{}S@{}S@{}T{5.0}}{
+        \tnote[]{\normalsize\spacer{0}{4}\textit{Note}.  Conditions are
+            indicated by noun number (N1, N2, N3), with S = singular and P =
+            plural.  Semantic integration rating scale was 1 (loosely linked) to 7
+            (tightly linked).  For semantic integration ratings and attachment,
+            means are computed by-items and standard deviations are in parentheses.
+            For response counts, dysfluency counts are in parentheses.  Misc =
+            Miscellaneous.}}{
+        \hline
+        \spacer{-2}{6} & & \multicolumn{3}{c}{Semantic Integration Rating} & 
+                     & \multicolumn{4}{c}{Response Count} \\ \cline{3-5} \cline{7-10}
+                     \multicolumn{2}{l}{\spacer{-2}{6}Condition} & 
+                     \multicolumn{1}{c}{N1--N2} &  \multicolumn{1}{c}{N1--N3} & 
+                      \multicolumn{1}{c}{N2--N3} & 
+                      \multicolumn{1}{c}{\raisebox{0ex}[0ex][0ex]{\parbox[b]{\Attwidth}{\center \%N1 Attachment}}} & 
+                      \multicolumn{1}{c@{}}{\makebox[\maxcolwidth][c]{Error}} &
+                      \multicolumn{1}{c@{}}{\makebox[\maxcolwidth][c]{Correct}} &
+                      \multicolumn{1}{c@{}}{\makebox[\maxcolwidth][c]{Uninflected}} &
+                      \multicolumn{1}{c}{\makebox[\maxcolwidth][c]{Misc}} \\ \hline
+                      \multicolumn{4}{l}{\spacer{-2}{6}Early-integrated} \\
+                      SSS & & 5.74!(.74) & 2.24!(.62) & 2.08!(.59) & 96.4!(8.21) & 2.(1) & 322.(45) & 109.(15) & 91 \\
+                      SPS & & 5.70!(.56) & 2.16!(.62) & 2.00!(.45) & 98.9!(6.05) & 27.(8) & 270.(33) & 95.(11) & 132 \\
+                      SSP & & 5.63!(.63) & 2.21!(.60) & 2.04!(.48) & 97.6!(5.49) & 2.(0) & 312.(39) & 91.(10) & 119 \\
+                      SPP & & 5.75!(.60) & 2.12!(.54) & 2.05!(.57) & 98.0!(5.06) & 36.(5) & 253.(29) & 108.(16) & 128 \\
+                      \spacer{-2}{6}\textit{M} & & 5.70!(.63) & 2.18!(.59) & 2.04!(.52) & 97.7!(5.63) \\ \hline
+                      \multicolumn{4}{l}{\spacer{-2}{6}Late-integrated} \\
+                      SSS & & 2.25!(.65) & 5.63!(.66) & 1.98!(.54) & 97.7!(3.79) & 1.(1) & 318.(54) & 105.(20) & 100 \\
+                      SPS & & 2.03!(.47) & 5.71!(.64) & 2.00!(.62) & 98.9!(2.74) & 15.(5) & 276.(42) & 96.(15) & 138 \\
+                      SSP & & 2.18!(.58) & 5.57!(.75) & 2.18!(.62) & 97.7!(3.98) & 8.(0) & 313.(35) & 102.(17) & 102 \\
+                      SPP & & 2.19!(.56) & 5.81!(.80) & 2.17!(.53) & 99.2!(3.29) & 32.(3) & 290.(42) & 90.(16) & 113 \\
+                      \spacer{-2}{6}\textit{M} & & 2.16!(.57) & 5.68!(.71) & 2.08!(.58) & 98.4!(3.52) \\ \hline
+                      \multicolumn{2}{l}{\spacer{-2}{6}Grand Mean} & 3.93!(1.87) &
+                      3.93!(1.87) & 2.06!(.55) & 98.0!(5.12) \\ \hline
+         }
+}
+
+The overall ANOVA on integration ratings also revealed a main effect of
+rating pair (\Fval{2}{78}{908}, \MSe{.41}\showp{, \p{001}}), which arose
+because the N2-N3 pair was overall less semantically integrated than the
+N1-N2 or N1-N3 pair; given the modification structure of the stimuli and
+the nature of the PP order by rating pair interaction described above, this
+was expected.  However, in addition to these very strong effects, the
+overall ANOVA also yielded two weaker results involving local noun number:
+First was a reliable interaction between PP order, N2 number, and rating
+pair (\Fval{2}{78}{3.51}, \MSe{.21}, \p{05}), which arose because the PP
+order by rating pair interaction described above was stronger when N2 was
+plural than when it was singular: The N1-N2 versus N1-N3 difference for
+early-integrated was 3.58 for plural N2 and 3.48 for singular N2; the
+corresponding differences for late-integrated were -3.65 and -3.38.  The
+second result was a marginally significant N2 number by N3 number
+interaction (\Fval{1}{39}{3.13}, \MSe{.20}), which arose because the
+difference in integration ratings between the SPS and SPP conditions was
+slightly larger than the difference between the SSP and SSS conditions.  We
+will return to both of these unexpected results below, with the discussion
+of the results of the on-line experiment.  No other main effects nor
+interactions appeared in the overall ANOVA (all \Fsweak[2.6],
+\psweak[10]).\IGNORE{
+
+n2 x n3: \Fval{1}{39}{3.13}, \MSe{.20}, \p{10} \\
+pair: \Fval{2}{78}{908.63}, \MSe{.41}, \p{001} \\
+ord x pair: \Fval{2}{78}{1025.65}, \MSe{.97}, \p{001} \\
+ord x n2 x pair: \Fval{2}{78}{3.51}, \MSe{.21}, \p{05} \\
+
+all other effects: \Fsweak[2.6], \psweak[10] \\
+
+}\IGNORE{
+
+\NOTE{from Maureen's Master's; adjust for ms}
+
+To analyze semantic integration rating data, a 2 (integration condition) X
+2 (N2 number) X 2 (N3 number) X 3 (pair) ANOVA was performed.  The ANOVA
+showed that there was a main effect of pair such that the N2-N3 pair was
+less integrated than the N1-N2 and N1-N3 pairs (F(2,78) = 908.63, MSe =
+.41, p < .001), which does not affect any predictions of the proposed
+experiment.  There was an interaction of integration condition and pair
+(F(2,78) = 1025.65, MSe = .97, p < .001) such that the N2-integrated N1-N2
+pair and the N3-integrated N1-N3 pair were rated as more integrated than
+the N2-integrated N1-N3 pair and the N3-integrated N1-N2 pair, which was
+critical for the predictions of the experiment, because semantic
+integration was manipulated by the ordering of the with- and locative-PPs.
+There was also an interaction of integration condition, N2 number, and pair
+(F(2,78) = 3.52, MSe = .21, p < .05), such that when N2 was plural in the
+N2-integrated version, the N1-N3 pair was rated as less integrated than
+when N2 was singular, and when N2 was plural in the N3-integrated version,
+the N1-N3 pair was rated as more integrated than when N2 was singular.
+This three-way interaction was unexpected and will be addressed below.  The
+interaction of N2 and N3 number was marginally significant, such that the
+difference in integration ratings between the SPS and SPP conditions was
+slightly larger than the difference between the SSP and SSS conditions
+(F(1,39) = 3.14, MSe = .21, p = .08).  No other main effects or
+interactions were significant (Fs < 3, ps < .15).
+
+Planned paired comparisons were performed on the semantic integration means
+presented in Table 1.  To control for effects of semantic integration
+across levels of linear distance to the head, items were chosen that best
+equated semantic integration ratings of the with-PPs in the N2- and
+N3-integrated conditions and semantic integration ratings of the
+locative-PPs in the N2- and N3-integrated conditions.  A paired comparison
+showed that there was no difference between the ratings of the
+N2-integrated N1-N2 pair and the N3-integrated N1-N3 pair (F < 1).
+Similarly, there was no difference between the ratings of the N2-integrated
+N1-N3 pair and N3-integrated N1-N2 pair (F < 1).  It was also important
+that the with-PPs and the locative-PPs differed in semantic integration to
+obtain the desired differences in integration across the N2- and
+N3-integrated conditions.  Paired comparisons confirmed that the
+integration ratings of the N1-N2 pair differed in the N2-integrated and
+N3-integrated conditions, (F(1,39) = 1157.32, MSe = .21, p < .001), and the
+integration ratings of the N1-N3 pair differed in the N2-integrated and
+N3-integrated conditions, (F(1,39) = 1016.11, MSe = .24, p < .001).
+
+In sum,   Semantic integration ratings show
+that the with-PP is more integrated with the head NP than the locative-PP
+in both the N2- and N3-integrated conditions, and that the with-PP and
+locative-PP integration ratings are equal regardless of order, as was
+desired.  This resulted in matched overall N1-N2 and N1-N3 integration
+ratings when collapsing over the N2- and N3-integrated conditions.  This
+selection process served to equate hierarchical distance to the head noun
+between N2 and N3, while manipulating semantic integration.
+
+\NOTE{end of stuff from Master's}
+
+\TODO{adjust/integrate this} In the early-integrated versions, the N1-N2
+pair was more integrated than the N1-N3 pair, while in the late-integrated
+versions, the N1-N3 pair was more integrated than the N1-N2 pair (Fs >
+1000, ps < .001).  Also, the more integrated nouns (page(s) in~\exref{HP2})
+were equally integrated regardless of integration version, as were the less
+integrated nouns (pen(s) in~\exref{HP2}) (Fs < 1).
+
+}
+
+To ensure that all critical stimuli had a flat structure, attachment
+of the second PP was normed by~150 participants\IGNORE{ran 152,
+dropped one non-native English speaker and one person who answered
+with N3 repeatedly}.  The procedure was slightly different from
+Experiment~1's attachment norming, in that the final PP of each
+preamble was underlined, and participants were instructed to write the
+word that the underlined portion of the preamble ``gives more
+information about''.  The~8 versions of each candidate stimulus were
+counterbalanced across~8 lists in combination with the~33 fillers, and
+the preambles of each list were presented over~6 printed pages, which
+were randomized separately for each participant.  This yielded~18--19
+responses for each version of each critical item.
+
+As in Experiment~1, the responses were coded for whether they referred to
+N1 or to N2 (excluding unclear or uninterpretable responses, $<1\%$ of the
+total), and Table~\ref{HP2-dat} shows mean preference for attachment to N1
+by condition for the~40 critical stimulus items.  Attachment of the second
+PP was strongly to N1 in all conditions, as desired, and a 2 (PP order)
+$\times$ 2 (N2 number) $\times$ 2 (N3 number) ANOVA on the \%N1 attachment
+data revealed only that plural N2 cases (98.8\%) were slightly more
+strongly N1-attached than singular N2 cases (97.3\%; \Fval{1}{39}{4.91},
+\MSe{32.24}\showp{, \p{05}}).  No other main effects and no interactions
+were significant (all \Fsweak[1.8], \psweak[15]).
+
+\paragraph{Apparatus, procedure, and scoring.} The apparatus, procedure, and
+response scoring for Experiment~2 were identical to Experiment~1, except
+that there were~120 trials.
+
+\subsection{Results}
+
+Across all critical trials, there were~2,354 correctly-inflected
+responses,~123 agreement errors,~796 uninflected responses,~923
+miscellaneous cases, and~1 trial with no response.  The remaining~3 trials
+were lost due to a recording failure for one subject.  Table~\ref{HP2-dat}
+shows the counts of each analyzed response type by condition.  All analyses
+were conducted as in Experiment~1, except that the (within-items)
+integration factor replaced Experiment~1's (between-items) structure factor
+in the ANOVAs.\IGNORE{
+
+NOTHING IN HERE IS UPDATED FOR S#203+, except diffs for mismatch stuff
+
+pctde \\
+
+overall \\
+  integ:  \Fs{98}{2.84}{247.68}, \p{10}; \Fi{39}{1.60}{76.99}, \p{213} \\
+  2num:  \Fs{98}{49.07}{228.98}, \p{001}; \Fi{39}{33.51}{142.73}, \p{001} \\
+  int x n2:  \Fs{98}{11.36}{183.87}, \p{01}; \Fi{39}{4.40}{81.95}, \p{05} \\
+  3num:  \Fs{98}{7.70}{209.21}, \p{01}; \Fi{39}{8.31}{114.22}, \p{01} \\
+  int x n3:  \Fs{98}{3.72}{192.15}, \p{10}; \Fi{39}{.81}{70.96}, \p{372} \\
+  n2 x n3:  \Fs{98}{1.45}{226.06}, \p{231}; \Fi{39}{4.53}{84.87}, \p{05} \\
+  int x n2 x n3:   \Fs{98}{.00}{203.20}, \p{974}; \Fi{39}{.33}{55.68}, \p{564} \\
+
+mismatch \\
+  integ:  \Fs{98}{.86}{230.01}, \p{356}; \Fi{39}{.05}{63.91}, \p{812} \\
+  num:  \Fs{98}{10.32}{209.93}, \p{01}; \Fi{39}{13.17}{55.79}, \p{01} \\
+  int:  \Fs{98}{13.92}{188.67}, \p{001}; \Fi{39}{4.42}{80.00}, \p{05} \\
+
+  ISPSvUSPS:  \Fs{98}{8.11}{263.01}, \p{01}; \Fi{39}{1.86}{114.95}, \p{180} \\
+  ISSPvUSSP:  \Fs{98}{4.44}{155.67}, \p{05}; \Fi{39}{4.93}{28.96}, \p{05} \\
+
+  ISPSvISSP:  \Fs{98}{20.28}{235.87}, \p{001}; \Fi{39}{12.68}{83.14}, \p{01} \\
+  USPSvUSSP:  \Fs{98}{.06}{162.73}, \p{795}; \Fi{39}{.65}{52.64}, \p{424} \\
+
+  ISPSvUSSP:  \Fs{98}{5.04}{364.60}, \p{05}; \Fi{39}{5.33}{78.98}, \p{05} \\
+  ISSPvUSPS:  \Fs{98}{7.00}{75.34}, \p{01}; \Fi{39}{7.79}{40.72}, \p{01} \\
+
+diffs for non-dys or for counts or arcsins: \\
+  
+overall int F1 pctde marg, all others ns \\
+overall int x n2 cnte F2 ns, cnte F1 & cntde F2 & pcte F2 marg, all others signif \\
+overall int x n3 mixed (all over the place) \\
+overall n2 x n3  mixed \\
+
+overall ssp vs sss F1 cntde, pctde, asnde marg, all others signif \\
+overall sps vs ssp F2 asne marg, all others signif \\
+
+UPDATED FOR S#203+:
+
+mismatch 2x2 (no diffs) \\
+
+mismatch pairs \\
+  ISPS vs ISSP, USPS vs USSP, ISSP vs USPS --- all agree \\
+  ISPS vs USPS F1 pctde & asnde signif; cntde & cnte marg, pcte & asne ns; all F2 ns \\
+  ISSP vs USSP all signif except F1cntde marg \\
+  ISPS vs USSP (integ word): dys cases signif; others ns except F1cnte signif \\
+
+}
+
+\paragraph{Agreement errors.} Figure~\ref{HP2mismatch} shows N2 and N3
+mismatch effects for each integration condition.  The mismatch effect ANOVA
+showed no main effect of integration (\Fsweak), but N2 plurals created
+larger mismatch effects than N3 plurals (\Fs{104}{13.74}{237.78}\showp{,
+\p{001}}; \Fi{39}{17.57}{65.84}\showp{, \p{001}}).  Furthermore, plural
+position and integration interacted (\Fs{104}{9.31}{203.33}\showp{,
+\p{01}}; \Fi{39}{4.13}{78.65}\showp{, \p{05}}), because the N2 mismatch
+effect was larger than the N3 mismatch effect for early-integrated stimuli
+(\Fs{104}{22.24}{227.88}\showp{, \p{001}}; \Fi{39}{15.76}{85.94}\showp{,
+\p{001}}), while the two mismatch effects did not differ for
+late-integrated stimuli (\Fsubweak{1}; \Fi{39}{2.18}{58.55}, \p[>]{10}).
+
+%\insertnote{Figure~\ref{HP2mismatch}}
+
+\begin{figure}[tb]
+\makebox[\textwidth][c]{\framefig{\includegraphics[width=.75\textwidth]{HP2mismatch}}}
+
+\caption{Experiment~2 grand mean mismatch error rates by integration and
+mismatch position.  Error bars show $\pm1\,$\itt{SEM}, computed from the
+analyses by participants.}
+
+\label{HP2mismatch}
+\end{figure}
+
+The other four pairings of the four mismatch conditions were also tested
+with planned comparisons: The early-integrated N2 plural condition
+generated larger mismatch effects than the late-integrated, though this was
+reliable only in the analysis by participants
+(\Fs{104}{4.42}{292.87}\showp{, \p{05}}; \Fi{39}{1.76}{117.97}, \p[>]{15};
+the analysis of error counts by participants was also only marginal, and
+the analysis by participants excluding dysfluencies did not reach
+significance).  The pattern reversed for N3 plurals, where the
+late-integrated condition showed larger mismatch effects than the
+early-integrated (\Fs{104}{4.43}{147.07}\showp{, \p{05}};
+\Fi{39}{4.68}{26.25}\showp{, \p{05}}; the difference was only marginal in
+the analysis of error counts by participants).  The tests comparing the
+same phrases in different linear positions also showed differences: The
+early-integrated N2 plural condition created larger mismatch effects than
+the late-integrated N3 plural condition (\Fs{104}{5.96}{349.55}\showp{,
+\p{05}}; \Fi{39}{8.34}{79.32}\showp{, \p{01}}; this was non-significant
+when dysfluencies were excluded), and the late-integrated N2 plural
+condition created larger mismatch effects than the early-integrated N3
+plural condition (\Fs{104}{9.92}{124.84}\showp{, \p{01}};
+\Fi{39}{9.62}{52.09}\showp{, \p{01}}).
+
+\paragraph{Uninflected responses.} There were no reliable main effects or
+interactions for uninflected responses (all \Fsweak).
+
+\paragraph{Miscellaneous responses.} N2 mismatches generated more
+miscellaneous responses than N3 mismatches (\Fs{104}{6.67}{.86}\showp{,
+\p{05}}; \Fi{39}{7.88}{1.90}\showp{, \p{01}}), but there was no main effect
+of integration (\Fsweak) and no interaction (\Fsweak[1.4], \psweak[20]).
+
+\subsection{Discussion}
+
+Experiment~2 examined how effects of linear distance to the head and of
+semantic integration might be involved in determining the size of mismatch
+effects.  Because N2 was always linearly closer to N1 than N3 was, linear
+distance alone predicted that the N2 mismatch effect should be uniformly
+larger than the N3 mismatch effect.  While this difference appeared for the
+early-integrated stimuli, the N2 and N3 mismatch effects did not differ for
+the late-integrated stimuli.  The semantic integration account predicted
+that the mismatch effects for the more integrated cases (N2 in the
+early-integrated stimuli, N3 in late-integrated) should not differ and
+should both be larger than for the less integrated cases (N3 in
+early-integrated, N2 in late-integrated; these also should not differ from
+each other).  Instead, the early-integrated N2 mismatch effect was larger
+than the late-integrated N3 mismatch effect (at least when dysfluencies
+were included), and the late-integrated N2 mismatch effect was larger than
+the early-integrated N3 mismatch effect, showing that the more integrated
+cases did differ, as did the less integrated cases; and the two
+late-integrated cases did not differ in mismatch effects despite differing
+in semantic integration.  Semantic integration alone also predicted no main
+effect of plural position (the N2 and N3 mismatch effects should have been
+equal).  Thus, neither linear distance to the head noun nor semantic
+integration on its own is sufficient to explain the pattern of effects.
+
+Instead, error rates showed a pattern reflecting a combination of linear
+distance to the head and semantic integration, which fits with the scope of
+planning account.  The scope account in general suggests that mismatch
+effects will be more likely to occur for local nouns planned in closer
+proximity to the head noun, and factors that affect planning proximity, in
+the combination case including both linear distance from the head and
+semantic integration, can thus affect mismatch error rates.  More
+specifically, this account predicts a relatively large difference in
+mismatch error rates between the two early-integrated cases, because N2 is
+both more integrated and linearly closer to the head than N3; and it
+predicts a relatively small difference between the two late-integrated
+cases, because N2 is linearly closer to the head than N3 is, but N3 is more
+integrated with the head than N2 is.  Thus semantic integration reinforces
+the linear distance difference in the early-integrated cases, but it
+counteracts the linear distance difference in the late-integrated cases,
+and this is the pattern seen in mismatch effects: For early-integrated
+stimuli, the N2 mismatch effect was larger than the N3 mismatch effect, but
+for late-integrated stimuli, they did not differ.
+
+Although the results point to a combination of linear distance to the head
+and semantic integration as responsible for the mismatch effect pattern,
+and neither of these alone is sufficient to explain the full pattern of
+results, the planned comparisons also provided evidence for the influence
+of each factor when the other was controlled: In particular, the
+comparisons of the early- versus late-integrated cases within each plural
+position (N2, N3) are a direct test of the effect of semantic integration
+when linear distance was controlled.  These comparisons revealed that the
+more integrated noun at each plural position generated larger mismatch
+effects than the corresponding less integrated noun (early-integrated N2
+vs.\ late-integrated N2; late-integrated N3 vs.\ early-integrated N3).
+Direct tests of the effect of linear distance when semantic integration was
+controlled come from the comparisons in which the same PP occurred in the
+two different linear positions: Within the two attribute PPs
+(early-integrated N2 vs.\ late-integrated N3), the N2 cases generated a
+larger mismatch effect; and the same was true for the two locative cases
+(late-integrated N2 vs.\ early-integrated N3).  Because the scope of
+planning account incorporates effects of both linear distance to the head
+and semantic integration, it predicts these results as well.
+
+\IGNORE{
+\NOTE{this para was in original HP2 ms but apparently not in this 
+one; we may want it or some version of it, either here or in GD:} --- keep 
+it here}
+
+The evidence that both linear distance to the head and semantic integration
+are relevant for a general scope of planning account also raises the issue
+of exactly how they combine.  While they can both be seen as influencing
+the timing of planning, whether they are independent influences or not is
+an open question.  For example, if the difference in timing of planning for
+N2 versus N3 created by linear distance is large enough that N3 is
+essentially always planned too long after N1 to interfere with agreement,
+then semantic integration might only have an effect for mismatches at N2,
+or it might have a much weaker effect at N3 compared to N2.  The relevant
+statistical test of the general interaction --- whether the difference
+between more- and less-integrated cases was different at the N2 position
+versus at the N3 position --- is equivalent to the main effect of
+integration, and this effect did not approach significance.  However, the
+numerical pattern of mismatch effects did include a larger effect of
+integration at N2 compared to N3; future work designed specifically to
+investigate this issue should therefore be enlightening.
+
+Before concluding that these patterns are entirely the result of scope of
+planning effects, however, we need to consider whether the two unexpected
+interactions involving noun number found in the integration rating analyses
+--- N2 number $\times$ N3 number and PP order $\times$ N2 number $\times$
+rating pair --- might be relevant.  Both of these interactions involved
+numerically very small differences relative to the intended integration
+manipulations, and the former was in fact only marginal rather than
+significant.  The N2 number $\times$ N3 number interaction also does not
+account for any of the critical patterns in the mismatch effects, as it
+does not involve PP order, and it is linked to the SPP condition ratings,
+which were irrelevant for mismatch effects.  But the other of the two
+interactions, involving PP order, could in principle be involved in the
+pattern of paired comparisons for the same noun in different linear
+positions (early-integrated N2 vs.\ late-integrated N3; early-integrated N3
+vs.\ late-integrated N2).  These comparisons provided evidence for linear
+distance effects when semantic integration was controlled, but the
+interaction in the norming shows that integration was not perfectly
+controlled, and this might provide an alternative explanation for the
+differences in mismatch effects.  In fact, the N1-N2 rating for the
+early-integrated SPS condition was slightly higher than the N1-N3 rating
+for the late-integrated SSP condition, which correctly predicts the
+direction of the corresponding mismatch effect comparison (a larger
+mismatch effect for the early-integrated N2 case than for the
+late-integrated N3 case).  However, for the other pair, the mismatch effect
+continued to follow the linear distance prediction, with the
+late-integrated N2 mismatch effect larger than the early-integrated N3
+mismatch effect, whereas the interaction in the ratings resulted from the
+opposite pattern: The N1-N2 rating for the late-integrated SPS condition
+was slightly lower than the N1-N3 rating for the early-integrated SSP
+condition.  As a result, the rating interaction pattern diverges from the
+mismatch effect pattern.  Thus neither of the unexpected interactions from
+the rating analyses seems likely to be responsible for the mismatch
+effects.
+
+There was also a main effect of plural position on miscellaneous responses,
+with a greater increase in such responses over the SSS baseline for N2
+plurals compared to N3 plurals.  This suggests that N2 plural cases were
+generally more complex or more difficult than N3 plural cases, at least in
+Experiment~2, and it obviously matches the main effect of plural position
+in the agreement error analyses, but not the critical interaction.
+Nevertheless, if N2 plural cases were generally more difficult to produce
+than N3 plural cases, this would provide a potential alternative
+explanation for the effects attributed to linear distance to the head.
+Experiment~2's results do not rule out this possibility, but Experiment~1
+also showed clear support for effects of linear distance to the head,
+without any comparable effects or interactions in miscellaneous errors.
+Thus the linear distance to the head account appears to be the more robust
+explanation.
+
+\section[General Discussion]{\center General Discussion}
+
+\IGNORE{---no support for hierarchical feature-passing, support for a
+limited scope of planning coupled with mem encoding; in combination with
+sem integ affecting planning by shifting relative timing}
+
+Together, the results of Experiments~1 and~2 provide no support for
+hierarchical feature-passing.  In Experiment~1, when factors known to
+influence agreement computation were controlled and hierarchical distance
+was manipulated, there was no effect of structure on the size of mismatch
+effects; instead, only a local noun's linear proximity to the head noun
+affected error rates.  In addition, when structure was controlled in
+Experiment~2, a combination of linear distance and semantic integration
+controlled error rates.  The results of these experiments point to an
+account of agreement computation that relies on memory encoding and a
+limited scope of planning.  Mismatch effects are the result of the extent
+to which the head noun and interfering local noun(s) are simultaneously
+active in memory when the number of the subject NP is being computed.  The
+timing of planning of elements within a phrase is determined by the order
+in which elements are to be produced, and semantic integration shifts the
+relative timing of planning.  Agreement errors are likely to occur when a
+number-mismatching local noun is planned within the scope of (i.e., close
+in time to) the head noun: Because of the overlap in planning, the nouns
+and their corresponding number elements are likely to be active
+simultaneously and are likely to interfere at the time when the number
+marking of the subject NP is set.
+
+\IGNORE{\subsection{Potential Concerns over Stimulus Structure}}
+
+We discuss the implications of these results further below, but there are
+three potential concerns with the current evidence to be considered,
+related to the syntactic structure of the stimuli.  The first concern is
+that while the offline norming established that the stimuli were
+interpreted as having the desired syntactic structures (flat or
+descending), initial interpretations during the online experiments could
+have been different, particularly in the flat cases.  English comprehenders
+prefer to attach new material to more recent over less recent
+(otherwise-equivalent) sites (e.g., Frazier \& Clifton, 1996; Gibson,
+Pearlmutter, Canseco-Gonzalez, \& Hickok, 1996), and in the Experiment~1
+and~2 stimuli this would have resulted in the second PP modifying the more
+recent N2 (within the first PP) instead of the less recent N1.  In
+Experiment~1, this was the correct interpretation for the descending
+stimuli but would have been an incorrect interpretation for the flat
+stimuli; it would have been the incorrect interpretation for all the
+critical stimuli in Experiment~2, which all had a flat structure.  Although
+there was no specific test of attachment of the second PP during the online
+experiments, the miscellaneous errors provide a measure of general
+difficulty of the preambles; and if flat structures were initially
+interpreted incorrectly and then reanalyzed, or if they were simply left
+incorrectly attached without reanalysis, yielding semantic anomalies, then
+flat structures should have generated more miscellaneous errors than
+descending structures in Experiment~1.  But this was not the case: There
+was no effect of structure nor an interaction in the analysis of mismatch
+effects, and as Table~\ref{HP7-dat} shows, the overall counts of
+miscellaneous errors were nearly identical (135 for descending, 130 for
+flat; \Fsweak\IGNORE{overall struc Fs<1; int Fs<1.4, ps>.25}).  Coupled
+with the relative weakness of the recency effect in English comprehension
+for attachments to noun sites in particular (e.g., Cuetos \& Mitchell,
+1988; Gibson et al., 1996; Pearlmutter \& Gibson, 2001), the lack of any
+difference in mismatch errors for flat versus descending structures
+suggests that the second PP was attached as intended (and as normed) for
+both structures and in both experiments.\IGNORE{ \NOTE{should we thank Iris
+for pointing out this concern in a footnote or something?  I heard it from
+other people at CUNY as well, but she was the first to point it out (to me
+at least)} -- think we probably don't need the ack in this case -- the
+concern about interpreting these structures (PP attachment ambiguity) is a
+pretty common issue -- that's why we needed to do the attachment norming}
+
+\IGNORE{---issues w/flat strucs in HP2 (interacting w/semint manip to yield
+diff structures in integ vs unint)\ldots anything to discuss
+here? \NOTE{wait for complaints}
+}
+
+The second possible concern related to the structure of the stimuli is that
+the argument/adjunct status of the PPs containing the local nouns might
+have varied across conditions, creating confounds.  Solomon and Pearlmutter
+(2004b) showed that argument/adjunct status and related structural
+properties in their NP PP stimuli could not account for their semantic
+integration results, but it still might be involved in the effects here.
+Determining the argument/adjunct status of PP modifiers of NPs is often
+difficult, but Sch\"{u}tze and Gibson (1999) offer six diagnostics of PP
+argumenthood, although they note that individual speakers may disagree in
+applying a particular diagnostic to a particular case, and there may be
+disagreement across diagnostics even when speakers agree.  When we applied
+the diagnostics to the Experiment~2 stimuli, there was in fact strong
+agreement (across the authors and the diagnostics) that both the first and
+second PPs were adjuncts, eliminating any basis for a confound.  In the
+descending stimuli of Experiment~1, both PPs were similarly clearly
+adjuncts; and this was also the case for the second PP of the flat stimuli
+in Experiment~1.  The only case where there appeared to be any support for
+an argument classification was for two of the first PPs in the flat stimuli
+(these both involved \ext{of}, as in \ext{The postcard of the roller
+coaster with the foreign stamp}), which two of the six diagnostics
+(Sch\"{u}tze \& Gibson's ``ordering'' and ``iterativity'') seemed to
+classify as arguments.  If these PPs were indeed arguments rather than
+adjuncts, then according to syntactic theories which encode the
+argument/adjunct distinction in structure (e.g., Carnie, 2005; Chomsky,
+1995; Pollard \& Sag, 1994), they would be attached farther from the head
+NP node than corresponding adjuncts.  For versions of the hierarchical
+feature-passing hypothesis that compute distance based on all intervening
+nodes (versus only major categories; see Solomon \& Pearlmutter, 2004b),
+this would in turn predict that N2 would be less likely to create errors in
+these cases.  But the result of this potential confound is that the
+difference between the sizes of the N2 and N3 mismatch effects should be
+even smaller for flat cases than for descending cases, because in the flat
+cases, N2 will be more distant from the head NP than N3 (the difference in
+the size of the mismatch effects will be negative), while in the descending
+cases, N2 will be closer to the head NP than N3.  Thus, if it has any
+effect, it should be to strengthen the interaction prediction for
+hierarchical feature-passing.  There was no hint of such an interaction in
+Experiment~1, and thus an argument/adjunct confound cannot explain the
+results.\IGNORE{
+
+The second concern related to the stimuli is that all PP modifiers used
+were intended be adjuncts of the nouns that they modified, but PP modifiers
+of nouns are non-obligatory, which makes determining whether they are
+arguments or adjuncts difficult.  Sch\"{u}tze and Gibson (1999) offer six
+diagnostics for PP argumenthood, but caution that the diagnostics do not
+all provide the same distinction between arguments and adjuncts.  Assuming
+that these diagnostics can be used to infer the argument status of a PP
+modifier, we tested the PPs in our stimuli to ensure that they were
+adjuncts.  The PPs in Experiment~2 were clearly adjuncts by every
+diagnostic.  To the extent that there was any disagreement among
+diagnostics, some of the first PPs in the flat stimuli of Experiment~1 are
+less likely to be adjuncts of the head noun than others.  If these PPs were
+indeed arguments rather than adjuncts, under most syntactic theories, this
+would increase the hierarchical distance of N2 to the head NP node (e.g.,
+Carnie, 2005; Chomsky, 1995; Pollard \& Sag, 1994).  According to the
+hierarchical feature-passing account, with all nodes counting toward
+hierarchical distance, this would on average make interference from N2 less
+likely than interference from N3.  Thus, the interaction of structure and
+plural position predicted by the hierarchical feature-passing account in
+Experiment~1 would only be larger given that the interference patterns of
+N2 and N3 would be predicted to be in opposite directions in the two
+structural conditions.  Given that an interaction was not found in
+Experiment~1, this concern is unlikely to be a problem for the scope of
+planning account (for a discussion of argument/adjunct status in relation
+to semantic integration effects, see Solomon \& Pearlmutter, 2004b).
+}
+
+The final concern related to the structure of the stimuli is that in some
+syntactic theories (e.g., Chomsky, 1995\IGNORE{; \TODO{cite 1--2 other
+theories/papers}}), flat structures are ruled out; typically this is
+because such theories enforce binary branching (Kayne, 1984), stipulating
+that no syntactic node may have more than two daughters.  The evidence for
+a binary-branching requirement is largely theory-internal\IGNORE{ (though
+cf.\ \TODO{Iris' suggested paper} and responses)}, depending primarily on
+what other assumptions a theory holds about the relationship between
+syntactic structure, meaning, and discourse modification structure; and
+many syntactic theories allow flat structures (e.g., Culicover \&
+Jackendoff, 2006; Goldberg, 2006; Pollard \& Sag, 1994).  But if the
+structure of the stimuli in the current experiments were required to be
+binary-branching, both the descending (Figure~\ref{descstruc}) and flat
+(Figure~\ref{flatstruc}) stimulus structures would be altered.  In the case
+of the descending stimuli, this would have no influence on the predictions
+of hierarchical feature-passing: N3 would still be more deeply-embedded and
+more distant from the subject NP node than N2.  Changing the flat
+structures to enforce binary branching, on the other hand, would alter the
+predictions of hierarchical feature-passing.  The exact structural
+alterations would depend on the specific theory, but because the first PP
+modifies N1 and the second PP is independent of the first PP, the second PP
+will attach above the first PP, by adjunction to the subject NP node (e.g.,
+Carnie, 2005\IGNORE{pg 121}).  The result of this will be that the
+hierarchical path for a feature from N3 to reach the top of the full
+subject NP will be shorter than the path for a feature from N2, and thus a
+hierarchical feature-passing approach built on binary-branching syntactic
+structures would predict an even clearer interaction than the one described
+for Experiment~1: The descending structures should show a larger mismatch
+effect for N2 than for N3, while the ``flat'' structures should show a
+larger mismatch effect for N3 than for N2.  Of course, Experiment~1 showed
+no interaction at all: The difference between the N2 and N3 mismatch
+effects was equivalent for the two different structures, with N2 yielding a
+larger mismatch effect than N3.  Thus while we cannot evaluate hierarchical
+feature-passing against every conceivable set of syntactic structures, its
+key prediction of an interaction in Experiment~1 fails using either the
+flat or the most likely binary-branched structures.
+
+\IGNORE{\subsection{Reconsideration of Hierarchical Feature-Passing Results}}
+
+Assuming, then, that the structures in the Experiment~1 and~2 stimuli were
+constructed as intended, the experiments provide strong evidence that
+hierarchical distance and hierarchical feature-passing are not relevant in
+determining agreement error patterns.  This claim permits reconsideration
+of some results in the literature, where the scope of planning account
+might provide an alternative explanation.  As discussed above, Franck et
+al.'s (2002) results are one such case, but three other agreement error
+patterns have been explained at least in part with reference to
+hierarchical mechanisms: First, sentential objects can produce mismatch
+effects when they intervene between the subject NP and the verb\IGNORE{,
+but these effects are smaller than from a local noun in a PP modifying the
+subject NP} (Chanquoy \& Negro, 1996; Fayol, Largy, \& Lemaire, 1994;
+Franck et al., 2006; Hartsuiker et al., 2001; see also Hemforth \&
+Konieczny, 2003, for related data from German); second, the relative order
+of the subject and verb can affect error rates (Franck et al., 2006;
+Vigliocco \& Nicol, 1998); and, third, local nouns in PP modifiers produce
+larger mismatch effects than local nouns in clausal modifiers (Bock \&
+Cutting, 1992; Negro et al., 2005; Solomon \& Pearlmutter, 2004b).  How the
+scope of planning account addresses these patterns is discussed below.
+
+Hartsuiker et al.\ (2001) showed that local nouns in direct objects can
+interfere with subject-verb agreement when they appear between the subject
+noun and the verb, though they produce smaller mismatch effects than local
+nouns in PP modifiers (cf.\ Franck et al., 2006; Hartsuiker et al.; and
+references therein\IGNORE{ it would make sense to cite Ant\'on-M\'endez 96
+directly here, but don't have it}; for more complex cross-linguistic
+patterns involving object pronouns and clitics).  Examining Dutch,
+Hartsuiker et al.\ presented participants with preambles
+like~\exref{hetal}, consisting of a matrix clause followed by the start of
+a subordinate clause and then an uninflected verb stem (\ext{WIN}) to be
+used to complete the subordinate clause (Dutch subordinate clauses are
+verb-final).  Both pairs produced mismatch effects, but larger effects
+occurred for subordinate clauses containing a subject-modifying PP
+(\ext{met de krans(en)} in~\exref{hetal-sm}) than for those containing a
+direct object (\ext{de krans(en)} in~\exref{hetal-do}).  Hartsuiker et al.\
+interpreted the presence of mismatch effects for both cases as support for
+hierarchical feature-passing, and they interpreted the difference in
+mismatch effect size as a consequence of the direct object noun's greater
+hierarchical distance from the subject NP node: An interfering feature from
+the direct object would have to pass up out of the direct object NP, to the
+subordinate clause VP and/or the top of the subordinate clause itself, and
+then to the subject NP; whereas in the PP-modifier case, an interfering
+feature would only have to pass up out of the prepositional-object NP and
+the PP itself (just as in corresponding English cases).
+
+\begin{myexample}
+\label{hetal}
+\begin{examples}
+    
+    \item \label{hetal-sm} Karin zegt dat het meisje met de krans(en) 
+    \hfill WIN \hspace{14em} \\
+    Karen said that the girl with the garland(s) \hfill WIN \hspace{14em} 
+
+    \item \label{hetal-do} Karin zegt dat het meisje de krans(en) 
+    \hfill WIN \hspace{14em} \\
+    Karen said that the girl the garland(s) \hfill WIN \hspace{14em} 
+        
+\end{examples}
+\end{myexample}
+
+Although a hierarchical feature-passing account can explain these results,
+they do not provide direct evidence for such an account, and the scope of
+planning explanation can also explain them.  In particular, if constituents
+are generally planned in their utterance order (Bock, Loebell, \& Morey,
+1992, provide some support for this view), the direct object NP
+in~\exref{hetal-do}, like the corresponding NP in~\exref{hetal-sm}, will be
+planned between the head noun of the subject NP and the verb, allowing
+plurals in either case to create some interference in encoding the number
+of the subject.  The difference between the two cases is likely created by
+semantic integration: Most of the subject-modifying PPs in (the English
+translations of) Hartsuiker et al.'s (2001) Experiment~1a and~1b stimuli
+appear to be strongly integrated, which would yield relatively large
+mismatch error effects.  In the direct object cases, we assume that verbs
+can potentially create high levels of integration between their arguments
+(e.g., Solomon \& Pearlmutter, 2004b, Exp.~5), but even assuming Hartsuiker
+et al.'s uninflected target verbs did so, the link created by the target
+verb in the direct object conditions would have been unavailable until
+relatively late in the processing of the two NPs, compared to the
+preposition in the subject-modifying PP case.  The result would be that the
+subject and object would behave as if they were relatively unintegrated,
+limiting the size of mismatch effects.  Thus the scope of planning account
+can account for both the presence of mismatch effects in each case, as well
+as the relatively larger effects in the subject-modifier
+case~\exref{hetal-sm}.
+
+An additional finding that the scope of planning account can address
+without requiring a hierarchical component concerns word order variation.
+In Franck et al.\ (2006; Exp.~1), participants were presented with an NP PP
+subject phrase (in Italian) followed by an infinitival verb form
+(e.g.,~\ref{franck06-exp1-stim}), and participants were required to
+construct a sentence using those materials, inflecting the verb, that had
+either a subject-verb~\exref{franck06-sv} or
+verb-subject~\exref{franck06-vs} order.  More agreement errors were
+observed in the subject-verb cases, where the local noun (\ext{ragazzi})
+appeared between the head noun (\ext{vicino}) and the verb (\ext{viene}),
+than in the verb-subject cases.  Franck et al.\ make several specific
+assumptions about the syntactic representations and processes involved in
+producing the subject-verb and verb-subject structures, in order to fit
+them into their framework; but the critical property they use to
+differentiate the two structures is linear precedence, and specifically
+whether the local noun intervenes between the head noun and verb.\IGNORE{
+argue that the low error rate in the VS ordering was due to the subject
+remaining VP-internal (i.e., never raised to the Spec of the AgrS node),
+and, thus agreement is only established by AGREE and is not subject to a
+Spec-Head check which is "assumed to reinforce the morphological
+realization of agreement" (p.  183).} Under a scope of planning account,
+with hierarchical factors irrelevant, essentially this same linear order
+factor would differentiate the two cases: Verb planning in verb-subject
+cases would begin and could potentially be completed before the local noun
+is planned, yielding few opportunities for interference; while in
+subject-verb cases, the local noun will essentially always be planned
+before the verb and will thus have ample opportunity to interfere with head
+number tracking.  (An order of planning account can similarly explain
+Franck et al.'s Experiment~3 result with mismatching local nouns in direct
+objects, in which French speakers produced more errors in inflecting verbs
+within object-verb-subject sequences than within object-subject-verb
+sequences.  See also Hupet, Fayol, \& Schelstraete, 1998, for related
+evidence from the French PP-inversion construction, which also creates an
+object-verb-subject sequence.)
+
+\begin{myexample}
+\label{franck06-exp1}
+\begin{examples}
+    
+    \item \label{franck06-exp1-stim} il vicino dei ragazzi 
+    \hfill venire \hspace{19em} \\
+    the neighbor of the boys \hfill to come \hspace{19em} 
+    
+    \item \label{franck06-sv} Il vicino dei ragazzi viene.
+    \item \label{franck06-vs} Viene il vicino dei ragazzi.
+
+\end{examples}
+\end{myexample}
+
+\IGNORE{
+can't just complain about Exp2 -- same task as Exp1, but Exp2 has fewer 
+misc errs (though also longer display times) -- probably best to make it 
+an overall issue -- it's just a forced choice task for both expts.  other 
+issue is mention in V\&N's GD that they ran another expt pair w/o adj 
+presentation (preamble, then head N again, then S produces whole sentence 
+or question) -- this expt produced very low err rates (duh) but still no 
+decl vs interr diff\ldots --- try the following:}
+
+Franck et al.\ (2006) point out that their Italian subject-verb versus
+verb-subject construction results contrast with Vigliocco and Nicol's
+(1998) finding that local nouns in English declaratives (subject-verb word
+order; e.g., \ext{The helicopter for the flights is safe.})\ and
+interrogatives (verb-subject; e.g., \ext{Is the helicopter for the flights
+safe?})\ produce equal agreement error mismatch effects.  Franck et al.\
+account for the difference in patterns with the idea that the English
+interrogative (unlike the Italian verb-subject case) is created from the
+declarative after agreement has been computed, so the difference in
+produced word order has no effect.  A scope of planning account would not
+predict this lack of an interaction with word order; but the Vigliocco and
+Nicol experiments also used an altered version of the typical agreement
+error elicitation task, which may have contributed to the lack of an
+interaction: In both of Vigliocco and Nicol's experiments, participants
+were presented with an adjective followed by a subject NP\@.  In all cases,
+including fillers, the response was the subject NP and then the adjective,
+with either \ext{is} or \ext{are} inserted in the appropriate position
+(after or before the subject noun phrase).  Because declaratives and
+interrogatives were produced in separate experiments, a given participant
+always produced the verb in the same position, and the task may have
+operated essentially as a forced choice procedure between the two possible
+verb forms, with an additional memory component.  Thus their observed
+interference effects may not have been the result of natural agreement
+processing.  Further experiments will be needed to determine whether these
+constructions present a problem for a scope of planning account.
+
+\IGNORE{---other Franck et al.\ papers?  NO?}
+
+\IGNORE{---explain Bock \& Cutting -- clause-boundedness}
+
+One effect that the scope of planning account cannot easily explain is the
+difference in mismatch effect size for local nouns embedded in phrases
+versus clauses.  Bock and Cutting (1992, Exp.~1) compared PP modifier
+preambles (e.g., \ext{The editor of the history book(s)}) with
+corresponding length-matched clausal modifier preambles (e.g., \ext{The
+editor who rejected the book(s)}) and showed that mismatch effects were
+larger for the phrasal cases.  They suggested an explanation in terms of
+clause boundedness: the idea that clauses are planned independently, and
+elements within separate clauses cannot interfere with each other.  Solomon
+and Pearlmutter (2004b, Exp.~5) replicated this result and showed that it
+could not be explained by semantic integration; integration between the
+head noun (e.g., \ext{editor}) and the local noun (\ext{book(s)}) did not
+differ across structures in either the Bock and Cutting or the Solomon and
+Pearlmutter stimuli.  Differences in linear distance to the head noun also
+cannot explain the effect, as the phrasal and clausal modifier stimuli in
+both experiments were matched on number of intervening syllables.
+
+One possible account of the phrasal versus clausal modifier results is that
+clause boundedness influences agreement processes independently of scope of
+planning factors, essentially as Bock and Cutting (1992) described.
+However, Franck et al.\ (2002) showed that the phrasal versus clausal
+modifier effect could instead be explained by a hierarchical distance
+account, because the verb phrase and potentially other structure needed to
+instantiate the clausal modifier embeds the local noun more deeply than in
+the phrasal modifier case.  Solomon and Pearlmutter (2004b) noted that
+their own results were compatible with an independent effect of either
+clause boundedness or hierarchical feature-passing, and recent work by Bock
+and colleagues (Eberhard et al., 2005) has assumed a hierarchical
+feature-passing approach in general, although they did not discuss clausal
+modifiers in particular.  The current results suggest hierarchical
+feature-passing is unlikely to be the source of errors in these
+constructions (see below), but neither Experiment~1 nor~2 examined clausal
+cases, so this leaves open the possibility that the mechanism underlying
+agreement computation is hierarchical feature-passing, but hierarchical
+distance depends only on syntactic nodes associated with clausal structure
+(e.g., CP, IP or S, VP)\@.  This would be a substantially different version
+of hierarchical feature-passing than what has previously been proposed, but
+we know of no data that rule it out.\IGNORE{ \NOTE{I'm tempted to leave
+this out, b/c we're just speculating at this point, and there's really
+nothing to refer to yet\ldots} A third possible explanation for the phrasal
+versus clausal modifier result is that the nature of the semantic
+relationship established between two elements linked with a function word
+(e.g., prepositions) and a content word (e.g., lexical verb) is
+qualitatively different.  To date, all published studies examining the
+interference effects of local nouns in clausal modifiers have used lexical
+verbs in RCs, and the possible difference between prepositions and lexical
+verbs may affects timing of planning of local nouns.}
+
+\IGNORE{\subsection{Reconsidering Hierarchical Feature-Passing in the 
+Marking \& Morphing Model}}
+
+\IGNORE{---adjust M\&M model; w depends on planning distance, which depends
+on planning time, based on linear order and semint (and maybe other stuff)}
+
+In addition to alternative explanations for some results in the literature,
+Experiments~1 and~2 also suggest a reconsideration of some aspects of
+current agreement models.  In particular, because many of the results in
+the literature have been connected to hierarchical feature-passing, current
+models of agreement computation often incorporate a hierarchical component
+(Eberhard et al., 2005; Vigliocco \& Hartsuiker, 2002; cf.\ Stevenson,
+1994, in comprehension).  In Eberhard et al.'s (2005) marking and morphing
+model, for example, as described above, the morphing process weights the
+effect of each individual noun's number information on the overall subject
+NP's number, based on that noun's hierarchical distance from the subject NP
+node.  This weighting is critical for the model, because it enables it to
+capture the controlling influence of the head noun over the local noun, and
+thus the production of primarily grammatical agreement, when head noun
+number and conceptual number diverge, as in ``distributive'' subject NPs
+like \ext{The label on the bottles} (e.g., Bock et al., 2001; Eberhard,
+1999; Vigliocco et al., 1996).  The current results would thus have two
+main implications for this model: First, Experiment~1 suggests that
+hierarchical distance might not be the appropriate determinant of weights,
+as the model cannot account for the lack of an interaction with structure
+in Experiment~1 if local noun weights are based on hierarchical distance.
+Second, the scope account suggests the alternative of setting weights on
+the basis of the relative timing of planning of number-bearing elements,
+including the combination of linear distance to the head and semantic
+integration seen in Experiment~2.  This change would allow the model to
+handle both the Experiment~1 and~2 results, as well as Franck et al.'s
+(2002) pattern and the effects attributed to hierarchical distance in
+Hartsuiker et al.\ (2001), while still accounting for the cases
+specifically modelled by Eberhard et al.\ (always NP PP
+preambles).\footnote{Eberhard et al.\ note (p.~551) that their model
+``takes no account of time, incrementality, or variations in syntactic
+complexity apart from structural distance''; so our proposal might be seen
+as remedying this while simultaneously removing any need for sensitivity to
+structural distance.}
+
+In fact, simply basing weights on linear distance to the head would be
+sufficient to account for most of the results considered by Eberhard et
+al.\ (2005).  Incorporating semantic integration into the weighting process
+is probably necessary to account for the current Experiment~2 results as
+well as the difference Hartsuiker et al.\ (2001) found between local nouns
+in direct objects and in subject-modifying PPs; but the handling of
+semantic integration in the marking and morphing model is also complicated
+by two factors: First, there may be unidentified differences in integration
+in the stimuli modeled by Eberhard et al.\ (see Solomon \& Pearlmutter's,
+2004b, meta-analyses, for some discussion), which could obviously affect
+the model's performance.  This can only be handled by gathering additional
+semantic integration data and evaluating its effect on the model's fit to
+the human error data.
+
+The second complication is that Eberhard et al.\ (2005) did account for
+Solomon and Pearlmutter's (2004b) overall semantic integration effect, but
+they did so by way of the marking process: More integrated phrases were
+assumed to mark the subject NP as a whole as more strongly plural, and,
+specifically, they were treated as cases with ``ambiguous notional number,
+such as subject phrases denoting masses\ldots\ collections, or distributions''
+(Eberhard et al., p.~543).  This approach to semantic integration is in
+principle a possibility, but it appears to run into some difficulty in its
+application to various experiments: For example, in Solomon and
+Pearlmutter's Experiment~1, the conceptual representation of the overall
+preamble for the integrated versions (e.g., \ext{The drawing of the
+flowers}) could be argued to be more like a mass because the local noun's
+referent is incorporated into the head noun's; but it is still a single
+entity, and the unintegrated versions (e.g., \ext{The drawing with the
+flowers}) appear to refer more clearly to multiple entities, which would
+suggest the opposite of what Solomon and Pearlmutter found.  Solomon and
+Pearlmutter's Experiment~4 stimuli have similar properties, and it is
+difficult to see how their Experiment~2 and~3 stimuli involve incorporation
+or masses at all; intuitions suggest that both the integrated (e.g.,
+\ext{The chauffeur for/of the actors}) and unintegrated stimuli (e.g.,
+\ext{The chauffeur with the actors}) refer about equally to multiple
+individuals.
+
+The use of marking to handle semantic integration also runs into problems
+with the current Experiment~2: Marking by definition applies to the subject
+NP as a whole, and while we did not separately define an overall
+integration measure, the early- and late-integrated cases are matched on
+average integration of the three noun-noun relationships, so if marked
+number depends on this, the model will fail to account for either of the
+within-position comparisons between the early- and late-integrated
+conditions (the mismatch effect from N2 was larger for early- than for
+late-integrated cases, and the pattern reversed for N3 mismatch effects).
+One could instead stipulate that marking's sensitivity to semantic
+integration is based more heavily on the integration of N1 and N2, or
+instead on the N1-N3 relationship, but either of these will make the wrong
+prediction for the mismatch effect difference at the other position.  Using
+the maximum semantic integration (or the minimum) of the pairs in the
+subject NP fails as well, because the early- and late-integrated stimuli
+are matched on these.
+
+Given these issues, reliance on the marking process to handle the full
+range of semantic integration effects thus seems problematic.  While
+conceptual differences associated with semantic integration manipulations
+can have correlated consequences for conceptual number (e.g., \ext{The
+engine for the cars} is probably both conceptually more plural and more
+semantically integrated than is \ext{The engine beside the cars}), the two
+are separable.  Marking is certainly needed within the marking and morphing
+model to handle cases where conceptual number of the subject NP diverges
+from the number of any of its constituent lexical items (see, e.g.,
+Eberhard et al.'s (2005, p.~536) discussion of the metonymic example
+\ext{The hash browns at table nine is getting angry}); but semantic
+integration effects appear to be independent of marking, and the current
+work suggests that they can instead best be captured in Eberhard et al.'s
+model by altering the weighting mechanism needed for morphing.
+
+\IGNORE{---anything to say about Vig\&Hartsuiker? (iffy) Prob not\ldots}
+
+\IGNORE{\subsection{Semantic Integration and Timing of Planning}}
+
+\IGNORE{---more on semint}
+
+\IGNORE{\TODO{the following para doesn't quite work --- not clear there's a
+concern about the *design*; the issue is about the link between semint and
+timing (and thus scope effects) --- so it's not a problem/concern, it's
+stuff we don't yet know (and should perhaps go later in the GD); think we
+want to claim that if semint affects timing, then it makes sense that both
+linear order and semint should play into scope; the independence issue is
+separate -- lack of a statistical interaction in HP2 doesn't speak directly
+to this\ldots\ i.e., linear order and semint might just have independent
+effects on timing; discussion of facts of non-interaction at end of para
+also needs a little clarification} --- think this version works OK:}
+
+The idea that both linear distance to the head and semantic integration
+affect Eberhard et al.'s (2005) weighting parameter is a specific
+implementation of the general claim that both of these properties
+specifically affect timing of planning.  If language production proceeds at
+least somewhat incrementally (e.g., Bock \& Levelt, 1994; Brown-Schimdt \&
+Konopka, 2008; Brown-Schmidt \& Tanenhaus, 2006; Griffin, 2001), the linear
+distance to the head manipulation straightforwardly varies timing of
+planning of the local nouns in the current studies; however, the link
+between timing and semantic integration is not as clear.  Solomon and
+Pearlmutter (2004a, b) proposed that semantic integration effects on
+agreement error rates resulted from more highly integrated elements being
+planned with more overlap in timing, but while their results were
+compatible with a timing account, they did not have direct evidence for
+one.  Pearlmutter and Solomon (2007) argued for a timing account of
+semantic integration based on exchange error patterns --- more integrated
+phrases yielded more exchanges, suggesting that their elements were more
+likely to be available simultaneously --- and the current findings provide
+additional support for interpreting semantic integration effects as
+reflecting timing, in that doing so allows for a unified explanation of the
+results.  Placing both linear order and semantic integration on the same
+temporal scale also suggests the possibility that they might interact, with
+stronger or weaker effects of semantic integration at N2 versus at N3.
+This turned out not to be the case, although the numeric pattern of effects
+suggested a larger integration effect at N2 than at N3.  The lack of a
+significant interaction may only indicate that the two factors are
+independent influences on timing, but further research will be required to
+establish that semantic integration affects timing of planning, and if it
+does, how it interacts with other planning phenomena.
+
+\IGNORE{
+
+two additional important contrasts arising out of the current results:
+
+1. Is agr computed over stable fully-constructed representations, or is it
+computed during incremental processing, without all elements of subjNP
+necessarily planned?  (or at least, which of these possible system
+generates errors?)
+
+2. mem-encoding vs mem-retrieval
+
+\IGNORE{\subsection{Memory Encoding and Memory Retrieval}}
+
+\IGNORE{---broad contrast between representation-driven agr effects and 
+processing-driven effects?}
+
+\NOTE{leaning toward dropping or reducing this next para\ldots\ pieces are
+already mentioned elsewhere, and the set of suggested properties to be
+considered I think was supposed to be more of a list of factors (which I
+think is probably not worth trying to do here); Nicol 95 should be
+mentioned, but there's a place earlier where we considered dropping it in
+but didn't, and we could do so there} -- drop the whole thing:
+
+A theory of agreement computation that relies on hierarchical relations to
+explain mismatch effects require that the entire structure of the subject
+NP is in place in order to compute agreement.  An account of agreement that
+relies on memory encoding and a limited scope of planning can explain a
+variety of effects described in the literature without requiring a complete
+representation of the relevant structures in the utterance to be planned
+prior to agreement computation.  Our account takes advantage of the
+temporal and sequential nature of language production and is in accord with
+other findings that suggest that planning in language production proceeds
+at least somewhat incrementally (Brown-Schmidt \& Konopka, 2008;
+Brown-Schmidt \& Tanenhaus, 2006; Griffin, 2001).\IGNORE{--- summary of
+what should be in models} We suggest that models of agreement computation
+should consider properties related to scope of planning, memory encoding,
+and, possibly, memory retrieval.  This proposal suggests that models of
+agreement should incorporate ways to quantify a local noun's planning
+distance from the head noun in place of its syntactic distance (see Nicol,
+1995 for additional discussion of temporal distance affecting agreement
+error rates).  
+
+}
+
+\IGNORE{---hierarchy anyway, but limited by mem (pretty severely)?
+
+\NOTE{THIS SUCKS COME BACK} While our results do not show support
+for hierarchical distance influencing mismatch effects for phrasal
+modifiers, it is still possible that the mechanism underlying agreement
+computation is hierarchical feature-passing.  As mentioned above, when
+semantic integration is controlled, the lower error rates found for RC
+modifiers than PP modifiers may provide some evidence that this is the case
+(Bock \& Cutting, 1992; Solomon \& Pearlmutter, 2004b).  Under a scope of
+planning account, feature-passing would be limited by the amount of
+structure that is planned and available to the system during agreement
+computation.  If hierarchical feature-passing is the mechanism of agreement
+computation, models would require a hierarchical component alongside a
+planning distance component.  Under this assumption, hierarchical distance
+would only have an effect on agreement error rates insomuch as equivalent
+amounts of structure were planned that had different structural heights. }
+
+\IGNORE{
+\TODO{check if these have been handled:}
+
+---other interps for semint effects?  \NOTE{this is sort of done w/what you
+added about the marking and morphing stuff.  I don't know if we need much
+more?}
+
+---other interps for linear distance effects?  \NOTE{hmmm good question...
+i can't really think of any}
+
+---YUP; I think the above 2 issues are OK without more stuff}
+
+\IGNORE{ 
+
+following para was in 1st sub; replacing it w/Maureen's new 4 paras that 
+follow\ldots
+
+One other critical contrast arises in identifying the source(s) of errors
+in agreement computation.  As noted briefly above, the scope of planning
+account claims that errors arise during encoding of subject number into
+memory during production: If a plural feature happens to be active in the
+planning system around the time that a singular subject is being encoded,
+the plural can interfere, eventually increasing the probability of
+producing a plural instead of a singular verb (see also Nicol, 1995).  The
+current experiments are compatible with these claims, and much of the
+existing data in the agreement production literature (e.g., effects
+attributed to hierarchical feature-passing, semantic integration effects,
+and most or all of the effects on verb number captured by marking and
+morphing and their interplay in the Eberhard et al.\ (2005) model) is
+similarly compatible with the idea that errors occur when interference
+arises in setting or tracking the number of the subject prior to whatever
+agreement target (e.g., a verb) is eventually planned.  However, an
+alternative source of agreement errors is interference at memory retrieval
+(Badecker \& Kuminiak, 2007; Badecker \& Lewis, 2007): At the time of
+planning an agreement target, the encoded source of number information for
+that target must be retrieved from memory, and this process may be
+susceptible to interference from other number-marked elements (e.g.,
+intervening local nouns) that might be incorrectly retrieved instead of the
+correct source.  This mechanism has difficulty explaining the patterns in
+the current experiment, in that other things being equal, it predicts N3
+should be more likely than N2 to trigger errors, because N3 has been
+encountered more recently and is thus more accessible for retrieval (though
+see Badecker \& Kuminiak (2007, p.~82) for a suggestion about how a
+retrieval model might use ``planning chunks'' as cues); but it is
+potentially compatible with many other patterns in the literature.
+Furthermore, effects of phrase length (Bock \& Cutting, 1992) are more
+naturally explained by retrieval interference than by encoding
+interference.  This same contrast arises in agreement comprehension as
+well, where initial work focused on what were essentially encoding-based
+models (e.g., Nicol, Forster, \& Veres, 1997; Pearlmutter, 2000,
+Pearlmutter, Garnsey, \& Bock, 1999), while several more recent
+investigations of agreement have suggested that retrieval-based errors may
+occur as well (e.g., H\"{a}ussler, 2006; Wagers, Lau, \& Phillips, 2009).
+Lewis, Vasishth, and Van Dyke (2006) presented a model of memory in
+comprehension in general which incorporates both encoding and retrieval
+processes, and it may be that agreement production models will need to
+incorporate both encoding and retrieval interference as potential sources
+of agreement errors.
+
+---
+
+later version from Maureen, adjusted/expanded below
+
+One other critical contrast arises in identifying the source(s) of errors
+in agreement computation.  As noted briefly above, the scope of planning
+account claims that errors arise during encoding of subject number into
+memory during production: If a plural feature happens to be active in the
+planning system around the time that a singular subject is being encoded,
+the plural can interfere, eventually increasing the probability of
+producing a plural instead of a singular verb (see also Nicol, 1995).  The
+current experiments are compatible with these claims, and much of the
+existing data in the agreement production literature (e.g., effects
+attributed to hierarchical feature-passing, semantic integration effects,
+and most or all of the effects on verb number captured by marking and
+morphing and their interplay in the Eberhard et al.\ (2005) model) is
+similarly compatible with the idea that errors occur when interference
+arises in setting or tracking the number of the subject prior to whatever
+agreement target (e.g., a verb) is eventually planned.  That being said,
+our data do not neccessarily rule out a feature-passing mechanism, but
+suggest that if feature-passing is the mechanism of agreement computation,
+it must be constrained by the scope of planning.
+
+
+Given how limited the effects of feature-passing would have to be, as our
+data suggests that very little structure is planned and available to pass
+features through, it may be beneficial to consider an alternative mechanism
+of agreement computation that does not rely on feature-passing at all.
+
+---
+
+additional piece from Maureen, used with some adjustment below
+
+However, an alternative source of agreement errors is interference at
+memory retrieval (Badecker \& Kuminiak, 2007; Badecker \& Lewis, 2007).  At
+the time of planning an agreement target (e.g., a verb), the encoded source
+for that target must be retrieved from memory, and this process may be
+susceptible to interference from other elements (e.g., intervening local
+nouns) that might be incorrectly retrieved instead of the correct source.
+Many retrieval models of comprehension incorporate similarity-based
+retrieval interference to explain difficulties arising during the
+processing of targets of long-distance dependencies (Gordon, Hendrick,
+Johnson, \& Lee, 2006; Lewis, Vasishth, \& Van Dyke, 2006).  Under such an
+account, retrieval interference could arise in at least two possible ways:
+First, it could arise from retreiving the number marking of a local noun
+rather than the number marking of the head noun, or it could arise from
+mis-selecting a local noun as the subject of the sentence\footnote{All of
+the critical items from 12 participants in Experiment~1 (288 sentences)
+were examined to determine whether the predicate they produced clearly
+referred to one of the local nouns rather than the head noun.  The majority
+of predicates did not unambiguously specify which noun was selected as the
+head; however, there were 6 unambiguous head mis-selection errors, but none
+of them were categorized as agreement errors according to our coding
+system.  Thus, we have no evidence that head mis-selection during retrieval
+was the source of the error patterns observed in these experiments.}.  If
+similarity-based retrieval interference were incorporated into a production
+model, it would have difficulty explaining the pattern of results observed
+in Experiment~2.  Under the definition of similarity proposed by these
+accounts, the local nouns were equally dissimilar to the head noun: Neither
+noun receives a grammatical subject flag and both local nouns refer to
+inanimate objects.  Thus, the only other factor that should affect the
+retrieval process is recency/locality.  In flat preambles like those in the
+current experiments, with other things being equal, a retreival failure
+account predicts that N3 should be more likely than N2 to trigger errors,
+because N3 has been encountered more recently and is thus more accessible
+for retrieval (though see Badecker \& Kuminiak (2007, p.~82) for a
+suggestion about how a retrieval model might use ``planning chunks'' as
+cues).  This is not to say that retrieval is not part of the agreement
+production process.  Haskell and MacDonald (2005) provide evidence that
+proximity to the verb plays a role in determining agreement for
+disjunctions (e.g., \itt{the horse or the clocks}) such that the verb
+overwhelmingly agrees with the noun that is proximial to the verb.  This
+effect may be explained by the possibility that both nouns in a disjunction
+receive a subject flag, and with all else being equal, the noun closest to
+the verb provides the retreival cue for the verb as it was the most
+recently encounted and most active noun with the correct grammatical
+properties triggering agreement.  Furthermore, effects of phrase length
+(Bock \& Cutting, 1992) are more naturally explained by retrieval
+interference than by encoding interference as local nouns in longer PPs
+cause more interference than local nouns in shorter PPs.
+
+The same contrast between retrieval and encoding effects arises in
+agreement comprehension as well, where initial work focused on what were
+essentially encoding-based models (e.g., Nicol, Forster, \& Veres, 1997;
+Pearlmutter, 2000, Pearlmutter, Garnsey, \& Bock, 1999), while several more
+recent investigations of agreement have suggested that retrieval-based
+errors may occur as well (e.g., H\"{a}ussler, 2006; Wagers, Lau, \&
+Phillips, 2009).  The general comprehension model presented by Lewis,
+Vasishth, and Van Dyke (2006) incorporates both memory encoding and
+retrieval processes, and it may be that agreement production models will
+need to incorporate both encoding and retrieval interference as potential
+sources of agreement errors.
+
+
+original mechanism paragraph:
+
+widely-accepted Bock and Levelt (1994) model of production.  Their model
+specifies how the subject of a sentence is identified and then linked to
+the NP in the syntactic structure through functional assignment.  All that
+would need to occur for agreement to be computed would be for the number
+features of the lemma flagged as the subject to be encoded in working
+memory and then this information could be retreived to build the structure
+of the VP.
+
+Under the scope of planning account assuming such a mechanism, interference
+would arise when the number features of the local nouns' lemmas were
+encoded in close temporal proximity to the head noun's lemma and the local
+noun's number feature was associated with the subject NP during the
+encoding process.  This hypothesized mechanism requires no feature-passing,
+and takes advantage of the cascading, activation-based properties of the
+Bock and Levelt (1994) model.  While it is not yet known if this mechanism
+can explain all interference effects, it is an intriguing possibility that
+warrants future research.
+
+}
+
+
+Beyond the specific consequences of our results for the existing literature
+is the more general question about the source of agreement errors and the
+mechanism of agreement computation.  Experiments~1 and~2 do not directly
+rule out hierarchical feature-passing as the mechanism implementing
+agreement; but they show that the evidence purportedly supporting it in the
+literature is confounded and thus inconclusive, and we argued above that
+with a scope of planning account, feature passing is not needed to explain
+known results.  In addition, hierarchical feature-passing cannot be the
+source of the error patterns in Experiments~1 and~2; the experiments
+implicate factor(s) related to temporal planning distance from the head of
+the subject NP, rather than syntactic distance from the subject NP\@.
+Furthermore, if feature passing is the mechanism implementing agreement,
+the current results severely limit its application and especially its
+potential as a source of errors, because the explanation for the lack of an
+influence of structure in Experiment~1 is that the structure associated
+with the second PP --- through which errant features from N3 would have to
+pass --- is not yet present when agreement properties of the subject are
+computed.  At the same time, the structure corresponding to the first PP
+must be present to account for the preponderance of N2 errors.  For a
+feature-passing model, this means that feature passing (and consequent
+feature-passing errors) can occur only within a very limited scope; namely,
+within a phrase or so.  While feature passing might thus be responsible for
+errors in the PP construction from a PP versus RC contrast (Bock \&
+Cutting, 1992; Solomon \& Pearlmutter, 2004b), it would not be responsible
+for errors from the RC construction (or, to the extent that they occur,
+from full embedded clauses): We do not yet have data on the precise scope
+that might be relevant here, but if structure has been planned for only a
+single PP in the current experiments, it seems unlikely that structure for
+an entire RC will have been planned in corresponding cases from Bock and
+Cutting's and Solomon and Pearlmutter's experiments.  And if the point of a
+feature-passing mechanism is to deliver subject number to the verb (e.g.,
+Bock \& Levelt, 1994; Eberhard et al., 2005; Franck et al., 2002; Vigliocco
+et al., 1996), some additional explanation for that part of the process
+will be needed, given that the structure connected with the predicate will
+not have been created when the subject's number is computed.  These are not
+insurmountable problems, but they indicate that feature-passing accounts
+cannot fully explain apparent effects of structure in the literature, and
+that they are not complete even as accounts of the core phenomena or
+operations for which they were developed.
+
+As we noted above, the Experiment~1 and~2 results also point to an
+alternative source of errors, which is the encoding of subject number into
+memory: If a plural feature happens to be active in the planning system
+around the time that a singular subject is being encoded, the plural can
+interfere, eventually increasing the probability of producing a plural
+instead of a singular verb (see also Nicol, 1995).  Along with the current
+experiments, much of the existing data in the agreement production
+literature (e.g., effects attributed to hierarchical feature-passing,
+semantic integration effects, and most or all of the effects on verb number
+captured by marking and morphing and their interplay in the Eberhard et
+al.\ (2005) model) is compatible with the idea that errors occur when
+interference arises in setting or tracking the number of the subject prior
+to whatever agreement target (e.g., a verb) is eventually planned.  Indeed,
+the Eberhard et al.\ model itself can be seen as primarily a model of the
+memory encoding process for subject number.
+
+However, if memory processes are responsible for agreement errors, then not
+only encoding interference but also retrieval interference must be
+considered, either as an alternative or in addition: At the time of
+planning an agreement target (e.g., a verb), the encoded source for that
+target must be retrieved from memory, and this process may be susceptible
+to interference from other elements (e.g., intervening local nouns) that
+might be incorrectly retrieved instead of the correct source (Badecker \&
+Kuminiak, 2007; Badecker \& Lewis, 2007; Lewis \& Badecker, 2010).
+Detailed models of memory retrieval processes in subject-verb agreement
+production are only beginning to be discussed, but they have so far
+primarily focused on two factors which have been proposed to play important
+roles in retrieval models of long-distance dependency processing in
+comprehension: recency (or decay) of activation and similarity-based
+interference (Badecker \& Lewis; Gordon, Hendrick, Johnson, \& Lee, 2006;
+Lewis \& Badecker; Lewis, Vasishth, \& Van Dyke, 2006).\footnote{A separate
+question for retrieval-based models is whether the retrieval process
+attempts to retrieve number information independently or instead attempts
+to retrieve the head of the subject phrase, which in turn yields number
+information; presumably the system might attempt to retrieve both, as this
+might provide an alternative approach to combining number derived (in
+Eberhard et al.'s (2005) terms) by marking and by morphing.  These
+variations make different predictions about the extent to which
+subject-verb agreement errors are correlated with head mis-selection errors
+(cases in which the predicate is about a noun other than the head of the
+subject; e.g., \ext{The baby on the blanket had tangled plaid fringe.}).
+We attempted to evaluate this correlation by looking for head mis-selection
+errors, using the continuations of all of the critical items from~12
+participants in Experiment~1 (288 sentences), but the majority of
+predicates did not unambiguously specify which noun was selected.  Of
+the~42 cases that were unambiguous, only~4 were head mis-selection errors,
+and none of them (nor any of the correct head-selection cases) was also an
+agreement error case.  These data are obviously very limited, but they
+certainly do not suggest that head mis-selection during retrieval was the
+source of the error patterns in the current experiments.} However, the
+effect of linear order in Experiment~2 (and in the flat conditions of
+Experiment~1) seems to be a problem for both of these factors: Recency of
+activation predicts that N3 should be more likely to be incorrectly
+retrieved than N2, because N3 has been more recently produced and thus more
+recently activated; but this is the reverse of the pattern in Experiment~2.
+An alternative to recency of activation is frequency of activation (an
+element retrieved multiple times during processing would be more likely to
+interfere than one retrieved less often; cf.\ Lewis \& Badecker); but in
+producing the flat conditions, N2 and N3 should be retrieved equally often,
+predicting no difference in interference.  This also incorrectly predicts
+the same interaction in Experiment~1 as hierarchical feature-passing,
+because in the descending cases, unlike the flat cases, N2 should be
+retrieved more frequently than N3 (N2 must be retrieved as a modifier of N1
+and then again when it is modified by the PP containing N3); yet the
+descending and flat cases yielded the same difference between N2 and N3
+mismatch effects.\IGNORE{ Lewis and Badecker found that removing the decay
+component from their original production model did not decrease model
+performance, and suggested that all interference effects in subject-verb
+agreement result from similarity-based interference.  Similarity-based
+interference, however,} Similarity-based interference, similarly, does not
+differentiate N2 and N3, as neither noun (or perhaps local NP) is tagged as
+a grammatical subject (e.g., Bock \& Levelt, 1994), is in a subject-head
+position (e.g., Lewis \& Badecker), or is marked with nominative case
+(Badecker \& Kuminiak), and both nouns are inanimate and at the same
+structural depth (but see Badecker \& Kuminiak (p.~82) for a suggestion
+about how a retrieval model might use ``planning chunks'' as cues).
+
+While memory retrieval thus appears to be insufficient on its own to
+explain the full range of error patterns, it obviously could nevertheless
+play a role in combination with memory encoding: Badecker and Kuminiak
+(2007) argue for a retrieval-interference model of agreement based on an
+interaction between case-marking and gender agreement in Slovak; and
+Haskell and MacDonald (2005) show that for disjunctive subjects (e.g.,
+\itt{the horse or the clocks}), in which the two nouns might be matched in
+subject properties, the verb overwhelmingly agrees with the noun that is
+proximal to the verb.\IGNORE{ This effect may be explained by the
+possibility that both nouns in a disjunction receive a subject flag, and
+with all else being equal, the noun closest to the verb provides the
+retreival cue for the verb as it was the most recently encounted and most
+active noun with the correct grammatical properties triggering agreement.}
+Furthermore, effects of phrase length (Bock \& Cutting, 1992) are more
+naturally explained by retrieval interference than by encoding
+interference, as local nouns in longer PPs cause more interference than
+local nouns in shorter PPs.
+
+\IGNORE{this was the 2nd submission version of the preceding two 
+paragraphs:
+
+However, if memory processes are responsible for agreement errors, then not
+only encoding interference but also retrieval interference must be
+considered, either as an alternative or in addition: At the time of
+planning an agreement target (e.g., a verb), the encoded source for that
+target must be retrieved from memory, and this process may be susceptible
+to interference from other elements (e.g., intervening local nouns) that
+might be incorrectly retrieved instead of the correct source (Badecker \&
+Kuminiak, 2007; Badecker \& Lewis, 2007).  Detailed models of memory
+retrieval processes in subject-verb agreement production are only beginning
+to be discussed, but they have so far focused on two factors which have
+been proposed to play important roles in retrieval models of long-distance
+dependency processing in comprehension: similarity-based interference and
+recency of activation (Badecker \& Lewis; Gordon, Hendrick, Johnson, \&
+Lee, 2006; Lewis, Vasishth, \& Van Dyke, 2006).\footnote{A separate
+question for retrieval-based models is whether the retrieval process
+attempts to retrieve number information independently or instead attempts
+to retrieve the head of the subject phrase, which in turn yields number
+information; presumably the system might attempt to retrieve both, as this
+might provide an alternative approach to combining number derived (in
+Eberhard et al.'s (2005) terms) by marking and by morphing.  These
+variations make different predictions about the extent to which
+subject-verb agreement errors are correlated with head mis-selection errors
+(cases in which the predicate is about a noun other than the head of the
+subject; e.g., \ext{The baby on the blanket had tangled plaid fringe.}).
+We attempted to evaluate this correlation by looking for head mis-selection
+errors, using the continuations of all of the critical items from~12
+participants in Experiment~1 (288 sentences), but the majority of
+predicates did not unambiguously specify which noun was selected.  Of
+the~42 cases that were unambiguous, only~4 were head mis-selection errors,
+and none of them (nor any of the correct head-selection cases) was also an
+agreement error case.  These data are obviously very limited, but they
+certainly do not suggest that head mis-selection during retrieval was the
+source of the error patterns in the current experiments.} However, the
+effect of linear order in Experiment~2 (and in the flat conditions of
+Experiment~1) seems to be a problem for both of these factors:
+Similarity-based interference does not differentiate N2 and N3, as neither
+noun (or perhaps local NP) is tagged as a grammatical subject (e.g., Bock
+\& Levelt, 1994), is in a subject-head position, or is marked with
+nominative case (Badecker \& Kuminiak), and both nouns are inanimate and at
+the same structural depth (but see Badecker \& Kuminiak (p.~82) for a
+suggestion about how a retrieval model might use ``planning chunks'' as
+cues).  Recency of activation predicts that N3 should be more likely to be
+incorrectly retrieved than N2, because N3 has been more recently produced
+and thus more recently activated; but this is the reverse of the pattern in
+Experiment~2.  This indicates that memory retrieval is not sufficient on
+its own to explain errors, but it obviously could play a role in
+combination with memory encoding:  Badecker and Kuminiak argue for a
+retrieval-interference model of agreement based on an interaction between
+case-marking and gender agreement in Slovak; and Haskell and MacDonald
+(2005) show that for disjunctive subjects (e.g., \itt{the horse or the
+clocks}), in which the two nouns might be matched in subject properties,
+the verb overwhelmingly agrees with the noun that is proximal to the
+verb.\IGNORE{ This effect may be explained by the possibility that both
+nouns in a disjunction receive a subject flag, and with all else being
+equal, the noun closest to the verb provides the retreival cue for the verb
+as it was the most recently encounted and most active noun with the correct
+grammatical properties triggering agreement.} Furthermore, effects of
+phrase length (Bock \& Cutting, 1992) are more naturally explained by
+retrieval interference than by encoding interference, as local nouns in
+longer PPs cause more interference than local nouns in shorter PPs.
+
+}
+
+The same contrast between retrieval and encoding effects arises in
+agreement comprehension as well, where initial work focused on what were
+essentially encoding-based models (e.g., Nicol, Forster, \& Veres, 1997;
+Pearlmutter, 2000, Pearlmutter, Garnsey, \& Bock, 1999), while several more
+recent investigations of agreement have suggested that retrieval-based
+errors may also occur (e.g., H\"{a}ussler, 2006; Wagers, Lau, \& Phillips,
+2009).  The general comprehension model presented by Lewis, Vasishth, and
+Van Dyke (2006) incorporates both memory encoding and retrieval processes,
+and it may be that agreement production models will need to incorporate
+both encoding and retrieval interference as potential sources of agreement
+errors.
+
+But whether or not memory retrieval is needed in addition to encoding to
+explain agreement errors, this still leaves open the question of the
+mechanism of agreement computation, if there is no feature passing over
+structure.  In fact, however, a memory-based system for encoding and
+retrieving subject number may provide most of the needed machinery on its
+own, with the rest provided by properties and processes independently
+needed: In addition to encoding relevant agreement information in working
+memory when the subject is planned and retrieving it when the predicate is
+planned, an agreement system must determine the relevant information to be
+encoded, which means identifying the correct subject phrase, identifying
+the head of that phrase, and combining the relevant message-level and
+lexical number information associated with these elements.  The combination
+process is the focus of Eberhard et al.'s (2005) model, and we discussed
+above how it could operate without any need for hierarchical
+feature-passing; the mechanism for this part of the process might just be a
+weighted combination (e.g., implemented in terms of activation).  The other
+two aspects depend on the syntax and semantics to link message-level
+elements to the syntactic subject phrase (usually an NP) and to the lexical
+head for that phrase (and to link the subject phrase to its head), but they
+are not specific to agreement processes and will be needed in any
+production system that generates grammatically well-formed and discourse-
+and semantically-appropriate sentences (e.g., Bock \& Levelt, 1994; Bock et
+al., 1992), regardless of agreement.  Using them specifically for agreement
+only requires stipulating that part of the information linked to the
+subject phrase from the message, and part of the information activated in
+the lexicon for the head, is information needed for agreement (at least
+conceptual and lexical number, respectively, for English).  Similarly at
+the time of retrieval, the retrieved number information must be associated
+with the appropriate predicate phrase and then applied appropriately to the
+relevant head; but identification of the predicate and its head are also
+processes needed independently.  This is obviously barely a sketch of a
+mechanism for agreement computation, and future research will have to
+examine it in more detail; but it suggests how agreement might operate
+without any need for hierarchical feature-passing, and it takes advantage
+of the cascading, activation-based properties of the Bock and Levelt and
+Eberhard et al.\ models.
+
+\IGNORE{
+
+f-p handled 3 processes: getting num info from head to phrase (w/in phrase)
+--- provided by independent processes; moving num info between different
+phrases when appropriate (subj to VP) --- provided by WM; and preventing
+num info from moving between phrases when appropriate (mostly) --- handled 
+by weighting based on scope/activation
+
+}\IGNORE{---no hierarchical feat-passing, actually mem-encoding; but still
+might need mem retrieval too (what effects?  -- maybe length?), and also
+need conceptual (marking) aspect to handle\ldots \NOTE{length effect deals
+with this a bit (but we don't discuss length effect anywhere except below)}
+
+}\IGNORE{---more on mem-encoding?}
+
+\IGNORE{\subsection{Comprehension in Production Tasks}}
+
+One final potential limitation of these studies is that the
+fragment-completion task used to elicit errors necessarily involves a
+comprehension component, which is presumably not usually a part of the
+production process.  However, to the extent there is an issue here, it
+holds for nearly all agreement error elicitation studies to date: Almost
+every study has used a version of one of two basic methods, either
+presenting preambles first (auditorily or visually) and having speakers
+remember then recite and complete them (e.g., Bock \& Cutting, 1992; Bock
+\& Eberhard, 1993; Bock \& Miller, 1991; Eberhard, 1999; Fayol et al.,
+1994; Franck et al., 2002; Haskell \& MacDonald, 2003), or else presenting
+them (visually) and having speakers read them aloud and complete them
+(e.g., the current experiments, Bock \& Eberhard, 1993; Solomon \&
+Pearlmutter, 2004b; Vigliocco et al., 1996; Vigliocco \& Nicol, 1998).  In
+either variant, speakers must comprehend the presented preamble in order to
+use it during production.
+
+On the other hand, the comprehension aspects of these tasks seem unlikely
+to have much of an influence on the results: First, both versions of the
+task have revealed clear influences of message-level representations (e.g.,
+distributivity effects in Eberhard, 1999, and Hartsuiker, Kolk, \& Huinck,
+1999; and semantic integration effects in both Experiment~2 and Solomon \&
+Pearlmutter, 2004b), indicating that production is being at least partly
+driven by its normal source (the message).  Second, although both tasks
+require comprehension, its potential influence during production is likely
+to be greater in the read-aloud version (in which comprehension overlaps
+with production) than in the comprehend-then-repeat version; yet the result
+patterns seen with the two different tasks generally show few differences
+(e.g., Bock \& Cutting, 1992, vs.\ Solomon \& Pearlmutter's Exp.~5; Bock \&
+Eberhard, 1993; Gillespie \& Pearlmutter, 2010).
+
+Nevertheless, we cannot entirely rule out possible influences of
+comprehension, and because the scope of planning account in particular
+relies on timing of planning of elements of the subject noun phrase to
+explain agreement errors, future work will have to examine whether these
+tasks alter timing of availability and thus the extent to which different
+factors are relevant.  One possibility would be to conduct more detailed
+comparisons of the task variants that involve comprehension; an alternative
+is to develop a paradigm requiring speakers to formulate their utterances
+from the message level without any comprehension involved (see Haskell \&
+MacDonald, 2005, for one possibility).
+
+\IGNORE{ Maureen's original comprehension-task paragraph
+
+One general limitation of these studies is the task used to elicit errors.
+The task in these studies requires a comprehension component, which is not
+usually a part of the normal production process.  To the extent that this
+is an issue for this study, it is an issue in all studies of elicited
+agreement errors: Studies to date have presented preambles auditorily or
+visually prior to speakers repeating and completing them as full sentences
+(e.g., Bock \& Miller, 1991; Bock \& Cutting, 1992; Franck et al., 2002;
+Haskell \& MacDonald, 2003) or speakers read preambles off a computer
+screen and then go on to form complete sentences (e.g., Bock \& Ebehard,
+Solomon \& Pearlmutter, 2004b; Vigliocco, Butterworth, \& Garrett, 1996;
+Vigliocco \& Nicol, 1998).  The scope of planning account relies on timing
+of planning of elements of the subject noun phrase, but it is unclear
+whether the comprehension component may alter the timing of planning
+processes required for natural production.  Given that the agreement
+elicitation task has shortcomings, it is clear that speakers in our and
+Solomon and Pearlmutter's (2004b) experiments were sensitive to meaning
+differences that arise at the message level, as evidenced by semantic
+integration effects.  Thus, grammatical encoding was influenced by message
+level representations using the fragment-completion task, which suggests
+that the fragment completion task may be a suitable approximation of the
+natural production process as both draw upon message level representations
+to drive the production process.  In the future, a paradigm that requires
+speakers to formulate their utterance from the message level should be used
+to eliminate potential influences from comprehension (see Haskell \&
+MacDonald, 2005).
+}
+
+\IGNORE{\subsection{Conclusion}}
+
+Finally, the current results show that agreement studies can inform us
+about the scope and units of planning in language production.  Much of the
+research on scope of planning has focused on properties that affect
+phonological encoding by measuring effects of semantically- and
+phonologically-related distractors and syntactic complexity on speech onset
+times (Allum \& Wheeldon, 2007; Martin, Crowther, Knight, Tamborello II, \&
+Yang, in press; Martin, Miller, \& Vu, 2004; Smith \& Wheeldon, 1999, 2001;
+Wheeldon \& Lahiri, 2002).  While these findings show that phonological
+encoding is affected by properties specified at other levels, there is so
+far little direct evidence of scope of planning effects at the grammatical
+encoding level (cf.\ G\'{o}mez Gallo \& Jaeger, 2009, for some recent
+suggestive evidence; and Watson, Breen, \& Gibson, 2006, for evidence of
+grammatical effects on prosodic structure).\IGNORE{ Recent work by
+G\'{o}mez Gallo and Jaeger (2009) has shown that the complexity of upcoming
+arguments influences verb choice, and ultimately the syntactic structure of
+the utterance, suggesting that speakers do some advanced planning of
+elements within an utterance and that this planning affects the grammatical
+encoding process.  --- I dropped this sentence b/c it wasn't clear what it
+was getting us --- just the suggestion that there's advance planning isn't
+so strong, and saying the advance planning affects encoding is pretty much
+tautological.} The results of the current studies provide evidence that
+planning proceeds at least somewhat incrementally, such that elements
+(phrasal heads, at a minimum) are generally planned in the order in which
+they are to be produced, multiple elements may be overlappingly activated
+based on conceptual-level factors, and the advanced planning of elements
+can influence grammatical encoding processes such as agreement computation.
+A major advantage of this account of agreement error production is that it
+is in accord with explanations of other types of speech errors.  For
+example, exchange and other ordering errors are thought to occur when the
+interacting elements are simultaneously active, and the wrong element is
+selected for production (Garrett, 1975, 1980; Pearlmutter \& Solomon, 2007;
+see, e.g., Dell, 1986; Dell, Burger, \& Svec, 1997, for corresponding
+explanations of phoneme ordering errors).  Thus, the proposed scope of
+planning account, which relies on the degree to which elements are
+overlappingly planned, links the findings of agreement error production
+studies to the rich tradition of research examining lexical and
+phonological errors in spontaneous and experimentally elicited speech,
+suggesting that different kinds of speech errors can be linked to the same
+source.
+
+\clearpage
+
+\section[References]{\center References}
+
+\begin{description}
+
+    \item Allum, P.~H., \& Wheeldon, L.~R\@.  (2007).  Planning scope in
+    spoken sentence production: The role of grammatical units.
+    \itt{Journal of Experimental Psychology: Learning, Memory, and
+    Cognition}, \itt{33}, 791--810.
+    
+    \item Badecker, W., \& Kuminiak, F\@.  (2007).  Morphology, agreement
+    and working memory retrieval in sentence production: Evidence from
+    gender and case in Slovak.  \itt{Journal of Memory and Language},
+    \itt{56}, 65--85.
+    
+    \item Badecker, W., \& Lewis, R\@.  (2007, March).  \itt{A new theory
+    and computational model of working memory in sentence production:
+    Agreement errors as failures of cue-based retrieval}.  Paper presented
+    at the 20th Annual CUNY Conference on Human Sentence Processing, La
+    Jolla, CA.
+
+%     \item Badecker, W., \& Lewis, R\@.  (2009).  \itt{Agreement and
+%     sentence formulation: The role of working memory (retrievals) in
+%     language production}.  Unpublished manuscript, University of Arizona
+%     (Tuscon, AZ) and University of Michigan (Ann Arbor, MI).
+% 
+    \item Berent, I., Pinker, S., Tzelgov, J., Bibi, U., \& Goldfarb, L\@.
+    (2005).  Computation of semantic number from morphological information.
+    \itt{Journal of Memory and Language}, \itt{53}, 342--358.
+    
+    \item Bock, K., \& Cutting, J.~C\@.  (1992).  Regulating mental energy:
+    Performance units in language production.  \itt{Journal of Memory and
+    Language}, \itt{31}, 99--127.
+
+    \item Bock, K., \& Eberhard, K.~M\@.  (1993).  Meaning, sound and
+    syntax in English number agreement.  \itt{Language and Cognitive
+    Processes}, \itt{8}, 57--99.
+
+    \item Bock, K., Eberhard, K.~M., Cutting, J.~C., Meyer, A.~S., \&
+    Schriefers, H\@.  (2001).  Some attractions of verb agreement.
+    \itt{Cognitive Psychology}, \itt{43}, 83--128.
+
+    \item Bock, K., \& Levelt, W\@.  (1994).  Language production:
+    Grammatical encoding.  In M.~Gernsbacher (Ed.), \itt{Handbook of
+    psycholinguistics} (pp.~945--984).  San Diego, CA: Academic Press.
+    
+    \item Bock, K., Loebell, H., \& Morey, R\@.  (1992).  From conceptual 
+    roles to structural relations:  Bridging the syntactic cleft.  
+    \itt{Psychological Review}, \itt{99}, 150--171.
+
+    \item Bock, K., \& Miller, C.~A\@.  (1991).  Broken agreement.
+    \itt{Cognitive Psychology}, \itt{23}, 45--93.
+
+    \item Bock, K., Nicol, J., \& Cutting, J.~C\@.  (1999).  The ties that
+    bind: Creating number agreement in speech.  \itt{Journal of Memory and
+    Language}, \itt{40}, 330--346.
+    
+    \item Brown-Schmidt, S., \& Konopka, A., E\@.  (2008).  Little houses
+    and casas peque\~{n}as: Message formulation and syntactic form in
+    unscripted speech with speakers of English and Spanish.
+    \itt{Cognition}, \itt{109}, 274--280.
+    
+    \item Brown-Schmidt, S., \& Tanenhaus, M., K.\@.  (2006).  Watching the
+    eyes when talking about size: An investigation of message formulation
+    and utterance planning.  \itt{Journal of Memory and Language},
+    \itt{54}, 592--609.
+    
+    \item Carnie, A. (2005).  \itt{Syntax: A generative introduction}.
+    Malden, MA: Blackwell.
+    
+    \item Chanquoy, L., \& Negro, I\@.  (1996).  Subject-verb agreement
+    errors in written productions: A study of French children and adults.
+    \itt{Journal of Psycholinguistic Research}, \itt{25}, 553--570.
+   
+    \item Chomsky, N\@.  (1965).  \itt{Aspects of the theory of syntax}.
+    Cambridge, MA: MIT Press.
+   
+    \item Chomsky, N\@.  (1995).  \itt{The minimalist program}.  Cambridge,
+    MA: MIT Press.
+
+    \item Clark, H.~H\@.  (1973).  The language-as-fixed-effect fallacy: A
+    critique of language statistics in psychological research.
+    \itt{Journal of Verbal Learning and Verbal Behavior}, \itt{12},
+    335--359.
+    
+    \item Cohen, J., \& Cohen, P\@.  (1983).  \itt{Applied multiple
+    regression/correlation analysis for the behavioral sciences (2nd
+    ed.)}.  Hillsdale, NJ: Lawrence Erlbaum.
+    
+    \item Cuetos, F., \& Mitchell, D.~C\@.  (1988).  Cross-linguistic
+    differences in parsing: Restrictions on the use of the Late Closure
+    strategy in Spanish.  \itt{Cognition}, \itt{30}, 73--105.
+    
+    \item Culicover, P.~W., \& Jackendoff, R\@.  (2006).  The simpler
+    syntax hypothesis.  \itt{Trends in Cognitive Sciences}, \itt{10},
+    413--418.
+    
+    \item Dell, G.~S\@.  (1986).  A spreading activation theory of
+    retrieval in language production.  \itt{Psychological Review},
+    \itt{93}, 283--321.
+    
+    \item Dell, G.~S., Burger, L.~K., \& Svec, W.~R\@. (1997).  Language 
+    production and serial order:  A functional analysis and a model.  
+    \itt{Psychological Review}, \itt{104}, 123--147.
+    
+    \item Eberhard, K.~M\@.  (1997).  The marked effect of number on
+    subject-verb agreement.  \itt{Journal of Memory and Language},
+    \itt{36}, 147--164.
+
+    \item Eberhard, K.~M\@.  (1999).  The accessibility of conceptual
+    number to the processes of subject-verb agreement in English.
+    \itt{Journal of Memory and Language}, \itt{41}, 560--578.
+
+    \item Eberhard, K.~M., Cutting, J.~C., \& Bock, K\@.  (2005).  Making
+    syntax of sense: Number agreement in sentence production.
+    \itt{Psychological Review}, \itt{112}, 531--559.
+
+    \item Fayol, M., Largy, P., \& Lemaire, P\@.  (1994).  When cognitive
+    overload enhances subject-verb agreement errors: A study in French
+    written language.  \itt{Quarterly Journal of Experimental Psychology},
+    \itt{47A}, 437--464.
+    
+    \item Franck, J., Lassi, G., Frauenfelder, U.~H., \& Rizzi, L\@.
+    (2006).  Agreement and movement: A syntactic analysis of attraction.
+    \itt{Cognition}, \itt{101}, 173--216.
+    
+    \item Franck, J., Vigliocco, G., \& Nicol, J\@.  (2002).  Subject-verb
+    agreement errors in French and English: The role of syntactic
+    hierarchy.  \itt{Language and Cognitive Processes}, \itt{17}, 371--404.
+    
+    \item Frazier, L., \& Clifton, C., Jr.  (1996).  \itt{Construal}.
+    Cambridge, MA: MIT Press.
+    
+    \item Garrett, M.~F\@.  (1975).  The analysis of sentence production.
+    In G.~Bower (Ed.), \itt{Psychology of learning and motivation} (Vol.~9,
+    pp.~133--177).  New York: Academic Press.
+    
+    \item Garrett, M.~F\@.  (1980).  Levels of processing in sentence
+    production.  In B.~Butterworth (Ed.), \itt{Language production}
+    (Vol.~1, pp.~177--220).  London: Academic Press.
+    
+    \item Gibson, E., Pearlmutter, N.~J., Canseco-Gonzalez, E., \& Hickok,
+    G\@.  (1996).  Recency preference in the human sentence processing
+    mechanism.  \itt{Cognition}, \itt{59}, 23--59.
+    
+    \item Gillespie, M., \& Pearlmutter, N.~J\@.  (2010, March).
+    \itt{Simultaneity of planning increases interference during
+    subject-verb agreement production}.  Poster presented at the 23rd
+    Annual CUNY Conference on Human Sentence Processing, New York, NY.
+    
+    \item Goldberg, A.~E\@.  (2006).  \itt{Constructions at work: The
+    nature of generalization in language}.  Oxford: Oxford Univ.\ Press.
+    
+    \item G\'{o}mez Gallo, C., \& Jaeger, T.~F\@.  (2009, March).
+    \itt{Early verb choice and fluency as evidence for moderately
+    incremental or possibly limited parallel sentence production}.  Paper
+    presented at the 22nd Annual CUNY Conference on Human Sentence
+    Processing, Davis, CA.
+    
+    \item Gordon, P.~C., Hendrick, R., Johnson, M., \& Lee, Y\@.  (2006).
+    Similarity-based interference during language comprehension: Evidence
+    from eye tracking during reading.  \itt{Journal of Experimental
+    Psychology: Learning, Memory, and Cognition}, \itt{32}, 1304--1321.
+    
+    \item Griffin, Z.~M\@.  (2001).  Gaze durations during speech reflect
+    word selection and phonological encoding.  \itt{Cognition}, \itt{82},
+    B1--B14.
+
+    \item Hartsuiker, R.~J., Ant\'{o}n-M\'{e}ndez, I., \& van Zee, M\@.
+    (2001).  Object attraction in subject-verb agreement construction.
+    \itt{Journal of Memory and Language}, \itt{45}, 546--572.
+    
+    \item Hartsuiker, R.~J., Kolk, H.~H.~J., \& Huinck, W.~J\@.  (1999).
+    Agrammatic production of subject-verb agreement: The effect of
+    conceptual number.  \itt{Brain and Language}, \itt{69}, 119--160.
+    
+    \item Haskell, T. R\@., \& MacDonald, M. C\@.  (2003).  Conflicting
+    cues and competition in subject-verb agreement.  \itt{Journal of Memory
+    and Language}, \itt{48}, 760--778.
+    
+    \item Haskell, T. R\@., \& MacDonald, M. C\@.  (2005).  Constituent
+    structure and linear order in language production: Evidence from
+    subject-verb agreement.  \itt{Journal of Experimental Psychology:
+    Learning, Memory, and Cognition}, \itt{31}, 891--904.
+    
+    \item H\"{a}ussler, J.  (2006).  Disrupted agreement checking in 
+    sentence comprehension.  \itt{Proceedings of the Eleventh ESSLLI 
+    Student Session}, 39--50.
+    
+    \item Hemforth, B., \& Konieczny, L. (2003).  Proximity in agreement
+    errors.  \itt{Proceedings of the 25th Annual Conference of the
+    Cognitive Science Society}, 557--562.
+    
+    \item Hupet, M., Fayol, M., \& Schelstraete, M\@.  (1998).  Effects of
+    semantic variables on the subject-verb agreement processes in writing.
+    \itt{British Journal of Psychology}, \itt{89}, 59--75.
+    
+    \item Kayne, R.~S\@.  (1984).  \itt{Connectedness and binary
+    branching}.  Dordrecht: Foris.
+    
+    \item Lewis, R.~L., \& Badecker, W\@.  (2010, March).  \itt{Sentence
+    production and the declarative and procedural components of short term
+    memory}.  Paper presented at the 23rd Annual CUNY Conference on Human
+    Sentence Processing, New York, NY.
+
+    \item Lewis, R.~L., Vasishth, S., \& Van Dyke, J.~A\@.  (2006).
+    Computational principles of working memory in sentence comprehension.
+    \itt{Trends in Cognitive Sciences}, \itt{10}, 447--454.
+    
+    \item Martin, R.~C., Crowther, J.~E., Knight, M., Tamborello II, F.~P.,
+    \& Yang, C\@.  (in press).  Planning in sentence production: Evidence
+    for the phrase as a default planning scope.  \itt{Cognition}.
+
+    \item Martin, R.~C., Miller, M., \& Vu, H\@.  (2004).  Lexical-semantic
+    retention and speech production: Further evidence from normal and
+    brain-damaged participants for a phrasal scope of planning.
+    \itt{Cognitive Neuropsychology}, \itt{21}, 625--644.
+    
+    \item Negro, I., Chanquoy, L., Fayol, M., \& Louis-Sidney, M\@.
+    (2005).  Subject-verb agreement in children and adults: Serial or
+    hierarchical processing?  \itt{Journal of Psycholinguistic Research},
+    \itt{34}, 233--258.
+    
+    \item Nicol, J.~L\@.  (1995).  Effects of clausal structure on
+    subject-verb agreement errors.  \itt{Journal of Psycholinguistic
+    Research}, \itt{24}, 507--516.
+    
+    \item Nicol, J.~L., Forster, K.~I., \& Veres, C\@.  (1997).
+    Subject-verb agreement processes in comprehension.  \itt{Journal of
+    Memory and Language}, \itt{36}, 569--587.
+    
+    \item Pearlmutter, N.~J\@.  (2000).  Linear versus hierarchical
+    agreement feature processing in comprehension.  \itt{Journal of
+    Psycholinguistic Research}, \itt{29}, 89--98.
+    
+    \item Pearlmutter, N.~J., Garnsey, S.~M., \& Bock, K\@.  (1999).
+    Agreement processes in sentence comprehension.  \itt{Journal of Memory
+    and Language}, \itt{41}, 427--456.
+    
+    \item Pearlmutter, N.~J., \& Gibson, E\@.  (2001).  Recency in verb
+    phrase attachment.  \itt{Journal of Experimental Psychology: Learning,
+    Memory, and Cognition}, \itt{27}, 574--590.
+    
+    \item Pearlmutter, N.~J., \& Solomon, E.~S\@.  (2007, March).
+    \itt{Semantic integration and competition versus incrementality in
+    planning complex noun phrases}.  Paper presented at the 20th Annual
+    CUNY Conference on Human Sentence Processing, San Diego, CA.
+    
+    \item Pollard, C., \& Sag, I.~A\@.  (1994).  \itt{Head-driven phrase
+    structure grammar}.  Chicago: Univ.\ of Chicago Press.
+
+    \item Schneider, W\@.  (1988).  Micro Experimental Laboratory: An
+    integrated system for IBM PC compatibles.  \itt{Behavior Research
+    Methods, Instruments, \& Computers}, \itt{20}, 206--217.
+    
+    \item Sch\"{u}tze, C.~T., \& Gibson, E\@.  (1999).  Argumenthood and
+    English prepositional phrase attachment.  \itt{Journal of Memory and
+    Language}, \itt{40}, 409--431.
+
+    \item Smith, M., \& Wheeldon, L\@.  (1999).  High level processing
+    scope in spoken sentence production.  \itt{Cognition}, \itt{73},
+    205--246.
+
+    \item Smith, M., \& Wheeldon, L\@.  (2001).  Syntactic priming in
+    spoken sentence production: An online study.  \itt{Cognition},
+    \itt{78}, 123--164.
+
+    \item Solomon, E.~S., \& Pearlmutter, N.~J\@.  (2004a, March).
+    \itt{Semantic integration and hierarchical feature-passing in sentence
+    production}.  Poster presented at the 17th Annual CUNY Conference on
+    Human Sentence Processing, College Park, MD.
+    
+    \item Solomon, E.~S., \& Pearlmutter, N.~J\@.  (2004b).  Semantic
+    integration and syntactic planning in language production.
+    \itt{Cognitive Psychology}, \itt{49}, 1--46.
+    
+    \item Stevenson, S\@.  (1994).  \itt{A competitive attachment model for
+    resolving syntactic ambiguities in natural language processing} (Tech.\
+    Rep.\ No.\ 18).  New Brunswick, NJ: Rutgers Univ.\ Center for Cognitive
+    Science.
+    
+    \item Vigliocco, G., Butterworth, B., \& Garrett, M.~F\@.  (1996).
+    Subject-verb agreement in Spanish and English: Differences in the role
+    of conceptual constraints.  \itt{Cognition}, \itt{61}, 261--298.
+
+    \item Vigliocco, G., \& Hartsuiker, R.~J\@.  (2002).  The interplay of
+    meaning, sound, and syntax in sentence production.  \itt{Psychological
+    Bulletin}, \itt{128}, 442--472.
+    
+    \item Vigliocco, G., \& Nicol, J\@.  (1994).  \itt{The role of
+    syntactic tree structure in the construction of subject verb
+    agreement}.  Unpublished manuscript, University of Arizona, Tucson.
+
+    \item Vigliocco, G., \& Nicol, J\@.  (1998).  Separating hierarchical
+    relations and word order in language production: Is proximity concord
+    syntactic or linear?  \itt{Cognition}, \itt{68}, B13--B29.
+    
+    \item Wagers, M.~W., Lau, E.~F., \& Phillips, C\@.  (2009).  Agreement
+    attraction in comprehension: Representations and processes.
+    \itt{Journal of Memory and Language}, \itt{61}, 206--237.
+    
+    \item Watson, D., Breen, M., \& Gibson, E\@.  (2006).  The role of
+    syntactic obligatoriness in the production of intonational boundaries.
+    \itt{Journal of Experimental Psychology: Learning, Memory, and
+    Cognition}, \itt{32}, 1045--1056.
+    
+    \item Wheeldon, L.~R., \& Lahiri, A\@.  (2002).  The minimal unit of
+    phonological encoding: Prosodic or lexical word.  \itt{Cognition},
+    \itt{85}, B31--B41.
+    
+    
+\end{description}
+
+\clearpage
+
+\section[Appendix~A]{\center Appendix~A: Experiment~1 Stimuli}
+
+The purely singular versions of the Experiment~1 stimuli are shown
+below.  Items~1--12 are the descending stimuli; items~13--24 are the
+flat stimuli.  The other versions were created by making either the
+the second noun or the third noun plural (but not both).
+
+\begin{enumerate}
+
+%descending
+
+\item The bookcase with the ornate carving on the wooden shelf
+    
+\item The car with the silly sticker on the chrome bumper
+    
+\item The uniform with the silver star on the felt badge
+    
+\item The coat with the nylon tag on the folded cuff
+    
+\item The castle with the flaming torch on the stone moat
+    
+\item The magazine with the accurate illustration in the lengthy article
+    
+\item The purse with the pink button on the side pocket
+    
+\item The suit with the jagged rip in the wide lapel
+    
+\item The bracelet with the glass bead on the tiny clasp
+    
+\item The backpack with the plastic buckle on the leather strap
+    
+\item The watch with the sparkling jewel on the hour hand
+    
+\item The apartment with the full closet in the narrow hallway
+
+%flat
+    
+\item The catalog for the department store with the ripped binding
+    
+\item The fax about the bankrupt company with the torn cover sheet
+    
+\item The safe for the pricy necklace with the combination lock
+    
+\item The ball for the rowdy game with the thick stripe
+    
+\item The keyboard for the modern computer with the chipped key
+    
+\item The cucumber for the fresh salad with the brownish spot
+    
+\item The tomato for the tasty sandwich with the nasty bruise
+    
+\item The postcard of the roller coaster with the foreign stamp
+    
+\item The diagram of the giant skyscraper with the tricky graph
+    
+\item The hose for the gorgeous garden with the replaceable nozzle
+    
+\item The tunnel through the steep mountain to the gold mine
+    
+\item The highway to the western suburb with the steel guardrail
+
+\end{enumerate}
+
+\clearpage
+
+\section[Appendix~B]{\center Appendix~B: Experiment~2 Stimuli}
+
+The purely singular early-integrated versions of the Experiment~2
+stimuli are shown below.  The other versions were created by varying
+the number of the noun in each PP and by varying the order of the two
+PPs.
+
+\begin{enumerate}
+
+\item The book with the torn page by the red pen
+    
+\item The shirt with the snug sleeve under the cardboard box
+    
+\item The ring with the fake diamond near the blueberry muffin
+    
+\item The apple with the brown bruise beside the wicker basket
+    
+\item The lamp with the halogen bulb beside the antique vase
+    
+\item The drill with the titanium bit under the wool sweater 
+    
+\item The receipt with the blurry price near the dirty towel
+    
+\item The tree with the dead branch by the old building
+    
+\item The pizza with the yummy topping beside the broken toaster
+    
+\item The blanket with the soft seam behind the filing cabinet
+    
+\item The bowl with the noticeable crack under the flannel sheet
+    
+\item The bike with the bent spoke behind the rickety shed
+    
+\item The chair with the wobbly leg near the pruned shrub
+    
+\item The laptop with the loud speaker near the framed mirror
+    
+\item The staircase with the iron railing by the narrow hallway
+    
+\item The fork with the crooked prong by the fresh peach
+    
+\item The rose with the prickly thorn near the gold bracelet
+    
+\item The candle with the long wick beside the oak bookcase
+    
+\item The church with the tall steeple by the grassy park
+    
+\item The plane with the icy wing behind the massive truck
+    
+\item The skirt with the tattered hem behind the closet door
+    
+\item The printer with the ink cartridge by the ticking clock
+    
+\item The drawer with the wooden inlay under the tangled wire
+    
+\item The newspaper with the controversial headline beside the plastic bag
+    
+\item The purse with the full pocket near the remote control
+    
+\item The sign with the wooden post near the deep puddle
+    
+\item The glove with the tight finger under the gaudy necklace
+    
+\item The coat with the ripped cuff by the orange ball
+    
+\item The radio with the cracked knob beside the leather belt
+    
+\item The store with the vintage register near the crowded sidewalk
+    
+\item The train with the piercing whistle beside the peaceful lake
+    
+\item The shoe with the knotted lace behind the mossy log
+    
+\item The sink with the leaky faucet under the ceiling fan
+    
+\item The cake with the gooey filling near the electric blender
+    
+\item The boat with the nylon sail behind the granite monument
+    
+\item The oven with the hot burner beside the metal shelf
+    
+\item The plant with the yellowing leaf by the spiral notebook
+    
+\item The jacket with the faulty zipper near the sturdy desk
+    
+\item The razor with the rusty blade beside the purple brush
+    
+\item The chain with the tarnished link behind the oil tank
+
+\end{enumerate}
+
+\clearpage
+
+\section[Author Note]{\center Author Note}
+
+This research was supported by NIH Grant R01 DC05237 to the second author.
+We would like to thank Addya Bhomick, Abigail Cinamon, Adrienne Davis, Amy
+DiBattista, Jessica Eleman, Lauren Hovey, Sandra Lechner, Keith Levin,
+Alyson Pospisil, Linda Raibert, Jacqueline Reindl, Kathrin Ritter, and
+Courtney Tallarico for help in collecting data and carefully transcribing
+and coding responses.  Portions of this work were presented at the 2008
+CUNY Sentence Processing Conference (Chapel Hill, NC), the 2008 Psychonomic
+Society Conference (Chicago, IL), and the 2009 CUNY Sentence Processing
+Conference (Davis, CA)\@.
+
+\end{document}
