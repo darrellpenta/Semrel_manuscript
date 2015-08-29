@@ -1,47 +1,17 @@
-Tabe 2: Experiment 1 Critical Item Mean Relatedness Ratings
-Aug. 28, 2015 at 23:34:07
+Table 2: Experiment 1 Critical Item Mean Relatedness Ratings
+Aug. 29, 2015 at 01:37:24
 
 Error: item
           Df Sum Sq Mean Sq F value Pr(>F)
-Residuals 23  22.32  0.9705               
+Residuals 23  97.94   4.258               
 
-Error: item:integrated
-           Df Sum Sq Mean Sq F value  Pr(>F)    
-integrated  1  64.68   64.68   184.5 1.8e-12 ***
-Residuals  23   8.06    0.35                    
+Error: item:related
+          Df Sum Sq Mean Sq F value   Pr(>F)    
+related    1  488.2   488.2   199.6 7.98e-13 ***
+Residuals 23   56.3     2.4                     
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Error: Within
            Df Sum Sq Mean Sq F value Pr(>F)
-Residuals 144  255.9   1.777               
-
-Error: item
-          Df Sum Sq Mean Sq F value Pr(>F)
-Residuals 23  18.02  0.7835               
-
-Error: item:related
-          Df Sum Sq Mean Sq F value   Pr(>F)    
-related    1 105.71  105.71   155.1 1.05e-11 ***
-Residuals 23  15.68    0.68                     
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-Error: Within
-          Df Sum Sq Mean Sq F value Pr(>F)
-Residuals 48  6.589  0.1373               
-
-Error: item
-          Df Sum Sq Mean Sq F value Pr(>F)
-Residuals 23  12.37  0.5376               
-
-Error: item:related
-          Df Sum Sq Mean Sq F value   Pr(>F)    
-related    1 105.09  105.09   233.7 1.54e-13 ***
-Residuals 23  10.34    0.45                     
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-Error: Within
-          Df Sum Sq Mean Sq F value Pr(>F)
-Residuals 48  12.46  0.2597               
+Residuals 144  21.87  0.1519               

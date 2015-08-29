@@ -1,0 +1,25 @@
+{
+    "contents" : "",
+    "created" : 1440825054376.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "E1FD1467",
+    "lastKnownWriteTime" : 2315448532463657004,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "0f4gyk6t9x",
+        "caption" : "exp1.assoc",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=exp1.assoc&cache_key=0f4gyk6t9x",
+        "displayedObservations" : 2,
+        "environment" : "",
+        "object" : "exp1.assoc",
+        "totalObservations" : 2,
+        "variables" : 4
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "type" : "r_dataframe"
+}
