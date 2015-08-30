@@ -186,8 +186,8 @@ exp1.assoc <- data.frame(
   
   pval =       c(
     paste(" ", sep = ""),
-    paste( p, get_stars( p))
-  )
+    paste( p, get_stars( p)),
+    " " )
 )
 
 
@@ -569,7 +569,6 @@ exp2.related <- data.frame(
     paste(" "))
 )
 
-View(exp2.related)
 write.xlsx( exp2.related, file = "output/table09_CAT_relatedness_ratings.xlsx", col.names = TRUE, row.names = TRUE, append = FALSE)
 
 sink("output/table09_CAT_relatedness_ratings_ANOVA.txt")
@@ -679,7 +678,6 @@ exp2.related <- data.frame(
     "" 
   ))
 
-View(exp2.related)
 write.xlsx( exp2.related, file = "output/table11_PROP_relatedness_ratings.xlsx", col.names = TRUE, row.names = TRUE, append = FALSE)
 
 sink("output/table11_PROP_relatedness_ratings_ANOVA.txt")
@@ -963,7 +961,6 @@ exp2.prop.err.rates <- data.frame(
 
 
 exp2.err.rates <-  rbind(exp2.cat.err.rates, exp2.prop.err.rates)
-View(exp2.err.rates)
 
 write.xlsx(exp2.err.rates, file="output/table14_SR2_error_rates_response_counts.xlsx",  col.names = TRUE, row.names = TRUE, append = FALSE)
 
@@ -1188,7 +1185,7 @@ error.rate.ANOVA.2 <- data.frame(
 
 
 error.rate.ANOVA <- cbind(error.rate.ANOVA.1,error.rate.ANOVA.2[,c(2:3)])
-View(error.rate.ANOVA)
+
 write.xlsx(error.rate.ANOVA, file="output/table16_SR2_PROP_error_rate_anovas.xlsx", col.names = TRUE, row.names = TRUE, append = FALSE)
 
 

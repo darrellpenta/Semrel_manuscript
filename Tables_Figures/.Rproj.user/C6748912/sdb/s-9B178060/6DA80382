@@ -1,25 +1,25 @@
 {
     "contents" : "",
-    "created" : 1440974883835.000,
+    "created" : 1440978108117.000,
     "dirty" : false,
     "encoding" : "",
     "folds" : "",
     "hash" : "0",
-    "id" : "4BC66AF4",
-    "lastKnownWriteTime" : 7881137055888926067,
+    "id" : "6DA80382",
+    "lastKnownWriteTime" : 4434245376,
     "path" : null,
     "project_path" : null,
     "properties" : {
-        "cacheKey" : "00e2cr4pvq",
+        "cacheKey" : "0ztzz9m7yu",
         "caption" : "error.rate.ANOVA",
-        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=error.rate.ANOVA&cache_key=00e2cr4pvq",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=error.rate.ANOVA&cache_key=0ztzz9m7yu",
         "displayedObservations" : "3",
         "environment" : "",
         "object" : "error.rate.ANOVA",
         "totalObservations" : "3",
         "variables" : "5"
     },
-    "relative_order" : 2,
+    "relative_order" : 5,
     "source_on_save" : false,
     "type" : "r_dataframe"
 }

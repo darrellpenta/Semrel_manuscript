@@ -1,0 +1,59 @@
+Table 12: Experiment 2 Property Item Mean Inteagration Ratings ANOVA
+Aug. 30, 2015 at 19:45:14
+Attrb vs. Assoc
+Error: item
+          Df Sum Sq Mean Sq F value Pr(>F)
+Residuals 23  12.59  0.5474               
+
+Error: item:related
+          Df Sum Sq Mean Sq F value  Pr(>F)   
+related    1  5.185   5.185   11.12 0.00288 **
+Residuals 23 10.727   0.466                   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Error: Within
+          Df Sum Sq Mean Sq F value Pr(>F)
+Residuals 48  8.707  0.1814               
+
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+ 
+ Assoc. vs. Unrel 
+ 
+
+Error: item
+          Df Sum Sq Mean Sq F value Pr(>F)
+Residuals 23  21.51  0.9353               
+
+Error: item:related
+          Df Sum Sq Mean Sq F value   Pr(>F)    
+related    1  36.05   36.05   43.62 9.73e-07 ***
+Residuals 23  19.01    0.83                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Error: Within
+          Df Sum Sq Mean Sq F value Pr(>F)
+Residuals 48  11.03  0.2297               
+
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+ 
+ Attrb vs. Unrel 
+ 
+
+Error: item
+          Df Sum Sq Mean Sq F value Pr(>F)
+Residuals 23  10.69  0.4647               
+
+Error: item:related
+          Df Sum Sq Mean Sq F value   Pr(>F)    
+related    1  68.58   68.58   105.6 4.54e-10 ***
+Residuals 23  14.93    0.65                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Error: Within
+          Df Sum Sq Mean Sq F value Pr(>F)
+Residuals 48  7.552  0.1573               

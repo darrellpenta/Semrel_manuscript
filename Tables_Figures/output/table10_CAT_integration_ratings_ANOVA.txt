@@ -1,0 +1,17 @@
+Table 10: Experiment 2 Category Critical Item Mean Inteagration Ratings ANOVA
+Aug. 30, 2015 at 19:44:48
+
+Error: item
+          Df Sum Sq Mean Sq F value Pr(>F)
+Residuals 23  14.26  0.6201               
+
+Error: item:related
+          Df Sum Sq Mean Sq F value  Pr(>F)    
+related    1  5.802   5.802   16.88 0.00043 ***
+Residuals 23  7.906   0.344                    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Error: Within
+          Df Sum Sq Mean Sq F value Pr(>F)
+Residuals 48  9.776  0.2037               

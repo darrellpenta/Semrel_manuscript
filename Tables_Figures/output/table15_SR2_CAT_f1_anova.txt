@@ -1,0 +1,22 @@
+Table 15: CAT F1 2 x 2 ANOVAAug. 30, 2015 at 19:45:17
+
+Error: subj
+           Df  Sum Sq Mean Sq F value Pr(>F)
+Residuals 128 16075.3 125.588               
+
+Error: subj:related
+           Df  Sum Sq Mean Sq F value  Pr(>F)
+related     1   35.32 35.3198 0.47257 0.49305
+Residuals 128 9566.76 74.7403                
+
+Error: subj:n2num
+           Df   Sum Sq Mean Sq F value     Pr(>F)    
+n2num       1  3862.02 3862.02 31.6297 1.1183e-07 ***
+Residuals 128 15628.95  122.10                       
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Error: subj:related:n2num
+               Df  Sum Sq Mean Sq F value  Pr(>F)
+related:n2num   1    0.65  0.6514 0.00982 0.92122
+Residuals     128 8490.32 66.3306                

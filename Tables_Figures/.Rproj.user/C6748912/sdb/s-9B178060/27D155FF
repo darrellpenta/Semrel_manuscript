@@ -1,0 +1,25 @@
+{
+    "contents" : "",
+    "created" : 1440978102805.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "27D155FF",
+    "lastKnownWriteTime" : 2913113671300030976,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "o8d5bqvn4z",
+        "caption" : "exp2.err.rates",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=exp2.err.rates&cache_key=o8d5bqvn4z",
+        "displayedObservations" : "10",
+        "environment" : "",
+        "object" : "exp2.err.rates",
+        "totalObservations" : "10",
+        "variables" : "7"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "type" : "r_dataframe"
+}

@@ -1,0 +1,59 @@
+Table 13: Experiment 2 Property Item Mean Association Proportions ANOVA
+Aug. 30, 2015 at 19:45:15
+Attrb vs. Assoc
+Error: item
+          Df Sum Sq Mean Sq F value Pr(>F)
+Residuals 23  2.098 0.09122               
+
+Error: item:related
+          Df Sum Sq Mean Sq F value Pr(>F)  
+related    1 0.2709 0.27094   4.746 0.0399 *
+Residuals 23 1.3131 0.05709                 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Error: Within
+          Df Sum Sq Mean Sq F value Pr(>F)
+Residuals 48   2.93 0.06104               
+
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+ 
+ Assoc. vs. Unrel 
+ 
+
+Error: item
+          Df Sum Sq Mean Sq F value Pr(>F)
+Residuals 23 0.5128 0.02229               
+
+Error: item:related
+          Df Sum Sq Mean Sq F value    Pr(>F)    
+related    1 0.4916  0.4916   22.05 0.0000993 ***
+Residuals 23 0.5128  0.0223                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Error: Within
+          Df Sum Sq Mean Sq F value Pr(>F)
+Residuals 48  1.381 0.02877               
+
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+ 
+ Attrb vs. Unrel 
+ 
+
+Error: item
+          Df Sum Sq Mean Sq F value Pr(>F)
+Residuals 23  1.193 0.05186               
+
+Error: item:related
+          Df Sum Sq Mean Sq F value   Pr(>F)    
+related    1  1.492  1.4925   28.78 0.000019 ***
+Residuals 23  1.193  0.0519                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Error: Within
+          Df Sum Sq Mean Sq F value Pr(>F)
+Residuals 48  1.549 0.03227               
