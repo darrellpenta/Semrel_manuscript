@@ -1,12 +1,14 @@
 rm(list = ls()) 
 library(languageR) 
 library(xlsx)
+library(dplyr)
 # library(xtable)
 
 # -------------------- SEMREL: SET UP INPUT FILE(S) -----------------------------------
 d.base           <- read.csv("data/allregdata.csv")
 names(d.base)[names(d.base) == 'LengthSylHead'] <- 'LengthSyll.Head'
 names(d.base)[names(d.base) == 'LogFr.Head'] <- 'LogFreq.Head'
+
 # -------------------- SEMREL: MAIN SUBSETS  ---------
 d.sr            <- subset(d.base, exp == "SemRel")
 d.sr$back.trans <- ((sin(d.sr$AssArc.H.L/2))^2)
@@ -55,6 +57,40 @@ get_stars = function(p) {
 }
 options(scipen=1)
 
+# -------------------- TABLE 1 SEMREL: EXPERIMENTAL ITEM VERSIONS -----------------------------
+
+
+
+exp1.example = data.frame(
+  
+  Semantic.Integration = c(
+    "Integrated",
+    " ",  
+    "Unintegrated",   
+    " "      ),
+  
+  Local.Noun.Number = c(
+    "Singular",
+    "Plural" ,   
+    "Singular",
+    "Plural"    ),
+  
+  Related = c(
+    "The necklace with the colorful diamond",
+    "The necklace with the colorful diamonds",
+    "The necklace near the colorful diamond",
+    "The necklace near the colorful diamonds"
+  ),
+  
+  Unrelated = c(
+    "The necklace with the colorful feather",
+    "The necklace with the colorful feathers",
+    "The necklace near the colorful feather",
+    "The necklace near the colorful feathers"
+  ))
+
+write.xlsx(exp1.example, file="output/tables_figures_data/table1_example_stimulus.xlsx", 
+           col.names=TRUE, row.names=TRUE, append=FALSE)
 
 
 # -------------------- TABLE 2 SEMREL: RELATEDNESS -----------------------------
@@ -65,37 +101,37 @@ aov.rel <- summary(aov(RelatedHL ~ related + Error(item / related ), data = d.sr
 p <- zapsmall(aov.rel[[2]][[1]][["Pr(>F)"]][1], digits=6)
 
 exp1.related <- data.frame(
-  
-  Local.Noun.Number= c(
+   Local.Noun.Number= c(
     "Singular",
     "Plural", 
-    "Mean"               ),
+    "Mean",               
+    paste("Note: Scale was 1(unrelated) to 7(very related).") ), 
   
   Related =            c(
     paste( round( mean( relat.sing$RelatedHL), 2), " (", round( sd( relat.sing$RelatedHL), 2), ")", sep = ""),
     paste( round( mean(relat.plur$RelatedHL), 2), " (", round( sd( relat.plur$RelatedHL), 2), ")", sep = ""),
-    paste( round( mean(relat$RelatedHL), 2))
-  ),
+    paste( round( mean(relat$RelatedHL), 2)),
+    paste("SD in parens." )),
   
   Unrelated =           c(
     paste( round( mean( unrel.sing$RelatedHL), 2), " (", round( sd( unrel.sing$RelatedHL), 2), ")", sep = ""),
     paste( round( mean(unrel.plur$RelatedHL), 2), " (", round( sd( unrel.plur$RelatedHL), 2), ")", sep = ""),
-    paste( round( mean(unrel$RelatedHL), 2))
-  ),
+    paste( round( mean(unrel$RelatedHL), 2)),
+    paste(" ") ),
   
   pval =                 c(
     paste(" ", sep = ""),
     paste(" ", sep = ""),
-    paste( p,  get_stars(p))
-  )
+    paste( p,  get_stars(p)),
+    paste(" "))
 )
 
 
-write.xlsx(exp1.related, file="output/manuscript_tables/table2_relatedness_ratings.xlsx", 
+write.xlsx(exp1.related, file="output/tables_figures_data/table2_relatedness_ratings.xlsx", 
            col.names=TRUE, row.names=TRUE, append=FALSE)
 
-sink("output/manuscript_anovas/table2_relatedness_ratings.txt")
-cat("Table 2: Experiment 1 Critical Item Mean Relatedness Ratings", format(Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
+sink("output/tables_figures_data/table2_relatedness_ratings_ANOVA.txt")
+cat("Table 2: Experiment 1 Critical Item Mean Relatedness Ratings ANOVA", format(Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
 print(aov.rel)
 sink()
 
@@ -115,14 +151,15 @@ exp1.integration <- data.frame(
   
   Semantic.Integration= c(
     "Integrated",
-    "Integrated",
-    "Integrated",
+    " ",
+    " ",
     "Unintegrated",
-    "Unintegrated",
-    "Unintegrated",
-     paste( p.int.unint,  get_stars(p.int.unint))
-    
-                  ),
+    " ",
+    " ",
+     paste("Int. vs. Unint. p-val:", p.int.unint,  get_stars(p.int.unint)),
+    paste("Note: Scale was 1 (not linked) to 7 (tightly linked).")
+    ),
+                  
   
   Local.Noun.Number= c(
     "Singular",
@@ -131,10 +168,9 @@ exp1.integration <- data.frame(
     "Singular",
     "Plural", 
     "Mean",
-    paste(" ")
+    " ",
+    paste("SD in parens.")
     ),
-  
-  
   
   Related =            c(
     paste( round( mean( relat.int.sing$Integrated), 2), " (", round( sd( relat.int.sing$Integrated), 2), ")", sep = ""),
@@ -143,37 +179,40 @@ exp1.integration <- data.frame(
     paste( round( mean( relat.unint.sing$Integrated), 2), " (", round( sd( relat.unint.sing$Integrated), 2), ")", sep = ""),
     paste( round( mean(relat.unint.plur$Integrated), 2), " (", round( sd( relat.unint.plur$Integrated), 2), ")", sep = ""),
     paste( round( mean(unint.relat$Integrated), 2)),
-    paste(" ")    ),
+    " ",
+    " "
+    ),
                   
    Unrelated =            c(
      paste( round( mean( unrel.int.sing$Integrated), 2), " (", round( sd( unrel.int.sing$Integrated), 2), ")", sep = ""),
      paste( round( mean(unrel.int.plur$Integrated), 2), " (", round( sd( unrel.int.plur$Integrated), 2), ")", sep = ""),
-     paste( round( mean(unint.relat$Integrated), 2)),
+     paste( round( mean(integ.unrel$Integrated), 2)),
      paste( round( mean( unrel.unint.sing$Integrated), 2), " (", round( sd( unrel.unint.sing$Integrated), 2), ")", sep = ""),
      paste( round( mean(unrel.unint.plur$Integrated), 2), " (", round( sd( unrel.unint.plur$Integrated), 2), ")", sep = ""),
      paste( round( mean(unint.unrel$Integrated), 2)),
-     paste(" ")             ),
+     " ",
+     " "),
   
 
   pval =                 c(
-    paste(" ", sep = ""),
-    paste(" ", sep = ""),
+    " ",
+    " ",
     paste( p.int,  get_stars(p.int)),
-    paste(" ", sep = ""),
-    paste(" ", sep = ""),
+    " ",
+    " ",
     paste( p.unint,  get_stars(p.unint)),
-    paste(" ")
-
+    " ",
+    " "
   )
 )
 
 
 
-write.xlsx(exp1.integration, file="output/manuscript_tables/table3_integration_ratings.xlsx", 
+write.xlsx(exp1.integration, file="output/tables_figures_data/table3_integration_ratings.xlsx", 
            col.names=TRUE, row.names=TRUE, append=FALSE)
 
-sink("output/manuscript_anovas/table3_integration_ratings.txt")
-cat("Table 3: Experiment 1 Critical Item Mean Inteagration Ratings", format(Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
+sink("output/tables_figures_data/table3_integration_ratings_ANOVA.txt")
+cat("Table 3: Experiment 1 Critical Item Mean Inteagration Ratings ANOVA", format(Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
 print(aov.int.unint)
 print(aov.int)
 print(aov.unint)
@@ -190,50 +229,102 @@ p <- zapsmall(aov.assoc[[2]][[1]][["Pr(>F)"]][1], digits=6)
 exp1.assoc <- data.frame(
   Local.Noun.Number= c(
     "Singular",
-    "Plural"
-    ),
+    "Plural",
+    paste("Note: Back transofmred proportions of ASIN transformed proportions.")    ),
   
   Related =            c(
     paste( round( mean( relat.sing$back.trans), 2), " (", round( sd( relat.sing$back.trans), 2), ")", sep = ""),
-    paste( round( mean(relat.plur$back.trans), 2), " (", round( sd( relat.plur$back.trans), 2), ")", sep = "")
-  ),
+    paste( round( mean(relat.plur$back.trans), 2), " (", round( sd( relat.plur$back.trans), 2), ")", sep = ""),
+  paste("SD in parens.")   ),
   
   Unrelated =           c(
     paste( round( mean( unrel.sing$back.trans), 2), " (", round( sd( unrel.sing$back.trans), 2), ")", sep = ""),
-    paste( round( mean(unrel.plur$back.trans), 2), " (", round( sd( unrel.plur$back.trans), 2), ")", sep = "")
-  ),
+    paste( round( mean(unrel.plur$back.trans), 2), " (", round( sd( unrel.plur$back.trans), 2), ")", sep = ""),
+    " "  ),
   
   pval =                 c(
     paste(" ", sep = ""),
-    paste( p,  get_stars(p))
+    paste(p, get_stars(p))
   )
 )
 
 
-write.xlsx(exp1.related, file="output/manuscript_tables/table4_association_proportions.xlsx", 
+write.xlsx(exp1.related, file="output/tables_figures_data/table4_association_proportions.xlsx", 
            col.names=TRUE, row.names=TRUE, append=FALSE)
 
-sink("output/manuscript_anovas/table3_association_proportions.txt")
-cat("Table 4: Experiment 1 Critical Item Mean Head-to-Local Association Proportions", format(Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
+sink("output/tables_figures_data/table3_association_proportions_ANOVA.txt")
+cat("Table 4: Experiment 1 Critical Item Mean Head-to-Local Association Proportions ANOVA", format(Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
 print(aov.assoc)
 sink()
 
 
 # --------------------TABLE 5 SEMREL: ERROR RATES AND RESPONSE COUNTS ------------
 
+d.base           <- read.csv("data/SR1&2_coding.csv")
+d.sr            <- subset(d.base, subexpt == "SemRel")
+d.sr            <- subset(d.sr, subject != 112 & subject != 157 & subject != 158)
+d.sr$errcord <- (d.sr$errd + d.sr$corrd)
+
+d.sr$integrated <- as.factor(d.sr$integ)
+d.sr$related    <- as.factor(d.sr$related)
+d.sr$related    <- droplevels(d.sr$rel)
+d.sr$n2num      <- as.factor(d.sr$n2num)
+d.sr$item       <- as.factor(d.sr$item)
+d.sr$subject    <- as.factor(d.sr$subject)
+# -------------------- SEMREL: ADDITIONAL SUBSETTING -----------------
+integ <- subset(d.sr, integrated   ==  "integ")
+unint <- subset(d.sr, integrated   ==  "unint")
+relat <- subset(d.sr, related  ==  "rel")
+unrel <- subset(d.sr, related  ==  "unrel")
+sing  <- subset(d.sr, n2num    ==  "sing")
+plur  <- subset(d.sr, n2num    ==  "plur")
+
+#Below, additional subsetted groups
+relat.int.plur   <- subset(d.sr, related     == "rel"   & integrated == "integ" & n2num == "plur")
+relat.int.sing   <- subset(d.sr, related     == "rel"   & integrated == "integ" & n2num == "sing")
+relat.unint.plur <- subset(d.sr, related     == "rel"   & integrated == "unint" & n2num == "plur")
+relat.unint.sing <- subset(d.sr, related     == "rel"   & integrated == "unint" & n2num == "sing")
+unrel.int.plur   <- subset(d.sr, related     == "unrel" & integrated == "integ" & n2num == "plur")
+unrel.int.sing   <- subset(d.sr, related     == "unrel" & integrated == "integ" & n2num == "sing")
+unrel.unint.plur <- subset(d.sr, related     == "unrel" & integrated == "unint" & n2num == "plur")
+unrel.unint.sing <- subset(d.sr, related     == "unrel" & integrated == "unint" & n2num == "sing")
+relat.plur       <- subset(d.sr, related     == "rel"   & n2num      == "plur")
+relat.sing       <- subset(d.sr, related     == "rel"   & n2num      == "sing")
+unrel.plur       <- subset(d.sr, related     == "unrel" & n2num      == "plur")
+unrel.sing       <- subset(d.sr, related     == "unrel" & n2num      == "sing")
+integ.plur       <- subset(d.sr, integrated  == "integ" & n2num      == "plur")
+integ.sing       <- subset(d.sr, integrated  == "integ" & n2num      == "sing")
+unint.plur       <- subset(d.sr, integrated  == "unint" & n2num      == "plur")
+unint.sing       <- subset(d.sr, integrated  == "unint" & n2num      == "sing")
+integ.relat      <- subset(d.sr, integrated  == "integ" & related    == "rel")
+integ.unrel      <- subset(d.sr, integrated  == "integ" & related    == "unrel")
+unint.relat      <- subset(d.sr, integrated  == "unint" & related    == "rel")
+unint.unrel      <- subset(d.sr, integrated  == "unint" & related    == "unrel")
+
 
 exp1.err.rates <- data.frame(
   
-  Condition= c(
-    "ReLated.Integrated",
-    "ReLated.Integrated",
-    "ReLated.Unintegrated",
-    "ReLated.Unintegrated",
-    "UnreLated.Integrated",
-    "UnreLated.Integrated",
-    "UnreLated.Unintegrated",
-    "UnreLated.Unintegrated"
-  ),
+  Condition.Related= c(
+    "Related",
+    " ",
+    " ",
+    " ",
+    "Unrelated",
+    " ",
+    " ",
+    " "),
+  
+  
+  Condition.Integrated= c(
+    "Integrated",
+    "Integrated",
+    "Unintegrated",
+    "Unintegrated",
+    "Integrated",
+    "Integrated",
+    "Unintegrated",
+    "Unintegrated"),
+  
   
   Local.Noun.Number = c(
     "Plural",
@@ -243,8 +334,7 @@ exp1.err.rates <- data.frame(
     "Plural",
     "Singular",    
     "Plural",
-    "Singular"   
-  ),
+    "Singular"),
   
   Error.Rate   = c(
 100*(sum(relat.int.plur$errd)   / sum(relat.int.plur$errcord)) ,
@@ -254,22 +344,300 @@ exp1.err.rates <- data.frame(
 100*(sum(unrel.int.plur$errd)   / sum(unrel.int.plur$errcord)),
 100*(sum(unrel.int.sing$errd)   / sum(unrel.int.sing$errcord)),
 100*(sum(unrel.unint.plur$errd) / sum(unrel.unint.plur$errcord)),
-100*(sum(unrel.unint.sing$errd) / sum(unrel.unint.sing$errcord))
-  ))    
-    
-    
-  
+100*(sum(unrel.unint.sing$errd) / sum(unrel.unint.sing$errcord))),
 
-write.xlsx(exp1.related, file="output/manuscript_tables/table5_errorrates_responsecountes.xlsx", 
+Error   = c(
+  paste(sum(relat.int.plur$errd)  ,    " (", sum(relat.int.plur$errd   -  relat.int.plur$err ) , ")", sep = ""),  
+  paste(sum(relat.int.sing$errd)  ,    " (", sum(relat.int.sing$errd   -  relat.int.sing$err ) , ")", sep = ""),  
+  paste(sum(relat.unint.plur$errd),    " (", sum(relat.unint.plur$errd -  relat.unint.plur$err), ")", sep = ""),
+  paste(sum(relat.unint.sing$errd),    " (", sum(relat.unint.sing$errd -  relat.unint.sing$err), ")", sep = ""), 
+  paste(sum(unrel.int.plur$errd)  ,    " (", sum(unrel.int.plur$errd   -  unrel.int.plur$err ) , ")", sep = ""),     
+  paste(sum(unrel.int.sing$errd)  ,    " (", sum(unrel.int.sing$errd   -  unrel.int.sing$err ) , ")", sep = ""),   
+  paste(sum(unrel.unint.plur$errd),    " (", sum(unrel.unint.plur$errd -  unrel.unint.plur$err), ")", sep = ""),
+  paste(sum(unrel.unint.sing$errd),    " (", sum(unrel.unint.sing$errd -  unrel.unint.sing$err), ")", sep = "")),
+
+Correct   = c(
+  paste(sum(relat.int.plur$corrd)  ,    " (", sum(relat.int.plur$corrd   -  relat.int.plur$corr ) , ")", sep = ""),  
+  paste(sum(relat.int.sing$corrd)  ,    " (", sum(relat.int.sing$corrd   -  relat.int.sing$corr ) , ")", sep = ""),  
+  paste(sum(relat.unint.plur$corrd),    " (", sum(relat.unint.plur$corrd -  relat.unint.plur$corr), ")", sep = ""),
+  paste(sum(relat.unint.sing$corrd),    " (", sum(relat.unint.sing$corrd -  relat.unint.sing$corr), ")", sep = ""), 
+  paste(sum(unrel.int.plur$corrd)  ,    " (", sum(unrel.int.plur$corrd   -  unrel.int.plur$corr ) , ")", sep = ""),     
+  paste(sum(unrel.int.sing$corrd)  ,    " (", sum(unrel.int.sing$corrd   -  unrel.int.sing$corr ) , ")", sep = ""),   
+  paste(sum(unrel.unint.plur$corrd),    " (", sum(unrel.unint.plur$corrd -  unrel.unint.plur$corr), ")", sep = ""),
+  paste(sum(unrel.unint.sing$corrd),    " (", sum(unrel.unint.sing$corrd -  unrel.unint.sing$corr), ")", sep = "")),
+
+Uninflected   = c(
+  paste(sum(relat.int.plur$unind)  ,    " (", sum(relat.int.plur$unind   -  relat.int.plur$unin ) , ")", sep = ""),  
+  paste(sum(relat.int.sing$unind)  ,    " (", sum(relat.int.sing$unind   -  relat.int.sing$unin ) , ")", sep = ""),  
+  paste(sum(relat.unint.plur$unind),    " (", sum(relat.unint.plur$unind -  relat.unint.plur$unin), ")", sep = ""),
+  paste(sum(relat.unint.sing$unind),    " (", sum(relat.unint.sing$unind -  relat.unint.sing$unin), ")", sep = ""), 
+  paste(sum(unrel.int.plur$unind)  ,    " (", sum(unrel.int.plur$unind   -  unrel.int.plur$unin ) , ")", sep = ""),     
+  paste(sum(unrel.int.sing$unind)  ,    " (", sum(unrel.int.sing$unind   -  unrel.int.sing$unin ) , ")", sep = ""),   
+  paste(sum(unrel.unint.plur$unind),    " (", sum(unrel.unint.plur$unind -  unrel.unint.plur$unin), ")", sep = ""),
+  paste(sum(unrel.unint.sing$unind),    " (", sum(unrel.unint.sing$unind -  unrel.unint.sing$unin), ")", sep = "")),
+
+Miscellaneous   = c(
+  sum(relat.int.plur$misc)  ,   
+  sum(relat.int.sing$misc)  ,   
+  sum(relat.unint.plur$misc), 
+  sum(relat.unint.sing$misc),  
+  sum(unrel.int.plur$misc)  ,      
+  sum(unrel.int.sing$misc)  ,    
+  sum(unrel.unint.plur$misc), 
+  sum(unrel.unint.sing$misc)))    
+
+
+write.xlsx(exp1.err.rates, file="output/tables_figures_data/table5_error_rates_response_counts.xlsx", 
            col.names=TRUE, row.names=TRUE, append=FALSE)
 
 
+sink("output/tables_figures_data/table5_response_summary.txt")
+cat("Table 5: Experiment 1 Response Summaries", format(Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
+
+response.summary <- data.frame(
+Code =  c(
+  "All Critical Trials",
+  "Correclty Inflected",
+  "Agreement Errors",
+  "Uninflected Responses",
+  "Miscellaneous Cases",
+  "No Response"
+),
+  
+Total  = c(
+  length(d.sr$maincode),
+  sum(d.sr$corrd),
+  sum(d.sr$errd),
+  sum(d.sr$unind),
+  sum(d.sr$misc),
+  sum(d.sr$noresp)
+))  
+
+print(response.summary)
+View(response.summary)
+sink()
+
+
+# --------------------TABLE 6 SEMREL: ERROR RATE ANOVA RESULTS ------------
+# F1
+rm(list=ls())
+source(file = "semrel_f1_ANOVAS_read_in_dataframe.R")
+get_stars = function(p) {
+  stars = findInterval(p, c(0, 0.001, 0.01, 0.05, 0.1))
+  codes = c("***" , "**","*", ".", " ")
+  codes[stars]
+}
+options(scipen=1)
+
+a.2x2x2 <- aov(error ~ semint * related * n2num + Error(subj / (semint * related * n2num)), data = data.subj)
+sink("output/tables_figures_data/table6_f1_anova.txt")
+cat("Table 6: F1 2 x 2 x 2 ANOVA", format(Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
+print(summary(a.2x2x2), digits = 6)
+sink()
+aov.sum <- summary(a.2x2x2)
+
+
+#n2num
+f.n2n <- zapsmall(aov.sum[[4]][[1]][["F value"]][1], digits = 4)
+p.n2n <- zapsmall(aov.sum[[4]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2n <- zapsmall(aov.sum[[4]][[1]][["Mean Sq"]][2], digits = 4)
+#related
+f.rel <- zapsmall(aov.sum[[3]][[1]][["F value"]][1], digits = 4)
+p.rel <- zapsmall(aov.sum[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.rel <- zapsmall(aov.sum[[3]][[1]][["Mean Sq"]][2], digits = 4)
+#n2n X rel
+f.n2r <- zapsmall(aov.sum[[7]][[1]][["F value"]][1], digits = 4)
+p.n2r <- zapsmall(aov.sum[[7]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2r <- zapsmall(aov.sum[[7]][[1]][["Mean Sq"]][2], digits = 4)
+#semint
+f.int <- zapsmall(aov.sum[[2]][[1]][["F value"]][1], digits = 4)
+p.int <- zapsmall(aov.sum[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.int <- zapsmall(aov.sum[[2]][[1]][["Mean Sq"]][2], digits = 4)
+#n2n X int 
+f.n2i <- zapsmall(aov.sum[[6]][[1]][["F value"]][1], digits = 4)
+p.n2i <- zapsmall(aov.sum[[6]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2i <- zapsmall(aov.sum[[6]][[1]][["Mean Sq"]][2], digits = 4)
+#rel X int
+f.rXi <- zapsmall(aov.sum[[5]][[1]][["F value"]][1], digits = 4)
+p.rXi <- zapsmall(aov.sum[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.rXi <- zapsmall(aov.sum[[5]][[1]][["Mean Sq"]][2], digits = 4)
+#rel X int
+f.rXi <- zapsmall(aov.sum[[5]][[1]][["F value"]][1], digits = 4)
+p.rXi <- zapsmall(aov.sum[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.rXi <- zapsmall(aov.sum[[5]][[1]][["Mean Sq"]][2], digits = 4)
+#n2num X rel X int
+f.2ri <- zapsmall(aov.sum[[8]][[1]][["F value"]][1], digits = 4)
+p.2ri <- zapsmall(aov.sum[[8]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.2ri <- zapsmall(aov.sum[[8]][[1]][["Mean Sq"]][2], digits = 4)
 
 
 
+error.rate.ANOVA.1 <- data.frame(
+  
+Effect = c(
+  "Local Noun Number",
+  "Related",
+  "Local Noun Number X Relatedness",
+  "Integration",
+  "Local Noun Number X Integration",
+  "Relatedness X Integration",
+  "Local Noun Number X Relatedness X Integration"),
 
+F1    = c(
+  f.n2n,
+  f.rel,
+  f.n2r,
+  f.int,
+  f.n2i,
+  f.rXi,
+  f.2ri
+),
+
+MSe   =c(
+paste(m.n2n," (",get_stars(p.n2n),")", sep = ""),
+paste(m.rel," (",get_stars(p.rel),")", sep = ""),
+paste(m.n2r," (",get_stars(p.n2r),")", sep = ""),
+paste(m.int," (",get_stars(p.int),")", sep = ""),
+paste(m.n2i," (",get_stars(p.n2i),")", sep = ""),
+paste(m.rXi," (",get_stars(p.rXi),")", sep = ""),
+paste(m.2ri," (",get_stars(p.2ri),")", sep = "")
+)   
+)
+
+
+# F2
+source(file = "semrel_f2_ANOVAS_read_in_dataframe.R")
+get_stars = function(p) {
+  stars = findInterval(p, c(0, 0.001, 0.01, 0.05, 0.1))
+  codes = c("***" , "**","*", ".", " ")
+  codes[stars]
+}
+options(scipen=1)
+
+a.2x2x2 <- aov(error ~ semint * related * n2num + Error(item / (semint * related * n2num)), data = data.item)
+sink("output/tables_figures_data/table6_f2_anova.txt")
+cat("Table 6: F2 2 x 2 x 2 ANOVA", format(Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
+print(summary(a.2x2x2), digits = 6)
+sink()
+
+aov.sum <- summary(a.2x2x2)
+
+#n2num
+f.n2n <- zapsmall(aov.sum[[4]][[1]][["F value"]][1], digits = 4)
+p.n2n <- zapsmall(aov.sum[[4]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2n <- zapsmall(aov.sum[[4]][[1]][["Mean Sq"]][2], digits = 4)
+#related
+f.rel <- zapsmall(aov.sum[[3]][[1]][["F value"]][1], digits = 4)
+p.rel <- zapsmall(aov.sum[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.rel <- zapsmall(aov.sum[[3]][[1]][["Mean Sq"]][2], digits = 4)
+#n2n X rel
+f.n2r <- zapsmall(aov.sum[[7]][[1]][["F value"]][1], digits = 4)
+p.n2r <- zapsmall(aov.sum[[7]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2r <- zapsmall(aov.sum[[7]][[1]][["Mean Sq"]][2], digits = 4)
+#semint
+f.int <- zapsmall(aov.sum[[2]][[1]][["F value"]][1], digits = 4)
+p.int <- zapsmall(aov.sum[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.int <- zapsmall(aov.sum[[2]][[1]][["Mean Sq"]][2], digits = 4)
+#n2n X int 
+f.n2i <- zapsmall(aov.sum[[6]][[1]][["F value"]][1], digits = 4)
+p.n2i <- zapsmall(aov.sum[[6]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2i <- zapsmall(aov.sum[[6]][[1]][["Mean Sq"]][2], digits = 4)
+#rel X int
+f.rXi <- zapsmall(aov.sum[[5]][[1]][["F value"]][1], digits = 4)
+p.rXi <- zapsmall(aov.sum[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.rXi <- zapsmall(aov.sum[[5]][[1]][["Mean Sq"]][2], digits = 4)
+#rel X int
+f.rXi <- zapsmall(aov.sum[[5]][[1]][["F value"]][1], digits = 4)
+p.rXi <- zapsmall(aov.sum[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.rXi <- zapsmall(aov.sum[[5]][[1]][["Mean Sq"]][2], digits = 4)
+#n2num X rel X int
+f.2ri <- zapsmall(aov.sum[[8]][[1]][["F value"]][1], digits = 4)
+p.2ri <- zapsmall(aov.sum[[8]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.2ri <- zapsmall(aov.sum[[8]][[1]][["Mean Sq"]][2], digits = 4)
+
+error.rate.ANOVA.2 <- data.frame(
+  
+  Effect = c(
+    "Local Noun Number",
+    "Related",
+    "Local Noun Number X Relatedness",
+    "Integration",
+    "Local Noun Number X Integration",
+    "Relatedness X Integration",
+    "Local Noun Number X Relatedness X Integration"),
+  
+  F2    = c(
+    f.n2n,
+    f.rel,
+    f.n2r,
+    f.int,
+    f.n2i,
+    f.rXi,
+    f.2ri
+  ),
+  
+  MSe   =c(
+    paste(m.n2n," (",get_stars(p.n2n),")", sep = ""),
+    paste(m.rel," (",get_stars(p.rel),")", sep = ""),
+    paste(m.n2r," (",get_stars(p.n2r),")", sep = ""),
+    paste(m.int," (",get_stars(p.int),")", sep = ""),
+    paste(m.n2i," (",get_stars(p.n2i),")", sep = ""),
+    paste(m.rXi," (",get_stars(p.rXi),")", sep = ""),
+    paste(m.2ri," (",get_stars(p.2ri),")", sep = "")
+  )   
+)
+
+
+error.rate.ANOVA <- cbind(error.rate.ANOVA.1,error.rate.ANOVA.2[,c(2:3)])
+
+write.xlsx(error.rate.ANOVA, file="output/tables_figures_data/table6_error_rate_anovas.xlsx", 
+           col.names=TRUE, row.names=TRUE, append=FALSE)
 
 # 
+# # -------------------- SEMREL: SET UP INPUT FILE(S) -----------------------------------
+# d.base           <- read.csv("data/allregdata.csv")
+# names(d.base)[names(d.base) == 'LengthSylHead'] <- 'LengthSyll.Head'
+# names(d.base)[names(d.base) == 'LogFr.Head'] <- 'LogFreq.Head'
+# # -------------------- SEMREL: MAIN SUBSETS  ---------
+# d.sr            <- subset(d.base, exp == "SemRel")
+# d.sr$back.trans <- ((sin(d.sr$AssArc.H.L/2))^2)
+# d.sr$integrated <- as.factor(d.sr$integrated)
+# d.sr$related    <- as.factor(d.sr$related)
+# d.sr$related    <- droplevels(d.sr$rel)
+# d.sr$n2num      <- as.factor(d.sr$n2num)
+# d.sr$item       <- as.factor(d.sr$item)
+# line             = rep(c("-"), times = 40, fill = 80)
+# br               = "\n"
+# # -------------------- SEMREL: ADDITIONAL SUBSETTING -----------------
+# integ <- subset(d.sr, integrated   ==  "integ")
+# unint <- subset(d.sr, integrated   ==  "unint")
+# relat <- subset(d.sr, related  ==  "rel")
+# unrel <- subset(d.sr, related  ==  "unrel")
+# sing  <- subset(d.sr, n2num    ==  "sing")
+# plur  <- subset(d.sr, n2num    ==  "plur")
+# 
+# #Below, additional subsetted groups
+# relat.int.plur   <- subset(d.sr, related     == "rel"   & integrated == "integ" & n2num == "plur")
+# relat.int.sing   <- subset(d.sr, related     == "rel"   & integrated == "integ" & n2num == "sing")
+# relat.unint.plur <- subset(d.sr, related     == "rel"   & integrated == "unint" & n2num == "plur")
+# relat.unint.sing <- subset(d.sr, related     == "rel"   & integrated == "unint" & n2num == "sing")
+# unrel.int.plur   <- subset(d.sr, related     == "unrel" & integrated == "integ" & n2num == "plur")
+# unrel.int.sing   <- subset(d.sr, related     == "unrel" & integrated == "integ" & n2num == "sing")
+# unrel.unint.plur <- subset(d.sr, related     == "unrel" & integrated == "unint" & n2num == "plur")
+# unrel.unint.sing <- subset(d.sr, related     == "unrel" & integrated == "unint" & n2num == "sing")
+# relat.plur       <- subset(d.sr, related     == "rel"   & n2num      == "plur")
+# relat.sing       <- subset(d.sr, related     == "rel"   & n2num      == "sing")
+# unrel.plur       <- subset(d.sr, related     == "unrel" & n2num      == "plur")
+# unrel.sing       <- subset(d.sr, related     == "unrel" & n2num      == "sing")
+# integ.plur       <- subset(d.sr, integrated  == "integ" & n2num      == "plur")
+# integ.sing       <- subset(d.sr, integrated  == "integ" & n2num      == "sing")
+# unint.plur       <- subset(d.sr, integrated  == "unint" & n2num      == "plur")
+# unint.sing       <- subset(d.sr, integrated  == "unint" & n2num      == "sing")
+# integ.relat      <- subset(d.sr, integrated  == "integ" & related    == "rel")
+# integ.unrel      <- subset(d.sr, integrated  == "integ" & related    == "unrel")
+# unint.relat      <- subset(d.sr, integrated  == "unint" & related    == "rel")
+# unint.unrel      <- subset(d.sr, integrated  == "unint" & related    == "unrel")
+
 # # -------------------- SEMREL: SET UP OUTPUT FILE
 # sink("output/norming/SEMREL norming.txt")
 # cat("SEMREL NORMING ", format(Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
