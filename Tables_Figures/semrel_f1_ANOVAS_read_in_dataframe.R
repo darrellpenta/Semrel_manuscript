@@ -1,5 +1,3 @@
-rm(list = ls()) # clears environment
-library(languageR) # calls languageR library
 
 #
 # -----------------------------------PREPARE DATA FILE FOR ANALYSES---------------------------------

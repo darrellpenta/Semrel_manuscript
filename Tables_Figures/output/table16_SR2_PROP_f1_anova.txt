@@ -1,0 +1,26 @@
+Table 16: PROP F1 2 x 2 ANOVAAug. 30, 2015 at 19:16:41
+
+Error: subj
+           Df  Sum Sq Mean Sq F value Pr(>F)
+Residuals 128 26989.8 210.858               
+
+Error: subj:related
+           Df   Sum Sq Mean Sq F value     Pr(>F)    
+related     2  1415.98 707.992 7.40879 0.00074487 ***
+Residuals 256 24463.64  95.561                       
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Error: subj:n2num
+           Df   Sum Sq Mean Sq F value     Pr(>F)    
+n2num       1  5879.99 5879.99 31.8457 1.0229e-07 ***
+Residuals 128 23633.90  184.64                       
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Error: subj:related:n2num
+               Df   Sum Sq Mean Sq F value    Pr(>F)   
+related:n2num   2  1427.83 713.914 6.24473 0.0022492 **
+Residuals     256 29266.62 114.323                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
