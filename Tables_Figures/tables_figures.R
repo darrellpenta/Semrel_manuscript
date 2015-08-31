@@ -2,6 +2,7 @@ source( file = "clear_and_setup.R")
 
 # -------------------- TABLE 01 SEMREL: EXPERIMENTAL ITEM VERSIONS -----------------------------
 
+
 exp1.example = data.frame(
   
   Semantic.Integration = c(

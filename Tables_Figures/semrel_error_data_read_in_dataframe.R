@@ -1,7 +1,16 @@
 
 d.base           <- read.csv("data/SR1&2_coding.csv")
 d.sr            <- subset(d.base, subexpt == "SemRel")
-d.sr            <- subset(d.sr, subject != 112 & subject != 157 & subject != 158)
+d.sr            <- subset(d.sr, subject != 50)
+d.sr            <- subset(d.sr, subject != 112)
+d.sr            <- subset(d.sr, subject != 121)
+d.sr            <- subset(d.sr, subject != 138)
+d.sr            <- subset(d.sr, subject != 157)
+d.sr            <- subset(d.sr, subject != 158)
+d.sr            <- subset(d.sr, subject != 191)
+d.sr            <- subset(d.sr, subject != 192)
+d.sr            <- subset(d.sr, subject != 219)
+
 d.sr$errcord <- (d.sr$errd + d.sr$corrd)
 
 d.sr$integrated <- as.factor(d.sr$integ)

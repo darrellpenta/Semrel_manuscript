@@ -10,96 +10,132 @@ d$item <- as.factor(d$item)
 d$pct <- ifelse(d$errd == 0 & d$errcord == 0, 0, (d$errd / (d$errcord)) * 100)
 data.item <- aggregate(d$pct, list(d$item, d$related, d$n2num ), mean)
 colnames(data.item) <- c("item", "related", "n2num", "error")
-relat       <- subset(data.item, related == "rel")
-assoc       <- subset(data.item, related == "assoc")
-unrel       <- subset(data.item, related == "unrel")
-sing        <- subset(data.item, n2num   == "sing")
-plur        <- subset(data.item, n2num   == "plur")
-relat.plur  <- subset(data.item, related == "rel"   & n2num   == "plur")
-relat.sing  <- subset(data.item, related == "rel"   & n2num   == "sing")
-assoc.plur  <- subset(data.item, related == "assoc" & n2num   == "plur")
-assoc.sing  <- subset(data.item, related == "assoc" & n2num   == "sing")
-unrel.plur  <- subset(data.item, related == "unrel" & n2num   == "plur")
-unrel.sing  <- subset(data.item, related == "unrel" & n2num   == "sing")
+relat            <- subset(data.item, related == "rel")
+assoc            <- subset(data.item, related == "assoc")
+unrel            <- subset(data.item, related == "unrel")
+sing             <- subset(data.item, n2num   == "sing")
+plur             <- subset(data.item, n2num   == "plur")
+relat.plur       <- subset(data.item, related == "rel"   & n2num   == "plur")
+relat.sing       <- subset(data.item, related == "rel"   & n2num   == "sing")
+assoc.plur       <- subset(data.item, related == "assoc" & n2num   == "plur")
+assoc.sing       <- subset(data.item, related == "assoc" & n2num   == "sing")
+unrel.plur       <- subset(data.item, related == "unrel" & n2num   == "plur")
+unrel.sing       <- subset(data.item, related == "unrel" & n2num   == "sing")
+relat.assoc      <- subset(data.item, related     != "unrel")
+relat.assoc.plur <- subset(data.item, related     != "unrel" & n2num == "plur")
+relat.assoc.sing <- subset(data.item, related     != "unrel" & n2num == "sing")
+relat.unrel      <- subset(data.item, related     != "assoc")
+relat.unrel.plur <- subset(data.item, related     != "assoc" & n2num == "plur")
+relat.unrel.sing <- subset(data.item, related     != "assoc" & n2num == "sing")
+assoc.unrel      <- subset(data.item, related     != "rel")
+assoc.unrel.plur <- subset(data.item, related     != "rel" & n2num == "plur")
+assoc.unrel.sing <- subset(data.item, related     != "rel" & n2num == "sing")
+relat.plur       <- subset(data.item, related     == "rel"   & n2num   == "plur")
+relat.sing       <- subset(data.item, related     == "rel"   & n2num   == "sing")
+assoc.plur       <- subset(data.item, related     == "assoc" & n2num   == "plur")
+assoc.sing       <- subset(data.item, related     == "assoc" & n2num   == "sing")
+unrel.plur       <- subset(data.item, related     == "unrel" & n2num   == "plur")
+unrel.sing       <- subset(data.item, related     == "unrel" & n2num   == "sing")
+# ------------------------- ARCSINE TRANSFORMED ERRORS WITH DYSFLUENCIES ----------------
 
 
-ds <- data.frame(data = c(
-  "gmean",
-  "assoc",
-  "relat",
-  "unrel",
-  "plur",
-  "sing",
-  "assocplur",
-  "assocsing",
-  "relplur",
-  "relsing",
-  "unrelplur",
-  "unrelsing"),
-  
-  n = c(length( data.item$error),
-        length( assoc$error),
-        length( relat$error),
-        length( unrel$error),
-        length( plur$error),
-        length( sing$error),
-        length( assoc.plur$error),
-        length( assoc.sing$error),
-        length( relat.plur$error),
-        length( relat.sing$error),
-        length( unrel.plur$error),
-        length( unrel.sing$error)),
-  
-  N = c(length( data.item$error),
-        length( assoc$error),
-        length( relat$error),
-        length( unrel$error),
-        length( plur$error),
-        length( sing$error),
-        length( assoc.plur$error),
-        length( assoc.sing$error),
-        length( relat.plur$error),
-        length( relat.sing$error),
-        length( unrel.plur$error),
-        length( unrel.sing$error)),
-  
-  mean = c(mean( data.item$error),
-           mean( assoc$error),
-           mean( relat$error),
-           mean( unrel$error),
-           mean( plur$error),
-           mean( sing$error),
-           mean( assoc.plur$error),
-           mean( assoc.sing$error),
-           mean( relat.plur$error),
-           mean( relat.sing$error),
-           mean( unrel.plur$error),
-           mean( unrel.sing$error)),
-  
-  sd = c(sd( data.item$error),
-         sd( assoc$error),
-         sd( relat$error),
-         sd( unrel$error),
-         sd( plur$error),
-         sd( sing$error),
-         sd( assoc.plur$error),
-         sd( assoc.sing$error),
-         sd( relat.plur$error),
-         sd( relat.sing$error),
-         sd( unrel.plur$error),
-         sd( unrel.sing$error)),
-  
-  se = c(sd( data.item$error)  / sqrt( length( data.item$error)),
-         sd( assoc$error)      / sqrt( length( assoc$error)),
-         sd( relat$error)      / sqrt( length( relat$error)),
-         sd( unrel$error)      / sqrt( length( unrel$error)),
-         sd( plur$error)       / sqrt( length( plur$error)),
-         sd( sing$error)       / sqrt( length( sing$error)),
-         sd( assoc.plur$error) / sqrt( length( assoc.plur$error)),
-         sd( assoc.sing$error) / sqrt( length( assoc.sing$error)),
-         sd( relat.plur$error) / sqrt( length( relat.plur$error)),
-         sd( relat.sing$error) / sqrt( length( relat.sing$error)),
-         sd( unrel.plur$error) / sqrt( length( unrel.plur$error)),
-         sd( unrel.sing$error) / sqrt( length( unrel.sing$error))
-  ))
+arc <- f2errout
+arc$item <- as.factor(arc$item) 
+arc$pct <- ifelse(arc$errd == 0 & arc$errcord == 0, 0, (arc$errd / (arc$errcord)) * 100)
+arc$arcs <- 2*asin(sqrt(arc$pct/100))
+arc.data.item <- aggregate(arc$arcs, list(arc$item, arc$related, arc$n2num ), mean)
+colnames(arc.data.item) <- c("item", "related", "n2num", "arcerr") 
+arc.relat            <- subset(arc.data.item, related == "rel")
+arc.assoc            <- subset(arc.data.item, related == "assoc")
+arc.unrel            <- subset(arc.data.item, related == "unrel")
+arc.sing             <- subset(arc.data.item, n2num   == "sing")
+arc.plur             <- subset(arc.data.item, n2num   == "plur")
+arc.relat.plur       <- subset(arc.data.item, related == "rel"   & n2num   == "plur")
+arc.relat.sing       <- subset(arc.data.item, related == "rel"   & n2num   == "sing")
+arc.assoc.plur       <- subset(arc.data.item, related == "assoc" & n2num   == "plur")
+arc.assoc.sing       <- subset(arc.data.item, related == "assoc" & n2num   == "sing")
+arc.unrel.plur       <- subset(arc.data.item, related == "unrel" & n2num   == "plur")
+arc.unrel.sing       <- subset(arc.data.item, related == "unrel" & n2num   == "sing")
+arc.relat.assoc      <- subset(arc.data.item, related     != "unrel")
+arc.relat.assoc.plur <- subset(arc.data.item, related     != "unrel" & n2num == "plur")
+arc.relat.assoc.sing <- subset(arc.data.item, related     != "unrel" & n2num == "sing")
+arc.relat.unrel      <- subset(arc.data.item, related     != "assoc")
+arc.relat.unrel.plur <- subset(arc.data.item, related     != "assoc" & n2num == "plur")
+arc.relat.unrel.sing <- subset(arc.data.item, related     != "assoc" & n2num == "sing")
+arc.assoc.unrel      <- subset(arc.data.item, related     != "rel")
+arc.assoc.unrel.plur <- subset(arc.data.item, related     != "rel" & n2num == "plur")
+arc.assoc.unrel.sing <- subset(arc.data.item, related     != "rel" & n2num == "sing")
+arc.relat.plur       <- subset(arc.data.item, related     == "rel"   & n2num   == "plur")
+arc.relat.sing       <- subset(arc.data.item, related     == "rel"   & n2num   == "sing")
+arc.assoc.plur       <- subset(arc.data.item, related     == "assoc" & n2num   == "plur")
+arc.assoc.sing       <- subset(arc.data.item, related     == "assoc" & n2num   == "sing")
+arc.unrel.plur       <- subset(arc.data.item, related     == "unrel" & n2num   == "plur")
+arc.unrel.sing       <- subset(arc.data.item, related     == "unrel" & n2num   == "sing")
 
+# ------------------------- ERRORS WITH NO DYSFLUENCIES ----------------
+
+nodys <- f2errout 
+nodys$item <- as.factor(nodys$item) 
+nodys$pct <- ifelse(nodys$errwod == 0 & nodys$errcornd == 0, 0, (nodys$errwod / (nodys$errcornd)) * 100)
+
+nodys.data.item <- aggregate(nodys$pct, list(nodys$item,  nodys$related, nodys$n2num ), mean)
+colnames(nodys.data.item) <- c("item",  "related", "n2num", "nodys") 
+nodys.relat            <- subset(nodys.data.item, related == "rel")
+nodys.assoc            <- subset(nodys.data.item, related == "assoc")
+nodys.unrel            <- subset(nodys.data.item, related == "unrel")
+nodys.sing             <- subset(nodys.data.item, n2num   == "sing")
+nodys.plur             <- subset(nodys.data.item, n2num   == "plur")
+nodys.relat.plur       <- subset(nodys.data.item, related == "rel"   & n2num   == "plur")
+nodys.relat.sing       <- subset(nodys.data.item, related == "rel"   & n2num   == "sing")
+nodys.assoc.plur       <- subset(nodys.data.item, related == "assoc" & n2num   == "plur")
+nodys.assoc.sing       <- subset(nodys.data.item, related == "assoc" & n2num   == "sing")
+nodys.unrel.plur       <- subset(nodys.data.item, related == "unrel" & n2num   == "plur")
+nodys.unrel.sing       <- subset(nodys.data.item, related == "unrel" & n2num   == "sing")
+nodys.relat.assoc      <- subset(nodys.data.item, related     != "unrel")
+nodys.relat.assoc.plur <- subset(nodys.data.item, related     != "unrel" & n2num == "plur")
+nodys.relat.assoc.sing <- subset(nodys.data.item, related     != "unrel" & n2num == "sing")
+nodys.relat.unrel      <- subset(nodys.data.item, related     != "assoc")
+nodys.relat.unrel.plur <- subset(nodys.data.item, related     != "assoc" & n2num == "plur")
+nodys.relat.unrel.sing <- subset(nodys.data.item, related     != "assoc" & n2num == "sing")
+nodys.assoc.unrel      <- subset(nodys.data.item, related     != "rel")
+nodys.assoc.unrel.plur <- subset(nodys.data.item, related     != "rel" & n2num == "plur")
+nodys.assoc.unrel.sing <- subset(nodys.data.item, related     != "rel" & n2num == "sing")
+nodys.relat.plur       <- subset(nodys.data.item, related     == "rel"   & n2num   == "plur")
+nodys.relat.sing       <- subset(nodys.data.item, related     == "rel"   & n2num   == "sing")
+nodys.assoc.plur       <- subset(nodys.data.item, related     == "assoc" & n2num   == "plur")
+nodys.assoc.sing       <- subset(nodys.data.item, related     == "assoc" & n2num   == "sing")
+nodys.unrel.plur       <- subset(nodys.data.item, related     == "unrel" & n2num   == "plur")
+nodys.unrel.sing       <- subset(nodys.data.item, related     == "unrel" & n2num   == "sing")
+# ------------------------  ERRORS COUNTS ----------------
+
+
+cnt <- f2errout 
+cnt$item <- as.factor(cnt$item) 
+cnt.data.item <- aggregate(cnt$errd, list(cnt$item, cnt$related, cnt$n2num ), sum)
+colnames(cnt.data.item) <- c("item", "related", "n2num", "count") 
+cnt.relat            <- subset(cnt.data.item, related == "rel")
+cnt.assoc            <- subset(cnt.data.item, related == "assoc")
+cnt.unrel            <- subset(cnt.data.item, related == "unrel")
+cnt.sing             <- subset(cnt.data.item, n2num   == "sing")
+cnt.plur             <- subset(cnt.data.item, n2num   == "plur")
+cnt.relat.plur       <- subset(cnt.data.item, related == "rel"   & n2num   == "plur")
+cnt.relat.sing       <- subset(cnt.data.item, related == "rel"   & n2num   == "sing")
+cnt.assoc.plur       <- subset(cnt.data.item, related == "assoc" & n2num   == "plur")
+cnt.assoc.sing       <- subset(cnt.data.item, related == "assoc" & n2num   == "sing")
+cnt.unrel.plur       <- subset(cnt.data.item, related == "unrel" & n2num   == "plur")
+cnt.unrel.sing       <- subset(cnt.data.item, related == "unrel" & n2num   == "sing")
+cnt.relat.assoc      <- subset(cnt.data.item, related     != "unrel")
+cnt.relat.assoc.plur <- subset(cnt.data.item, related     != "unrel" & n2num == "plur")
+cnt.relat.assoc.sing <- subset(cnt.data.item, related     != "unrel" & n2num == "sing")
+cnt.relat.unrel      <- subset(cnt.data.item, related     != "assoc")
+cnt.relat.unrel.plur <- subset(cnt.data.item, related     != "assoc" & n2num == "plur")
+cnt.relat.unrel.sing <- subset(cnt.data.item, related     != "assoc" & n2num == "sing")
+cnt.assoc.unrel      <- subset(cnt.data.item, related     != "rel")
+cnt.assoc.unrel.plur <- subset(cnt.data.item, related     != "rel" & n2num == "plur")
+cnt.assoc.unrel.sing <- subset(cnt.data.item, related     != "rel" & n2num == "sing")
+cnt.relat.plur       <- subset(cnt.data.item, related     == "rel"   & n2num   == "plur")
+cnt.relat.sing       <- subset(cnt.data.item, related     == "rel"   & n2num   == "sing")
+cnt.assoc.plur       <- subset(cnt.data.item, related     == "assoc" & n2num   == "plur")
+cnt.assoc.sing       <- subset(cnt.data.item, related     == "assoc" & n2num   == "sing")
+cnt.unrel.plur       <- subset(cnt.data.item, related     == "unrel" & n2num   == "plur")
+cnt.unrel.sing       <- subset(cnt.data.item, related     == "unrel" & n2num   == "sing")

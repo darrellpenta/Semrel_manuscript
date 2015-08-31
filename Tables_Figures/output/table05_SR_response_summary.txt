@@ -1,8 +1,8 @@
-Table 05: Experiment 1 Response SummariesAug. 30, 2015 at 19:44:10
+Table 05: Experiment 1 Response SummariesAug. 30, 2015 at 20:31:14
                    Code Total
-1   All Critical Trials  5712
-2   Correclty Inflected  2804
+1   All Critical Trials  5640
+2   Correclty Inflected  2801
 3      Agreement Errors   109
 4 Uninflected Responses  1241
-5   Miscellaneous Cases  1483
-6           No Response    75
+5   Miscellaneous Cases  1462
+6           No Response    27

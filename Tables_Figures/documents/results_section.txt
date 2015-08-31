@@ -1,0 +1,40 @@
+[1] "SEMREL RESULTS"
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+[1] "Accross all 5640 trials, there were 2801 correctly inflected respones, 109 agreement errors, 1241 uninflected responses, 1462 miscellaneous cases, and 27 trials with no response."
+
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+[1] "Participants produced more agreement errors in the plural local noun conditions than in the singular local noun conditions. Aditionally, more agreement errors were made for realted preambles versus unrelated preambles. Crucially, there w
+Error: subj
+           Df Sum Sq Mean Sq F value Pr(>F)
+Residuals 128  17604   137.5               
+
+Error: subj:n2num
+           Df Sum Sq Mean Sq F value   Pr(>F)    
+n2num       1   1945  1944.7   14.14 0.000257 ***
+Residuals 128  17604   137.5                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+nteraciton between integration and any other factor."
+
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+[1] "ARCSIN TRANSFORMED PROPORTIONS: RELATED (F1(1,23)=21.404, MSe=12.65,p<.001; F2(1,23)=83.5, MSe=0.04077,p<.001; UNRELATED(F1(1,234)=26.254, MSe=0.15826,p<.001; F2(1,23)=35.89, MSe=0.03989,p<.001."
+
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+[1] "ERRORS NO DYSFLUENCIES: RELATED (F1(1,23)=35.89, MSe=0.03989,p<.001; F2(1,23)=26.432, MSe=31.91,p<.001; UNRELATED(F1(1,234)=18.882, MSe=148.16,p<.001; F2(1,234)=18.882, MSe=148.16,p<.001."
+
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+[1] "ERRORS COUNTS: RELATED (F1(1,234)=18.882, MSe=148.16,p<.001; F2(1,23)=18.708, MSe=4.999,p<.001; UNRELATED(F1(1,234)=27.761, MSe=0.09933,p<.001; F2(1,23)=20.032, MSe=1.3478,p<.001."
+
+ 
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+[1] "SEMREL 2 RESULTS"
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+[1] "Accross all 6192 trials, there were 3826 correctly inflected respones, 124 agreement errors, 947 uninflected responses, 1278 miscellaneous cases, and 17 trials with no response."
+
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 

@@ -1,5 +1,5 @@
 # ------------------------- ERRORS WITH DYSFLUENCIES ----------------
-f1errout <- read.table("data/SR_F1_errordata.txt", header = T)
+f1errout <- read.table("data/SR_F1_errrel.txt", header = T)
 d <- f1errout 
 d$subj <- as.factor(d$subj) 
 d$pct <- ifelse(d$errd == 0 & d$errcord == 0, 0, (d$errd / (d$errcord)) * 100)

@@ -2,7 +2,11 @@ d.base           <- read.csv("data/SR1&2_coding.csv")
 
 # ---------------------- PROP: SUBSETS  ---------
 d.prop            <- subset(d.base, subexpt == "Prop")
-d.prop            <- subset(d.prop,  subject != 1031 & subject != 1123)
+d.prop            <- subset(d.prop,  subject != 1031)
+d.prop            <- subset(d.prop,  subject != 1045)
+d.prop            <- subset(d.prop,  subject != 1079)
+d.prop            <- subset(d.prop,  subject != 1120)
+d.prop            <- subset(d.prop,  subject != 1123)
 d.prop$errcord    <- (d.prop$errd + d.prop$corrd)
 d.prop$related    <- as.factor(d.prop$related)
 d.prop$related    <- droplevels(d.prop$rel)

@@ -1,0 +1,25 @@
+{
+    "contents" : "",
+    "created" : 1440995652014.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "7D9DC138",
+    "lastKnownWriteTime" : 5058146513522881024,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "eroluj43bp",
+        "caption" : "data.subj",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=data.subj&cache_key=eroluj43bp",
+        "displayedObservations" : 774,
+        "environment" : "",
+        "object" : "data.subj",
+        "totalObservations" : 774,
+        "variables" : 4
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "type" : "r_dataframe"
+}

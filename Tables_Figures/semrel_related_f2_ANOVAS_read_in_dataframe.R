@@ -1,5 +1,5 @@
 # ------------------------- ERRORS WITH DYSFLUENCIES ----------------
-f2errout <- read.table("data/SR_F2_errordata.txt", header = T)
+f2errout <- read.table("data/SR_F2_errrel.txt", header = T)
 d <- f2errout 
 d$item <- as.factor(d$item) 
 d$pct <- ifelse(d$errd == 0 & d$errcord == 0, 0, (d$errd / (d$errcord)) * 100)
@@ -33,43 +33,44 @@ unint.relat      <- subset(data.item, semint  == "unint" & related == "rel")
 unint.unrel      <- subset(data.item, semint  == "unint" & related == "unrel")
 # ------------------------- ARCSINE TRANSFORMED ERRORS WITH DYSFLUENCIES ----------------
 
-darc <- f1errout 
-darc$item <- as.factor(darc$item) 
+arc <- f2errout 
+arc$item <- as.factor(arc$item) 
 arc$pct <- ifelse(arc$errd == 0 & arc$errcord == 0, 0, (arc$errd / (arc$errcord)) * 100)
 arc$arcs <- 2*asin(sqrt(arc$pct/100))
-arc.data.item <- aggregate(arc$arcs, list(darc$item, arc$semint, arc$related, arc$n2num ), mean)
+arc.data.item <- aggregate(arc$arcs, list(arc$item, arc$semint, arc$related, arc$n2num ), mean)
 colnames(arc.data.item) <- c("item", "semint", "related", "n2num", "arcerr") 
-arc.integ <- subset(darc.data.item, semint   ==  "integ")
-arc.unint <- subset(darc.data.item, semint   ==  "unint")
-arc.relat <- subset(darc.data.item, related  ==  "rel")
-arc.unrel <- subset(darc.data.item, related  ==  "unrel")
-arc.sing  <- subset(darc.data.item, n2num    ==  "sing")
-arc.plur  <- subset(darc.data.item, n2num    ==  "plur")
-arc.relat.int.plur   <- subset(darc.data.item, related == "rel"   & semint  == "integ" & n2num == "plur")
-arc.relat.int.sing   <- subset(darc.data.item, related == "rel"   & semint  == "integ" & n2num == "sing")
-arc.relat.unint.plur <- subset(darc.data.item, related == "rel"   & semint  == "unint" & n2num == "plur")
-arc.relat.unint.sing <- subset(darc.data.item, related == "rel"   & semint  == "unint" & n2num == "sing")
-arc.unrel.int.plur   <- subset(darc.data.item, related == "unrel" & semint  == "integ" & n2num == "plur")
-arc.unrel.int.sing   <- subset(darc.data.item, related == "unrel" & semint  == "integ" & n2num == "sing")
-arc.unrel.unint.plur <- subset(darc.data.item, related == "unrel" & semint  == "unint" & n2num == "plur")
-arc.unrel.unint.sing <- subset(darc.data.item, related == "unrel" & semint  == "unint" & n2num == "sing")
-arc.relat.plur       <- subset(darc.data.item, related == "rel"   & n2num   == "plur")
-arc.relat.sing       <- subset(darc.data.item, related == "rel"   & n2num   == "sing")
-arc.unrel.plur       <- subset(darc.data.item, related == "unrel" & n2num   == "plur")
-arc.unrel.sing       <- subset(darc.data.item, related == "unrel" & n2num   == "sing")
-arc.integ.plur       <- subset(darc.data.item, semint  == "integ" & n2num   == "plur")
-arc.integ.sing       <- subset(darc.data.item, semint  == "integ" & n2num   == "sing")
-arc.unint.plur       <- subset(darc.data.item, semint  == "unint" & n2num   == "plur")
-arc.unint.sing       <- subset(darc.data.item, semint  == "unint" & n2num   == "sing")
-arc.integ.relat      <- subset(darc.data.item, semint  == "integ" & related == "rel")
-arc.integ.unrel      <- subset(darc.data.item, semint  == "integ" & related == "unrel")
-arc.unint.relat      <- subset(darc.data.item, semint  == "unint" & related == "rel")
-arc.unint.unrel      <- subset(darc.data.item, semint  == "unint" & related == "unrel")
+arc.integ <- subset(arc.data.item, semint   ==  "integ")
+arc.unint <- subset(arc.data.item, semint   ==  "unint")
+arc.relat <- subset(arc.data.item, related  ==  "rel")
+arc.unrel <- subset(arc.data.item, related  ==  "unrel")
+arc.sing  <- subset(arc.data.item, n2num    ==  "sing")
+arc.plur  <- subset(arc.data.item, n2num    ==  "plur")
+arc.relat.int.plur   <- subset(arc.data.item, related == "rel"   & semint  == "integ" & n2num == "plur")
+arc.relat.int.sing   <- subset(arc.data.item, related == "rel"   & semint  == "integ" & n2num == "sing")
+arc.relat.unint.plur <- subset(arc.data.item, related == "rel"   & semint  == "unint" & n2num == "plur")
+arc.relat.unint.sing <- subset(arc.data.item, related == "rel"   & semint  == "unint" & n2num == "sing")
+arc.unrel.int.plur   <- subset(arc.data.item, related == "unrel" & semint  == "integ" & n2num == "plur")
+arc.unrel.int.sing   <- subset(arc.data.item, related == "unrel" & semint  == "integ" & n2num == "sing")
+arc.unrel.unint.plur <- subset(arc.data.item, related == "unrel" & semint  == "unint" & n2num == "plur")
+arc.unrel.unint.sing <- subset(arc.data.item, related == "unrel" & semint  == "unint" & n2num == "sing")
+arc.relat.plur       <- subset(arc.data.item, related == "rel"   & n2num   == "plur")
+arc.relat.sing       <- subset(arc.data.item, related == "rel"   & n2num   == "sing")
+arc.unrel.plur       <- subset(arc.data.item, related == "unrel" & n2num   == "plur")
+arc.unrel.sing       <- subset(arc.data.item, related == "unrel" & n2num   == "sing")
+arc.integ.plur       <- subset(arc.data.item, semint  == "integ" & n2num   == "plur")
+arc.integ.sing       <- subset(arc.data.item, semint  == "integ" & n2num   == "sing")
+arc.unint.plur       <- subset(arc.data.item, semint  == "unint" & n2num   == "plur")
+arc.unint.sing       <- subset(arc.data.item, semint  == "unint" & n2num   == "sing")
+arc.integ.relat      <- subset(arc.data.item, semint  == "integ" & related == "rel")
+arc.integ.unrel      <- subset(arc.data.item, semint  == "integ" & related == "unrel")
+arc.unint.relat      <- subset(arc.data.item, semint  == "unint" & related == "rel")
+arc.unint.unrel      <- subset(arc.data.item, semint  == "unint" & related == "unrel")
 # ------------------------- ERRORS WITH NO DYSFLUENCIES ----------------
 
-nodys <- f1errout 
+nodys <- f2errout 
 nodys$item <- as.factor(nodys$item) 
-nodys$pct <- ifelse(nodys$errnd == 0 & nodys$errcornd == 0, 0, (nodys$errnd / (nodys$errcornd)) * 100)
+nodys$pct <- ifelse(nodys$errwod == 0 & nodys$errcornd == 0, 0, (nodys$errwod / (nodys$errcornd)) * 100)
+
 nodys.data.item <- aggregate(nodys$pct, list(nodys$item, nodys$semint, nodys$related, nodys$n2num ), mean)
 colnames(nodys.data.item) <- c("item", "semint", "related", "n2num", "nodys") 
 nodys.integ <- subset(nodys.data.item, semint   ==  "integ")
@@ -101,7 +102,7 @@ nodys.unint.unrel      <- subset(nodys.data.item, semint  == "unint" & related =
 # ------------------------  ERRORS COUNTS ----------------
 
 
-cnt <- f1errout 
+cnt <- f2errout 
 cnt$item <- as.factor(cnt$item) 
 cnt.data.item <- aggregate(cnt$errd, list(cnt$item, cnt$semint, cnt$related, cnt$n2num ), sum)
 colnames(cnt.data.item) <- c("item", "semint", "related", "n2num", "count") 
