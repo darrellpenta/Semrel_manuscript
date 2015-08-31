@@ -1,5 +1,5 @@
 Table 02: Experiment 1 Critical Item Mean Relatedness Ratings ANOVA
-Aug. 30, 2015 at 19:42:42
+Aug. 31, 2015 at 11:54:26
 
 Error: item
           Df Sum Sq Mean Sq F value Pr(>F)

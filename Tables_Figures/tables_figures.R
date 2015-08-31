@@ -202,7 +202,7 @@ sink()
 # -------------------- TABLE 05 SEMREL: ERROR RATES AND RESPONSE COUNTS ------------
 source( file = "clear_and_setup.R")
 source( file = "semrel_error_data_read_in_dataframe.R")
-
+source( file = "semrel_error_rate_SEMs.R")
 exp1.err.rates <- data.frame(
   
   Condition.Related = c(
@@ -241,15 +241,15 @@ exp1.err.rates <- data.frame(
     ),
   
   Error.Rate   = c(
-100*( sum( relat.int.plur$errd)   / sum( relat.int.plur$errcord)) ,
-100*( sum( relat.int.sing$errd)   / sum( relat.int.sing$errcord)) ,
-100*( sum( relat.unint.plur$errd) / sum( relat.unint.plur$errcord)),
-100*( sum( relat.unint.sing$errd) / sum( relat.unint.sing$errcord)),
-100*( sum( unrel.int.plur$errd)   / sum( unrel.int.plur$errcord)),
-100*( sum( unrel.int.sing$errd)   / sum( unrel.int.sing$errcord)),
-100*( sum( unrel.unint.plur$errd) / sum( unrel.unint.plur$errcord)),
-100*( sum( unrel.unint.sing$errd) / sum( unrel.unint.sing$errcord))
-),
+paste(round(100*( sum( relat.int.plur$errd)   / sum(   relat.int.plur$errcord)), digits=1)," (",round(rip.1$se, digits = 1),", ",round(rip.2$se, digits = 1),")",sep="")    ,
+paste(round(100*( sum( relat.int.sing$errd)   / sum(   relat.int.sing$errcord)), digits=1)," (",round(ris.1$se, digits = 1),", ",round(ris.2$se, digits = 1),")",sep="")    ,
+paste(round(100*( sum( relat.unint.plur$errd) / sum( relat.unint.plur$errcord)), digits=1)," (",round(rup.1$se, digits = 1),", ",round(rup.2$se, digits = 1),")",sep="")  ,
+paste(round(100*( sum( relat.unint.sing$errd) / sum( relat.unint.sing$errcord)), digits=1)," (",round(rus.1$se, digits = 1),", ",round(rus.2$se, digits = 1),")",sep="") ,
+paste(round(100*( sum( unrel.int.plur$errd)   / sum(   unrel.int.plur$errcord)), digits=1)," (",round(uip.1$se, digits = 1),", ",round(uip.2$se, digits = 1),")",sep="")    ,
+paste(round(100*( sum( unrel.int.sing$errd)   / sum(   unrel.int.sing$errcord)), digits=1)," (",round(uis.1$se, digits = 1),", ",round(uis.2$se, digits = 1),")",sep="")    ,
+paste(round(100*( sum( unrel.unint.plur$errd) / sum( unrel.unint.plur$errcord)), digits=1)," (",round(uup.1$se, digits = 1),", ",round(uup.2$se, digits = 1),")",sep="")  ,
+paste(round(100*( sum( unrel.unint.sing$errd) / sum( unrel.unint.sing$errcord)), digits=1)," (",round(uus.1$se, digits = 1),", ",round(uus.2$se, digits = 1),")",sep="")
+), 
 
 Error   = c(
   paste( sum( relat.int.plur$errd)  ,    " (", sum( relat.int.plur$errd   -  relat.int.plur$err ) , ")", sep = ""),  
@@ -294,7 +294,7 @@ Miscellaneous   = c(
   sum( unrel.unint.plur$misc), 
   sum( unrel.unint.sing$misc))
 )    
-
+View(exp1.err.rates)
 
 write.xlsx(exp1.err.rates, file="output/table05_SR_error_rates_response_counts.xlsx",  col.names = TRUE, row.names = TRUE, append = FALSE)
 
@@ -840,7 +840,7 @@ sink()
 # -------------------- TABLE 14 SEMREL2: ERROR RATES AND RESPONSE COUNTS ------------
 source( file = "clear_and_setup.R")
 source( file = "semrel2_CAT_error_data_read_in_dataframe.R")
-
+source( file = "semrel2_CAT_error_rate_SEMs.R")
 exp2.cat.err.rates <- data.frame(
   
   Condition.Related = c(
@@ -858,10 +858,10 @@ exp2.cat.err.rates <- data.frame(
   ),
   
   Error.Rate   = c(
-    100*( sum( relat.plur$errd)   / sum( relat.plur$errcord)) ,
-    100*( sum( relat.sing$errd)   / sum( relat.sing$errcord)) ,
-    100*( sum( unrel.plur$errd)   / sum( unrel.plur$errcord)),
-    100*( sum( unrel.sing$errd)   / sum( unrel.sing$errcord))
+    paste(round(100*( sum( relat.plur$errd)   / sum(   relat.plur$errcord)), digits=1)," (",round(cat.rp.1$se, digits = 1),", ",round(cat.rp.2$se, digits = 1),")",sep=""),  
+    paste(round(100*( sum( relat.sing$errd)   / sum(   relat.sing$errcord)), digits=1)," (",round(cat.rs.1$se, digits = 1),", ",round(cat.rs.2$se, digits = 1),")",sep=""),  
+    paste(round(100*( sum( unrel.plur$errd)   / sum(   unrel.plur$errcord)), digits=1)," (",round(cat.up.1$se, digits = 1),", ",round(cat.up.2$se, digits = 1),")",sep=""),  
+    paste(round(100*( sum( unrel.sing$errd)   / sum(   unrel.sing$errcord)), digits=1)," (",round(cat.us.1$se, digits = 1),", ",round(cat.us.2$se, digits = 1),")",sep="")
   ),
   
   Error   = c(
@@ -871,12 +871,12 @@ exp2.cat.err.rates <- data.frame(
     paste( sum( unrel.sing$errd)  ,    " (", sum( unrel.sing$errd   -  unrel.sing$err ) , ")", sep = "")   
    ),
   
-  Correct   = c(
-    paste( sum( relat.plur$corrd)  ,    " (", sum( relat.plur$corrd   -  relat.plur$corr ) , ")", sep = ""),  
-    paste( sum( relat.sing$corrd)  ,    " (", sum( relat.sing$corrd   -  relat.sing$corr ) , ")", sep = ""),  
-    paste( sum( unrel.plur$corrd)  ,    " (", sum( unrel.plur$corrd   -  unrel.plur$corr ) , ")", sep = ""),
-    paste( sum( unrel.sing$corrd)  ,    " (", sum( unrel.sing$corrd   -  unrel.sing$corr ) , ")", sep = "")   
-      ),
+   Correct   = c(
+     paste( sum(relat.plur$corrd),   " (", sum( relat.plur$corrd   -  relat.plur$corr ) , ")", sep = ""),  
+     paste( sum(relat.sing$corrd),   " (", sum( relat.sing$corrd   -  relat.sing$corr ) , ")", sep = ""),  
+     paste( sum(unrel.plur$corrd),   " (", sum( unrel.plur$corrd   -  unrel.plur$corr ) , ")", sep = ""),
+     paste( sum(unrel.sing$corrd),   " (", sum( unrel.sing$corrd   -  unrel.sing$corr ) , ")", sep = "")   
+       ),
   
   Uninflected   = c(
     paste( sum( relat.plur$unind)  ,    " (", sum( relat.plur$unind   -  relat.plur$unin ) , ")", sep = ""),  
@@ -891,10 +891,10 @@ exp2.cat.err.rates <- data.frame(
     sum( unrel.plur$misc)  ,      
     sum( unrel.sing$misc) )    
 )
-
+View(exp2.cat.err.rates)
 
 source( file = "semrel2_PROP_error_data_read_in_dataframe.R")
-
+source( file = "semrel2_PROP_error_rate_SEMs.R")
 exp2.prop.err.rates <- data.frame(
   
   Condition.Related = c(
@@ -916,12 +916,12 @@ exp2.prop.err.rates <- data.frame(
   ),
   
   Error.Rate   = c(
-    100*( sum( attrb.plur$errd)  / sum( attrb.plur$errcord)) ,
-    100*( sum( attrb.sing$errd)  / sum( attrb.sing$errcord)) ,
-    100*( sum( assoc.plur$errd)  / sum( assoc.plur$errcord)),
-    100*( sum( assoc.sing$errd)  / sum( assoc.sing$errcord)),
-    100*( sum( unrel.plur$errd)  / sum( unrel.plur$errcord)),
-    100*( sum( unrel.sing$errd)  / sum( unrel.sing$errcord))
+    paste(round(100*( sum( attrb.plur$errd)   / sum(   attrb.plur$errcord)), digits=1)," (",round(prop.rp.1$se, digits = 1),", ",round(prop.rp.2$se, digits = 1),")",sep=""),  
+    paste(round(100*( sum( attrb.sing$errd)   / sum(   attrb.sing$errcord)), digits=1)," (",round(prop.rs.1$se, digits = 1),", ",round(prop.rs.2$se, digits = 1),")",sep=""),  
+    paste(round(100*( sum( assoc.plur$errd)   / sum(   assoc.plur$errcord)), digits=1)," (",round(prop.ap.1$se, digits = 1),", ",round(prop.ap.2$se, digits = 1),")",sep=""),  
+    paste(round(100*( sum( assoc.sing$errd)   / sum(   assoc.sing$errcord)), digits=1)," (",round(prop.as.1$se, digits = 1),", ",round(prop.as.2$se, digits = 1),")",sep=""),  
+    paste(round(100*( sum( unrel.plur$errd)   / sum(   unrel.plur$errcord)), digits=1)," (",round(prop.up.1$se, digits = 1),", ",round(prop.up.2$se, digits = 1),")",sep=""),  
+    paste(round(100*( sum( unrel.sing$errd)   / sum(   unrel.sing$errcord)), digits=1)," (",round(prop.us.1$se, digits = 1),", ",round(prop.us.2$se, digits = 1),")",sep="")
   ),
   
   Error   = c(
@@ -960,7 +960,7 @@ exp2.prop.err.rates <- data.frame(
     sum( unrel.sing$misc))
 )    
 
-
+View(exp2.prop.err.rates)
 exp2.err.rates <-  rbind(exp2.cat.err.rates, exp2.prop.err.rates)
 
 write.xlsx(exp2.err.rates, file="output/table14_SR2_error_rates_response_counts.xlsx",  col.names = TRUE, row.names = TRUE, append = FALSE)

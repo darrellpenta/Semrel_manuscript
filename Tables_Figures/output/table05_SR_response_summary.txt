@@ -1,4 +1,4 @@
-Table 05: Experiment 1 Response SummariesAug. 30, 2015 at 20:31:14
+Table 05: Experiment 1 Response SummariesAug. 31, 2015 at 11:54:28
                    Code Total
 1   All Critical Trials  5640
 2   Correclty Inflected  2801

@@ -1,5 +1,5 @@
 Table 12: Experiment 2 Property Item Mean Inteagration Ratings ANOVA
-Aug. 30, 2015 at 19:45:14
+Aug. 31, 2015 at 11:54:34
 Attrb vs. Assoc
 Error: item
           Df Sum Sq Mean Sq F value Pr(>F)

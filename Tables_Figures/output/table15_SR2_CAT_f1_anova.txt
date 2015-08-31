@@ -1,4 +1,4 @@
-Table 15: CAT F1 2 x 2 ANOVAAug. 30, 2015 at 19:45:17
+Table 15: CAT F1 2 x 2 ANOVAAug. 31, 2015 at 11:54:36
 
 Error: subj
            Df  Sum Sq Mean Sq F value Pr(>F)

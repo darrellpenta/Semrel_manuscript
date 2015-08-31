@@ -27,3 +27,5 @@ relat.plur       <- subset(d.cat, related     == "rel"   & n2num      == "plur")
 relat.sing       <- subset(d.cat, related     == "rel"   & n2num      == "sing")
 unrel.plur       <- subset(d.cat, related     == "unrel" & n2num      == "plur")
 unrel.sing       <- subset(d.cat, related     == "unrel" & n2num      == "sing")
+
+
