@@ -1,46 +1,90 @@
-[1] "SEMREL RESULTS"
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-[1] "Accross all 5640 trials, there were 2801 correctly inflected respones, 109 agreement errors, 1241 uninflected responses, 1462 miscellaneous cases, and 27 trials with no response."
+SEMREL RESULTS 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+Accross all 5640 trials, there were 2801 correctly inflected respones, 109 agreement errors, 1241 uninflected responses, 1462 miscellaneous cases, and 27 trials with no response.NULL
 
  
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-[1] "Participants produced more agreement errors in the plural local noun conditions than in the singular local noun conditions. Aditionally, more agreement errors were made for realted preambles versus unrelated preambles. Crucially, there was a two-way interaction bewteen local noun number and relatedness, and the head-local mismatch effect was larger for related cases (F1(1,234)=42.8, MSe=220.26,p<.001; F2(1,23)=28.368, MSe=31.98,p<.001) than for unrelated cases(F1(1,234)=22.515, MSe=152.02,p<.001; F2(1,23)=21.404, MSe=12.65,p<.001. There was no main effect of integration, nor a reliable interaciton between integration and any other factor."
+Participants produced more agreement errors in the plural local noun conditions than in the singular local noun conditions. Aditionally, more agreement errors were made for realted preambles versus unrelated preambles. Crucially, there was a two-way interaction bewteen local noun number and relatedness, and the head-local mismatch effect was larger for related cases (F1(1,234)=42.8, MSe=220.26,p<.001; F2(1,23)=28.368, MSe=31.98,p<.001) than for unrelated cases(F1(1,234)=22.515, MSe=152.02,p<.001; F2(1,23)=21.404, MSe=12.65,p<.001. There was no main effect of integration, nor a reliable interaciton between integration and any other factor.
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+===== RELATED x N2NUM  MISMATCH ALTERNATIVE ANALYSES 
+===== 1. ARCSIN TRANSFORMED PROPORTIONS: RELATED (F1(1,23)=21.404, MSe=12.65,p<.001; F2(1,23)=83.5, MSe=0.04077,p<.001; UNRELATED(F1(1,234)=26.254, MSe=0.15826,p<.001; F2(1,23)=35.89, MSe=0.03989,p<.001. 
+===== 2. ERRORS NO DYSFLUENCIES: RELATED (F1(1,23)=35.89, MSe=0.03989,p<.001; F2(1,23)=26.432, MSe=31.91,p<.001; UNRELATED(F1(1,234)=18.882, MSe=148.16,p<.001; F2(1,234)=18.882, MSe=148.16,p<.001. 
+===== 3. ERRORS COUNTS: RELATED (F1(1,234)=18.882, MSe=148.16,p<.001; F2(1,23)=18.708, MSe=4.999,p<.001; UNRELATED(F1(1,234)=27.761, MSe=0.09933,p<.001; F2(1,23)=20.032, MSe=1.3478,p<.001.
+ 
+ 
+ 
+SEMREL 2 RESULTS 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+Accross all 6192 trials, there were 3826 correctly inflected respones, 124 agreement errors, 947 uninflected responses, 1278 miscellaneous cases, and 17 trials with no response.
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+Comparing attributes and associates, there was a main effect of relationship, with associates generating more errors than attributes (F1(1,128)=4.812, MSe=121.83,p<.05; F2(1,23)=4.683, MSe=22.024,p<.05).There was also a marginally significant interaction between relatedness and local noun number  (F1(1,128)=2.945, MSe=123.57,p<.10; F2(1,23)=2.149, MSe=27.441,p ), the mismatch effect being larger for associates (F1(1,128)=26.175, MSe=193.01,p<.001;F2(1,23)=20.922, MSe=47.57,p<.001) than for attributes (F1(1,128)=14.14, MSe=137.53,p<.001; F2(1,23)=15.872, MSe=26.967,p<.001). 
 
  
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-[1] "===== RELATED x N2NUM  MISMATCH ALTERNATIVE ANALYSES"
-[1] "===== 1. ARCSIN TRANSFORMED PROPORTIONS: RELATED (F1(1,23)=21.404, MSe=12.65,p<.001; F2(1,23)=83.5, MSe=0.04077,p<.001; UNRELATED(F1(1,234)=26.254, MSe=0.15826,p<.001; F2(1,23)=35.89, MSe=0.03989,p<.001."
-[1] "===== 2. ERRORS NO DYSFLUENCIES: RELATED (F1(1,23)=35.89, MSe=0.03989,p<.001; F2(1,23)=26.432, MSe=31.91,p<.001; UNRELATED(F1(1,234)=18.882, MSe=148.16,p<.001; F2(1,234)=18.882, MSe=148.16,p<.001."
-[1] "===== 3. ERRORS COUNTS: RELATED (F1(1,234)=18.882, MSe=148.16,p<.001; F2(1,23)=18.708, MSe=4.999,p<.001; UNRELATED(F1(1,234)=27.761, MSe=0.09933,p<.001; F2(1,23)=20.032, MSe=1.3478,p<.001."
-
- 
- 
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-[1] "SEMREL 2 RESULTS"
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-[1] "Accross all 6192 trials, there were 3826 correctly inflected respones, 124 agreement errors, 947 uninflected responses, 1278 miscellaneous cases, and 17 trials with no response."
+===== MAIN EFFECT OF RELATEDNESS 
+===== 1. ARCSIN TRANSFORMED PROPORTIONS: (F1(1,128)=5.635, MSe=0.13692,p<.05; F2(1,23)=5.25, MSe=0.04658,p<.05 
+===== 2. ERRORS NO DYSFLUENCIES: (F1(1,128)=9.217, MSe=98.18,p<.01; F2(1,23)=4.105, MSe=29.551,p<.10 
+===== 3. ERROR COUNTS: (F1(1,128)=8.488, MSe=0.08242,p<.01; F2(1,23)=9.114, MSe=0.4126,p<.01 
 
  
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-[1] "Comparing attributes and associates, there was a main effect of relationship, with associates generating more errors than attributes (F1(1,128)=4.812, MSe=121.83,p<.05; F2(1,23)=4.683, MSe=22.024,p<.05).There was also a marginally significant interaction between relatedness and local noun number  (F1(1,128)=2.945, MSe=123.57,p<.10; F2(1,23)=2.149, MSe=27.441,p ), the mismatch effect being larger for associates (F1(1,128)=26.175, MSe=193.01,p<.001;F2(1,23)=20.922, MSe=47.57,p<.001) than for attributes (F1(1,128)=14.14, MSe=137.53,p<.001; F2(1,23)=15.872, MSe=26.967,p<.001)."
+===== RELATEDNESS X N2NUM  
+===== 1. ARCSIN TRANSFORMED PROPORTIONS: (F1(1,128)=3.296, MSe=0.13936,p<.10; F2(1,23)=1.2243, MSe=0.06934,p  
+===== 2. ERRORS NO DYSFLUENCIES: (F1(1,128)=6.199, MSe=100.39,p<.05; F2(1,23)=2.0381, MSe=35.14,p  
+===== 3. ERROR COUNTS: (F1(1,128)=5.161, MSe=0.08448,p<.05; F2(1,23)=4.177, MSe=0.5611,p<.10 
 
  
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-[1] "===== MAIN EFFECT OF RELATEDNESS"
-[1] "===== 1. ARCSIN TRANSFORMED PROPORTIONS: (F1(1,128)=5.635, MSe=0.13692,p<.05; F2(1,23)=5.25, MSe=0.04658,p<.05"
-[1] "===== 2. ERRORS NO DYSFLUENCIES: (F1(1,128)=9.217, MSe=98.18,p<.01; F2(1,23)=4.105, MSe=29.551,p<.10"
-[1] "===== 3. ERROR COUNTS: (F1(1,128)=8.488, MSe=0.08242,p<.01; F2(1,23)=9.114, MSe=0.4126,p<.01"
+===== ASSOCIATES X ATTRIBUTES MISMATCH EFFECTS 
+===== 1. ARCSIN TRANSFORMED PROPORTIONS: ASSOCIATED (F1(1,128)=27.51, MSe=0.21012,p<.001; F2(1,23)=25.629, MSe=0.1007,p<.001; ATTRIBUTE(F1(1,128)=15.018, MSe=0.13918,p<.001; F2(1,23)=20.58, MSe=0.06933,p<.001. 
+===== 2. ERRORS NO DYSFLUENCIES: ASSOCIATED (F1(1,23)=20.58, MSe=0.06933,p<.001; F2(1,23)=18.214, MSe=51.36,p<.001; ATTRIBUTE(F1(1,128)=11.605, MSe=86.31,p<.001; F2(1,23)=12.365, MSe=28.027,p<.01. 
+===== 3. ERRORS COUNTS: ASSOCIATED (F1(1,23)=12.365, MSe=28.027,p<.01; F2(1,23)=19.117, MSe=1.1159,p<.001; ATTRIBUTE(F1(1,128)=15.286, MSe=0.07328,p<.001; F2(1,23)=18.515, MSe=0.3252,p<.001. 
+
+ 
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+Associates also generated more agreement errors than unrelated items (F1(1,128)=12.717, MSe=107.95,p<.001; F2(1,23)=11.887, MSe=24.499,p<.01),and there was a local noun number by associate interaction (F1(1,128)=11.844, MSe=120.55,p<.001; F2(1,23)=14.883, MSe=20.762,p<.001), the mismatch effect being larger for associates than for unrelated items (F1(1,128)=3.76, MSe=82.75,p<.10; F2(1,23)=4.543, MSe=9.849,p<.05). 
 
  
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-[1] "===== RELATEDNESS X N2NUM "
-[1] "===== 1. ARCSIN TRANSFORMED PROPORTIONS: (F1(1,128)=3.296, MSe=0.13936,p<.10; F2(1,23)=1.2243, MSe=0.06934,p "
-[1] "===== 2. ERRORS NO DYSFLUENCIES: (F1(1,128)=6.199, MSe=100.39,p<.05; F2(1,23)=2.0381, MSe=35.14,p "
-[1] "===== 3. ERROR COUNTS: (F1(1,128)=5.161, MSe=0.08448,p<.05; F2(1,23)=4.177, MSe=0.5611,p<.10"
+===== MAIN EFFECT OF RELATEDNESS 
+===== 1. ARCSIN TRANSFORMED PROPORTIONS: (F1(1,128)=13.487, MSe=0.11788,p<.001; F2(1,23)=10.988, MSe=0.05907,p<.01 
+===== 2. ERRORS NO DYSFLUENCIES: (F1(1,128)=10.338, MSe=107.8,p<.01; F2(1,23)=10.007, MSe=25.663,p<.01 
+===== 3. ERROR COUNTS: (F1(1,128)=17.306, MSe=0.0757,p<.001; F2(1,23)=12.498, MSe=0.5634,p<.01 
 
  
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-[1] "===== ASSOCIATES X ATTRIBUTES MISMATCH EFFECTS "
-[1] "===== 1. ARCSIN TRANSFORMED PROPORTIONS: ASSOCIATED (F1(1,128)=27.51, MSe=0.21012,p<.001; F2(1,23)=25.629, MSe=0.1007,p<.001; ATTRIBUTE(F1(1,128)=15.018, MSe=0.13918,p<.001; F2(1,23)=20.58, MSe=0.06933,p<.001."
-[1] "===== 2. ERRORS NO DYSFLUENCIES: ASSOCIATED (F1(1,23)=20.58, MSe=0.06933,p<.001; F2(1,23)=18.214, MSe=51.36,p<.001; ATTRIBUTE(F1(1,128)=11.605, MSe=86.31,p<.001; F2(1,23)=12.365, MSe=28.027,p<.01."
-[1] "===== 3. ERRORS COUNTS: ASSOCIATED (F1(1,23)=12.365, MSe=28.027,p<.01; F2(1,23)=19.117, MSe=1.1159,p<.001; ATTRIBUTE(F1(1,128)=15.286, MSe=0.07328,p<.001; F2(1,23)=18.515, MSe=0.3252,p<.001."
+===== RELATEDNESS X N2NUM  
+===== 1. ARCSIN TRANSFORMED PROPORTIONS: (F1(1,128)=12.294, MSe=0.13266,p<.001; F2(1,23)=15.749, MSe=0.04318,p<.001 
+===== 2. ERRORS NO DYSFLUENCIES: (F1(1,128)=10.584, MSe=119.64,p<.01; F2(1,23)=12.623, MSe=22.135,p<.01 
+===== 3. ERROR COUNTS: (F1(1,128)=15.687, MSe=0.08352,p<.001; F2(1,23)=4.177, MSe=0.5611,p<.10 
+
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+===== ASSOCIATES X UNRELEATED MISMATCH EFFECTS 
+===== 1. ARCSIN TRANSFORMED PROPORTIONS: UNRELATED (F1(1,128)=3.84, MSe=0.0932,p<.10; F2(1,23)=4.522, MSe=0.04286,p<.05 
+===== 2. ERRORS NO DYSFLUENCIES: UNRELATED (F1(1,23)=4.522, MSe=0.04286,p<.05; F2(1,128)=3.1162, MSe=88.45,p<.10 
+===== 3. ERRORS COUNTS: UNRELATED (F1(1,128)=3.1162, MSe=88.45,p<.10; F2(1,23)=5.308, MSe=0.1413,p<.05 
+
+ 
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+A comparison of attribute and unrelated items revealed a marginal main effect of relationship as related items generated more errors than unrelated items (F1(1,128)=2.8975, MSe=56.9,p<.10; F2(1,23)=3.168, MSe=15.068,p<.10).There was also an interaction that was significant by items and marginally significant by subjects (F1(1,128)=3.541, MSe=98.85,p<.10; F2(1,23)=5.74, MSe=17.072,p<.05), the mismatch effect being larger for attributes than for unrelated items. 
+
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+===== MAIN EFFECT OF RELATEDNESS 
+===== 1. ARCSIN TRANSFORMED PROPORTIONS: (F1(1,128)=2.4701, MSe=0.05924,p ; F2(1,23)=1.8632, MSe=0.05196,p  
+===== 2. ERRORS NO DYSFLUENCIES: (F1(1,128)=0.17015, MSe=64.07,p ; F2(1,23)=1.539, MSe=16.317,p  
+===== 3. ERROR COUNTS: (F1(1,128)=3.326, MSe=0.028555,p<.10; F2(1,23)=1.7419, MSe=0.29303,p  
+
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+===== RELATEDNESS X N2NUM  
+===== 1. ARCSIN TRANSFORMED PROPORTIONS: (F1(1,128)=3.383, MSe=0.10617,p<.10; F2(1,23)=5.489, MSe=0.05182,p<.05 
+===== 2. ERRORS NO DYSFLUENCIES: (F1(1,128)=1.4037, MSe=80.63,p ; F2(1,23)=3.546, MSe=19.208,p<.10 
+===== 3. ERROR COUNTS: (F1(1,128)=4.607, MSe=0.0509,p<.05; F2(1,23)=4.177, MSe=0.5611,p<.10 
