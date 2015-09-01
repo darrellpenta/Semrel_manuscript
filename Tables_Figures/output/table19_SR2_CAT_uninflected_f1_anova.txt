@@ -1,0 +1,24 @@
+Table 19: CAT UNINFLECTED F1 2 x 2 ANOVASep. 01, 2015 at 00:16:50
+
+Error: subject
+           Df  Sum Sq  Mean Sq F value Pr(>F)
+Residuals 128 45.6034 0.356276               
+
+Error: subject:related
+           Df   Sum Sq   Mean Sq F value  Pr(>F)
+related     1  0.08269 0.0826873 0.72573 0.39586
+Residuals 128 14.58398 0.1139373                
+
+Error: subject:n2num
+           Df   Sum Sq   Mean Sq F value Pr(>F)
+n2num       1  0.00517 0.0051680 0.05755 0.8108
+Residuals 128 11.49483 0.0898034               
+
+Error: subject:related:n2num
+               Df   Sum Sq  Mean Sq F value  Pr(>F)
+related:n2num   1  0.10465 0.104651 0.83398 0.36284
+Residuals     128 16.06202 0.125484                
+
+Error: Within
+            Df  Sum Sq  Mean Sq F value Pr(>F)
+Residuals 2580 351.333 0.136176               

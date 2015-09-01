@@ -1,0 +1,28 @@
+Table 22: PROP F1 MISCELLANEOUS 2 x 2 ANOVASep. 01, 2015 at 00:16:59
+
+Error: subject
+           Df  Sum Sq  Mean Sq F value Pr(>F)
+Residuals 128 59.0065 0.460988               
+
+Error: subject:related
+           Df  Sum Sq  Mean Sq F value   Pr(>F)  
+related     2  1.3766 0.688307 4.52314 0.011736 *
+Residuals 256 38.9567 0.152175                   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Error: subject:n2num
+           Df   Sum Sq Mean Sq F value  Pr(>F)  
+n2num       1  0.94186 0.94186 6.38162 0.01275 *
+Residuals 128 18.89147 0.14759                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Error: subject:related:n2num
+               Df  Sum Sq   Mean Sq F value  Pr(>F)
+related:n2num   2  0.1764 0.0881783 0.70564 0.49475
+Residuals     256 31.9903 0.1249621                
+
+Error: Within
+            Df Sum Sq  Mean Sq F value Pr(>F)
+Residuals 2322  322.5 0.138889               

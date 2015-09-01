@@ -1,0 +1,26 @@
+Table 21: PROP F1 UNINFLECTED 2 x 2 ANOVASep. 01, 2015 at 00:16:53
+
+Error: subject
+           Df Sum Sq  Mean Sq F value Pr(>F)
+Residuals 128 39.626 0.309578               
+
+Error: subject:related
+           Df   Sum Sq  Mean Sq F value  Pr(>F)
+related     2  0.28488 0.142442 1.17446 0.31065
+Residuals 256 31.04845 0.121283                
+
+Error: subject:n2num
+           Df   Sum Sq  Mean Sq F value   Pr(>F)  
+n2num       1  0.39567 0.395672 4.03147 0.046764 *
+Residuals 128 12.56266 0.098146                   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Error: subject:related:n2num
+               Df   Sum Sq   Mean Sq F value  Pr(>F)
+related:n2num   2  0.12855 0.0642765 0.55707 0.57358
+Residuals     256 29.53811 0.1153833                
+
+Error: Within
+            Df Sum Sq  Mean Sq F value Pr(>F)
+Residuals 2322 247.25 0.106482               
