@@ -1,0 +1,46 @@
+Table 18: F2 Uninflected 2 x 2 x 2 ANOVASep. 01, 2015 at 19:48:34
+
+Error: item
+          Df  Sum Sq Mean Sq F value Pr(>F)
+Residuals 23 1153.73 50.1621               
+
+Error: item:semint
+          Df Sum Sq  Mean Sq F value    Pr(>F)   
+semint     1 108.00 108.0000 8.72344 0.0071249 **
+Residuals 23 284.75  12.3804                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Error: item:related
+          Df  Sum Sq  Mean Sq F value  Pr(>F)
+related    1   0.333  0.33333 0.02115 0.88563
+Residuals 23 362.417 15.75725                
+
+Error: item:n2num
+          Df Sum Sq Mean Sq F value   Pr(>F)  
+n2num      1  75.00 75.0000 5.83263 0.024082 *
+Residuals 23 295.75 12.8587                   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Error: item:semint:related
+               Df   Sum Sq Mean Sq F value  Pr(>F)
+semint:related  1  25.5208 25.5208 2.44851 0.13129
+Residuals      23 239.7292 10.4230                
+
+Error: item:semint:n2num
+             Df  Sum Sq Mean Sq F value  Pr(>F)
+semint:n2num  1  1.0208 1.02083  0.3121 0.58179
+Residuals    23 75.2292 3.27083                
+
+Error: item:related:n2num
+              Df   Sum Sq Mean Sq F value  Pr(>F)
+related:n2num  1   0.1875  0.1875 0.01704 0.89727
+Residuals     23 253.0625 11.0027                
+
+Error: item:semint:related:n2num
+                     Df Sum Sq  Mean Sq F value   Pr(>F)  
+semint:related:n2num  1  12.00 12.00000 4.01455 0.057027 .
+Residuals            23  68.75  2.98913                   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1

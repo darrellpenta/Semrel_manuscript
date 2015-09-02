@@ -1,0 +1,3 @@
+Table 18: F1 Miscellaneous 2 x 2 x 2 ANOVASep. 01, 2015 at 19:48:34
+[1] 2
+Error in View : object 'ds' not found

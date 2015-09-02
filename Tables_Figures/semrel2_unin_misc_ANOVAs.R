@@ -1,14 +1,15 @@
 
-# ------------------------------------- CAT UNINFL ------------------------------
+# ------------------------------------- CAT UNINFL F1------------------------------
+
 source( file = "clear_and_setup.R")
 source( file = "semrel2_CAT_error_data_read_in_dataframe.R")
 a.2x2.f1 <- aov(unind ~ related * n2num + Error( subject / ( related * n2num)), data = d.cat)
-sink("output/table19_SR2_CAT_uninflected_f1_anova.txt")
+# sink("output/table19_SR2_CAT_uninflected_f1_anova.txt")
 cat("Table 19: CAT UNINFLECTED F1 2 x 2 ANOVA", format( Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
 print( summary( a.2x2.f1), digits = 6)
 sink()
 aov.sum1 <- summary( a.2x2.f1)
-
+View(ds)
 #n2num
 f.n2n <- zapsmall( aov.sum1[[3]][[1]][["F value"]][1], digits = 4)
 p.n2n <- zapsmall( aov.sum1[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
@@ -43,8 +44,10 @@ error.rate.ANOVA.1 <- data.frame(
 )
 
 
-# F2
+# ------------------------------------- CAT UNINFL F2------------------------------
 
+
+source(file = "semrel2_CAT_uninflected_f2_read_in_dataframe.R")
 
 a.2x2.f2 <- aov(unind ~ related * n2num + Error(item / (related * n2num)), data = d.cat)
 sink("output/table19_SR2_CAT_uninflected_f2_anova.txt")
@@ -90,9 +93,10 @@ error.rate.ANOVA.2 <- data.frame(
 
 
 error.rate.ANOVA <- cbind(error.rate.ANOVA.1,error.rate.ANOVA.2[,c(2:3)])
-
+View(error.rate.ANOVA)
 write.xlsx(error.rate.ANOVA, file="output/table19_SR2_CAT__uninflected_anovas.xlsx", col.names = TRUE, row.names = TRUE, append = FALSE)
-# ------------------------------------- PROP UNINFL ------------------------------
+
+# ------------------------------------- PROP UNINFL F1 ------------------------------
 source( file = "clear_and_setup.R")
 source( file = "semrel2_PROP_error_data_read_in_dataframe.R")
 
@@ -136,6 +140,10 @@ error.rate.ANOVA.1 <- data.frame(
     paste( m.n2r," (", get_stars( p.n2r),")", sep = ""))   
 )
 
+# ------------------------------------- PROP UNINFL F2 ------------------------------
+
+
+source(file = "semrel2_CAT_uninflected_f2_read_in_dataframe.R")
 
 a.2x3 <- aov(unind ~ related * n2num + Error(item / (related * n2num)), data = d.prop)
 sink("output/table21_SR2_PROP_uninflected_f2_anova.txt")
@@ -182,6 +190,7 @@ error.rate.ANOVA.2 <- data.frame(
 
 error.rate.ANOVA <- cbind(error.rate.ANOVA.1,error.rate.ANOVA.2[,c(2:3)])
 
+View(error.rate.ANOVA)
 write.xlsx(error.rate.ANOVA, file="output/table21_SR2_PROP_uninflected_anovas.xlsx", col.names = TRUE, row.names = TRUE, append = FALSE)
 
 # ------------------------------------- CAT MISC ------------------------------
@@ -232,7 +241,7 @@ error.rate.ANOVA.1 <- data.frame(
 
 # F2
 
-
+source(file = "semrel2_CAT_uninflected_f2_read_in_dataframe.R")
 a.2x2.f2 <- aov(error ~ related * n2num + Error(item / (related * n2num)), data = d.cat)
 sink("output/table20_SR2_CAT_miscellaneous_f2_anova.txt")
 cat("Table 20: CAT MISCELLANEOUS F2 2 x 2 ANOVA", format( Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
@@ -278,7 +287,7 @@ error.rate.ANOVA.2 <- data.frame(
 
 
 error.rate.ANOVA <- cbind(error.rate.ANOVA.1,error.rate.ANOVA.2[,c(2:3)])
-
+View(error.rate.ANOVA)
 write.xlsx(error.rate.ANOVA, file="output/table20_SR2_CAT__miscellaneous_anovas.xlsx", col.names = TRUE, row.names = TRUE, append = FALSE)
 
 
@@ -328,6 +337,7 @@ error.rate.ANOVA.1 <- data.frame(
 )
 
 
+source(file = "semrel2_CAT_uninflected_f2_read_in_dataframe.R")
 a.2x3 <- aov(unind ~ related * n2num + Error(item / (related * n2num)), data = d.prop)
 sink("output/table22_SR2_PROP_miscellaneous_f2_anova.txt")
 cat("Table 22: PROP F2 MISCELLANEOUS 2 x 2 ANOVA", format( Sys.time(), "%b. %d, %Y at %T"), sep="", fill = 80)
@@ -372,7 +382,7 @@ error.rate.ANOVA.2 <- data.frame(
 
 
 error.rate.ANOVA <- cbind(error.rate.ANOVA.1,error.rate.ANOVA.2[,c(2:3)])
-
+View(error.rate.ANOVA)
 write.xlsx(error.rate.ANOVA, file="output/table22_SR2_PROP_miscellaneous_anovas.xlsx", col.names = TRUE, row.names = TRUE, append = FALSE)
 
 

@@ -1,4 +1,4 @@
-
+rm(list=ls())
 # =============================================== SEMREL1 ========================================
 
 source( file = "clear_and_setup.R")
@@ -81,11 +81,15 @@ error.rate.ANOVA.1 <- data.frame(
 
 # F2
 
-a.2x2x2.f2 <- aov(unind ~ integrated * related * n2num + Error( item / ( integrated * related * n2num)), data = d.sr)
 
-sink("output/table17_SR_uninflected_f1_anova.txt")
+source( file = "semrel_uninflected_f2_read_in_dataframe.R")
+
+
+a.2x2x2.f2 <- aov(unind ~ semint * related * n2num + Error( item / ( semint * related * n2num)), data = d.sr)
+
+sink("output/table17_SR_uninflected_f2_anova.txt")
 cat("Table 17: F2 Uninflected 2 x 2 x 2 ANOVA", format( Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
-
+print(ds)
 print( summary( a.2x2x2.f2), digits = 6)
 sink()
 
@@ -160,7 +164,7 @@ error.rate.ANOVA.2 <- data.frame(
 error.rate.ANOVA <- cbind(error.rate.ANOVA.1,error.rate.ANOVA.2[,c(2:3)])
 
 
-
+View(error.rate.ANOVA)
 
 write.xlsx(error.rate.ANOVA, file="output/table17_SR_uninflected_anovas.xlsx", col.names = TRUE, row.names = TRUE, append = FALSE)
 
@@ -246,10 +250,10 @@ error.rate.ANOVA.1 <- data.frame(
 
 
 # F2
+source( file = "semrel_uninflected_f2_read_in_dataframe.R")
+a.2x2x2.f2 <- aov(misc ~ semint * related * n2num + Error( item / ( semint * related * n2num)), data = d.sr)
 
-a.2x2x2.f2 <- aov(misc ~ integrated * related * n2num + Error( item / ( integrated * related * n2num)), data = d.sr)
-
-sink("output/table18_SR_uninflected_f1_anova.txt")
+sink("output/table18_SR_uninflected_f2_anova.txt")
 cat("Table 18: F2 Uninflected 2 x 2 x 2 ANOVA", format( Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
 
 print( summary( a.2x2x2.f2), digits = 6)
@@ -325,8 +329,8 @@ error.rate.ANOVA.2 <- data.frame(
 
 error.rate.ANOVA <- cbind(error.rate.ANOVA.1,error.rate.ANOVA.2[,c(2:3)])
 
-
 View(error.rate.ANOVA)
+
 
 write.xlsx(error.rate.ANOVA, file="output/table18_SR_miscellaneous_anovas.xlsx", col.names = TRUE, row.names = TRUE, append = FALSE)
 

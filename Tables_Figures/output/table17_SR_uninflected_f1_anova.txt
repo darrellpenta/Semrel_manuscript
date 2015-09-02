@@ -1,80 +1,50 @@
-Table 17: F2 Uninflected 2 x 2 x 2 ANOVAAug. 31, 2015 at 23:01:31
+Table 17: F1 Uninflected 2 x 2 x 2 ANOVASep. 01, 2015 at 19:48:11
 
-Error: item
-                         Df  Sum Sq Mean Sq F value  Pr(>F)
-integrated                1  1.8937 1.89368 0.87386 0.36378
-related                   1  0.4612 0.46117 0.21281 0.65078
-n2num                     1  2.5959 2.59592 1.19792 0.28994
-integrated:related        1  0.4405 0.44051 0.20328 0.65814
-integrated:n2num          1  0.0199 0.01986 0.00917 0.92491
-related:n2num             1  2.1846 2.18457 1.00810 0.33030
-integrated:related:n2num  1  4.5786 4.57857 2.11284 0.16540
-Residuals                16 34.6723 2.16702                
+Error: subject
+           Df  Sum Sq  Mean Sq F value Pr(>F)
+Residuals 234 112.728 0.481742               
 
-Error: item:integrated
-                         Df   Sum Sq Mean Sq F value    Pr(>F)   
-integrated                1  5.32667 5.32667 8.63882 0.0091677 **
-related                   1  0.25574 0.25574 0.41476 0.5281582   
-n2num                     1  0.07952 0.07952 0.12896 0.7239345   
-integrated:related        1  0.23710 0.23710 0.38453 0.5434099   
-integrated:n2num          1  0.00205 0.00205 0.00333 0.9546383   
-related:n2num             1  0.00043 0.00043 0.00069 0.9793043   
-integrated:related:n2num  1  0.55122 0.55122 0.89396 0.3576512   
-Residuals                17 10.48214 0.61660                     
+Error: subject:integrated
+            Df   Sum Sq Mean Sq F value     Pr(>F)    
+integrated   1  5.18457 5.18457 38.3835 2.5937e-09 ***
+Residuals  234 31.60709 0.13507                       
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-Error: item:related
-                         Df   Sum Sq  Mean Sq F value   Pr(>F)  
-related                   1  0.31372 0.313724 0.45713 0.507563  
-n2num                     1  0.41595 0.415948 0.60608 0.446381  
-integrated:related        1  0.07803 0.078033 0.11370 0.739868  
-integrated:n2num          1  2.24349 2.243495 3.26902 0.087339 .
-related:n2num             1  0.00180 0.001799 0.00262 0.959730  
-integrated:related:n2num  1  0.03406 0.034058 0.04963 0.826222  
-Residuals                18 12.35322 0.686290                   
+Error: subject:related
+           Df Sum Sq  Mean Sq F value  Pr(>F)
+related     1  0.298 0.298050 2.19134 0.14013
+Residuals 234 31.827 0.136013                
+
+Error: subject:n2num
+           Df  Sum Sq  Mean Sq F value   Pr(>F)  
+n2num       1  0.9449 0.944858 6.53228 0.011227 *
+Residuals 234 33.8468 0.144644                   
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-Error: item:n2num
-                         Df  Sum Sq  Mean Sq F value   Pr(>F)  
-n2num                     1 0.97591 0.975913 4.78839 0.041349 *
-integrated:related        1 0.10269 0.102685 0.50383 0.486442  
-integrated:n2num          1 0.07655 0.076550 0.37560 0.547234  
-related:n2num             1 0.12908 0.129076 0.63332 0.435971  
-integrated:related:n2num  1 0.01057 0.010570 0.05186 0.822284  
-Residuals                19 3.87235 0.203808                   
+Error: subject:integrated:related
+                    Df  Sum Sq  Mean Sq F value    Pr(>F)   
+integrated:related   1  1.3420 1.342021 9.77799 0.0019899 **
+Residuals          234 32.1163 0.137249                     
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-Error: item:integrated:related
-                         Df  Sum Sq  Mean Sq F value   Pr(>F)  
-integrated:related        1 1.34313 1.343132 4.06345 0.057455 .
-integrated:n2num          1 0.04581 0.045807 0.13858 0.713611  
-related:n2num             1 0.05378 0.053782 0.16271 0.690955  
-integrated:related:n2num  1 0.68912 0.689123 2.08484 0.164251  
-Residuals                20 6.61079 0.330540                   
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Error: subject:integrated:n2num
+                  Df  Sum Sq  Mean Sq F value  Pr(>F)
+integrated:n2num   1  0.1704 0.170390 1.00631 0.31682
+Residuals        234 39.6213 0.169322                
 
-Error: item:integrated:n2num
-                         Df   Sum Sq   Mean Sq F value  Pr(>F)
-integrated:n2num          1 0.191297 0.1912966 1.60812 0.21864
-related:n2num             1 0.027590 0.0275898 0.23193 0.63508
-integrated:related:n2num  1 0.077167 0.0771672 0.64870 0.42960
-Residuals                21 2.498093 0.1189568                
+Error: subject:related:n2num
+               Df  Sum Sq   Mean Sq F value  Pr(>F)
+related:n2num   1  0.0044 0.0044326 0.02872 0.86558
+Residuals     234 36.1206 0.1543614                
 
-Error: item:related:n2num
-                         Df   Sum Sq   Mean Sq F value  Pr(>F)
-related:n2num             1 0.005428 0.0054283 0.04039 0.84256
-integrated:related:n2num  1 0.013634 0.0136345 0.10146 0.75309
-Residuals                22 2.956525 0.1343875                
-
-Error: item:integrated:related:n2num
-                         Df  Sum Sq  Mean Sq F value  Pr(>F)
-integrated:related:n2num  1 0.01972 0.019716  0.1037 0.75034
-Residuals                23 4.37283 0.190123                
+Error: subject:integrated:related:n2num
+                          Df  Sum Sq   Mean Sq F value  Pr(>F)
+integrated:related:n2num   1  0.0087 0.0086879 0.05735 0.81095
+Residuals                234 35.4496 0.1514942                
 
 Error: Within
             Df  Sum Sq  Mean Sq F value Pr(>F)
-Residuals 5448 864.642 0.158708               
+Residuals 3760 606.667 0.161348               

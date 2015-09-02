@@ -1,12 +1,9 @@
 d.base           <- read.csv("data/SR1&2_coding.csv")
-
 # ---------------------- PROP: SUBSETS  ---------
 d.sr2            <- subset(d.base, subexpt != "SemRel")
-d.sr2            <- subset(d.sr2,  subject != 1031)
-d.sr2            <- subset(d.sr2,  subject != 1045)
-d.sr2            <- subset(d.sr2,  subject != 1079)
-d.sr2            <- subset(d.sr2,  subject != 1120)
-d.sr2            <- subset(d.sr2,  subject != 1123)
+d.sr2           <-  subset(d.sr2, subject !="1031")
+d.sr2           <-  subset(d.sr2, subject !="1123")
+
 
 d.sr2$errcord    <- (d.sr2$errd + d.sr2$corrd)
 d.sr2$related    <- as.factor(d.sr2$related)

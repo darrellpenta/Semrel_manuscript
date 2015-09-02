@@ -1,5 +1,4 @@
 rm(list = ls()) 
-library(languageR) 
 library(xlsx)
 
 get_stars = function( p) {

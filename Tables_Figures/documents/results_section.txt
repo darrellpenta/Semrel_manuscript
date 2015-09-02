@@ -87,113 +87,27 @@ A comparison of attribute and unrelated items revealed a marginal main effect of
 ===== 1. ARCSIN TRANSFORMED PROPORTIONS: (	extit{F$_1$}(1,128)=3.383, 	extit{MS$_e$}=0.10617, 	extit{p}<.10; 	extit{F$_2$}(1,23)=5.489, 	extit{MS$_e$}=0.05182, 	extit{p}<.05 
 ===== 2. ERRORS NO DYSFLUENCIES: (	extit{F$_1$}(1,128)=1.4037, 	extit{MS$_e$}=80.63, 	extit{p} ; 	extit{F$_2$}(1,23)=3.546, 	extit{MS$_e$}=19.208, 	extit{p}<.10 
 ===== 3. ERROR COUNTS: (	extit{F$_1$}(1,128)=4.607, 	extit{MS$_e$}=0.0509, 	extit{p}<.05; 	extit{F$_2$}(1,23)=4.177, 	extit{MS$_e$}=0.5611, 	extit{p}<.10 
-<simpleError in sink(file): sink stack is full>
-<simpleError in sink(file): sink stack is full>
-<simpleError in sink(file): sink stack is full>
-<simpleError in sink(file): sink stack is full>
-<simpleError in sink(file): sink stack is full>
-<simpleError in sink(file): sink stack is full>
-<simpleError in sink(file): sink stack is full>
-<simpleError in sink(file): sink stack is full>
-<simpleError in sink(file): sink stack is full>
-<simpleError in sink(file): sink stack is full>
-<simpleError in sink(file): sink stack is full>
-SEMREL RESULTS 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-Participants produced more agreement errors in the plural local noun conditions than in the singular local noun conditions. Aditionally, more agreement errors were made for realted preambles versus unrelated preambles. Crucially, there was a two-way interaction bewteen local noun number and relatedness, and the head-local mismatch effect was larger for related cases (	extit{F$_1$}(1,23)=, 	extit{MS$_e$}=NA,	extit{p}; 	extit{F$_2$}(1,23)=15.872, 	extit{MS$_e$}=26.967,	extit{p}<.001) than for unrelated cases(	extit{F$_1$}(1,23)=15.872, 	extit{MS$_e$}=26.967,	extit{p}<.001; 	extit{F$_2$}(1,23)=4.543, 	extit{MS$_e$}=9.849,	extit{p}<.05. There was no main effect of integration, nor a reliable interaciton between integration and any other factor.
- 
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-===== RELATED x N2NUM  MISMATCH ALTERNATIVE ANALYSES 
-===== 1. ARCSIN TRANSFORMED PROPORTIONS: RELATED (	extit{F$_1$}(1,23)=4.543, 	extit{MS$_e$}=9.849, 	extit{p}<.05; 	extit{F$_2$}(1,23)=20.58, 	extit{MS$_e$}=0.06933, 	extit{p}<.001; UNRELATED(	extit{F$_1$}(1,23)=20.58, 	extit{MS$_e$}=0.06933, 	extit{p}<.001; 	extit{F$_2$}(1,23)=4.522, 	extit{MS$_e$}=0.04286, 	extit{p}<.05. 
-===== 2. ERRORS NO DYSFLUENCIES: RELATED (	extit{F$_1$}(1,23)=4.522, 	extit{MS$_e$}=0.04286, 	extit{p}<.05; 	extit{F$_2$}(1,23)=12.365, 	extit{MS$_e$}=28.027, 	extit{p}<.01; UNRELATED(	extit{F$_1$}(1,23)=12.365, 	extit{MS$_e$}=28.027, 	extit{p}<.01; 	extit{F$_2$}(1,23)=12.365, 	extit{MS$_e$}=28.027, 	extit{p}<.01. 
-===== 3. ERRORS COUNTS: RELATED (	extit{F$_1$}(1,23)=12.365, 	extit{MS$_e$}=28.027, 	extit{p}<.01; 	extit{F$_2$}(1,23)=18.515, 	extit{MS$_e$}=0.3252, 	extit{p}<.001; UNRELATED(	extit{F$_1$}(1,23)=18.515, 	extit{MS$_e$}=0.3252, 	extit{p}<.001; 	extit{F$_2$}(1,23)=5.308, 	extit{MS$_e$}=0.1413, 	extit{p}<.05.
- 
- 
- 
-SEMREL 2 RESULTS 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+Table 19: CAT UNINFLECTED F1 2 x 2 ANOVASep. 01, 2015 at 22:14:48
 
- 
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-Comparing attributes and associates, there was a main effect of relationship, with associates generating more errors than attributes (	extit{F$_1$}(1,23)=5.308, 	extit{MS$_e$}=0.1413, 	extit{p}<.05; 	extit{F$_2$}(1,23)=4.683, 	extit{MS$_e$}=22.024, 	extit{p}<.05).There was also a marginally significant interaction between relatedness and local noun number  (	extit{F$_1$}(1,23)=2.149, 	extit{MS$_e$}=27.441, 	extit{p} ; 	extit{F$_2$}(1,23)=2.149, 	extit{MS$_e$}=27.441, 	extit{p} ), the mismatch effect being larger for associates (	extit{F$_1$}(1,23)=, 	extit{MS$_e$}=NA, 	extit{p};	extit{F$_2$}(1,23)=20.922, 	extit{MS$_e$}=47.57, 	extit{p}<.001) than for attributes (	extit{F$_1$}(1,23)=20.922, 	extit{MS$_e$}=47.57, 	extit{p}<.001; 	extit{F$_2$}(1,23)=15.872, 	extit{MS$_e$}=26.967, 	extit{p}<.001). 
+Error: subject
+          Df   Sum Sq  Mean Sq F value Pr(>F)
+Residuals  1 0.126092 0.126092               
 
- 
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-===== MAIN EFFECT OF RELATEDNESS 
-===== 1. ARCSIN TRANSFORMED PROPORTIONS: (	extit{F$_1$}(1,23)=15.872, 	extit{MS$_e$}=26.967, 	extit{p}<.001; 	extit{F$_2$}(1,23)=5.25, 	extit{MS$_e$}=0.04658, 	extit{p}<.05 
-===== 2. ERRORS NO DYSFLUENCIES: (	extit{F$_1$}(1,23)=5.25, 	extit{MS$_e$}=0.04658, 	extit{p}<.05; 	extit{F$_2$}(1,23)=4.105, 	extit{MS$_e$}=29.551, 	extit{p}<.10 
-===== 3. ERROR COUNTS: (	extit{F$_1$}(1,23)=4.105, 	extit{MS$_e$}=29.551, 	extit{p}<.10; 	extit{F$_2$}(1,23)=9.114, 	extit{MS$_e$}=0.4126, 	extit{p}<.01 
+Error: subject:related
+        Df    Sum Sq   Mean Sq
+related  1 0.0823229 0.0823229
 
- 
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-===== RELATEDNESS X N2NUM  
-===== 1. ARCSIN TRANSFORMED PROPORTIONS: (	extit{F$_1$}(1,23)=4.177, 	extit{MS$_e$}=0.5611, 	extit{p}<.10; 	extit{F$_2$}(1,23)=1.2243, 	extit{MS$_e$}=0.06934, 	extit{p}  
-===== 2. ERRORS NO DYSFLUENCIES: (	extit{F$_1$}(1,23)=1.2243, 	extit{MS$_e$}=0.06934, 	extit{p} ; 	extit{F$_2$}(1,23)=2.0381, 	extit{MS$_e$}=35.14, 	extit{p}  
-===== 3. ERROR COUNTS: (	extit{F$_1$}(1,23)=2.0381, 	extit{MS$_e$}=35.14, 	extit{p} ; 	extit{F$_2$}(1,23)=4.177, 	extit{MS$_e$}=0.5611, 	extit{p}<.10 
+Error: subject:n2num
+      Df     Sum Sq    Mean Sq
+n2num  1 0.00514156 0.00514156
 
- 
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-===== ASSOCIATES X ATTRIBUTES MISMATCH EFFECTS 
-===== 1. ARCSIN TRANSFORMED PROPORTIONS: ASSOCIATED (	extit{F$_1$}(1,23)=, 	extit{MS$_e$}=NA, 	extit{p}; 	extit{F$_2$}(1,23)=25.629, 	extit{MS$_e$}=0.1007, 	extit{p}<.001; ATTRIBUTE(	extit{F$_1$}(1,23)=25.629, 	extit{MS$_e$}=0.1007, 	extit{p}<.001; 	extit{F$_2$}(1,23)=20.58, 	extit{MS$_e$}=0.06933, 	extit{p}<.001. 
-===== 2. ERRORS NO DYSFLUENCIES: ASSOCIATED (	extit{F$_1$}(1,23)=20.58, 	extit{MS$_e$}=0.06933, 	extit{p}<.001; 	extit{F$_2$}(1,23)=18.214, 	extit{MS$_e$}=51.36, 	extit{p}<.001; ATTRIBUTE(	extit{F$_1$}(1,23)=18.214, 	extit{MS$_e$}=51.36, 	extit{p}<.001; 	extit{F$_2$}(1,23)=12.365, 	extit{MS$_e$}=28.027, 	extit{p}<.01. 
-===== 3. ERRORS COUNTS: ASSOCIATED (	extit{F$_1$}(1,23)=12.365, 	extit{MS$_e$}=28.027, 	extit{p}<.01; 	extit{F$_2$}(1,23)=19.117, 	extit{MS$_e$}=1.1159, 	extit{p}<.001; ATTRIBUTE(	extit{F$_1$}(1,23)=19.117, 	extit{MS$_e$}=1.1159, 	extit{p}<.001; 	extit{F$_2$}(1,23)=18.515, 	extit{MS$_e$}=0.3252, 	extit{p}<.001. 
+Error: subject:related:n2num
+              Df   Sum Sq  Mean Sq
+related:n2num  1 0.094632 0.094632
 
- 
- 
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-Associates also generated more agreement errors than unrelated items (	extit{F$_1$}(1,23)=18.515, 	extit{MS$_e$}=0.3252, 	extit{p}<.001; 	extit{F$_2$}(1,23)=11.887, 	extit{MS$_e$}=24.499, 	extit{p}<.01),and there was a local noun number by associate interaction (	extit{F$_1$}(1,23)=14.883, 	extit{MS$_e$}=20.762, 	extit{p}<.001; 	extit{F$_2$}(1,23)=14.883, 	extit{MS$_e$}=20.762, 	extit{p}<.001), the mismatch effect being larger for associates than for unrelated items (	extit{F$_1$}(1,23)=, 	extit{MS$_e$}=NA, 	extit{p}; 	extit{F$_2$}(1,23)=4.543, 	extit{MS$_e$}=9.849, 	extit{p}<.05). 
-
- 
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-===== MAIN EFFECT OF RELATEDNESS 
-===== 1. ARCSIN TRANSFORMED PROPORTIONS: (	extit{F$_1$}(1,23)=4.543, 	extit{MS$_e$}=9.849, 	extit{p}<.05; 	extit{F$_2$}(1,23)=10.988, 	extit{MS$_e$}=0.05907, 	extit{p}<.01 
-===== 2. ERRORS NO DYSFLUENCIES: (	extit{F$_1$}(1,23)=10.988, 	extit{MS$_e$}=0.05907, 	extit{p}<.01; 	extit{F$_2$}(1,23)=10.007, 	extit{MS$_e$}=25.663, 	extit{p}<.01 
-===== 3. ERROR COUNTS: (	extit{F$_1$}(1,23)=10.007, 	extit{MS$_e$}=25.663, 	extit{p}<.01; 	extit{F$_2$}(1,23)=12.498, 	extit{MS$_e$}=0.5634, 	extit{p}<.01 
-
- 
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-===== RELATEDNESS X N2NUM  
-===== 1. ARCSIN TRANSFORMED PROPORTIONS: (	extit{F$_1$}(1,23)=13.544, 	extit{MS$_e$}=0.5199, 	extit{p}<.01; 	extit{F$_2$}(1,23)=15.749, 	extit{MS$_e$}=0.04318, 	extit{p}<.001 
-===== 2. ERRORS NO DYSFLUENCIES: (	extit{F$_1$}(1,23)=15.749, 	extit{MS$_e$}=0.04318, 	extit{p}<.001; 	extit{F$_2$}(1,23)=12.623, 	extit{MS$_e$}=22.135, 	extit{p}<.01 
-===== 3. ERROR COUNTS: (	extit{F$_1$}(1,23)=12.623, 	extit{MS$_e$}=22.135, 	extit{p}<.01; 	extit{F$_2$}(1,23)=4.177, 	extit{MS$_e$}=0.5611, 	extit{p}<.10 
-
- 
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-===== ASSOCIATES X UNRELEATED MISMATCH EFFECTS 
-===== 1. ARCSIN TRANSFORMED PROPORTIONS: UNRELATED (	extit{F$_1$}(1,23)=, 	extit{MS$_e$}=NA, 	extit{p}; 	extit{F$_2$}(1,23)=4.522, 	extit{MS$_e$}=0.04286, 	extit{p}<.05 
-===== 2. ERRORS NO DYSFLUENCIES: UNRELATED (	extit{F$_1$}(1,23)=4.522, 	extit{MS$_e$}=0.04286, 	extit{p}<.05; 	extit{F$_2$}(1,23)=4.522, 	extit{MS$_e$}=0.04286, 	extit{p}<.05 
-===== 3. ERRORS COUNTS: UNRELATED (	extit{F$_1$}(1,23)=4.522, 	extit{MS$_e$}=0.04286, 	extit{p}<.05; 	extit{F$_2$}(1,23)=5.308, 	extit{MS$_e$}=0.1413, 	extit{p}<.05 
-
- 
- 
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-A comparison of attribute and unrelated items revealed a marginal main effect of relationship as related items generated more errors than unrelated items (	extit{F$_1$}(1,23)=5.308, 	extit{MS$_e$}=0.1413, 	extit{p}<.05; 	extit{F$_2$}(1,23)=3.168, 	extit{MS$_e$}=15.068, 	extit{p}<.10).There was also an interaction that was significant by items and marginally significant by subjects (	extit{F$_1$}(1,23)=5.74, 	extit{MS$_e$}=17.072, 	extit{p}<.05; 	extit{F$_2$}(1,23)=5.74, 	extit{MS$_e$}=17.072, 	extit{p}<.05), the mismatch effect being larger for attributes than for unrelated items. 
-
- 
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-===== MAIN EFFECT OF RELATEDNESS 
-===== 1. ARCSIN TRANSFORMED PROPORTIONS: (	extit{F$_1$}(1,23)=3.168, 	extit{MS$_e$}=15.068, 	extit{p}<.10; 	extit{F$_2$}(1,23)=1.8632, 	extit{MS$_e$}=0.05196, 	extit{p}  
-===== 2. ERRORS NO DYSFLUENCIES: (	extit{F$_1$}(1,23)=1.8632, 	extit{MS$_e$}=0.05196, 	extit{p} ; 	extit{F$_2$}(1,23)=1.539, 	extit{MS$_e$}=16.317, 	extit{p}  
-===== 3. ERROR COUNTS: (	extit{F$_1$}(1,23)=1.539, 	extit{MS$_e$}=16.317, 	extit{p} ; 	extit{F$_2$}(1,23)=1.7419, 	extit{MS$_e$}=0.29303, 	extit{p}  
-
- 
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-===== RELATEDNESS X N2NUM  
-===== 1. ARCSIN TRANSFORMED PROPORTIONS: (	extit{F$_1$}(1,23)=5.81, 	extit{MS$_e$}=0.21694, 	extit{p}<.05; 	extit{F$_2$}(1,23)=5.489, 	extit{MS$_e$}=0.05182, 	extit{p}<.05 
-===== 2. ERRORS NO DYSFLUENCIES: (	extit{F$_1$}(1,23)=5.489, 	extit{MS$_e$}=0.05182, 	extit{p}<.05; 	extit{F$_2$}(1,23)=3.546, 	extit{MS$_e$}=19.208, 	extit{p}<.10 
-===== 3. ERROR COUNTS: (	extit{F$_1$}(1,23)=3.546, 	extit{MS$_e$}=19.208, 	extit{p}<.10; 	extit{F$_2$}(1,23)=4.177, 	extit{MS$_e$}=0.5611, 	extit{p}<.10 
-<simpleError in textConnection("rval", "w", local = TRUE): all connections are in use>
-<simpleError in textConnection("rval", "w", local = TRUE): all connections are in use>
-<simpleError in textConnection("rval", "w", local = TRUE): all connections are in use>
-<simpleError in textConnection("rval", "w", local = TRUE): all connections are in use>
-<simpleError in textConnection("rval", "w", local = TRUE): all connections are in use>
-<simpleError in textConnection("rval", "w", local = TRUE): all connections are in use>
-<simpleError in textConnection("rval", "w", local = TRUE): all connections are in use>
-<simpleError in textConnection("rval", "w", local = TRUE): all connections are in use>
-<simpleError in textConnection("rval", "w", local = TRUE): all connections are in use>
-<simpleError in textConnection("rval", "w", local = TRUE): all connections are in use>
-<simpleError in textConnection("rval", "w", local = TRUE): all connections are in use>
-<simpleError in textConnection("rval", "w", local = TRUE): all connections are in use>
-<simpleError in textConnection("rval", "w", local = TRUE): all connections are in use>
+Error: Within
+                Df  Sum Sq   Mean Sq F value  Pr(>F)
+related          1   0.001 0.0005163 0.00363 0.95194
+n2num            1   0.000 0.0000407 0.00029 0.98650
+related:n2num    1   0.197 0.1972943 1.38855 0.23874
+Residuals     3088 438.764 0.1420868                

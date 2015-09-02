@@ -1,5 +1,5 @@
 Table 13: Experiment 2 Property Item Mean Association Proportions ANOVA
-Aug. 31, 2015 at 11:54:34
+Sep. 01, 2015 at 14:05:51
 Attrb vs. Assoc
 Error: item
           Df Sum Sq Mean Sq F value Pr(>F)
