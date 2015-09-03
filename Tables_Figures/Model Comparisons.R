@@ -1,4 +1,4 @@
-rm( list=ls( ))
+
 # ----------------- >> Load Libraries --------------------------------------------------
 
 library( package = languageR)
@@ -408,7 +408,7 @@ p.s.m1000.f2.r <-  zapsmall( s.m1000.f2[[10]][[53]], digits = 3)
 
 
 p.s.m1a.f2.r      <-  zapsmall( s.m1a.f2[[10]][[53]], digits = 3)     
-# p.s.m10a.f2.r   <-  zapsmall( s.m10a.f2[[10]][[53]], digits = 3)    
+p.s.m10a.f2.r   <-  zapsmall( s.m10a.f2[[10]][[53]], digits = 3)    
 p.s.m100a.f2.r    <-  zapsmall( s.m100a.f2[[10]][[53]], digits = 3)   
 p.s.m10000a.f2.r  <-  zapsmall( s.m10000a.f2[[10]][[53]], digits = 3) 
 p.s.m1000a.f2.r   <-  zapsmall( s.m1000a.f2[[10]][[53]], digits = 3)  
@@ -424,7 +424,7 @@ p.s.m1000b.f2.r   <-  zapsmall( s.m1000b.f2[[10]][[53]], digits = 3)
 
 
 p.s.m2.f2.r     <-  zapsmall( s.m2.f2[[10]][[54]], digits = 3)      
-p.s.m20.f2.r    <-  zapsmall( s.m20.f2[[10]][[54]], digits = 3)     
+# p.s.m20.f2.r    <-  zapsmall( s.m20.f2[[10]][[54]], digits = 3)     
 p.s.m200.f2.r    <-  zapsmall( s.m200.f2[[10]][[54]], digits = 3)    
 p.s.m20000.f2.r  <-  zapsmall( s.m20000.f2[[10]][[54]], digits = 3)  
 p.s.m2000.f2.r  <-  zapsmall( s.m2000.f2[[10]][[54]], digits = 3)   
