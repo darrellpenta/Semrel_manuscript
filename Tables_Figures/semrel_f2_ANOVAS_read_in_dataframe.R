@@ -3,7 +3,9 @@ f2errout <- read.table("data/SR_F2_errordata.txt", header = T)
 d <- f2errout 
 d$item <- as.factor(d$item) 
 d$pct <- ifelse(d$errd == 0 & d$errcord == 0, 0, (d$errd / (d$errcord)) * 100)
-data.item <- aggregate(d$pct, list(d$item, d$semint, d$related, d$n2num ), mean)
+
+data.item <- aggregate(d$pct, list(d$item, d$integ, d$related, d$n2num ), mean)
+
 colnames(data.item) <- c("item", "semint", "related", "n2num", "error") 
 integ <- subset(data.item, semint   ==  "integ")
 unint <- subset(data.item, semint   ==  "unint")
@@ -33,12 +35,12 @@ unint.relat      <- subset(data.item, semint  == "unint" & related == "rel")
 unint.unrel      <- subset(data.item, semint  == "unint" & related == "unrel")
 # ------------------------- ARCSINE TRANSFORMED ERRORS WITH DYSFLUENCIES ----------------
 
-darc <- f1errout 
+darc <- f2errout 
 darc$item <- as.factor(darc$item) 
-arc$pct <- ifelse(arc$errd == 0 & arc$errcord == 0, 0, (arc$errd / (arc$errcord)) * 100)
-arc$arcs <- 2*asin(sqrt(arc$pct/100))
-arc.data.item <- aggregate(arc$arcs, list(darc$item, arc$semint, arc$related, arc$n2num ), mean)
-colnames(arc.data.item) <- c("item", "semint", "related", "n2num", "arcerr") 
+darc$pct <- ifelse(darc$errd == 0 & darc$errcord == 0, 0, (darc$errd / (darc$errcord)) * 100)
+darc$arcs <- 2*asin(sqrt(darc$pct/100))
+darc.data.item <- aggregate(darc$arcs, list(darc$item, darc$integ, darc$related, darc$n2num ), mean)
+colnames(darc.data.item) <- c("item", "semint", "related", "n2num", "arcerr") 
 arc.integ <- subset(darc.data.item, semint   ==  "integ")
 arc.unint <- subset(darc.data.item, semint   ==  "unint")
 arc.relat <- subset(darc.data.item, related  ==  "rel")
@@ -67,10 +69,11 @@ arc.unint.relat      <- subset(darc.data.item, semint  == "unint" & related == "
 arc.unint.unrel      <- subset(darc.data.item, semint  == "unint" & related == "unrel")
 # ------------------------- ERRORS WITH NO DYSFLUENCIES ----------------
 
-nodys <- f1errout 
+nodys <- f2errout 
 nodys$item <- as.factor(nodys$item) 
-nodys$pct <- ifelse(nodys$errnd == 0 & nodys$errcornd == 0, 0, (nodys$errnd / (nodys$errcornd)) * 100)
-nodys.data.item <- aggregate(nodys$pct, list(nodys$item, nodys$semint, nodys$related, nodys$n2num ), mean)
+nodys$pct <- ifelse(nodys$errnod == 0 & nodys$errcornd == 0, 0, (nodys$errnd / (nodys$errcornd)) * 100)
+
+nodys.data.item <- aggregate(nodys$pct, list(nodys$item, nodys$integ, nodys$related, nodys$n2num ), mean)
 colnames(nodys.data.item) <- c("item", "semint", "related", "n2num", "nodys") 
 nodys.integ <- subset(nodys.data.item, semint   ==  "integ")
 nodys.unint <- subset(nodys.data.item, semint   ==  "unint")
@@ -101,9 +104,9 @@ nodys.unint.unrel      <- subset(nodys.data.item, semint  == "unint" & related =
 # ------------------------  ERRORS COUNTS ----------------
 
 
-cnt <- f1errout 
+cnt <- f2errout 
 cnt$item <- as.factor(cnt$item) 
-cnt.data.item <- aggregate(cnt$errd, list(cnt$item, cnt$semint, cnt$related, cnt$n2num ), sum)
+cnt.data.item <- aggregate(cnt$errd, list(cnt$item, cnt$integ, cnt$related, cnt$n2num ), sum)
 colnames(cnt.data.item) <- c("item", "semint", "related", "n2num", "count") 
 cnt.integ <- subset(cnt.data.item, semint   ==  "integ")
 cnt.unint <- subset(cnt.data.item, semint   ==  "unint")
@@ -131,3 +134,4 @@ cnt.integ.relat      <- subset(cnt.data.item, semint  == "integ" & related == "r
 cnt.integ.unrel      <- subset(cnt.data.item, semint  == "integ" & related == "unrel")
 cnt.unint.relat      <- subset(cnt.data.item, semint  == "unint" & related == "rel")
 cnt.unint.unrel      <- subset(cnt.data.item, semint  == "unint" & related == "unrel")
+

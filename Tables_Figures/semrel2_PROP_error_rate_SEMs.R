@@ -19,7 +19,7 @@ prop.us.1       <-describe(sem.unrel.sing$pct)
 
 
 sem.f2errout <- read.table("data/SR2_F2_errprop.txt", header = T) # reads in all data from data file
-sem.d <- f2errout 
+sem.d <- sem.f2errout 
 sem.d$pct <- ifelse(sem.d$errd == 0 & sem.d$errcord == 0, 0, (sem.d$errd / (sem.d$errcord)) * 100)
 
 sem.relat.plur       <- subset(sem.d, related == "rel"   & n2num   == "plur")
@@ -35,3 +35,4 @@ prop.ap.2       <-describe(sem.assoc.plur$pct)
 prop.as.2       <-describe(sem.assoc.sing$pct)       
 prop.up.2       <-describe(sem.unrel.plur$pct)
 prop.us.2       <-describe(sem.unrel.sing$pct)
+

@@ -293,7 +293,7 @@ Miscellaneous   = c(
   sum( unrel.unint.plur$misc), 
   sum( unrel.unint.sing$misc))
 )    
-View(exp1.err.rates)
+
 
 write.xlsx(exp1.err.rates, file="output/table05_SR_error_rates_response_counts.xlsx",  col.names = TRUE, row.names = TRUE, append = FALSE)
 
@@ -887,7 +887,6 @@ exp2.cat.err.rates <- data.frame(
     sum( unrel.plur$misc)  ,      
     sum( unrel.sing$misc) )    
 )
-View(exp2.cat.err.rates)
 
 source( file = "semrel2_PROP_error_data_read_in_dataframe.R")
 source( file = "semrel2_PROP_error_rate_SEMs.R")
@@ -956,7 +955,7 @@ exp2.prop.err.rates <- data.frame(
     sum( unrel.sing$misc))
 )    
 
-View(exp2.prop.err.rates)
+
 exp2.err.rates <-  rbind(exp2.cat.err.rates, exp2.prop.err.rates)
 
 write.xlsx(exp2.err.rates, file="output/table14_SR2_error_rates_response_counts.xlsx",  col.names = TRUE, row.names = TRUE, append = FALSE)

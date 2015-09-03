@@ -168,7 +168,7 @@ f1.cc$subject <- droplevels( f1.cc$subject)
 f1.pr         <- subset( f1, subexpt == "Prop")
 f1.pr$subject <- as.factor( f1.pr$subject)
 f1.pr$subject <- droplevels( f1.pr$subject)
-rm( f1)
+
 
 # -------------------- ALL ITEMS: SET UP INPUT FILE(S) --------------------------------
 f1                 <- read.csv("data/f1_critical_items.csv")
@@ -248,7 +248,7 @@ f1$rates            = ifelse ( f1$errd == 0 & f1$corr == 0, 0, ( f1$errd / f1$to
 f1$v                = (1 / ( f1$errd + .5)) + (1 / ( f1$corr + .5)) 
 f1$asin             = asin(sqrt ( f1$rates / 100))  
 f1.all               <- f1
-rm( f1)
+
 # -------------------- SEMREl 1 & PROP ITEMS: SET UP INPUT FILE(S) --------------------------------
 
 f1                 <- read.csv("data/f1_critical_items.csv")
@@ -418,7 +418,7 @@ f2$rates            = ifelse ( f2$errd == 0 & f2$corr == 0, 0, ( f2$errd / f2$to
 f2$v                = (1 / ( f2$errd + .5)) + (1 / ( f2$corr + .5)) 
 f2$asin             = asin(sqrt ( f2$rates / 100))  
 f2.sr               <- f2
-rm( f2)
+
 # -------------------- CAT & PROP: SET UP INPUT FILE(S) --------------------------------
 f2           <- read.csv("data/f2_critical_items.csv")
 f2$X                = NULL
@@ -507,7 +507,7 @@ f2.cc$item <- droplevels( f2.cc$item)
 f2.pr         <- subset( f2, subexpt == "Prop")
 f2.pr$item <- as.factor( f2.pr$item)
 f2.pr$item <- droplevels( f2.pr$item)
-rm( f2)
+
 
 # -------------------- ALL ITEMS: SET UP INPUT FILE(S) --------------------------------
 f2                 <- read.csv("data/f2_critical_items.csv")
@@ -589,7 +589,7 @@ f2$rates            = ifelse ( f2$errd == 0 & f2$corr == 0, 0, ( f2$errd / f2$to
 f2$v                = (1 / ( f2$errd + .5)) + (1 / ( f2$corr + .5)) 
 f2$asin             = asin(sqrt ( f2$rates / 100))  
 f2.all               <- f2
-rm( f2)
+
 # -------------------- SEMREl 1 & PROP ITEMS: SET UP INPUT FILE(S) --------------------------------
 f2                 <- read.csv("data/f2_critical_items.csv")
 f2$X                = NULL
@@ -671,5 +671,5 @@ f2$rates            = ifelse ( f2$errd == 0 & f2$corr == 0, 0, ( f2$errd / f2$to
 f2$v                = (1 / ( f2$errd + .5)) + (1 / ( f2$corr + .5)) 
 f2$asin             = asin(sqrt ( f2$rates / 100))  
 f2.sr.prop               <- f2
-rm( f2)
+
 
