@@ -1,6 +1,5 @@
 source( file = "clear_and_setup.R")
 # ------------------------------------------- EXP. 1-------------------------------------------------------------
-
 # -------------------- TABLE 01 SEMREL: EXPERIMENTAL ITEM VERSIONS -----------------------------
 
 
@@ -77,8 +76,9 @@ sink("output/table02_SR_relatedness_ratings_ANOVA.txt")
 cat("Table 02: Experiment 1 Critical Item Mean Relatedness Ratings ANOVA", format( Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
 print( aov.rel)
 sink()
-# -------------------- TABLE 03 SEMREL: INTEGRATION ------------------------
 
+# -------------------- TABLE 03 SEMREL: INTEGRATION ------------------------
+# ----------------------------- INTEGRATION DATAFRAME: ANOVAs ---------------
 
 aov.int.unint <- summary( aov(Integrated ~ integrated + Error(item / integrated ), data = d.sr))
 p.int.unint   <- zapsmall( aov.int.unint[[2]][[1]][["Pr(>F)"]][1], digits = 6)
@@ -88,6 +88,7 @@ p.int         <- zapsmall( aov.int[[2]][[1]][["Pr(>F)"]][1], digits = 6)
 
 aov.unint     <- summary( aov(Integrated ~ related + Error(item / related ), data = unint))
 p.unint       <- zapsmall( aov.unint[[2]][[1]][["Pr(>F)"]][1], digits = 6)
+# ----------------------------- INTEGRATION DATAFRAME: Conditions ---------------
 
 exp1.integration <- data.frame(
   
@@ -112,6 +113,7 @@ exp1.integration <- data.frame(
     " ",
     paste("SD in parens.")
     ),
+# ----------------------------- INTEGRATION DATAFRAME: Related ---------------
   
   Related =            c(
     paste( round( mean( relat.int.sing$Integrated), 2),  " (", round( sd( relat.int.sing$Integrated), 2),  ")", sep = ""),
@@ -123,7 +125,8 @@ exp1.integration <- data.frame(
     " ",
     " "
     ),
-                  
+# ----------------------------- INTEGRATION DATAFRAME: Unrelated ---------------
+  
    Unrelated =            c(
      paste( round( mean( unrel.int.sing$Integrated), 2), " (", round( sd( unrel.int.sing$Integrated), 2), ")", sep = ""),
      paste( round( mean(unrel.int.plur$Integrated), 2),  " (", round( sd( unrel.int.plur$Integrated), 2), ")", sep = ""),
@@ -145,11 +148,9 @@ exp1.integration <- data.frame(
     " "
   )
 )
-
-
-
+# ----------------------------- INTEGRATION DATAFRAME: Write to excel ---------------
 write.xlsx(exp1.integration, file ="output/table03_SR_integration_ratings.xlsx", col.names = TRUE, row.names = TRUE, append = FALSE)
-
+# ----------------------------- INTEGRATION ANOVA SUMMARIES: Set up & Print ---------------
 sink( "output/table03_SR_integration_ratings_ANOVA.txt")
 cat("Table 03: Experiment 1 Critical Item Mean Integration Ratings ANOVA", format( Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
 cat( "Integrated vs. Unintegrated",br)
@@ -160,10 +161,13 @@ cat( br, br, line, br, br, "Unntegrated", br, br)
 print( aov.unint)
 
 sink()
+
 # -------------------- TABLE 04 SEMREL: ASSOCIATION ------------------
+# ----------------------------- ASSOCIATION DATAFRAME: ANOVAs ---------------
 
 aov.assoc <- summary( aov(back.trans ~ related + Error(item / related ), data = d.sr))
 p         <- zapsmall( aov.assoc[[2]][[1]][["Pr(>F)"]][1], digits = 6)
+# ----------------------------- ASSOCIATION DATAFRAME: Conditions ---------------
 
 exp1.assoc <- data.frame(
   Local.Noun.Number= c(
@@ -171,12 +175,14 @@ exp1.assoc <- data.frame(
     "Plural",
     paste("Note: Back transofmred proportions of ASIN transformed proportions.")    
     ),
+# ----------------------------- ASSOCIATION DATAFRAME: Related ---------------
   
   Related =     c(
     paste( round( mean( relat.sing$back.trans), 2), " (", round( sd( relat.sing$back.trans), 2), ")", sep = ""),
     paste( round( mean(relat.plur$back.trans), 2),  " (", round( sd( relat.plur$back.trans), 2), ")", sep = ""),
     paste("SD in parens.")   
   ),
+# ----------------------------- ASSOCIATION DATAFRAME: Unrelated ---------------
   
   Unrelated =   c(
     paste( round( mean( unrel.sing$back.trans), 2), " (", round( sd( unrel.sing$back.trans), 2), ")", sep = ""),
@@ -189,9 +195,10 @@ exp1.assoc <- data.frame(
     paste( p, get_stars( p)),
     " " )
 )
-
+# ----------------------------- ASSOCIATION DATAFRAME: Write to excel ---------------
 
 write.xlsx(exp1.related, file="output/table04_SR_association_proportions.xlsx", col.names = TRUE, row.names = TRUE, append = FALSE)
+# ----------------------------- ASSOCIATION ANOVAS SUMMARIES: Set up & Print ---------------
 
 sink("output/table4_SR_association_proportions_ANOVA.txt")
 cat("Table 04: Experiment 1 Critical Item Mean Head-to-Local Association Proportions ANOVA", format( Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
@@ -199,9 +206,11 @@ print( aov.assoc)
 sink()
 
 # -------------------- TABLE 05 SEMREL: ERROR RATES AND RESPONSE COUNTS ------------
+# ----------------------------- ERROR RATE DATAFRAME: Import data ---------------
 source( file = "clear_and_setup.R")
 source( file = "semrel_error_data_read_in_dataframe.R")
 source( file = "semrel_error_rate_SEMs.R")
+# ----------------------------- ERROR RATE DATAFRAME: Conditions ---------------
 exp1.err.rates <- data.frame(
   
   Condition.Related = c(
@@ -238,6 +247,7 @@ exp1.err.rates <- data.frame(
     "Plural",
     "Singular"
     ),
+# ----------------------------- ERROR RATE DATAFRAME: Error rate ---------------
   
   Error.Rate   = c(
 paste(round(100*( sum( relat.int.plur$errd)   / sum(   relat.int.plur$errcord)), digits=1)," (",round(rip.1$se, digits = 1),", ",round(rip.2$se, digits = 1),")",sep="")    ,
@@ -249,6 +259,7 @@ paste(round(100*( sum( unrel.int.sing$errd)   / sum(   unrel.int.sing$errcord)),
 paste(round(100*( sum( unrel.unint.plur$errd) / sum( unrel.unint.plur$errcord)), digits=1)," (",round(uup.1$se, digits = 1),", ",round(uup.2$se, digits = 1),")",sep="")  ,
 paste(round(100*( sum( unrel.unint.sing$errd) / sum( unrel.unint.sing$errcord)), digits=1)," (",round(uus.1$se, digits = 1),", ",round(uus.2$se, digits = 1),")",sep="")
 ), 
+# ----------------------------- ERROR RATE DATAFRAME: Error count ---------------
 
 Error   = c(
   paste( sum( relat.int.plur$errd)  ,    " (", sum( relat.int.plur$errd   -  relat.int.plur$err ) , ")", sep = ""),  
@@ -260,7 +271,8 @@ Error   = c(
   paste( sum( unrel.unint.plur$errd),    " (", sum( unrel.unint.plur$errd -  unrel.unint.plur$err), ")", sep = ""),
   paste( sum( unrel.unint.sing$errd),    " (", sum( unrel.unint.sing$errd -  unrel.unint.sing$err), ")", sep = "")
   ),
- 
+# ----------------------------- ERROR RATE DATAFRAME: Correct count ---------------
+
 Correct   = c(
   paste( sum( relat.int.plur$corrd)  ,    " (", sum( relat.int.plur$corrd   -  relat.int.plur$corr ) , ")", sep = ""),  
   paste( sum( relat.int.sing$corrd)  ,    " (", sum( relat.int.sing$corrd   -  relat.int.sing$corr ) , ")", sep = ""),  
@@ -271,7 +283,7 @@ Correct   = c(
   paste( sum( unrel.unint.plur$corrd),    " (", sum( unrel.unint.plur$corrd -  unrel.unint.plur$corr), ")", sep = ""),
   paste( sum( unrel.unint.sing$corrd),    " (", sum( unrel.unint.sing$corrd -  unrel.unint.sing$corr), ")", sep = "")
   ),
-
+# ----------------------------- ERROR RATE DATAFRAME: Uninflected count ---------------
 Uninflected   = c(
   paste( sum( relat.int.plur$unind)  ,    " (", sum( relat.int.plur$unind   -  relat.int.plur$unin ) , ")", sep = ""),  
   paste( sum( relat.int.sing$unind)  ,    " (", sum( relat.int.sing$unind   -  relat.int.sing$unin ) , ")", sep = ""),  
@@ -282,7 +294,7 @@ Uninflected   = c(
   paste( sum( unrel.unint.plur$unind),    " (", sum( unrel.unint.plur$unind -  unrel.unint.plur$unin), ")", sep = ""),
   paste( sum( unrel.unint.sing$unind),    " (", sum( unrel.unint.sing$unind -  unrel.unint.sing$unin), ")", sep = "")
   ),
-
+# ----------------------------- ERROR RATE DATAFRAME: Miscellaneous count ---------------
 Miscellaneous   = c(
   sum( relat.int.plur$misc)  ,   
   sum( relat.int.sing$misc)  ,   
@@ -293,12 +305,14 @@ Miscellaneous   = c(
   sum( unrel.unint.plur$misc), 
   sum( unrel.unint.sing$misc))
 )    
-
+# ----------------------------- ERROR RATE DATAFRAME: Write to excel ---------------
 
 write.xlsx(exp1.err.rates, file="output/table05_SR_error_rates_response_counts.xlsx",  col.names = TRUE, row.names = TRUE, append = FALSE)
+# ----------------------------- ERROR RATE SUMMARIES: Set up ---------------
 
 sink("output/table05_SR_response_summary.txt")
 cat("Table 05: Experiment 1 Response Summaries", format( Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
+# ----------------------------- ERROR RATE SUMMARIES: Data frame ---------------
 
 response.summary <- data.frame(
 Code =  c(
@@ -322,8 +336,9 @@ Total  = c(
 print(response.summary)
 
 sink()
+
 # -------------------- TABLE 06 SEMREL: ERROR RATE ANOVA RESULTS ------------
-# F1
+# ----------------------------- F1 ANOVAS ---------------
 source( file = "clear_and_setup.R")
 source( file = "semrel_f1_ANOVAS_read_in_dataframe.R")
 
@@ -334,7 +349,7 @@ cat("Table 6: F1 2 x 2 x 2 ANOVA", format( Sys.time(), "%b. %d, %Y at %T"), sep 
 print( summary( a.2x2x2), digits = 6)
 sink()
 aov.sum <- summary( a.2x2x2)
-
+# ----------------------------- F1 EXTRACT MODEL STATS ---------------
 #n2num
 f.n2n <- zapsmall( aov.sum[[4]][[1]][["F value"]][1], digits = 4)
 p.n2n <- zapsmall( aov.sum[[4]][[1]][["Pr(>F)"]][1],  digits = 4)
@@ -367,8 +382,7 @@ m.rXi <- zapsmall( aov.sum[[5]][[1]][["Mean Sq"]][2], digits = 4)
 f.2ri <- zapsmall( aov.sum[[8]][[1]][["F value"]][1], digits = 4)
 p.2ri <- zapsmall( aov.sum[[8]][[1]][["Pr(>F)"]][1],  digits = 4)
 m.2ri <- zapsmall( aov.sum[[8]][[1]][["Mean Sq"]][2], digits = 4)
-
-
+# ----------------------------- F1 ANALYSIS DATAFRAME ---------------
 error.rate.ANOVA.1 <- data.frame(
   
 Effect = c(
@@ -400,9 +414,7 @@ paste( m.n2i," (", get_stars( p.n2i),")", sep = ""),
 paste( m.rXi," (", get_stars( p.rXi),")", sep = ""),
 paste( m.2ri," (", get_stars( p.2ri),")", sep = ""))   
 )
-
-
-# F2
+# ----------------------------- F2 ANOVAS -----------------
 source( file = "semrel_f2_ANOVAS_read_in_dataframe.R")
 
 
@@ -413,7 +425,7 @@ print( summary( a.2x2x2), digits = 6)
 sink()
 
 aov.sum <- summary( a.2x2x2)
-
+# ----------------------------- F2 EXTRACT MODEL STATS -----------
 #n2num
 f.n2n <- zapsmall( aov.sum[[4]][[1]][["F value"]][1], digits = 4)
 p.n2n <- zapsmall( aov.sum[[4]][[1]][["Pr(>F)"]][1],  digits = 4)
@@ -446,7 +458,7 @@ m.rXi <- zapsmall( aov.sum[[5]][[1]][["Mean Sq"]][2], digits = 4)
 f.2ri <- zapsmall( aov.sum[[8]][[1]][["F value"]][1], digits = 4)
 p.2ri <- zapsmall( aov.sum[[8]][[1]][["Pr(>F)"]][1],  digits = 4)
 m.2ri <- zapsmall( aov.sum[[8]][[1]][["Mean Sq"]][2], digits = 4)
-
+# ----------------------------- F2 ANALYSIS DATAFRAME ---------
 error.rate.ANOVA.2 <- data.frame(
   
   Effect = c(
@@ -481,7 +493,7 @@ error.rate.ANOVA.2 <- data.frame(
 
 
 error.rate.ANOVA <- cbind(error.rate.ANOVA.1,error.rate.ANOVA.2[,c(2:3)])
-
+# ----------------------------- F1 & F2 ANALYSIS WRITE TO EXCEL -----------------
 write.xlsx(error.rate.ANOVA, file="output/table06_SR_error_rate_anovas.xlsx", col.names = TRUE, row.names = TRUE, append = FALSE)
 
 
@@ -536,10 +548,10 @@ write.xlsx( exp2.prop.example, file = "output/table08_PROP_example_stimulus.xlsx
 # -------------------- TABLE 09 SEMREL2: CATEGORY COORDINATE RELATEDNESS -----------------------------
 source( file = "clear_and_setup.R")
 source( file = "semrel2_CAT_ratings_data_read_in_dataframe.R")
-
-
+# ----------------------------- RELATEDNESS DATAFRAME: ANOVAs -----------  
 aov.rel <- summary( aov( RelatedHL ~ related + Error(item / related ), data = d.cat))
 p       <- zapsmall( aov.rel[[2]][[1]][["Pr(>F)"]][1], digits = 6)
+# ----------------------------- RELATEDNESS DATAFRAME: Categories -----------  
 
 exp2.related <- data.frame(
   Local.Noun.Number = c(
@@ -548,14 +560,15 @@ exp2.related <- data.frame(
     "Mean",               
     paste("Note: Scale was 1(unrelated) to 7(very related).") 
   ), 
-  
+# ----------------------------- RELATEDNESS DATAFRAME: Related ----------- 
   Related =            c(
     paste( round( mean( relat.sing$RelatedHL), 2), " (", round( sd( relat.sing$RelatedHL), 2), ")", sep = ""),
     paste( round( mean( relat.plur$RelatedHL), 2), " (", round( sd( relat.plur$RelatedHL), 2), ")", sep = ""),
     paste( round( mean( relat$RelatedHL), 2)),
     paste("SD in parens." )
   ),
-  
+# ----------------------------- RELATEDNESS DATAFRAME: Unrelated ----------- 
+
   Unrelated =           c(
     paste( round( mean( unrel.sing$RelatedHL), 2), " (", round( sd( unrel.sing$RelatedHL), 2), ")", sep = ""),
     paste( round( mean( unrel.plur$RelatedHL), 2), " (", round( sd( unrel.plur$RelatedHL), 2), ")", sep = ""),
@@ -569,19 +582,21 @@ exp2.related <- data.frame(
     paste( p,  get_stars( p)),
     paste(" "))
 )
-
+# ----------------------------- RELATEDNESS DATAFRAME: Write to excel ----------- 
 write.xlsx( exp2.related, file = "output/table09_CAT_relatedness_ratings.xlsx", col.names = TRUE, row.names = TRUE, append = FALSE)
+# ----------------------------- RELATEDNESS ANOVA SUMMARIES: Set up & Print  ----------- 
 
 sink("output/table09_CAT_relatedness_ratings_ANOVA.txt")
 cat("Table 09: Experiment 2 CAT Critical Item Mean Relatedness Ratings ANOVA", format( Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
 print( aov.rel)
 sink()
-# -------------------- TABLE 10 SEMREL2: CATEGORY COORDINATE INTEGRATION ------------------------
 
+# -------------------- TABLE 10 SEMREL2: CATEGORY COORDINATE INTEGRATION ------------------------
+# ----------------------------- INTEGRATION DATAFRAME: ANOVAs -----------  
 
 aov.int.unint <- summary( aov(Integrated ~ related + Error(item / related ), data = d.cat))
 p.int.unint   <- zapsmall( aov.int.unint[[2]][[1]][["Pr(>F)"]][1], digits = 6)
-
+# ----------------------------- INTEGRATION DATAFRAME: Categories -----------  
 
 exp2.integration <- data.frame(
   
@@ -594,7 +609,7 @@ exp2.integration <- data.frame(
     paste("Int. vs. Unint. p-val:", p.int.unint,  get_stars( p.int.unint)),
     paste("Note: Scale was 1 (not linked) to 7 (tightly linked).")
   ),
-  
+# ----------------------------- INTEGRATION DATAFRAME: Related -----------  
   Related =            c(
     paste( round( mean( relat.sing$Integrated), 2),  " (", round( sd( relat.sing$Integrated), 2),  ")", sep = ""),
     paste( round( mean(relat.plur$Integrated), 2),   " (", round( sd( relat.plur$Integrated), 2),  ")", sep = ""),
@@ -602,7 +617,7 @@ exp2.integration <- data.frame(
    " ",
    "SD in Parens."
     ),
-    
+# ----------------------------- INTEGRATION DATAFRAME: Unrelated -----------  
   Unrelated =            c(
     paste( round( mean( unrel.sing$Integrated), 2), " (", round( sd( unrel.sing$Integrated), 2), ")", sep = ""),
     paste( round( mean(unrel.plur$Integrated), 2),  " (", round( sd( unrel.plur$Integrated), 2), ")", sep = ""),
@@ -610,9 +625,10 @@ exp2.integration <- data.frame(
     " ",
     " ")
 )
-
+# ----------------------------- INTEGRATION DATAFRAME: Write to excel -----------  
 write.xlsx(exp2.integration, file ="output/table10_CAT_integration_ratings.xlsx", 
            col.names = TRUE, row.names = TRUE, append = FALSE)
+# ----------------------------- INTEGRATION ANOVA SUMMARIES: Set up & Print -----------  
 
 sink("output/table10_CAT_integration_ratings_ANOVA.txt")
 cat("Table 10: Experiment 2 Category Critical Item Mean Inteagration Ratings ANOVA", format( Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
@@ -622,7 +638,7 @@ sink()
 # -------------------- TABLE 11 SEMREL2: PROPERTY RELATEDNESS -----------------------------
 source( file = "clear_and_setup.R")
 source( file = "semrel2_PROP_ratings_data_read_in_dataframe.R")
-
+# ----------------------------- RELATEDNES DATAFRAME: ANOVAs ------------  
 
 aov.att.ass <- summary( aov( RelatedHL ~ related + Error(item / related ), data = attrb.assoc))
 p.att.ass   <- zapsmall( aov.att.ass[[2]][[1]][["Pr(>F)"]][1], digits = 6)
@@ -632,8 +648,7 @@ p.ass.unr   <- zapsmall( aov.ass.unr[[2]][[1]][["Pr(>F)"]][1], digits = 6)
 
 aov.att.unr <- summary( aov( RelatedHL ~ related + Error(item / related ), data = attrb.unrel))
 p.att.unr   <- zapsmall( aov.att.unr[[2]][[1]][["Pr(>F)"]][1], digits = 6)
-
-
+# ----------------------------- RELATEDNES DATAFRAME: Conditions -----------  
 exp2.related <- data.frame(
   Local.Noun.Number = c(
     "Singular",
@@ -645,7 +660,7 @@ exp2.related <- data.frame(
     "Assoc. vs Unrel pval",
     "Att. vs Unrel pval"
     ), 
-  
+# ----------------------------- RELATEDNES DATAFRAME: Attribute means -----------  
   Attribute =            c(
     paste( round( mean( attrb.sing$RelatedHL), 2), " (", round( sd( attrb.sing$RelatedHL), 2), ")", sep = ""),
     paste( round( mean( attrb.plur$RelatedHL), 2), " (", round( sd( attrb.plur$RelatedHL), 2), ")", sep = ""),
@@ -656,6 +671,7 @@ exp2.related <- data.frame(
     paste( p.ass.unr,  get_stars( p.att.unr)),
     paste( p.att.unr,  get_stars( p.att.unr))
   ),
+# ----------------------------- RELATEDNES DATAFRAME: Associate means -----------  
   Associate =            c(
     paste( round( mean( assoc.sing$RelatedHL), 2), " (", round( sd( assoc.sing$RelatedHL), 2), ")", sep = ""),
     paste( round( mean( assoc.plur$RelatedHL), 2), " (", round( sd( assoc.plur$RelatedHL), 2), ")", sep = ""),
@@ -666,7 +682,7 @@ exp2.related <- data.frame(
     "",
     ""
   ),
-  
+# ----------------------------- RELATEDNES DATAFRAME: Unrelated means -----------  
   Unrelated =           c(
     paste( round( mean( unrel.sing$RelatedHL), 2), " (", round( sd( unrel.sing$RelatedHL), 2), ")", sep = ""),
     paste( round( mean( unrel.plur$RelatedHL), 2), " (", round( sd( unrel.plur$RelatedHL), 2), ")", sep = ""),
@@ -677,9 +693,9 @@ exp2.related <- data.frame(
     "",
     "" 
   ))
-
+# ----------------------------- RELATEDNES DATAFRAME: Write to excel ---------
 write.xlsx( exp2.related, file = "output/table11_PROP_relatedness_ratings.xlsx", col.names = TRUE, row.names = TRUE, append = FALSE)
-
+# ----------------------------- RELATEDNESS ANOVA SUMMARIES: Set up & Print ------
 sink("output/table11_PROP_relatedness_ratings_ANOVA.txt")
 cat("Table 11: Experiment 2 CAT Critical Item Mean Relatedness Ratings ANOVA", format( Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
 cat("Attrb vs. Assoc")
@@ -690,18 +706,16 @@ cat( br, br, line, br, br, "Attrb vs. Unrel", br, br)
 print( aov.att.unr)
 
 sink()
+
 # -------------------- TABLE 12 SEMREL2: PROPERTY INTEGRATION ------------------------
-
-aov.att.ass <- summary( aov( Integrated ~ related + Error(item / related ), data = attrb.assoc))
-p.att.ass   <- zapsmall( aov.att.ass[[2]][[1]][["Pr(>F)"]][1], digits = 6)
-
+# ----------------------------- INTEGRATION DATAFRAME: ANOVAS ---------------
 aov.ass.unr <- summary( aov( Integrated ~ related + Error(item / related ), data = assoc.unrel))
 p.ass.unr   <- zapsmall( aov.ass.unr[[2]][[1]][["Pr(>F)"]][1], digits = 6)
 
 aov.att.unr <- summary( aov( Integrated ~ related + Error(item / related ), data = attrb.unrel))
 p.att.unr   <- zapsmall( aov.att.unr[[2]][[1]][["Pr(>F)"]][1], digits = 6)
-
-
+# ----------------------------- INTEGRATION DATAFRAME: Conditions ---------------
+  
 exp2.integration <- data.frame(
   Local.Noun.Number = c(
     "Singular",
@@ -713,7 +727,7 @@ exp2.integration <- data.frame(
     "Assoc. vs Unrel pval",
     "Att. vs Unrel pval"
   ), 
-  
+# ----------------------------- INTEGRATION DATAFRAME: Attribute Means ----------  
   Attribute =            c(
     paste( round( mean( attrb.sing$Integrated), 2), " (", round( sd( attrb.sing$Integrated), 2), ")", sep = ""),
     paste( round( mean( attrb.plur$Integrated), 2), " (", round( sd( attrb.plur$Integrated), 2), ")", sep = ""),
@@ -724,6 +738,7 @@ exp2.integration <- data.frame(
     paste( p.ass.unr,  get_stars( p.att.unr)),
     paste( p.att.unr,  get_stars( p.att.unr))
   ),
+# ----------------------------- INTEGRATION DATAFRAME: Associate Means ----------
   Associate =            c(
     paste( round( mean( assoc.sing$Integrated), 2), " (", round( sd( assoc.sing$Integrated), 2), ")", sep = ""),
     paste( round( mean( assoc.plur$Integrated), 2), " (", round( sd( assoc.plur$Integrated), 2), ")", sep = ""),
@@ -734,7 +749,7 @@ exp2.integration <- data.frame(
     "",
     ""
   ),
-  
+# ----------------------------- INTEGRATION DATAFRAME: Unrelated Means ----------  
   Unrelated =           c(
     paste( round( mean( unrel.sing$Integrated), 2), " (", round( sd( unrel.sing$Integrated), 2), ")", sep = ""),
     paste( round( mean( unrel.plur$Integrated), 2), " (", round( sd( unrel.plur$Integrated), 2), ")", sep = ""),
@@ -745,11 +760,10 @@ exp2.integration <- data.frame(
     "",
     "" 
   ))
-
-
+# ----------------------------- INTEGRATION DATAFRAME: Write to excel ----------
 write.xlsx(exp2.integration, file ="output/table12_PROP_integration_ratings.xlsx", 
            col.names = TRUE, row.names = TRUE, append = FALSE)
-
+# ----------------------------- INTEGRATION ANOVA SUMMARIES: Set up & Print -------
 sink("output/table12_PROP_integration_ratings_ANOVA.txt")
 cat("Table 12: Experiment 2 Property Item Mean Inteagration Ratings ANOVA", format( Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
 
@@ -761,7 +775,9 @@ cat( br, br, line, br, br, "Attrb vs. Unrel", br, br)
 print( aov.att.unr)
 
 sink()
+
 # -------------------- TABLE 13 SEMREL2: PROPERTY ASSOCIATION ------------------------
+# ----------------------------- ASSOCIATION DATAFRAME: ANOVAS ---------------
 
 aov.att.ass <- summary( aov( AssArc.H.L ~ related + Error(item / related ), data = attrb.assoc))
 p.att.ass   <- zapsmall( aov.att.ass[[2]][[1]][["Pr(>F)"]][1], digits = 6)
@@ -771,8 +787,7 @@ p.ass.unr   <- zapsmall( aov.ass.unr[[2]][[1]][["Pr(>F)"]][1], digits = 6)
 
 aov.att.unr <- summary( aov( AssArc.H.L  ~ related + Error(item / related ), data = attrb.unrel))
 p.att.unr   <- zapsmall( aov.att.unr[[2]][[1]][["Pr(>F)"]][1], digits = 6)
-
-
+# ----------------------------- ASSOCIATION DATAFRAME: Conditions ---------------
 exp2.association <- data.frame(
   Local.Noun.Number = c(
     "Singular",
@@ -784,7 +799,7 @@ exp2.association <- data.frame(
     "Assoc. vs Unrel pval",
     "Att. vs Unrel pval"
   ), 
-  
+# ----------------------------- ASSOCIATION DATAFRAME: Attribute Means ---------------
   Attribute =            c(
     paste( round( mean( attrb.sing$back.trans), 2), " (", round( sd( attrb.sing$back.trans), 2), ")", sep = ""),
     paste( round( mean( attrb.plur$back.trans), 2), " (", round( sd( attrb.plur$back.trans), 2), ")", sep = ""),
@@ -795,6 +810,7 @@ exp2.association <- data.frame(
     paste( p.ass.unr,  get_stars( p.att.unr)),
     paste( p.att.unr,  get_stars( p.att.unr))
   ),
+# ----------------------------- ASSOCIATION DATAFRAME: Associate Means ---------------
   Associate =            c(
     paste( round( mean( assoc.sing$back.trans), 2), " (", round( sd( assoc.sing$back.trans), 2), ")", sep = ""),
     paste( round( mean( assoc.plur$back.trans), 2), " (", round( sd( assoc.plur$back.trans), 2), ")", sep = ""),
@@ -805,7 +821,8 @@ exp2.association <- data.frame(
     "",
     ""
   ),
-  
+# ----------------------------- ASSOCIATION DATAFRAME: Unrelated Means ---------------
+
   Unrelated =           c(
     paste( round( mean( unrel.sing$back.trans), 2), " (", round( sd( unrel.sing$back.trans), 2), ")", sep = ""),
     paste( round( mean( unrel.plur$back.trans), 2), " (", round( sd( unrel.plur$back.trans), 2), ")", sep = ""),
@@ -816,10 +833,11 @@ exp2.association <- data.frame(
     "",
     "" 
   ))
-
+# ----------------------------- ASSOCIATION DATAFRAME: Write to excel ---------------
 
 write.xlsx(exp2.integration, file ="output/table13_PROP_association_proportions.xlsx", 
            col.names = TRUE, row.names = TRUE, append = FALSE)
+# ----------------------------- ASSOCIATION ANOVA SUMMARIES: Set up & Print ---------------
 
 sink("output/table13_PROP_association_proportions_ANOVA.txt")
 cat("Table 13: Experiment 2 Property Item Mean Association Proportions ANOVA", format( Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
@@ -834,9 +852,11 @@ print( aov.att.unr)
 sink()
 
 # -------------------- TABLE 14 SEMREL2: ERROR RATES AND RESPONSE COUNTS ------------
+# ----------------------------- CAT ERROR RATE DATAFRAME: Import Data -------
 source( file = "clear_and_setup.R")
 source( file = "semrel2_CAT_error_data_read_in_dataframe.R")
 source( file = "semrel2_CAT_error_rate_SEMs.R")
+# ----------------------------- CAT ERROR RATE DATAFRAME: Conditions -------------
 exp2.cat.err.rates <- data.frame(
   
   Condition.Related = c(
@@ -853,43 +873,45 @@ exp2.cat.err.rates <- data.frame(
     "Singular"
   ),
   
+# ----------------------------- CAT ERROR RATE DATAFRAME: Error Rate -------------  
   Error.Rate   = c(
     paste(round(100*( sum( relat.plur$errd)   / sum(   relat.plur$errcord)), digits=1)," (",round(cat.rp.1$se, digits = 1),", ",round(cat.rp.2$se, digits = 1),")",sep=""),  
     paste(round(100*( sum( relat.sing$errd)   / sum(   relat.sing$errcord)), digits=1)," (",round(cat.rs.1$se, digits = 1),", ",round(cat.rs.2$se, digits = 1),")",sep=""),  
     paste(round(100*( sum( unrel.plur$errd)   / sum(   unrel.plur$errcord)), digits=1)," (",round(cat.up.1$se, digits = 1),", ",round(cat.up.2$se, digits = 1),")",sep=""),  
     paste(round(100*( sum( unrel.sing$errd)   / sum(   unrel.sing$errcord)), digits=1)," (",round(cat.us.1$se, digits = 1),", ",round(cat.us.2$se, digits = 1),")",sep="")
   ),
-  
+# ----------------------------- CAT ERROR RATE DATAFRAME: Error Count ------------- 
   Error   = c(
     paste( sum( relat.plur$errd)  ,    " (", sum( relat.plur$errd   -  relat.plur$err ) , ")", sep = ""),  
     paste( sum( relat.sing$errd)  ,    " (", sum( relat.sing$errd   -  relat.sing$err ) , ")", sep = ""),  
     paste( sum( unrel.plur$errd)  ,    " (", sum( unrel.plur$errd   -  unrel.plur$err ) , ")", sep = ""),     
-    paste( sum( unrel.sing$errd)  ,    " (", sum( unrel.sing$errd   -  unrel.sing$err ) , ")", sep = "")   
+    paste( sum( unrel.sing$errd)  ,    " (", sum( unrel.sing$errd   -  unrel.sing$err ) , ")", sep = "")  
    ),
-  
+# ----------------------------- CAT ERROR RATE DATAFRAME: Correct Count ------------- 
    Correct   = c(
      paste( sum(relat.plur$corrd),   " (", sum( relat.plur$corrd   -  relat.plur$corr ) , ")", sep = ""),  
      paste( sum(relat.sing$corrd),   " (", sum( relat.sing$corrd   -  relat.sing$corr ) , ")", sep = ""),  
      paste( sum(unrel.plur$corrd),   " (", sum( unrel.plur$corrd   -  unrel.plur$corr ) , ")", sep = ""),
-     paste( sum(unrel.sing$corrd),   " (", sum( unrel.sing$corrd   -  unrel.sing$corr ) , ")", sep = "")   
+     paste( sum(unrel.sing$corrd),   " (", sum( unrel.sing$corrd   -  unrel.sing$corr ) , ")", sep = "")  
        ),
-  
+# ----------------------------- CAT ERROR RATE DATAFRAME: Uninflected Count ------------- 
   Uninflected   = c(
     paste( sum( relat.plur$unind)  ,    " (", sum( relat.plur$unind   -  relat.plur$unin ) , ")", sep = ""),  
     paste( sum( relat.sing$unind)  ,    " (", sum( relat.sing$unind   -  relat.sing$unin ) , ")", sep = ""),
     paste( sum( unrel.plur$unind)  ,    " (", sum( unrel.plur$unind   -  unrel.plur$unin ) , ")", sep = ""),     
     paste( sum( unrel.sing$unind)  ,    " (", sum( unrel.sing$unind   -  unrel.sing$unin ) , ")", sep = "")
     ),
-  
+# ----------------------------- CAT ERROR RATE DATAFRAME: Miscellaneous Count ------------- 
   Miscellaneous   = c(
     sum( relat.plur$misc)  ,   
     sum( relat.sing$misc)  ,
     sum( unrel.plur$misc)  ,      
     sum( unrel.sing$misc) )    
 )
-
+# ----------------------------- PROP ERROR RATE DATAFRAME: Import Data ---------------
 source( file = "semrel2_PROP_error_data_read_in_dataframe.R")
 source( file = "semrel2_PROP_error_rate_SEMs.R")
+# ----------------------------- PROP ERROR RATE DATAFRAME: Conditions ---------------
 exp2.prop.err.rates <- data.frame(
   
   Condition.Related = c(
@@ -909,7 +931,7 @@ exp2.prop.err.rates <- data.frame(
     "Plural",
     "Singular"
   ),
-  
+# ----------------------------- PROP ERROR RATE DATAFRAME: Error rate ---------------
   Error.Rate   = c(
     paste(round(100*( sum( attrb.plur$errd)   / sum(   attrb.plur$errcord)), digits=1)," (",round(prop.rp.1$se, digits = 1),", ",round(prop.rp.2$se, digits = 1),")",sep=""),  
     paste(round(100*( sum( attrb.sing$errd)   / sum(   attrb.sing$errcord)), digits=1)," (",round(prop.rs.1$se, digits = 1),", ",round(prop.rs.2$se, digits = 1),")",sep=""),  
@@ -918,7 +940,7 @@ exp2.prop.err.rates <- data.frame(
     paste(round(100*( sum( unrel.plur$errd)   / sum(   unrel.plur$errcord)), digits=1)," (",round(prop.up.1$se, digits = 1),", ",round(prop.up.2$se, digits = 1),")",sep=""),  
     paste(round(100*( sum( unrel.sing$errd)   / sum(   unrel.sing$errcord)), digits=1)," (",round(prop.us.1$se, digits = 1),", ",round(prop.us.2$se, digits = 1),")",sep="")
   ),
-  
+# ----------------------------- PROP ERROR RATE DATAFRAME: Error count ---------------
   Error   = c(
     paste( sum( attrb.plur$errd),    " (", sum( attrb.plur$errd -  attrb.plur$err), ")", sep = ""),  
     paste( sum( attrb.sing$errd),    " (", sum( attrb.sing$errd -  attrb.sing$err), ")", sep = ""),  
@@ -927,7 +949,7 @@ exp2.prop.err.rates <- data.frame(
     paste( sum( unrel.plur$errd),    " (", sum( unrel.plur$errd -  unrel.plur$err), ")", sep = ""),
     paste( sum( unrel.sing$errd),    " (", sum( unrel.sing$errd -  unrel.sing$err), ")", sep = "")
   ),
-  
+# ----------------------------- PROP ERROR RATE DATAFRAME: Correct count ---------------
   Correct   = c(
     paste( sum( attrb.plur$corrd),    " (", sum( attrb.plur$corrd -  attrb.plur$corr), ")", sep = ""),  
     paste( sum( attrb.sing$corrd),    " (", sum( attrb.sing$corrd -  attrb.sing$corr), ")", sep = ""),  
@@ -936,7 +958,7 @@ exp2.prop.err.rates <- data.frame(
     paste( sum( unrel.plur$corrd),    " (", sum( unrel.plur$corrd -  unrel.plur$corr), ")", sep = ""),
     paste( sum( unrel.sing$corrd),    " (", sum( unrel.sing$corrd -  unrel.sing$corr), ")", sep = "")
   ),
-  
+# ----------------------------- PROP ERROR RATE DATAFRAME: Uninflected count ---------------
   Uninflected   = c(
     paste( sum( attrb.plur$unind),    " (", sum( attrb.plur$unind -  attrb.plur$unin), ")", sep = ""),  
     paste( sum( attrb.sing$unind),    " (", sum( attrb.sing$unind -  attrb.sing$unin), ")", sep = ""),  
@@ -945,7 +967,7 @@ exp2.prop.err.rates <- data.frame(
     paste( sum( unrel.plur$unind),    " (", sum( unrel.plur$unind -  unrel.plur$unin), ")", sep = ""),
     paste( sum( unrel.sing$unind),    " (", sum( unrel.sing$unind -  unrel.sing$unin), ")", sep = "")
   ),
-  
+# ----------------------------- PROP ERROR RATE DATAFRAME: Miscellaneous count ---------------
   Miscellaneous   = c(
     sum( attrb.plur$misc)  ,   
     sum( attrb.sing$misc)  ,   
@@ -954,14 +976,13 @@ exp2.prop.err.rates <- data.frame(
     sum( unrel.plur$misc), 
     sum( unrel.sing$misc))
 )    
-
-
+# ----------------------------- CAT & PROP ERROR RATE DATAFRAME: Combine to Excel ---------------
 exp2.err.rates <-  rbind(exp2.cat.err.rates, exp2.prop.err.rates)
-
 write.xlsx(exp2.err.rates, file="output/table14_SR2_error_rates_response_counts.xlsx",  col.names = TRUE, row.names = TRUE, append = FALSE)
-
+# ----------------------------- CAT & PROP ERROR RATE SUMMARIES: Set up ---------------
 sink("output/table14_SR_response_summary.txt")
 cat("Table 14: Experiment 2 Response Summaries", format( Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
+# ----------------------------- CAT & PROP ERROR RATE SUMMARIES: Dataframe ---------------
 
 source( file = "semrel2_ALL_error_data_read_in_dataframe.R")
 response.summary <- data.frame(
@@ -985,8 +1006,9 @@ response.summary <- data.frame(
 
 
 sink()
+
 # -------------------- TABLE 15 SEMREL2: CATEGORY COORDINATE ERROR RATE ANOVA RESULTS ------------
-# F1
+# ----------------------------- F1 ANOVAS  -------------
 source( file = "clear_and_setup.R")
 source( file = "semrel2_CAT_f1_ANOVAS_read_in_dataframe.R")
 
@@ -997,7 +1019,7 @@ cat("Table 15: CAT F1 2 x 2 ANOVA", format( Sys.time(), "%b. %d, %Y at %T"), sep
 print( summary( a.2x2), digits = 6)
 sink()
 aov.sum <- summary( a.2x2)
-
+# ----------------------------- F1 EXTRACT MODEL STATS  -------------
 #n2num
 f.n2n <- zapsmall( aov.sum[[3]][[1]][["F value"]][1], digits = 4)
 p.n2n <- zapsmall( aov.sum[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
@@ -1010,9 +1032,9 @@ m.rel <- zapsmall( aov.sum[[2]][[1]][["Mean Sq"]][2], digits = 4)
 f.n2r <- zapsmall( aov.sum[[4]][[1]][["F value"]][1], digits = 4)
 p.n2r <- zapsmall( aov.sum[[4]][[1]][["Pr(>F)"]][1],  digits = 4)
 m.n2r <- zapsmall( aov.sum[[4]][[1]][["Mean Sq"]][2], digits = 4)
-
+# ----------------------------- F1 ANALYSIS DATAFRAME -------------
 error.rate.ANOVA.1 <- data.frame(
-  
+ 
   Effect = c(
     "Local Noun Number",
     "Related",
@@ -1030,20 +1052,15 @@ error.rate.ANOVA.1 <- data.frame(
     paste( m.rel," (", get_stars( p.rel),")", sep = ""),
     paste( m.n2r," (", get_stars( p.n2r),")", sep = ""))   
 )
-
-
-# F2
+# ----------------------------- F2 ANALYSIS -------------
 source( file = "semrel2_CAT_f2_ANOVAS_read_in_dataframe.R")
-
-
 a.2x2 <- aov(error ~ related * n2num + Error(item / (related * n2num)), data = data.item)
 sink("output/table15_SR2_CAT_f2_anova.txt")
 cat("Table 15: CAT F2 2 x 2 ANOVA", format( Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
 print( summary( a.2x2), digits = 6)
 sink()
-
 aov.sum <- summary( a.2x2)
-
+# ----------------------------- F2 EXTRACT MODEL STATS -------------
 #n2num
 f.n2n <- zapsmall( aov.sum[[3]][[1]][["F value"]][1], digits = 4)
 p.n2n <- zapsmall( aov.sum[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
@@ -1056,8 +1073,7 @@ m.rel <- zapsmall( aov.sum[[2]][[1]][["Mean Sq"]][2], digits = 4)
 f.n2r <- zapsmall( aov.sum[[4]][[1]][["F value"]][1], digits = 4)
 p.n2r <- zapsmall( aov.sum[[4]][[1]][["Pr(>F)"]][1],  digits = 4)
 m.n2r <- zapsmall( aov.sum[[4]][[1]][["Mean Sq"]][2], digits = 4)
-
-
+# ----------------------------- F2 ANALYSIS DATAFRAME -------------
 error.rate.ANOVA.2 <- data.frame(
   
   Effect = c(
@@ -1077,16 +1093,15 @@ error.rate.ANOVA.2 <- data.frame(
     paste( m.rel," (", get_stars( p.rel), ")", sep = ""),
     paste( m.n2r," (", get_stars( p.n2r), ")", sep = ""))   
 )
-
-
 error.rate.ANOVA <- cbind(error.rate.ANOVA.1,error.rate.ANOVA.2[,c(2:3)])
-
+# ----------------------------- F1 & F2 ANALYSIS WRITE TO EXCEL --------
 write.xlsx(error.rate.ANOVA, file="output/table15_SR2_CAT_error_rate_anovas.xlsx", col.names = TRUE, row.names = TRUE, append = FALSE)
+
+
 # -------------------- TABLE 16 SEMREL2: PROPERTY ERROR RATE ANOVA RESULTS ------------
-# F1
+# ----------------------------- F1 ANALYSIS ------
 source( file = "clear_and_setup.R")
 source( file = "semrel2_PROP_f1_ANOVAS_read_in_dataframe.R")
-
 
 a.2x3 <- aov(error ~ related * n2num + Error( subj / ( related * n2num)), data = data.subj)
 sink("output/table16_SR2_PROP_f1_anova.txt")
@@ -1094,7 +1109,7 @@ cat("Table 16: PROP F1 2 x 2 ANOVA", format( Sys.time(), "%b. %d, %Y at %T"), se
 print( summary( a.2x3), digits = 6)
 sink()
 aov.sum <- summary( a.2x3)
-
+# ----------------------------- F1 EXTRACT MODEL STATS ------
 #n2num
 f.n2n <- zapsmall( aov.sum[[3]][[1]][["F value"]][1], digits = 4)
 p.n2n <- zapsmall( aov.sum[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
@@ -1107,7 +1122,7 @@ m.rel <- zapsmall( aov.sum[[2]][[1]][["Mean Sq"]][2], digits = 4)
 f.n2r <- zapsmall( aov.sum[[4]][[1]][["F value"]][1], digits = 4)
 p.n2r <- zapsmall( aov.sum[[4]][[1]][["Pr(>F)"]][1],  digits = 4)
 m.n2r <- zapsmall( aov.sum[[4]][[1]][["Mean Sq"]][2], digits = 4)
-
+# ----------------------------- F1 ANALYSIS DATAFRAME ------
 error.rate.ANOVA.1 <- data.frame(
   
   Effect = c(
@@ -1127,20 +1142,15 @@ error.rate.ANOVA.1 <- data.frame(
     paste( m.rel," (", get_stars( p.rel),")", sep = ""),
     paste( m.n2r," (", get_stars( p.n2r),")", sep = ""))   
 )
-
-
-# F2
+# ----------------------------- F2 ANALYSIS ------
 source( file = "semrel2_PROP_f2_ANOVAS_read_in_dataframe.R")
-
-
 a.2x3 <- aov(error ~ related * n2num + Error(item / (related * n2num)), data = data.item)
 sink("output/table16_SR2_PROP_f2_anova.txt")
 cat("Table 16: PROP F2 2 x 2 ANOVA", format( Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
 print( summary( a.2x3), digits = 6)
 sink()
-
 aov.sum <- summary( a.2x3)
-
+# ----------------------------- F2 EXTRACT MODEL STATS ------
 #n2num
 f.n2n <- zapsmall( aov.sum[[3]][[1]][["F value"]][1], digits = 4)
 p.n2n <- zapsmall( aov.sum[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
@@ -1153,8 +1163,7 @@ m.rel <- zapsmall( aov.sum[[2]][[1]][["Mean Sq"]][2], digits = 4)
 f.n2r <- zapsmall( aov.sum[[4]][[1]][["F value"]][1], digits = 4)
 p.n2r <- zapsmall( aov.sum[[4]][[1]][["Pr(>F)"]][1],  digits = 4)
 m.n2r <- zapsmall( aov.sum[[4]][[1]][["Mean Sq"]][2], digits = 4)
-
-
+# ----------------------------- F2 ANALYSIS DATAFRAME ------
 error.rate.ANOVA.2 <- data.frame(
   
   Effect = c(
@@ -1174,10 +1183,8 @@ error.rate.ANOVA.2 <- data.frame(
     paste( m.rel," (", get_stars( p.rel), ")", sep = ""),
     paste( m.n2r," (", get_stars( p.n2r), ")", sep = ""))   
 )
-
-
 error.rate.ANOVA <- cbind(error.rate.ANOVA.1,error.rate.ANOVA.2[,c(2:3)])
-
+# ----------------------------- F1 & F2 ANALYSIS TO EXCEL ------
 write.xlsx(error.rate.ANOVA, file="output/table16_SR2_PROP_error_rate_anovas.xlsx", col.names = TRUE, row.names = TRUE, append = FALSE)
 
 # -------------------- TABLE 17 SEMREL: UNINFLECTED ANOVA RESULTS --------------------
@@ -1195,7 +1202,7 @@ source( file = "clear_and_setup.R")
 source( file = "Model Comparisons.R")
 
 regressions.ds <-data.frame(
-  
+# ----------------------------- SUB EXP ------   
 SUBEXPT = c( 
 paste("", sep = ""),
 paste("REL*INT ANALYSIS", sep = ""),
@@ -1254,7 +1261,7 @@ paste("Property", sep = ""),
 paste("SemProp", sep = ""),
 paste("ALL", sep = "")
 ),
-
+# ----------------------------- ANALYSIS.NO--------  
 ANLYS.NO = c(
  paste( "", sep = ""),
  paste( "", sep = ""),
@@ -1313,126 +1320,126 @@ ANLYS.NO = c(
  paste( "30000b", sep = ""),
  paste( "3000b", sep = ")")
 ),
-
+# ----------------------------- RAND EFF STRUCTURE F1 -----
 RAND.EFF.STRUCTURE=c(
- paste( "", sep = ""),
- paste( "", sep = ""),
- paste( "F1 Rand", sep = ""),
- paste( "rel*int", sep = ""),
- paste( "rel*int", sep = ""),
- paste( "rel*int", sep = ""),
- paste( "rel*int", sep = ""),
- paste( "rel*int", sep = ""),
- paste( "", sep = ""),
- paste( "", sep = ""),
- paste( "F1 Rand", sep = ""),
- paste( "rel+int", sep = ""),
- paste( "rel*int", sep = ""),
- paste( "rel*int", sep = ""),
- paste( "rel*int", sep = ""),
- paste( "rel*int", sep = ""),
- paste( "", sep = ""),
- paste( "", sep = ""),
- paste( "F1 Rand", sep = ""),
- paste( "rel*int", sep = ""),
- paste( "rel*int", sep = ""),
- paste( "rel*int", sep = ""),
- paste( "rel*int", sep = ""),
- paste( "rel*int", sep = ""),
- paste( "", sep = ""),
- paste( "", sep = ""),
- paste( "F1 Rand", sep = ""),
- paste( "int*ass", sep = ""),
- paste( "", sep = ""),
- paste( "int*ass", sep = ""),
- paste( "int*ass", sep = ""),
- paste( "int*ass", sep = ""),
- paste( "", sep = ""),
- paste( "", sep = ""),
- paste( "F1 Rand", sep = ""),
- paste( "rel*ass", sep = ""),
- paste( "", sep = ""),
- paste( "rel*ass", sep = ""),
- paste( "rel*ass", sep = ""),
- paste( "rel*ass", sep = ""),
- paste( "", sep = ""),
- paste( "", sep = ""),
- paste( "F1 rand", sep = ""),
- paste( "rel*ass", sep = ""),
- paste( "", sep = ""),
- paste( "rel*ass", sep = ""),
- paste( "rel*ass", sep = ""),
- paste( "rel*ass", sep = ""),
- paste( "", sep = ""),
- paste( "", sep = ""),
- paste( "F1 rand", sep = ""),
- paste( "rel*ass", sep = ""),
- paste( "", sep = ""),
- paste( "rel*ass", sep = ""),
- paste( "rel*ass", sep = ""),
- paste( "rel*ass", sep = "")
-  ),
-
-. = c(
- paste( "", sep = ""), 
- paste( "", sep = ""),
- paste( "F2 Rand", sep = ""),
- paste( "rel+int", sep = ""),
- paste( "1", sep = ""),
- paste( "rel:int", sep = ""),
- paste( "rel+int", sep = ""),
- paste( "rel:int", sep = ""),
- paste( "", sep = ""),
- paste( "", sep = ""),
- paste( "F2 Rand", sep = ""),
- paste( "rel+int", sep = ""),
- paste( "1", sep = ""),
- paste( "rel:int", sep = ""),
- paste( "rel:int", sep = ""),
- paste( "rel:int", sep = ""),
- paste( "", sep = ""),
- paste( "", sep = ""),
- paste( "F2 Rand", sep = ""),
- paste( "rel+int", sep = ""),
- paste( "1", sep = ""),
- paste( "1", sep = ""),
- paste( "rel+int", sep = ""),
- paste( "rel:int", sep = ""),
- paste( "", sep = ""),
- paste( "", sep = ""),
- paste( "F2 Rand", sep = ""),
- paste( "int+ass", sep = ""),
- paste( "", sep = ""),
- paste( "int:ass", sep = ""),
- paste( "int+ass", sep = ""),
- paste( "int:ass", sep = ""),
- paste( "", sep = ""),
- paste( "", sep = ""),
- paste( "F2 Rand", sep = ""),
- paste( "rel+ass", sep = ""),
- paste( "", sep = ""),
- paste( "rel:ass", sep = ""),
- paste( "rel+ass", sep = ""),
- paste( "rel:ass", sep = ""),
- paste( "", sep = ""),
- paste( "", sep = ""),
- paste( "F2 Rand", sep = ""),
- paste( "rel+ass", sep = ""),
- paste( "", sep = ""),
- paste( "rel:ass", sep = ""),
- paste( "rel+ass", sep = ""),
- paste( "rel:ass", sep = ""),
- paste( "", sep = ""),
- paste( "", sep = ""),
- paste( "F2 Rand", sep = ""),
- paste( "rel+ass", sep = ""),
- paste( "", sep = ""),
- paste( "rel:ass", sep = ""),
- paste( "rel+ass", sep = ""),
- paste( "rel:ass", sep = "")
+  paste( "", sep = ""),
+  paste( "", sep = ""),
+  paste( "F1 Rand", sep = ""),
+  f.1,
+  f.10, 
+  f.100, 
+  f.10000, 
+  f.1000, 
+  paste( "", sep = ""),
+  paste( "", sep = ""),
+  paste( "F1 Rand", sep = ""),
+  f.1a, 
+  f.10a, 
+  f.100a, 
+  f.10000a, 
+  f.1000a, 
+  paste( "", sep = ""),
+  paste( "", sep = ""),
+  paste( "F1 Rand", sep = ""),
+  f.1b, 
+  f.10b, 
+  f.100b, 
+  f.10000, 
+  f.1000b, 
+  paste( "", sep = ""),
+  paste( "", sep = ""),
+  paste( "F1 Rand", sep = ""),
+  f.2, 
+  paste( "", sep = ""),
+  f.200, 
+  f.20000, 
+  f.2000, 
+  paste("", sep = ""),
+  paste( "", sep = ""),
+  paste( "F1 Rand", sep = ""),
+  f.3, 
+  paste( "", sep = ""),
+  f.300, 
+  f.30000, 
+  f.3000, 
+   paste("", sep = ""),
+  paste( "", sep = ""),
+  paste( "F1 rand", sep = ""),
+  f.3a, 
+  paste( "", sep = ""), 
+  f.300a, 
+  f.30000a, 
+  f.3000a, 
+  paste( "", sep = ""),
+  paste( "", sep = ""),
+  paste( "F1 rand", sep = ""),
+  f.3b, 
+  paste( "", sep = ""),
+  f.300b, 
+  f.30000b, 
+  f.3000b
 ),
-
-FIXED.EFFECT.ESTIMATES =c(
+# ----------------------------- RAND EFF STRUCTURE F2 -----
+RAND.EFF.STRUCTURE=c(
+  paste( "", sep = ""),
+  paste( "", sep = ""),
+  paste( "F2 Rand", sep = ""),
+  ff.1,
+  ff.10, 
+  ff.100, 
+  ff.10000, 
+  ff.1000, 
+  paste( "", sep = ""),
+  paste( "", sep = ""),
+  paste( "F2 Rand", sep = ""),
+  ff.1a, 
+  ff.10a, 
+  ff.100a, 
+  ff.10000a, 
+  ff.1000a, 
+  paste( "", sep = ""),
+  paste( "", sep = ""),
+  paste( "F2 Rand", sep = ""),
+  ff.1b, 
+  ff.10b, 
+  ff.100b, 
+  ff.10000, 
+  ff.1000b, 
+  paste( "", sep = ""),
+  paste( "", sep = ""),
+  paste( "F2 Rand", sep = ""),
+  ff.2, 
+  paste( "", sep = ""),
+  ff.200, 
+  ff.20000, 
+  ff.2000, 
+  paste("", sep = ""),
+  paste( "", sep = ""),
+  paste( "F2 Rand", sep = ""),
+  ff.3, 
+  paste( "", sep = ""),
+  ff.300, 
+  ff.30000, 
+  ff.3000, 
+  paste("", sep = ""),
+  paste( "", sep = ""),
+  paste( "F2 rand", sep = ""),
+  ff.3a, 
+  paste( "", sep = ""), 
+  ff.300a, 
+  ff.30000a, 
+  ff.3000a, 
+  paste( "", sep = ""),
+  paste( "", sep = ""),
+  paste( "F2 rand", sep = ""),
+  ff.3b, 
+  paste( "", sep = ""),
+  ff.300b, 
+  ff.30000b, 
+  ff.3000b
+),
+# ----------------------------- FIXED EFFECTS ESTIMATES REL F1 ------
+FIX.EFF.REL.F1  =c(
   paste("", sep = ""),
   paste("", sep = ""),
   paste("F1 rel", sep = ""),
@@ -1494,7 +1501,8 @@ FIXED.EFFECT.ESTIMATES =c(
   round(s.m30000b.f1[[10]][[9]],digits=3),
   round(s.m3000b.f1[[10]][[9]], digits=3)
 ),
-. =c(
+# ----------------------------- FIXED EFFECTS ESTIMATES REL F2 ------
+FIX.EFF.REL.F2 =c(
   paste("", sep = ""),
   paste("", sep = ""),
   paste("F2 rel", sep = ""),
@@ -1556,8 +1564,8 @@ FIXED.EFFECT.ESTIMATES =c(
   round(s.m30000b.f2[[10]][[9]],digits=3),
   round(s.m3000b.f2[[10]][[9]], digits=3)
   ),
-  
-  . =c(
+# ----------------------------- FIXED EFFECTS ESTIMATES INT F1 ------  
+FIX.EFF.INTL.F1 =c(
   paste("", sep = ""),
   paste("", sep = ""),
   paste("F1 int", sep = ""),
@@ -1619,8 +1627,8 @@ FIXED.EFFECT.ESTIMATES =c(
   round(s.m30000b.f1[[10]][[10]],digits=3),
   round(s.m3000b.f1[[10]][[10]], digits=3)
   ),
-
-. =c(
+# ----------------------------- FIXED EFFECTS ESTIMATES INT F2 ------
+FIX.EFF.REL.F2 =c(
   paste("", sep = ""),
   paste("", sep = ""),
   paste("F2 int", sep = ""),
@@ -1649,7 +1657,6 @@ FIXED.EFFECT.ESTIMATES =c(
   paste("", sep = ""),
   paste("", sep = ""),
   paste("F2 int", sep = ""),
-  
   round(s.m2.f2[[10]][[9]],    digits=3),
   paste("", sep = ""),
     # round(s.m20.f2[[10]][[10]],   digits=3),
@@ -1684,9 +1691,8 @@ FIXED.EFFECT.ESTIMATES =c(
   round(s.m30000b.f2[[10]][[10]],digits=3),
   round(s.m3000b.f2[[10]][[10]], digits=3)
 ),
-  
-  
-  . =c(
+# ----------------------------- FIXED EFFECTS ESTIMATES REL * INT F1 ------  
+FIX.EFF.RELINT.F1 =c(
     paste("", sep = ""),
     paste("", sep = ""),
     paste("F1 rel * int", sep = ""),
@@ -1748,8 +1754,8 @@ FIXED.EFFECT.ESTIMATES =c(
   round(s.m30000b.f1[[10]][[11]],digits=3),
   round(s.m3000b.f1[[10]][[11]], digits=3)
   ),
-  
-  . =c(
+# ----------------------------- FIXED EFFECTS ESTIMATES REL * INT F2 ------  
+FIX.EFF.RELINT.F1 =c(
     paste("", sep = ""),
     paste("", sep = ""),
     paste("F2 rel * int", sep = ""),
@@ -1811,7 +1817,389 @@ FIXED.EFFECT.ESTIMATES =c(
   round(s.m30000b.f2[[10]][[11]],digits=3),
   round(s.m3000b.f2[[10]][[11]], digits=3)
   ),
+# ----------------------------- P VAL RANGES (REL F1)------
+REL.F1.P.VALS =c(
+  paste("", sep = ""),
+  paste("", sep = ""),
+  paste("F1 rel", sep = ""),
+  paste( get_range(p.s.m1.f1.r), " (", get_stars(          p.s.m1.f1.r),")", sep = ""),     
+  paste( get_range(p.s.m10.f1.r), " (", get_stars(         p.s.m10.f1.r),")", sep = ""),    
+  paste( get_range(p.s.m100.f1.r), " (", get_stars(        p.s.m100.f1.r),")", sep = ""),   
+  paste( get_range(p.s.m10000.f1.r), " (", get_stars(      p.s.m10000.f1.r),")", sep = ""), 
+  paste( get_range(p.s.m1000.f1.r), " (", get_stars(       p.s.m1000.f1.r),")", sep = ""),  
+  paste("", sep = ""),
+  paste("", sep = ""),
+  paste("F1 rel", sep = ""),
+  paste( get_range(p.s.m1a.f1.r), " (", get_stars(         p.s.m1a.f1.r),")", sep = ""),      
+  paste( get_range(p.s.m10a.f1.r), " (", get_stars(        p.s.m10a.f1.r),")", sep = ""),    
+  paste( get_range(p.s.m100a.f1.r), " (", get_stars(       p.s.m100a.f1.r),")", sep = ""),   
+  paste( get_range(p.s.m10000a.f1.r), " (", get_stars(     p.s.m10000a.f1.r),")", sep = ""), 
+  paste( get_range(p.s.m1000a.f1.r), " (", get_stars(      p.s.m1000a.f1.r),")", sep = ""),   
+  paste("", sep = ""),
+  paste("", sep = ""),
+  paste("F1 rel", sep = ""),
+  paste( get_range(p.s.m1b.f1.r), " (", get_stars(         p.s.m1b.f1.r),")", sep = ""),      
+  paste( get_range(p.s.m10b.f1.r), " (", get_stars(        p.s.m10b.f1.r),")", sep = ""),     
+  paste( get_range(p.s.m100b.f1.r), " (", get_stars(       p.s.m100b.f1.r),")", sep = ""),  
+  paste( get_range(p.s.m10000b.f1.r), " (", get_stars(     p.s.m10000b.f1.r),")", sep = ""),
+  paste( get_range(p.s.m1000b.f1.r), " (", get_stars(      p.s.m1000b.f1.r),")", sep = ""), 
+  paste("", sep = ""),
+  paste("", sep = ""),
+  paste("F1 assoc", sep = ""),
+  paste( get_range(p.s.m2.f1.r), " (", get_stars(          p.s.m2.f1.r),")", sep = ""),       
+  paste("",sep ="" ),
+  # paste( get_range(p.s.m20.f1.r), " (", get_stars(       p.s.m20.f1.r),")", sep = ""),   
+  paste( get_range(p.s.m200.f1.r), " (", get_stars(        p.s.m200.f1.r),")", sep = ""),   
+  paste( get_range(p.s.m20000.f1.r), " (", get_stars(      p.s.m20000.f1.r),")", sep = ""),
+  paste( get_range(p.s.m2000.f1.r), " (", get_stars(       p.s.m2000.f1.r),")", sep = ""),
+  paste("", sep = ""),
+  paste("", sep = ""),
+  paste("F1 rel", sep = ""),
+  paste( get_range(p.s.m3.f1.r), " (", get_stars(          p.s.m3.f1.r),")", sep = ""),       
+  paste("", sep = ""), 
+  # paste( get_range(p.s.m30.f1.r), " (", get_stars(       p.s.m30.f1.r),")", sep = ""),   
+  paste( get_range(p.s.m300.f1.r), " (", get_stars(        p.s.m300.f1.r),")", sep = ""),   
+  paste( get_range(p.s.m30000.f1.r), " (", get_stars(      p.s.m30000.f1.r),")", sep = ""),
+  paste( get_range(p.s.m3000.f1.r), " (", get_stars(       p.s.m3000.f1.r),")", sep = ""),
+  paste("", sep = ""),
+  paste("", sep = ""),
+  paste("F1 rel", sep = ""),
+  paste( get_range(p.s.m3a.f1.r), " (", get_stars(         p.s.m3a.f1.r),")", sep = ""),      
+  paste("",sep=" "),
+  # paste( get_range(p.s.m30a.f1.r), " (", get_stars(      p.s.m30a.f1.r),")", sep = ""),     
+  paste( get_range(p.s.m300a.f1.r), " (", get_stars(       p.s.m300a.f1.r),")", sep = ""),  
+  paste( get_range(p.s.m30000a.f1.r), " (", get_stars(     p.s.m30000a.f1.r),")", sep = ""),
+  paste( get_range(p.s.m3000a.f1.r), " (", get_stars(      p.s.m3000a.f1.r),")", sep = ""), 
+  paste("", sep = ""),
+  paste("", sep = ""),
+  paste("F1 rel", sep = ""),
+  paste( get_range(p.s.m3b.f1.r), " (", get_stars(          p.s.m3b.f1.r),")", sep = ""),     
+  paste("", sep = ""),
+  # paste( get_range(p.s.m30b.f1.r), " (", get_stars(      p.s.m30b.f1.r),")", sep = ""),     
+  paste( get_range(p.s.m300b.f1.r), " (", get_stars(       p.s.m300b.f1.r),")", sep = ""),  
+  paste( get_range(p.s.m30000b.f1.r), " (", get_stars(     p.s.m30000b.f1.r),")", sep = ""),
+  paste( get_range(p.s.m3000b.f1.r), " (", get_stars(      p.s.m3000b.f1.r),")", sep = "")
+),
+# ----------------------------- P VAL RANGES (REL F2)------
+REL.F2.P.VALS =c( 
+  paste("", sep = ""),
+  paste("", sep = ""),
+  paste("F2 rel", sep = ""),
+  paste( get_range(p.s.m1.f2.r), " (", get_stars(          p.s.m1.f2.r),")", sep = ""),    
+  paste( get_range(p.s.m10.f2.r), " (", get_stars(         p.s.m10.f2.r),")", sep = ""),   
+  paste( get_range(p.s.m100.f2.r), " (", get_stars(        p.s.m100.f2.r),")", sep = ""),  
+  paste( get_range(p.s.m10000.f2.r), " (", get_stars(      p.s.m10000.f2.r),")", sep = ""),
+  paste( get_range(p.s.m1000.f2.r), " (", get_stars(       p.s.m1000.f2.r ),")", sep = ""), 
+  paste("", sep = ""),
+  paste("", sep = ""),
+  paste("F2 rel", sep = ""),
+  paste( get_range(p.s.m1a.f2.r), " (", get_stars(         p.s.m1a.f2.r),")", sep = ""),      
+  paste( get_range(p.s.m10a.f2.r), " (", get_stars(        p.s.m10a.f2.r),")", sep = ""),   
+  paste( get_range(p.s.m100a.f2.r), " (", get_stars(       p.s.m100a.f2.r),")", sep = ""),    
+  paste( get_range(p.s.m10000a.f2.r), " (", get_stars(     p.s.m10000a.f2.r),")", sep = ""),
+  paste( get_range(p.s.m1000a.f2.r), " (", get_stars(      p.s.m1000a.f2.r),")", sep = ""),
+  paste("", sep = ""),    
+  paste("", sep = ""),
+  paste("F2 rel", sep = ""),
+  paste( get_range(p.s.m1b.f2.r), " (", get_stars(         p.s.m1b.f2.r),")", sep = ""),       
+  paste( get_range(p.s.m10b.f2.r), " (", get_stars(        p.s.m10b.f2.r),")", sep = ""),        
+  paste( get_range(p.s.m100b.f2.r), " (", get_stars(       p.s.m100b.f2.r),")", sep = ""),     
+  paste( get_range(p.s.m10000b.f2.r), " (", get_stars(     p.s.m10000b.f2.r),")", sep = ""), 
+  paste( get_range(p.s.m1000b.f2.r), " (", get_stars(      p.s.m1000b.f2.r),")", sep = ""),   
+  paste("", sep = ""),
+  paste("", sep = ""),
+  paste("F2 rel", sep = ""),
+  paste( get_range(p.s.m2.f2.r), " (", get_stars(          p.s.m2.f2.r),")", sep = ""), 
+  paste("", sep = ""),
+  # paste( get_range(p.s.m20.f2.r), " (", get_stars(       p.s.m20.f2.r),")", sep = ""),
+  paste( get_range(p.s.m200.f2.r), " (", get_stars(        p.s.m200.f2.r),")", sep = ""),    
+  paste( get_range(p.s.m20000.f2.r), " (", get_stars(      p.s.m20000.f2.r),")", sep = ""),
+  paste( get_range(p.s.m2000.f2.r), " (", get_stars(       p.s.m2000.f2.r),")", sep = ""),  
+  paste("", sep = ""),
+  paste("", sep = ""),
+  paste("F2 rel", sep = ""),
+  paste( get_range(p.s.m3.f2.r), " (", get_stars(           p.s.m3.f2.r),")", sep = ""),     
+  paste("",sep = ""),
+  # paste( get_range(p.s.m30.f2.r), " (", get_stars(        p.s.m30.f2.r),")", sep = ""),    
+  paste( get_range(p.s.m300.f2.r), " (", get_stars(         p.s.m300.f2.r),")", sep = ""),    
+  paste( get_range(p.s.m30000.f2.r), " (", get_stars(       p.s.m30000.f2.r),")", sep = ""),
+  paste( get_range(p.s.m3000.f2.r), " (", get_stars(        p.s.m3000.f2.r),")", sep = ""),  
+  paste("", sep = ""),
+  paste("", sep = ""),
+  paste("F2 rel", sep = ""),
+  paste( get_range(p.s.m3a.f2.r), " (", get_stars(          p.s.m3a.f2.r   ),")", sep = ""), 
+  paste("", sep = ""),
+  # paste( get_range(p.s.m30a.f2.r), " (", get_stars(       p.s.m30a.f2.r    ),")", sep = "")   
+  paste( get_range(p.s.m300a.f2.r), " (", get_stars(        p.s.m300a.f2.r     ),")", sep = ""),  
+  paste( get_range(p.s.m30000a.f2.r), " (", get_stars(      p.s.m30000a.f2.r      ),")", sep = ""),
+  paste( get_range(p.s.m3000a.f2.r), " (", get_stars(       p.s.m3000a.f2.r      ),")", sep = ""),
+  paste("", sep = ""),    
+  paste("", sep = ""),
+  paste("F2 rel", sep = ""),
+  paste( get_range(p.s.m3b.f2.r), " (", get_stars(          p.s.m3b.f2.r      ),")", sep = ""), 
+  paste("", sep = ""),
+  # paste( get_range(p.s.m30b.f2.r), " (", get_stars(       p.s.m30b.f2.r     ),")", sep = ""), 
+  paste( get_range(p.s.m300b.f2.r), " (", get_stars(        p.s.m300b.f2.r      ),")", sep = ""),
+  paste( get_range(p.s.m30000b.f2.r), " (", get_stars(      p.s.m30000b.f2.r       ),")", sep = ""),
+  paste( get_range(p.s.m3000b.f2.r), " (", get_stars(       p.s.m3000b.f2.r        ),")", sep = "")
+),    
+# ----------------------------- P VAL RANGES (INT F1)------
+INT.F1.P.VALS =c(
+  paste("", sep = ""),
+  paste("", sep = ""),
+  paste("F1 int", sep = ""),
+  paste( get_range(p.s.m1.f1.i), " (", get_stars(          p.s.m1.f1.i),")", sep = ""),     
+  paste( get_range(p.s.m10.f1.i), " (", get_stars(         p.s.m10.f1.i),")", sep = ""),    
+  paste( get_range(p.s.m100.f1.i), " (", get_stars(        p.s.m100.f1.i),")", sep = ""),   
+  paste( get_range(p.s.m10000.f1.i), " (", get_stars(      p.s.m10000.f1.i),")", sep = ""), 
+  paste( get_range(p.s.m1000.f1.i), " (", get_stars(       p.s.m1000.f1.i),")", sep = ""),  
+  paste("", sep = ""),
+  paste("", sep = ""),
+  paste("F1 int", sep = ""),
+  paste( get_range(p.s.m1a.f1.i), " (", get_stars(         p.s.m1a.f1.i),")", sep = ""),      
+  paste( get_range(p.s.m10a.f1.i), " (", get_stars(        p.s.m10a.f1.i),")", sep = ""),    
+  paste( get_range(p.s.m100a.f1.i), " (", get_stars(       p.s.m100a.f1.i),")", sep = ""),   
+  paste( get_range(p.s.m10000a.f1.i), " (", get_stars(     p.s.m10000a.f1.i),")", sep = ""), 
+  paste( get_range(p.s.m1000a.f1.i), " (", get_stars(      p.s.m1000a.f1.i),")", sep = ""),   
+  paste("", sep = ""),
+  paste("", sep = ""),
+  paste("F1 int", sep = ""),
+  paste( get_range(p.s.m1b.f1.i), " (", get_stars(         p.s.m1b.f1.i),")", sep = ""),      
+  paste( get_range(p.s.m10b.f1.i), " (", get_stars(        p.s.m10b.f1.i),")", sep = ""),     
+  paste( get_range(p.s.m100b.f1.i), " (", get_stars(       p.s.m100b.f1.i),")", sep = ""),  
+  paste( get_range(p.s.m10000b.f1.i), " (", get_stars(     p.s.m10000b.f1.i),")", sep = ""),
+  paste( get_range(p.s.m1000b.f1.i), " (", get_stars(      p.s.m1000b.f1.i),")", sep = ""), 
+  paste("", sep = ""),
+  paste("", sep = ""),
+  paste("F1 assoc", sep = ""),
+  paste( get_range(p.s.m2.f1.i), " (", get_stars(          p.s.m2.f1.i),")", sep = ""),       
+  paste("",sep ="" ),
+  # paste( get_range(p.s.m20.f1.i), " (", get_stars(       p.s.m20.f1.i),")", sep = ""),   
+  paste( get_range(p.s.m200.f1.i), " (", get_stars(        p.s.m200.f1.i),")", sep = ""),   
+  paste( get_range(p.s.m20000.f1.i), " (", get_stars(      p.s.m20000.f1.i),")", sep = ""),
+  paste( get_range(p.s.m2000.f1.i), " (", get_stars(       p.s.m2000.f1.i),")", sep = ""),
+  paste("", sep = ""),
+  paste("", sep = ""),
+  paste("F1 int", sep = ""),
+  paste( get_range(p.s.m3.f1.i), " (", get_stars(          p.s.m3.f1.i),")", sep = ""),       
+  paste("", sep = ""), 
+  # paste( get_range(p.s.m30.f1.i), " (", get_stars(       p.s.m30.f1.i),")", sep = ""),   
+  paste( get_range(p.s.m300.f1.i), " (", get_stars(        p.s.m300.f1.i),")", sep = ""),   
+  paste( get_range(p.s.m30000.f1.i), " (", get_stars(      p.s.m30000.f1.i),")", sep = ""),
+  paste( get_range(p.s.m3000.f1.i), " (", get_stars(       p.s.m3000.f1.i),")", sep = ""),
+  paste("", sep = ""),
+  paste("", sep = ""),
+  paste("F1 int", sep = ""),
+  paste( get_range(p.s.m3a.f1.i), " (", get_stars(         p.s.m3a.f1.i),")", sep = ""),      
+  paste("",sep=" "),
+  # paste( get_range(p.s.m30a.f1.i), " (", get_stars(      p.s.m30a.f1.i),")", sep = ""),     
+  paste( get_range(p.s.m300a.f1.i), " (", get_stars(       p.s.m300a.f1.i),")", sep = ""),  
+  paste( get_range(p.s.m30000a.f1.i), " (", get_stars(     p.s.m30000a.f1.i),")", sep = ""),
+  paste( get_range(p.s.m3000a.f1.i), " (", get_stars(      p.s.m3000a.f1.i),")", sep = ""), 
+  paste("", sep = ""),
+  paste("", sep = ""),
+  paste("F1 int", sep = ""),
+  paste( get_range(p.s.m3b.f1.i), " (", get_stars(          p.s.m3b.f1.i),")", sep = ""),     
+  paste("", sep = ""),
+  # paste( get_range(p.s.m30b.f1.i), " (", get_stars(      p.s.m30b.f1.i),")", sep = ""),     
+  paste( get_range(p.s.m300b.f1.i), " (", get_stars(       p.s.m300b.f1.i),")", sep = ""),  
+  paste( get_range(p.s.m30000b.f1.i), " (", get_stars(     p.s.m30000b.f1.i),")", sep = ""),
+  paste( get_range(p.s.m3000b.f1.i), " (", get_stars(      p.s.m3000b.f1.i),")", sep = "")
+),
+# ----------------------------- P VAL RANGES (INT F2)------
+INT.F2.P.VALS =c( 
+  paste("", sep = ""),
+  paste("", sep = ""),
+  paste("F2 int", sep = ""),
+  paste( get_range(p.s.m1.f2.i), " (", get_stars(          p.s.m1.f2.i),")", sep = ""),    
+  paste( get_range(p.s.m10.f2.i), " (", get_stars(         p.s.m10.f2.i),")", sep = ""),   
+  paste( get_range(p.s.m100.f2.i), " (", get_stars(        p.s.m100.f2.i),")", sep = ""),  
+  paste( get_range(p.s.m10000.f2.i), " (", get_stars(      p.s.m10000.f2.i),")", sep = ""),
+  paste( get_range(p.s.m1000.f2.i), " (", get_stars(       p.s.m1000.f2.i ),")", sep = ""), 
+  paste("", sep = ""),
+  paste("", sep = ""),
+  paste("F2 int", sep = ""),
+  paste( get_range(p.s.m1a.f2.i), " (", get_stars(         p.s.m1a.f2.i),")", sep = ""),      
+  paste( get_range(p.s.m10a.f2.i), " (", get_stars(        p.s.m10a.f2.i),")", sep = ""),   
+  paste( get_range(p.s.m100a.f2.i), " (", get_stars(       p.s.m100a.f2.i),")", sep = ""),    
+  paste( get_range(p.s.m10000a.f2.i), " (", get_stars(     p.s.m10000a.f2.i),")", sep = ""),
+  paste( get_range(p.s.m1000a.f2.i), " (", get_stars(      p.s.m1000a.f2.i),")", sep = ""),
+  paste("", sep = ""),    
+  paste("", sep = ""),
+  paste("F2 int", sep = ""),
+  paste( get_range(p.s.m1b.f2.i), " (", get_stars(         p.s.m1b.f2.i),")", sep = ""),       
+  paste( get_range(p.s.m10b.f2.i), " (", get_stars(        p.s.m10b.f2.i),")", sep = ""),        
+  paste( get_range(p.s.m100b.f2.i), " (", get_stars(       p.s.m100b.f2.i),")", sep = ""),     
+  paste( get_range(p.s.m10000b.f2.i), " (", get_stars(     p.s.m10000b.f2.i),")", sep = ""), 
+  paste( get_range(p.s.m1000b.f2.i), " (", get_stars(      p.s.m1000b.f2.i),")", sep = ""),   
+  paste("", sep = ""),
+  paste("", sep = ""),
+  paste("F2 int", sep = ""),
+  paste( get_range(p.s.m2.f2.i), " (", get_stars(          p.s.m2.f2.i),")", sep = ""), 
+  paste("", sep = ""),
+  # paste( get_range(p.s.m20.f2.i), " (", get_stars(       p.s.m20.f2.i),")", sep = ""),
+  paste( get_range(p.s.m200.f2.i), " (", get_stars(        p.s.m200.f2.i),")", sep = ""),    
+  paste( get_range(p.s.m20000.f2.i), " (", get_stars(      p.s.m20000.f2.i),")", sep = ""),
+  paste( get_range(p.s.m2000.f2.i), " (", get_stars(       p.s.m2000.f2.i),")", sep = ""),  
+  paste("", sep = ""),
+  paste("", sep = ""),
+  paste("F2 int", sep = ""),
+  paste( get_range(p.s.m3.f2.i), " (", get_stars(           p.s.m3.f2.i),")", sep = ""),     
+  paste("",sep = ""),
+  # paste( get_range(p.s.m30.f2.i), " (", get_stars(        p.s.m30.f2.i),")", sep = ""),    
+  paste( get_range(p.s.m300.f2.i), " (", get_stars(         p.s.m300.f2.i),")", sep = ""),    
+  paste( get_range(p.s.m30000.f2.i), " (", get_stars(       p.s.m30000.f2.i),")", sep = ""),
+  paste( get_range(p.s.m3000.f2.i), " (", get_stars(        p.s.m3000.f2.i),")", sep = ""),  
+  paste("", sep = ""),
+  paste("", sep = ""),
+  paste("F2 int", sep = ""),
+  paste( get_range(p.s.m3a.f2.i), " (", get_stars(          p.s.m3a.f2.i   ),")", sep = ""), 
+  paste("", sep = ""),
+  # paste( get_range(p.s.m30a.f2.i), " (", get_stars(       p.s.m30a.f2.i    ),")", sep = "")
+  paste( get_range(p.s.m300a.f2.i), " (", get_stars(        p.s.m300a.f2.i     ),")", sep = ""),  
+  paste( get_range(p.s.m30000a.f2.i), " (", get_stars(      p.s.m30000a.f2.i      ),")", sep = ""),
+  paste( get_range(p.s.m3000a.f2.i), " (", get_stars(       p.s.m3000a.f2.i      ),")", sep = ""),
+  paste("", sep = ""),    
+  paste("", sep = ""),
+  paste("F2 int", sep = ""),
+  paste( get_range(p.s.m3b.f2.i), " (", get_stars(          p.s.m3b.f2.i      ),")", sep = ""), 
+  paste("", sep = ""),
+  # paste( get_range(p.s.m30b.f2.i), " (", get_stars(       p.s.m30b.f2.i     ),")", sep = ""), 
+  paste( get_range(p.s.m300b.f2.i), " (", get_stars(        p.s.m300b.f2.i      ),")", sep = ""),
+  paste( get_range(p.s.m30000b.f2.i), " (", get_stars(      p.s.m30000b.f2.i       ),")", sep = ""),
+  paste( get_range(p.s.m3000b.f2.i), " (", get_stars(       p.s.m3000b.f2.i        ),")", sep = "")
+),
+# ----------------------------- P VAL RANGES (REL * INT F1)------
+RELINT.F1.P.VALS =c(
+  paste("", sep = ""),
+  paste("", sep = ""),
+  paste("F1 rel * int", sep = ""),
+  paste( get_range(p.s.m1.f1.ri), " (", get_stars(              p.s.m1.f1.ri    ),")", sep = ""), 
+  paste( get_range(p.s.m10.f1.ri), " (", get_stars(             p.s.m10.f1.ri   ),")", sep = ""),
+  paste( get_range(p.s.m100.f1.ri), " (", get_stars(            p.s.m100.f1.ri   ),")", sep = ""), 
+  paste( get_range(p.s.m10000.f1.ri), " (", get_stars(          p.s.m10000.f1.ri  ),")", sep = ""),
+  paste( get_range(p.s.m1000.f1.ri), " (", get_stars(           p.s.m1000.f1.ri   ),")", sep = ""),
+  paste("", sep = ""),
+  paste("", sep = ""),
+  paste("F1 rel * int", sep = ""),
+  paste( get_range(p.s.m1a.f1.ri), " (", get_stars(             p.s.m1a.f1.ri ),")", sep = ""),
+  paste( get_range(p.s.m10a.f1.ri), " (", get_stars(            p.s.m10a.f1.ri  ),")", sep = ""),  
+  paste( get_range(p.s.m100a.f1.ri), " (", get_stars(           p.s.m100a.f1.ri  ),")", sep = ""),
+  paste( get_range(p.s.m10000a.f1.ri), " (", get_stars(         p.s.m10000a.f1.ri   ),")", sep = ""),
+  paste( get_range(p.s.m1000a.f1.ri), " (", get_stars(          p.s.m1000a.f1.ri ),")", sep = ""), 
+  paste("", sep = ""),
+  paste("", sep = ""),
+  paste("F1 rel * int", sep = ""),
+  paste( get_range(p.s.m1b.f1.ri), " (", get_stars(             p.s.m1b.f1.ri       ),")", sep = ""),
+  paste( get_range(p.s.m10b.f1.ri), " (", get_stars(            p.s.m10b.f1.ri      ),")", sep = ""),  
+  paste( get_range(p.s.m100b.f1.ri), " (", get_stars(           p.s.m100b.f1.ri     ),")", sep = ""),
+  paste( get_range(p.s.m10000b.f1.ri), " (", get_stars(         p.s.m10000b.f1.ri  ),")", sep = ""),
+  paste( get_range(p.s.m1000b.f1.ri), " (", get_stars(          p.s.m1000b.f1.ri    ),")", sep = ""), 
+  paste("", sep = ""),
+  paste("", sep = ""),
+  paste("F1 rel * int", sep = ""),
+  paste( get_range(p.s.m2.f1.ri), " (", get_stars(              p.s.m2.f1.ri         ),")", sep = ""), 
+  "",
+  # paste( get_range(p.s.m20.f1.ri), " (", get_stars(           p.s.m20.f1.ri       ),")", sep = ""),
+  paste( get_range(p.s.m200.f1.ri), " (", get_stars(            p.s.m200.f1.ri      ),")", sep = ""), 
+  paste( get_range(p.s.m20000.f1.ri), " (", get_stars(          p.s.m20000.f1.ri  ),")", sep = ""),
+  paste( get_range(p.s.m2000.f1.ri), " (", get_stars(           p.s.m2000.f1.ri   ),")", sep = ""),
+  paste("", sep = ""),
+  paste("", sep = ""),
+  paste("F1 ass * int", sep = ""),
+  paste( get_range(p.s.m3.f1.ri), " (", get_stars(              p.s.m3.f1.ri        ),")", sep = ""),
+  paste("", sep = ""),
+  # paste( get_range(p.s.m30.f1.ri), " (", get_stars(           p.s.m30.f1.ri         ),")", sep = ""),
+  paste( get_range(p.s.m300.f1.ri), " (", get_stars(            p.s.m300.f1.ri        ),")", sep = ""), 
+  paste( get_range(p.s.m30000.f1.ri), " (", get_stars(          p.s.m30000.f1.ri    ),")", sep = ""),
+  paste( get_range(p.s.m3000.f1.ri), " (", get_stars(           p.s.m3000.f1.ri     ),")", sep = ""),
+  paste("", sep = ""),
+  paste("", sep = ""),
+  paste("F1 rel * int", sep = ""),
+  paste( get_range(p.s.m3a.f1.ri), " (", get_stars(             p.s.m3a.f1.ri         ),")", sep = ""),
+  paste("", sep = ""),
+  # paste( get_range(p.s.m30a.f1.ri), " (", get_stars(         p.s.m30a.f1.ri        ),")", sep = ""),  
+  paste( get_range(p.s.m300a.f1.ri), " (", get_stars(          p.s.m300a.f1.ri      ),")", sep = ""),
+  paste( get_range(p.s.m30000a.f1.ri), " (", get_stars(        p.s.m30000a.f1.ri   ),")", sep = ""),
+  paste( get_range(p.s.m3000a.f1.ri), " (", get_stars(         p.s.m3000a.f1.ri     ),")", sep = ""), 
+  paste("", sep = ""),
+  paste("", sep = ""),
+  paste("F1 rel * int", sep = ""),
+  paste( get_range(p.s.m3b.f1.ri), " (", get_stars(            p.s.m3b.f1.ri  ),")", sep = ""),
+  paste("", sep = ""),
+  # paste( get_range(p.s.m30b.f1.ri), " (", get_stars(         p.s.m30b.f1.ri  ),")", sep = ""),  
+  paste( get_range(p.s.m300b.f1.ri), " (", get_stars(          p.s.m300b.f1.ri  ),")", sep = ""),
+  paste( get_range(p.s.m30000b.f1.ri), " (", get_stars(        p.s.m30000b.f1.ri  ),")", sep = ""),
+  paste( get_range(p.s.m3000b.f1.ri), " (", get_stars(         p.s.m3000b.f1.ri ),")", sep = "")
+),
+# ----------------------------- P VAL RANGES (REL * INT F2)------
+RELINT.F2.P.VALS=c(
+  paste("", sep = ""),
+  paste("", sep = ""),
+  paste("F2 rel * int", sep = ""),
+  paste( get_range(p.s.m1.f2.ri), " (", get_stars(              p.s.m1.f2.ri          ),")", sep = ""),
+  paste( get_range(p.s.m10.f2.ri), " (", get_stars(             p.s.m10.f2.ri        ),")", sep = ""),
+  paste( get_range(p.s.m100.f2.ri), " (", get_stars(            p.s.m100.f2.ri       ),")", sep = ""), 
+  paste( get_range(p.s.m10000.f2.ri), " (", get_stars(          p.s.m10000.f2.ri   ),")", sep = ""),
+  paste( get_range(p.s.m1000.f2.ri), " (", get_stars(           p.s.m1000.f2.ri    ),")", sep = ""),
+  paste("", sep = ""),
+  paste("", sep = ""),
+  paste("F2 rel * int", sep = ""),
+  paste( get_range(p.s.m1a.f2.ri), " (", get_stars(             p.s.m1a.f2.ri        ),")", sep = ""),
+  paste( get_range(p.s.m10a.f2.ri), " (", get_stars(            p.s.m10a.f2.ri       ),")", sep = ""),  
+  paste( get_range(p.s.m100a.f2.ri), " (", get_stars(           p.s.m100a.f2.ri    ),")", sep = ""),
+  paste( get_range(p.s.m10000a.f2.ri), " (", get_stars(         p.s.m10000a.f2.ri        ),")", sep = ""),
+  paste( get_range(p.s.m1000a.f2.ri), " (", get_stars(          p.s.m1000a.f2.ri   ),")", sep = ""), 
+  paste("", sep = ""),
+  paste("", sep = ""),
+  paste("F2 rel * int", sep = ""),
+  paste( get_range(p.s.m1b.f2.ri), " (", get_stars(             p.s.m1b.f2.ri    ),")", sep = ""),
+  paste( get_range(p.s.m10b.f2.ri), " (", get_stars(            p.s.m10b.f2.ri    ),")", sep = ""),  
+  paste( get_range(p.s.m100b.f2.ri), " (", get_stars(           p.s.m100b.f2.ri    ),")", sep = ""),
+  paste( get_range(p.s.m10000b.f2.ri), " (", get_stars(         p.s.m10000b.f2.ri     ),")", sep = ""),
+  paste( get_range(p.s.m1000b.f2.ri), " (", get_stars(          p.s.m1000b.f2.ri   ),")", sep = ""), 
+  paste("", sep = ""),
+  paste("", sep = ""),
+  paste("F2 ass * int", sep = ""),
+  paste( get_range(p.s.m2.f2.ri), " (", get_stars(              p.s.m2.f2.ri    ),")", sep = ""), 
+  paste("", sep = ""),
+  # paste( get_range(p.s.m20.f2.ri), " (", get_stars(           p.s.m20.f2.ri   ),")", sep = ""),
+  paste( get_range(p.s.m200.f2.ri), " (", get_stars(            p.s.m200.f2.ri  ),")", sep = ""), 
+  paste( get_range(p.s.m20000.f2.ri), " (", get_stars(          p.s.m20000.f2.ri  ),")", sep = ""),
+  paste( get_range(p.s.m2000.f2.ri), " (", get_stars(           p.s.m2000.f2.ri   ),")", sep = ""),
+  paste("", sep = ""),
+  paste("", sep = ""),
+  paste("F2 ass * int", sep = ""),
+  paste( get_range(p.s.m3.f2.ri), " (", get_stars(               p.s.m3.f2.ri   ),")", sep = ""),
+  paste("", sep = ""),
+  # paste( get_range(p.s.m30.f2.ri), " (", get_stars(            p.s.m30.f2.ri  ),")", sep = ""),
+  paste( get_range(p.s.m300.f2.ri), " (", get_stars(             p.s.m300.f2.ri  ),")", sep = ""), 
+  paste( get_range(p.s.m30000.f2.ri), " (", get_stars(           p.s.m30000.f2.ri ),")", sep = ""),
+  paste( get_range(p.s.m3000.f2.ri), " (", get_stars(            p.s.m3000.f2.ri  ),")", sep = ""),
+  paste("", sep = ""),
+  paste("", sep = ""),
+  paste("F2 ass * int", sep = ""),
+  paste( get_range(p.s.m3a.f2.ri), " (", get_stars(              p.s.m3a.f2.ri     ),")", sep = ""),
+  paste("", sep = ""),
+  # paste( get_range(p.s.m30a.f2.ri), " (", get_stars(           p.s.m30a.f2.ri     ),")", sep = ""),  
+  paste( get_range(p.s.m300a.f2.ri), " (", get_stars(            p.s.m300a.f2.ri     ),")", sep = ""),
+  paste( get_range(p.s.m30000a.f2.ri), " (", get_stars(          p.s.m30000a.f2.ri      ),")", sep = ""),
+  paste( get_range(p.s.m3000a.f2.ri), " (", get_stars(           p.s.m3000a.f2.ri    ),")", sep = ""), 
+  paste("", sep = ""),
+  paste("", sep = ""),
+  paste("F2 ass * int", sep = ""),
+  paste( get_range(p.s.m3b.f2.ri), " (", get_stars(              p.s.m3b.f2.ri    ),")", sep = ""),
+  paste("", sep = ""),
+  # paste( get_range(p.s.m30b.f2.ri), " (", get_stars(           p.s.m30b.f2.ri   ),")", sep = ""),  
+  paste( get_range(p.s.m300b.f2.ri), " (", get_stars(            p.s.m300b.f2.ri    ),")", sep = ""),
+  paste( get_range(p.s.m30000b.f2.ri), " (", get_stars(          p.s.m30000b.f2.ri  ),")", sep = ""),
+  paste( get_range(p.s.m3000b.f2.ri), " (", get_stars(           p.s.m3000b.f2.ri   ),")", sep = "")  
+))
+# ----------------------------- MODEL OUTPUT TO EXCEL ------
 
+write.xlsx(regressions.ds, file="output/table23_SR1 & 2_regression_model_comparisons.xlsx", col.names = TRUE, row.names = TRUE, append = FALSE)
+
+# ----------------------------- (NOT USED) FULL P VALUES ------
 # FIXED.EFFECT.P.VALS =c(
 #   paste("", sep = ""),
 #   paste("", sep = ""),
@@ -2190,388 +2578,6 @@ FIXED.EFFECT.ESTIMATES =c(
 # paste( p.s.m300b.f2.ri, " (", get_stars(    p.s.m300b.f2.ri    ),")", sep = ""),
 # paste( p.s.m30000b.f2.ri, " (", get_stars(  p.s.m30000b.f2.ri  ),")", sep = ""),
 # paste( p.s.m3000b.f2.ri, " (", get_stars(   p.s.m3000b.f2.ri   ),")", sep = "")  
-FIXED.EFFECT.P.VALS =c(
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F1 rel", sep = ""),
-  paste( get_range(p.s.m1.f1.r), " (", get_stars(          p.s.m1.f1.r),")", sep = ""),     
-  paste( get_range(p.s.m10.f1.r), " (", get_stars(         p.s.m10.f1.r),")", sep = ""),    
-  paste( get_range(p.s.m100.f1.r), " (", get_stars(        p.s.m100.f1.r),")", sep = ""),   
-  paste( get_range(p.s.m10000.f1.r), " (", get_stars(      p.s.m10000.f1.r),")", sep = ""), 
-  paste( get_range(p.s.m1000.f1.r), " (", get_stars(       p.s.m1000.f1.r),")", sep = ""),  
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F1 rel", sep = ""),
-  paste( get_range(p.s.m1a.f1.r), " (", get_stars(         p.s.m1a.f1.r),")", sep = ""),      
-  paste( get_range(p.s.m10a.f1.r), " (", get_stars(        p.s.m10a.f1.r),")", sep = ""),    
-  paste( get_range(p.s.m100a.f1.r), " (", get_stars(       p.s.m100a.f1.r),")", sep = ""),   
-  paste( get_range(p.s.m10000a.f1.r), " (", get_stars(     p.s.m10000a.f1.r),")", sep = ""), 
-  paste( get_range(p.s.m1000a.f1.r), " (", get_stars(      p.s.m1000a.f1.r),")", sep = ""),   
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F1 rel", sep = ""),
-  paste( get_range(p.s.m1b.f1.r), " (", get_stars(         p.s.m1b.f1.r),")", sep = ""),         
-  paste( get_range(p.s.m10b.f1.r), " (", get_stars(        p.s.m10b.f1.r),")", sep = ""),     
-  paste( get_range(p.s.m100b.f1.r), " (", get_stars(       p.s.m100b.f1.r),")", sep = ""),  
-  paste( get_range(p.s.m10000b.f1.r), " (", get_stars(     p.s.m10000b.f1.r),")", sep = ""),
-  paste( get_range(p.s.m1000b.f1.r), " (", get_stars(      p.s.m1000b.f1.r),")", sep = ""), 
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F1 assoc", sep = ""),
-  paste( get_range(p.s.m2.f1.r), " (", get_stars(          p.s.m2.f1.r),")", sep = ""),       
-  paste("",sep ="" ),
-  # paste( get_range(p.s.m20.f1.r), " (", get_stars(       p.s.m20.f1.r),")", sep = ""),   
-  paste( get_range(p.s.m200.f1.r), " (", get_stars(        p.s.m200.f1.r),")", sep = ""),   
-  paste( get_range(p.s.m20000.f1.r), " (", get_stars(      p.s.m20000.f1.r),")", sep = ""),
-  paste( get_range(p.s.m2000.f1.r), " (", get_stars(       p.s.m2000.f1.r),")", sep = ""),
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F1 rel", sep = ""),
-  paste( get_range(p.s.m3.f1.r), " (", get_stars(          p.s.m3.f1.r),")", sep = ""),       
-  paste("", sep = ""), 
-  # paste( get_range(p.s.m30.f1.r), " (", get_stars(       p.s.m30.f1.r),")", sep = ""),   
-  paste( get_range(p.s.m300.f1.r), " (", get_stars(        p.s.m300.f1.r),")", sep = ""),   
-  paste( get_range(p.s.m30000.f1.r), " (", get_stars(      p.s.m30000.f1.r),")", sep = ""),
-  paste( get_range(p.s.m3000.f1.r), " (", get_stars(       p.s.m3000.f1.r),")", sep = ""),
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F1 rel", sep = ""),
-  paste( get_range(p.s.m3a.f1.r), " (", get_stars(         p.s.m3a.f1.r),")", sep = ""),      
-  paste("",sep=" "),
-  # paste( get_range(p.s.m30a.f1.r), " (", get_stars(      p.s.m30a.f1.r),")", sep = ""),     
-  paste( get_range(p.s.m300a.f1.r), " (", get_stars(       p.s.m300a.f1.r),")", sep = ""),  
-  paste( get_range(p.s.m30000a.f1.r), " (", get_stars(     p.s.m30000a.f1.r),")", sep = ""),
-  paste( get_range(p.s.m3000a.f1.r), " (", get_stars(      p.s.m3000a.f1.r),")", sep = ""), 
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F1 rel", sep = ""),
-  paste( get_range(p.s.m3b.f1.r), " (", get_stars(          p.s.m3b.f1.r),")", sep = ""),      
-  paste("", sep = ""),
-  # paste( get_range(p.s.m30b.f1.r), " (", get_stars(      p.s.m30b.f1.r),")", sep = ""),     
-  paste( get_range(p.s.m300b.f1.r), " (", get_stars(       p.s.m300b.f1.r),")", sep = ""),  
-  paste( get_range(p.s.m30000b.f1.r), " (", get_stars(     p.s.m30000b.f1.r),")", sep = ""),
-  paste( get_range(p.s.m3000b.f1.r), " (", get_stars(      p.s.m3000b.f1.r),")", sep = "")
-),
-
-. =c( 
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F2 rel", sep = ""),
-  paste( get_range(p.s.m1.f2.r), " (", get_stars(          p.s.m1.f2.r),")", sep = ""),    
-  paste( get_range(p.s.m10.f2.r), " (", get_stars(         p.s.m10.f2.r),")", sep = ""),   
-  paste( get_range(p.s.m100.f2.r), " (", get_stars(        p.s.m100.f2.r),")", sep = ""),  
-  paste( get_range(p.s.m10000.f2.r), " (", get_stars(      p.s.m10000.f2.r),")", sep = ""),
-  paste( get_range(p.s.m1000.f2.r), " (", get_stars(       p.s.m1000.f2.r ),")", sep = ""), 
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F2 rel", sep = ""),
-  paste( get_range(p.s.m1a.f2.r), " (", get_stars(         p.s.m1a.f2.r),")", sep = ""),      
-  paste( get_range(p.s.m10a.f2.r), " (", get_stars(        p.s.m10a.f2.r),")", sep = ""),   
-  paste( get_range(p.s.m100a.f2.r), " (", get_stars(       p.s.m100a.f2.r),")", sep = ""),    
-  paste( get_range(p.s.m10000a.f2.r), " (", get_stars(     p.s.m10000a.f2.r),")", sep = ""),
-  paste( get_range(p.s.m1000a.f2.r), " (", get_stars(      p.s.m1000a.f2.r),")", sep = ""),
-  paste("", sep = ""),    
-  paste("", sep = ""),
-  paste("F2 rel", sep = ""),
-  paste( get_range(p.s.m1b.f2.r), " (", get_stars(         p.s.m1b.f2.r),")", sep = ""),       
-  paste( get_range(p.s.m10b.f2.r), " (", get_stars(        p.s.m10b.f2.r),")", sep = ""),        
-  paste( get_range(p.s.m100b.f2.r), " (", get_stars(       p.s.m100b.f2.r),")", sep = ""),     
-  paste( get_range(p.s.m10000b.f2.r), " (", get_stars(     p.s.m10000b.f2.r),")", sep = ""), 
-  paste( get_range(p.s.m1000b.f2.r), " (", get_stars(      p.s.m1000b.f2.r),")", sep = ""),   
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F2 rel", sep = ""),
-  paste( get_range(p.s.m2.f2.r), " (", get_stars(          p.s.m2.f2.r),")", sep = ""), 
-  paste("", sep = ""),
-  # paste( get_range(p.s.m20.f2.r), " (", get_stars(       p.s.m20.f2.r),")", sep = ""),
-  paste( get_range(p.s.m200.f2.r), " (", get_stars(        p.s.m200.f2.r),")", sep = ""),    
-  paste( get_range(p.s.m20000.f2.r), " (", get_stars(      p.s.m20000.f2.r),")", sep = ""),
-  paste( get_range(p.s.m2000.f2.r), " (", get_stars(       p.s.m2000.f2.r),")", sep = ""),  
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F2 rel", sep = ""),
-  paste( get_range(p.s.m3.f2.r), " (", get_stars(           p.s.m3.f2.r),")", sep = ""),     
-  paste("",sep = ""),
-  # paste( get_range(p.s.m30.f2.r), " (", get_stars(        p.s.m30.f2.r),")", sep = ""),    
-  paste( get_range(p.s.m300.f2.r), " (", get_stars(         p.s.m300.f2.r),")", sep = ""),    
-  paste( get_range(p.s.m30000.f2.r), " (", get_stars(       p.s.m30000.f2.r),")", sep = ""),
-  paste( get_range(p.s.m3000.f2.r), " (", get_stars(        p.s.m3000.f2.r),")", sep = ""),  
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F2 rel", sep = ""),
-  paste( get_range(p.s.m3a.f2.r), " (", get_stars(          p.s.m3a.f2.r   ),")", sep = ""),    
-  paste("", sep = ""),
-  # paste( get_range(p.s.m30a.f2.r), " (", get_stars(       p.s.m30a.f2.r    ),")", sep = ""),   
-  paste( get_range(p.s.m300a.f2.r), " (", get_stars(        p.s.m300a.f2.r     ),")", sep = ""),  
-  paste( get_range(p.s.m30000a.f2.r), " (", get_stars(      p.s.m30000a.f2.r      ),")", sep = ""),
-  paste( get_range(p.s.m3000a.f2.r), " (", get_stars(       p.s.m3000a.f2.r      ),")", sep = ""),
-  paste("", sep = ""),    
-  paste("", sep = ""),
-  paste("F2 rel", sep = ""),
-  paste( get_range(p.s.m3b.f2.r), " (", get_stars(          p.s.m3b.f2.r      ),")", sep = ""), 
-  paste("", sep = ""),
-  # paste( get_range(p.s.m30b.f2.r), " (", get_stars(       p.s.m30b.f2.r     ),")", sep = ""), 
-  paste( get_range(p.s.m300b.f2.r), " (", get_stars(        p.s.m300b.f2.r      ),")", sep = ""),
-  paste( get_range(p.s.m30000b.f2.r), " (", get_stars(      p.s.m30000b.f2.r       ),")", sep = ""),
-  paste( get_range(p.s.m3000b.f2.r), " (", get_stars(       p.s.m3000b.f2.r        ),")", sep = "")
-),     
-
-
-. =c(
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F1 int", sep = ""),
-  paste( get_range(p.s.m1.f1.i), " (", get_stars(            p.s.m1.f1.i     ),")", sep = ""),   
-  paste( get_range(p.s.m10.f1.i), " (", get_stars(           p.s.m10.f1.i      ),")", sep = ""),  
-  paste( get_range(p.s.m100.f1.i), " (", get_stars(          p.s.m100.f1.i       ),")", sep = ""),  
-  paste( get_range(p.s.m10000.f1.i), " (", get_stars(        p.s.m10000.f1.i        ),")", sep = ""),
-  paste( get_range(p.s.m1000.f1.i), " (", get_stars(         p.s.m1000.f1.i        ),")", sep = ""),
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F1 int", sep = ""),
-  paste( get_range(p.s.m1a.f1.i), " (", get_stars(            p.s.m1a.f1.i   ),")", sep = ""),   
-  paste( get_range(p.s.m10a.f1.i), " (", get_stars(           p.s.m10a.f1.i   ),")", sep = ""),
-  paste( get_range(p.s.m100a.f1.i), " (", get_stars(          p.s.m100a.f1.i       ),")", sep = ""),
-  paste( get_range(p.s.m10000a.f1.i), " (", get_stars(        p.s.m10000a.f1.i          ),")", sep = ""),
-  paste( get_range(p.s.m1000a.f1.i), " (", get_stars(         p.s.m1000a.f1.i       ),")", sep = ""),
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F1 int", sep = ""),
-  paste( get_range(p.s.m1b.f1.i), " (", get_stars(            p.s.m1b.f1.i       ),")", sep = ""),
-  paste( get_range(p.s.m10b.f1.i), " (", get_stars(           p.s.m10b.f1.i       ),")", sep = ""),  
-  paste( get_range(p.s.m100b.f1.i), " (", get_stars(          p.s.m100b.f1.i        ),")", sep = ""),  
-  paste( get_range(p.s.m10000b.f1.i), " (", get_stars(        p.s.m10000b.f1.i        ),")", sep = ""),
-  paste( get_range(p.s.m1000b.f1.i), " (", get_stars(         p.s.m1000b.f1.i         ),")", sep = ""),
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F1 assoc", sep = ""),
-  paste( get_range(p.s.m2.f1.i), " (", get_stars(             p.s.m2.f1.i     ),")", sep = ""),    
-  paste("",sep = ""),
-  # paste( get_range(p.s.m20.f1.i), " (", get_stars(          p.s.m20.f1.i    ),")", sep = ""),  
-  paste( get_range(p.s.m200.f1.i), " (", get_stars(           p.s.m200.f1.i      ),")", sep = ""), 
-  paste( get_range(p.s.m20000.f1.i), " (", get_stars(         p.s.m20000.f1.i      ),")", sep = ""),
-  paste( get_range(p.s.m2000.f1.i), " (", get_stars(          p.s.m2000.f1.i       ),")", sep = ""), 
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F1 assoc", sep = ""),
-  paste( get_range(p.s.m3.f1.i), " (", get_stars(             p.s.m3.f1.i    ),")", sep = ""),   
-  paste("", sep=""),
-  # paste( get_range(p.s.m30.f1.i), " (", get_stars(          p.s.m30.f1.i   ),")", sep = ""),   
-  paste( get_range(p.s.m300.f1.i), " (", get_stars(           p.s.m300.f1.i   ),")", sep = ""),  
-  paste( get_range(p.s.m30000.f1.i), " (", get_stars(         p.s.m30000.f1.i     ),")", sep = ""),
-  paste( get_range(p.s.m3000.f1.i), " (", get_stars(          p.s.m3000.f1.i      ),")", sep = ""),
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F1 assoc", sep = ""),
-  paste( get_range(p.s.m3a.f1.i), " (", get_stars(            p.s.m3a.f1.i     ),")", sep = ""),    
-  paste("", sep=""),
-  # paste( get_range(p.s.m30a.f1.i), " (", get_stars(         p.s.m30a.f1.i    ),")", sep = ""),  
-  paste( get_range(p.s.m300a.f1.i), " (", get_stars(          p.s.m300a.f1.i    ),")", sep = ""), 
-  paste( get_range(p.s.m30000a.f1.i), " (", get_stars(        p.s.m30000a.f1.i   ),")", sep = ""),
-  paste( get_range(p.s.m3000a.f1.i), " (", get_stars(         p.s.m3000a.f1.i    ),")", sep = ""),
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F1 assoc", sep = ""),
-  paste( get_range(p.s.m3b.f1.i), " (", get_stars(            p.s.m3b.f1.i    ),")", sep = ""),   
-  paste("", sep=""),
-  # paste( get_range(p.s.m30b.f1.i), " (", get_stars(         p.s.m30b.f1.i  ),")", sep = ""),  
-  paste( get_range(p.s.m300b.f1.i), " (", get_stars(          p.s.m300b.f1.i    ),")", sep = ""), 
-  paste( get_range(p.s.m30000b.f1.i), " (", get_stars(        p.s.m30000b.f1.i      ),")", sep = ""),
-  paste( get_range(p.s.m3000b.f1.i), " (", get_stars(         p.s.m3000b.f1.i       ),")", sep = "")
-),
-
-
-. =c(
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F2 int", sep = ""),
-  paste( get_range(p.s.m1.f2.i), " (", get_stars(             p.s.m1.f2.i      ),")", sep = ""),
-  paste( get_range(p.s.m10.f2.i), " (", get_stars(            p.s.m10.f2.i      ),")", sep = ""),
-  paste( get_range(p.s.m100.f2.i), " (", get_stars(           p.s.m100.f2.i      ),")", sep = ""), 
-  paste( get_range(p.s.m10000.f2.i), " (", get_stars(         p.s.m10000.f2.i    ),")", sep = ""),
-  paste( get_range(p.s.m1000.f2.i), " (", get_stars(          p.s.m1000.f2.i      ),")", sep = ""),
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F2 int", sep = ""),
-  paste( get_range(p.s.m1a.f2.i), " (", get_stars(            p.s.m1a.f2.i     ),")", sep = ""),
-  paste( get_range(p.s.m10a.f2.i), " (", get_stars(           p.s.m10a.f2.i   ),")", sep = ""),  
-  paste( get_range(p.s.m100a.f2.i), " (", get_stars(          p.s.m100a.f2.i   ),")", sep = ""),
-  paste( get_range(p.s.m10000a.f2.i), " (", get_stars(        p.s.m10000a.f2.i ),")", sep = ""),
-  paste( get_range(p.s.m1000a.f2.i), " (", get_stars(         p.s.m1000a.f2.i  ),")", sep = ""), 
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F2 int", sep = ""),
-  paste( get_range(p.s.m1b.f2.i), " (", get_stars(             p.s.m1b.f2.i        ),")", sep = ""),
-  paste( get_range(p.s.m10b.f2.i), " (", get_stars(            p.s.m10b.f2.i      ),")", sep = ""),  
-  paste( get_range(p.s.m100b.f2.i), " (", get_stars(           p.s.m100b.f2.i      ),")", sep = ""),
-  paste( get_range(p.s.m10000b.f2.i), " (", get_stars(         p.s.m10000b.f2.i    ),")", sep = ""),
-  paste( get_range(p.s.m1000b.f2.i), " (", get_stars(          p.s.m1000b.f2.i     ),")", sep = ""), 
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F2 int", sep = ""),
-  paste( get_range(p.s.m2.f2.i), " (", get_stars(              p.s.m2.f2.i     ),")", sep = ""), 
-  "",
-  # paste( get_range(p.s.m20.f2.i), " (", get_stars(           p.s.m20.f2.i    ),")", sep = ""),
-  paste( get_range(p.s.m200.f2.i), " (", get_stars(            p.s.m200.f2.i     ),")", sep = ""), 
-  paste( get_range(p.s.m20000.f2.i), " (", get_stars(          p.s.m20000.f2.i   ),")", sep = ""),
-  paste( get_range(p.s.m2000.f2.i), " (", get_stars(           p.s.m2000.f2.i     ),")", sep = ""),
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F2 assoc", sep = ""),
-  paste( get_range(p.s.m3.f2.i), " (", get_stars(              p.s.m3.f2.i      ),")", sep = ""),
-  paste("",sep=""),
-  # paste( get_range(p.s.m30.f2.i), " (", get_stars(           p.s.m30.f2.i     ),")", sep = ""),
-  paste( get_range(p.s.m300.f2.i), " (", get_stars(            p.s.m300.f2.i      ),")", sep = ""), 
-  paste( get_range(p.s.m30000.f2.i), " (", get_stars(          p.s.m30000.f2.i    ),")", sep = ""),
-  paste( get_range(p.s.m3000.f2.i), " (", get_stars(           p.s.m3000.f2.i      ),")", sep = ""),
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F2 assoc", sep = ""),
-  paste( get_range(p.s.m3a.f2.i), " (", get_stars(             p.s.m3a.f2.i       ),")", sep = ""),
-  paste("", sep=""),
-  # paste( get_range(p.s.m30a.f2.i), " (", get_stars(          p.s.m30a.f2.i     ),")", sep = ""),  
-  paste( get_range(p.s.m300a.f2.i), " (", get_stars(           p.s.m300a.f2.i     ),")", sep = ""),
-  paste( get_range(p.s.m30000a.f2.i), " (", get_stars(         p.s.m30000a.f2.i   ),")", sep = ""),
-  paste( get_range(p.s.m3000a.f2.i), " (", get_stars(          p.s.m3000a.f2.i    ),")", sep = ""), 
-  paste("", sep = ""),       
-  paste("", sep = ""), 
-  paste("F2 assoc", sep = ""),
-  paste( get_range(p.s.m3b.f2.i), " (", get_stars(              p.s.m3b.f2.i       ),")", sep = ""),
-  paste("", sep=""),
-  # paste( get_range(p.s.m30b.f2.i), " (", get_stars(           p.s.m30b.f2.i     ),")", sep = ""),  
-  paste( get_range(p.s.m300b.f2.i), " (", get_stars(            p.s.m300b.f2.i     ),")", sep = ""),
-  paste( get_range(p.s.m30000b.f2.i), " (", get_stars(          p.s.m30000b.f2.i   ),")", sep = ""),
-  paste( get_range(p.s.m3000b.f2.i), " (", get_stars(           p.s.m3000b.f2.i    ),")", sep = "")
-),
-
-
-. =c(
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F1 rel * int", sep = ""),
-  paste( get_range(p.s.m1.f1.ri), " (", get_stars(              p.s.m1.f1.ri    ),")", sep = ""), 
-  paste( get_range(p.s.m10.f1.ri), " (", get_stars(             p.s.m10.f1.ri   ),")", sep = ""),
-  paste( get_range(p.s.m100.f1.ri), " (", get_stars(            p.s.m100.f1.ri   ),")", sep = ""), 
-  paste( get_range(p.s.m10000.f1.ri), " (", get_stars(          p.s.m10000.f1.ri  ),")", sep = ""),
-  paste( get_range(p.s.m1000.f1.ri), " (", get_stars(           p.s.m1000.f1.ri   ),")", sep = ""),
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F1 rel * int", sep = ""),
-  paste( get_range(p.s.m1a.f1.ri), " (", get_stars(             p.s.m1a.f1.ri ),")", sep = ""),
-  paste( get_range(p.s.m10a.f1.ri), " (", get_stars(            p.s.m10a.f1.ri  ),")", sep = ""),  
-  paste( get_range(p.s.m100a.f1.ri), " (", get_stars(           p.s.m100a.f1.ri  ),")", sep = ""),
-  paste( get_range(p.s.m10000a.f1.ri), " (", get_stars(         p.s.m10000a.f1.ri   ),")", sep = ""),
-  paste( get_range(p.s.m1000a.f1.ri), " (", get_stars(          p.s.m1000a.f1.ri ),")", sep = ""), 
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F1 rel * int", sep = ""),
-  paste( get_range(p.s.m1b.f1.ri), " (", get_stars(             p.s.m1b.f1.ri       ),")", sep = ""),
-  paste( get_range(p.s.m10b.f1.ri), " (", get_stars(            p.s.m10b.f1.ri      ),")", sep = ""),  
-  paste( get_range(p.s.m100b.f1.ri), " (", get_stars(           p.s.m100b.f1.ri     ),")", sep = ""),
-  paste( get_range(p.s.m10000b.f1.ri), " (", get_stars(         p.s.m10000b.f1.ri  ),")", sep = ""),
-  paste( get_range(p.s.m1000b.f1.ri), " (", get_stars(          p.s.m1000b.f1.ri    ),")", sep = ""), 
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F1 rel * int", sep = ""),
-  paste( get_range(p.s.m2.f1.ri), " (", get_stars(              p.s.m2.f1.ri         ),")", sep = ""), 
-  "",
-  # paste( get_range(p.s.m20.f1.ri), " (", get_stars(           p.s.m20.f1.ri       ),")", sep = ""),
-  paste( get_range(p.s.m200.f1.ri), " (", get_stars(            p.s.m200.f1.ri      ),")", sep = ""), 
-  paste( get_range(p.s.m20000.f1.ri), " (", get_stars(          p.s.m20000.f1.ri  ),")", sep = ""),
-  paste( get_range(p.s.m2000.f1.ri), " (", get_stars(           p.s.m2000.f1.ri   ),")", sep = ""),
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F1 ass * int", sep = ""),
-  paste( get_range(p.s.m3.f1.ri), " (", get_stars(              p.s.m3.f1.ri        ),")", sep = ""),
-  paste("", sep = ""),
-  # paste( get_range(p.s.m30.f1.ri), " (", get_stars(           p.s.m30.f1.ri         ),")", sep = ""),
-  paste( get_range(p.s.m300.f1.ri), " (", get_stars(            p.s.m300.f1.ri        ),")", sep = ""), 
-  paste( get_range(p.s.m30000.f1.ri), " (", get_stars(          p.s.m30000.f1.ri    ),")", sep = ""),
-  paste( get_range(p.s.m3000.f1.ri), " (", get_stars(           p.s.m3000.f1.ri     ),")", sep = ""),
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F1 rel * int", sep = ""),
-  paste( get_range(p.s.m3a.f1.ri), " (", get_stars(             p.s.m3a.f1.ri         ),")", sep = ""),
-  paste("", sep = ""),
-  # paste( get_range(p.s.m30a.f1.ri), " (", get_stars(         p.s.m30a.f1.ri        ),")", sep = ""),  
-  paste( get_range(p.s.m300a.f1.ri), " (", get_stars(          p.s.m300a.f1.ri      ),")", sep = ""),
-  paste( get_range(p.s.m30000a.f1.ri), " (", get_stars(        p.s.m30000a.f1.ri   ),")", sep = ""),
-  paste( get_range(p.s.m3000a.f1.ri), " (", get_stars(         p.s.m3000a.f1.ri     ),")", sep = ""), 
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F1 rel * int", sep = ""),
-  paste( get_range(p.s.m3b.f1.ri), " (", get_stars(            p.s.m3b.f1.ri  ),")", sep = ""),
-  paste("", sep = ""),
-  # paste( get_range(p.s.m30b.f1.ri), " (", get_stars(         p.s.m30b.f1.ri  ),")", sep = ""),  
-  paste( get_range(p.s.m300b.f1.ri), " (", get_stars(          p.s.m300b.f1.ri  ),")", sep = ""),
-  paste( get_range(p.s.m30000b.f1.ri), " (", get_stars(        p.s.m30000b.f1.ri  ),")", sep = ""),
-  paste( get_range(p.s.m3000b.f1.ri), " (", get_stars(         p.s.m3000b.f1.ri ),")", sep = "")
-),  
-. =c(
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F2 rel * int", sep = ""),
-  paste( get_range(p.s.m1.f2.ri), " (", get_stars(              p.s.m1.f2.ri          ),")", sep = ""),
-  paste( get_range(p.s.m10.f2.ri), " (", get_stars(             p.s.m10.f2.ri        ),")", sep = ""),
-  paste( get_range(p.s.m100.f2.ri), " (", get_stars(            p.s.m100.f2.ri       ),")", sep = ""), 
-  paste( get_range(p.s.m10000.f2.ri), " (", get_stars(          p.s.m10000.f2.ri   ),")", sep = ""),
-  paste( get_range(p.s.m1000.f2.ri), " (", get_stars(           p.s.m1000.f2.ri    ),")", sep = ""),
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F2 rel * int", sep = ""),
-  paste( get_range(p.s.m1a.f2.ri), " (", get_stars(             p.s.m1a.f2.ri        ),")", sep = ""),
-  paste( get_range(p.s.m10a.f2.ri), " (", get_stars(            p.s.m10a.f2.ri       ),")", sep = ""),  
-  paste( get_range(p.s.m100a.f2.ri), " (", get_stars(           p.s.m100a.f2.ri    ),")", sep = ""),
-  paste( get_range(p.s.m10000a.f2.ri), " (", get_stars(         p.s.m10000a.f2.ri        ),")", sep = ""),
-  paste( get_range(p.s.m1000a.f2.ri), " (", get_stars(          p.s.m1000a.f2.ri   ),")", sep = ""), 
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F2 rel * int", sep = ""),
-  paste( get_range(p.s.m1b.f2.ri), " (", get_stars(             p.s.m1b.f2.ri    ),")", sep = ""),
-  paste( get_range(p.s.m10b.f2.ri), " (", get_stars(            p.s.m10b.f2.ri    ),")", sep = ""),  
-  paste( get_range(p.s.m100b.f2.ri), " (", get_stars(           p.s.m100b.f2.ri    ),")", sep = ""),
-  paste( get_range(p.s.m10000b.f2.ri), " (", get_stars(         p.s.m10000b.f2.ri     ),")", sep = ""),
-  paste( get_range(p.s.m1000b.f2.ri), " (", get_stars(          p.s.m1000b.f2.ri   ),")", sep = ""), 
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F2 ass * int", sep = ""),
-  paste( get_range(p.s.m2.f2.ri), " (", get_stars(              p.s.m2.f2.ri    ),")", sep = ""), 
-  paste("", sep = ""),
-  # paste( get_range(p.s.m20.f2.ri), " (", get_stars(           p.s.m20.f2.ri   ),")", sep = ""),
-  paste( get_range(p.s.m200.f2.ri), " (", get_stars(            p.s.m200.f2.ri  ),")", sep = ""), 
-  paste( get_range(p.s.m20000.f2.ri), " (", get_stars(          p.s.m20000.f2.ri  ),")", sep = ""),
-  paste( get_range(p.s.m2000.f2.ri), " (", get_stars(           p.s.m2000.f2.ri   ),")", sep = ""),
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F2 ass * int", sep = ""),
-  paste( get_range(p.s.m3.f2.ri), " (", get_stars(               p.s.m3.f2.ri   ),")", sep = ""),
-  paste("", sep = ""),
-  # paste( get_range(p.s.m30.f2.ri), " (", get_stars(            p.s.m30.f2.ri  ),")", sep = ""),
-  paste( get_range(p.s.m300.f2.ri), " (", get_stars(             p.s.m300.f2.ri  ),")", sep = ""), 
-  paste( get_range(p.s.m30000.f2.ri), " (", get_stars(           p.s.m30000.f2.ri ),")", sep = ""),
-  paste( get_range(p.s.m3000.f2.ri), " (", get_stars(            p.s.m3000.f2.ri  ),")", sep = ""),
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F2 ass * int", sep = ""),
-  paste( get_range(p.s.m3a.f2.ri), " (", get_stars(              p.s.m3a.f2.ri     ),")", sep = ""),
-  paste("", sep = ""),
-  # paste( get_range(p.s.m30a.f2.ri), " (", get_stars(           p.s.m30a.f2.ri     ),")", sep = ""),  
-  paste( get_range(p.s.m300a.f2.ri), " (", get_stars(            p.s.m300a.f2.ri     ),")", sep = ""),
-  paste( get_range(p.s.m30000a.f2.ri), " (", get_stars(          p.s.m30000a.f2.ri      ),")", sep = ""),
-  paste( get_range(p.s.m3000a.f2.ri), " (", get_stars(           p.s.m3000a.f2.ri    ),")", sep = ""), 
-  paste("", sep = ""),
-  paste("", sep = ""),
-  paste("F2 ass * int", sep = ""),
-  paste( get_range(p.s.m3b.f2.ri), " (", get_stars(              p.s.m3b.f2.ri    ),")", sep = ""),
-  paste("", sep = ""),
-  # paste( get_range(p.s.m30b.f2.ri), " (", get_stars(           p.s.m30b.f2.ri   ),")", sep = ""),  
-  paste( get_range(p.s.m300b.f2.ri), " (", get_stars(            p.s.m300b.f2.ri    ),")", sep = ""),
-  paste( get_range(p.s.m30000b.f2.ri), " (", get_stars(          p.s.m30000b.f2.ri  ),")", sep = ""),
-  paste( get_range(p.s.m3000b.f2.ri), " (", get_stars(           p.s.m3000b.f2.ri   ),")", sep = "")  
-))
-write.xlsx(regressions.ds, file="output/table23_SR1 & 2_regression_model_comparisons.xlsx", col.names = TRUE, row.names = TRUE, append = FALSE)
-
-
 
 # ------------------------------------------- EXP. 1 NUISANCE FACTOR NORMING ------------------------------------
 

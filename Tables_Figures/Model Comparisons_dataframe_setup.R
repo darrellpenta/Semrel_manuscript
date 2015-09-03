@@ -671,5 +671,3 @@ f2$rates            = ifelse ( f2$errd == 0 & f2$corr == 0, 0, ( f2$errd / f2$to
 f2$v                = (1 / ( f2$errd + .5)) + (1 / ( f2$corr + .5)) 
 f2$asin             = asin(sqrt ( f2$rates / 100))  
 f2.sr.prop               <- f2
-
-
