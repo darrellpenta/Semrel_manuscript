@@ -1,20 +1,20 @@
 Table 12: Experiment 2 Property Item Mean Inteagration Ratings ANOVA
-Sep. 03, 2015 at 00:45:58
+Sep. 03, 2015 at 15:22:37
 Attrb vs. Assoc
 Error: item
           Df Sum Sq Mean Sq F value Pr(>F)
-Residuals 23  12.59  0.5474               
+Residuals 23  23.16   1.007               
 
 Error: item:related
-          Df Sum Sq Mean Sq F value  Pr(>F)   
-related    1  5.185   5.185   11.12 0.00288 **
-Residuals 23 10.727   0.466                   
+          Df Sum Sq Mean Sq F value   Pr(>F)    
+related    1  37.34   37.34   50.92 2.87e-07 ***
+Residuals 23  16.86    0.73                     
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Error: Within
           Df Sum Sq Mean Sq F value Pr(>F)
-Residuals 48  8.707  0.1814               
+Residuals 48  7.409  0.1543               
 
  
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
