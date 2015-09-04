@@ -1,1 +1,20 @@
-Table 20: CAT MISCELLANEOUS F2 2 x 2 ANOVASep. 01, 2015 at 20:04:32
+Table 20: CAT MISCELLANEOUS F2 2 x 2 ANOVASep. 04, 2015 at 14:07:32
+
+Error: item
+          Df  Sum Sq Mean Sq F value Pr(>F)
+Residuals 23 1550.96  67.433               
+
+Error: item:related
+          Df   Sum Sq Mean Sq F value  Pr(>F)
+related    1   0.1667 0.16667 0.02558 0.87432
+Residuals 23 149.8333 6.51449                
+
+Error: item:n2num
+          Df   Sum Sq  Mean Sq F value  Pr(>F)
+n2num      1  20.1667 20.16667 2.53692 0.12486
+Residuals 23 182.8333  7.94928                
+
+Error: item:related:n2num
+              Df   Sum Sq  Mean Sq F value  Pr(>F)
+related:n2num  1  15.0417 15.04167 2.93289 0.10024
+Residuals     23 117.9583  5.12862                

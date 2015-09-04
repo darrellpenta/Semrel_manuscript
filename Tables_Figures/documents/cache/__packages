@@ -5,3 +5,11 @@ rJava
 xlsxjars
 xlsx
 psych
+reshape2
+plyr
+stringr
+dplyr
+languageR
+Matrix
+lme4
+lmerTest

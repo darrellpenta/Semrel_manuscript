@@ -89,7 +89,6 @@ a.2x2x2.f2 <- aov(unind ~ semint * related * n2num + Error( item / ( semint * re
 
 sink("output/table17_SR_uninflected_f2_anova.txt")
 cat("Table 17: F2 Uninflected 2 x 2 x 2 ANOVA", format( Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
-print(ds)
 print( summary( a.2x2x2.f2), digits = 6)
 sink()
 
@@ -163,8 +162,6 @@ error.rate.ANOVA.2 <- data.frame(
 
 error.rate.ANOVA <- cbind(error.rate.ANOVA.1,error.rate.ANOVA.2[,c(2:3)])
 
-
-View(error.rate.ANOVA)
 
 write.xlsx(error.rate.ANOVA, file="output/table17_SR_uninflected_anovas.xlsx", col.names = TRUE, row.names = TRUE, append = FALSE)
 
@@ -293,7 +290,7 @@ m.rXi <- zapsmall( aov.sum2[[5]][[1]][["Mean Sq"]][2], digits = 4)
 f.2ri <- zapsmall( aov.sum2[[8]][[1]][["F value"]][1], digits = 4)
 p.2ri <- zapsmall( aov.sum2[[8]][[1]][["Pr(>F)"]][1],  digits = 4)
 m.2ri <- zapsmall( aov.sum2[[8]][[1]][["Mean Sq"]][2], digits = 4)
-2
+
 error.rate.ANOVA.2 <- data.frame(
   
   Effect = c(
@@ -328,8 +325,6 @@ error.rate.ANOVA.2 <- data.frame(
 
 
 error.rate.ANOVA <- cbind(error.rate.ANOVA.1,error.rate.ANOVA.2[,c(2:3)])
-
-View(error.rate.ANOVA)
 
 
 write.xlsx(error.rate.ANOVA, file="output/table18_SR_miscellaneous_anovas.xlsx", col.names = TRUE, row.names = TRUE, append = FALSE)

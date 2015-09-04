@@ -1,2 +1,46 @@
-Table 17: F2 Uninflected 2 x 2 x 2 ANOVASep. 03, 2015 at 23:31:43
-[1] "/Users/darrellpenta/Desktop/Manuscripts/semrel_manuscript/Tables_Figures"
+Table 17: F2 Uninflected 2 x 2 x 2 ANOVASep. 04, 2015 at 14:07:02
+
+Error: item
+          Df  Sum Sq Mean Sq F value Pr(>F)
+Residuals 23 1376.12 59.8313               
+
+Error: item:semint
+          Df  Sum Sq  Mean Sq F value    Pr(>F)   
+semint     1 152.297 152.2969 11.5958 0.0024274 **
+Residuals 23 302.078  13.1338                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Error: item:related
+          Df  Sum Sq  Mean Sq F value  Pr(>F)
+related    1   8.755  8.75521  0.4529 0.50767
+Residuals 23 444.620 19.33130                
+
+Error: item:n2num
+          Df   Sum Sq  Mean Sq F value   Pr(>F)  
+n2num      1  27.7552 27.75521 5.12254 0.033363 *
+Residuals 23 124.6198  5.41825                   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Error: item:semint:related
+               Df   Sum Sq Mean Sq F value  Pr(>F)  
+semint:related  1  39.4219 39.4219 4.53458 0.04414 *
+Residuals      23 199.9531  8.6936                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Error: item:semint:n2num
+             Df  Sum Sq Mean Sq F value Pr(>F)
+semint:n2num  1  5.0052 5.00521 1.41477 0.2464
+Residuals    23 81.3698 3.53782               
+
+Error: item:related:n2num
+              Df  Sum Sq Mean Sq F value  Pr(>F)
+related:n2num  1  0.1302 0.13021 0.03394 0.85545
+Residuals     23 88.2448 3.83673                
+
+Error: item:semint:related:n2num
+                     Df   Sum Sq Mean Sq F value Pr(>F)
+semint:related:n2num  1   0.2552 0.25521 0.04846 0.8277
+Residuals            23 121.1198 5.26608               

@@ -13,34 +13,25 @@ d.cat            <- subset(d.cat,  subject != "1123")
 d.cat            <- d.cat[, c(3,7:8,15:16)]
 d.cat$unique.id <- paste(d.cat[,1], d.cat[,2],d.cat[,3], sep = "_")
 
-d.cat.un           <- ddply(d.cat, "unique.id", function(X) data.frame(unind = sum(X$unind)))
-d.cat.ms           <- ddply(d.cat, "unique.id", function(X) data.frame(misc = sum(X$misc)))
-
-
-unind          <- data.frame(d.cat.un$unind)
-misc           <- data.frame(d.cat.ms$misc)
-d.cat.un        <- colsplit(d.cat.un$unique.id, "_", c("item", "related", "n2num"))
-d.cat.ms        <- colsplit(d.cat.ms$unique.id, "_", c("item", "related", "n2num"))
-
-d.cat.un$item      <- as.factor(d.cat.un$item)
-d.cat.ms$item      <- as.factor(d.cat.ms$item)
-
-d.cat.un           <- cbind(d.cat.un,unind)
-colnames(d.cat.un)[4] <- "unind"
-d.cat.ms           <- cbind(d.cat.ms,misc)
-colnames(d.cat.ms)[4] <- "misc"
-d.cat.un           <-merge(d.cat.un, d.cat.ms)
-d.cat              <- d.cat.un
+d.cat.un                <- ddply(d.cat, "unique.id", function(X) data.frame(unind = sum(X$unind)))
+d.cat.ms                <- ddply(d.cat, "unique.id", function(X) data.frame(misc = sum(X$misc)))
+unind                   <- data.frame(d.cat.un$unind)
+misc                    <- data.frame(d.cat.ms$misc)
+d.cat.un                <- colsplit(d.cat.un$unique.id, "_", c("item", "related", "n2num"))
+d.cat.ms                <- colsplit(d.cat.ms$unique.id, "_", c("item", "related", "n2num"))
+d.cat.un$item           <- as.factor(d.cat.un$item)
+d.cat.ms$item           <- as.factor(d.cat.ms$item)
+d.cat.un                <- cbind(d.cat.un,unind)
+colnames(d.cat.un)[4]   <- "unind"
+d.cat.ms                <- cbind(d.cat.ms,misc)
+colnames(d.cat.ms)[4]   <- "misc"
+d.cat.un                <-merge(d.cat.un, d.cat.ms)
+d.cat                   <- d.cat.un
 rm(unind)
 rm(misc)
-
-
-d.cat$item       <-as.factor(d.cat$item)
-d.cat$related    <-as.factor(d.cat$related)
-d.cat$n2num      <-as.factor(d.cat$n2num)
-# Calculates the error rates (percent, including dys)
-
-
+d.cat$item               <-as.factor(d.cat$item)
+d.cat$related            <-as.factor(d.cat$related)
+d.cat$n2num              <-as.factor(d.cat$n2num)
 
 ds <- data.frame(data = c(
   "gmean",
@@ -105,7 +96,6 @@ ds <- data.frame(data = c(
   ))
 
 
-View(ds)
 # 
 # #aggregates d with dysfluencies
 # # Below, designates various subsets of the original data file

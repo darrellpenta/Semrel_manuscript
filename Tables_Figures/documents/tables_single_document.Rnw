@@ -10,7 +10,8 @@
 \usepackage{pdflscape}
 \begin{document}
 \listoftables{}
-<<global>>=
+
+<<global, echo=FALSE>>=
 opts_chunk$set(echo=FALSE, message = FALSE, warning = FALSE, error = FALSE, eval = TRUE, cache=TRUE)
 library(knitr)
 library(xtable)
@@ -48,7 +49,7 @@ exp1.example = data.frame(
     "The necklace near the colorful feather",
     "The necklace near the colorful feathers"
   ))
-xtable(exp1.example, caption = c(" Experiment 1 critical item example","Exp.1 Critical item"), align = "lllll")
+xtable(exp1.example, caption = c(" Experiment 1 critical item example","Exp.1 Critical item"), caption.placement = 'top', align = "lllll")
 @
 
 <<table 2, results='asis'>>=
@@ -92,7 +93,7 @@ exp1.related <- data.frame(
 
 
 
-xtable(exp1.related, caption = c(" Experiment 1 mean relatedness ratings","Exp.1 Relatedness"), align = "lllll")
+xtable(exp1.related, caption = c(" Experiment 1 mean relatedness ratings","Exp.1 Relatedness"), caption.placement = 'top', align = "lllll")
 
 @
 
@@ -169,7 +170,7 @@ exp1.integration <- data.frame(
   )
 )
 # ----------------------------- INTEGRATION DATAFRAME: Write to excel ---------------
-xtable(exp1.integration, caption = c("Experiment 1 mean integration ratings", "Exp 1. Integration"))
+xtable(exp1.integration, caption = c("Experiment 1 mean integration ratings", "Exp 1. Integration"), caption.placement = 'top')
 
 
 @
@@ -209,7 +210,7 @@ exp1.assoc <- data.frame(
     " " )
 )
 
-xtable(exp1.assoc, caption=c("Experiment 1 head-to-local association proportions", "Exp. 1 Association"))
+xtable(exp1.assoc, caption=c("Experiment 1 head-to-local association proportions", "Exp. 1 Association"), caption.placement = 'top')
 @
 
 <<table 5, results='asis'>>=
@@ -316,7 +317,7 @@ exp1.err.rates <- data.frame(
 )    
 
 
-xtable(exp1.err.rates , caption = c("Experiment 1 Error Rate and Response Counts", "Exp1. Errors and Responses"))
+xtable(exp1.err.rates , caption = c("Experiment 1 Error Rate and Response Counts", "Exp1. Errors and Responses"), caption.placement = 'top')
 @
 \end{landscape}
 <<table 6, results='asis'>>=
@@ -468,7 +469,7 @@ error.rate.ANOVA.2 <- data.frame(
 
 error.rate.ANOVA <- cbind(error.rate.ANOVA.1,error.rate.ANOVA.2[,c(2:3)])
 
-xtable(error.rate.ANOVA, caption = c("Experiment 1 Error Rate ANOVAs", "Exp.1 Error ANOVAs"))
+xtable(error.rate.ANOVA, caption = c("Experiment 1 Error Rate ANOVAs", "Exp.1 Error ANOVAs"), caption.placement = 'top')
 @
 
 <<table 7, results='asis'>>=
@@ -491,7 +492,7 @@ exp2.cat.example = data.frame(
     "The saw by the oily rags"
   ))
 
-xtable( exp2.cat.example, caption = c("Category critical item versions", "Category Item"))
+xtable( exp2.cat.example, caption = c("Category critical item versions", "Category Item"), caption.placement = 'top')
 @
 
 <<table 8, results='asis'>>=
@@ -517,7 +518,7 @@ exp2.prop.example = data.frame(
 
 
 
-xtable( exp2.prop.example, caption = c("Property critical item versions", "Property Item"))
+xtable( exp2.prop.example, caption = c("Property critical item versions", "Property Item"), caption.placement = 'top')
 @
 
 <<table 9, results='asis'>>=
@@ -561,7 +562,7 @@ exp2.related <- data.frame(
     paste(" "))
 )
 # ----------------------------- RELATEDNESS DATAFRAME: Write to excel ----------- 
-xtable(exp2.related, caption = c("Category Coordinates Mean relatedness ratings.xlsx", "CAT COORD Relatedness"))
+xtable(exp2.related, caption = c("Category Coordinates Mean relatedness ratings", "CAT COORD Relatedness"), caption.placement = 'top')
 
 @
 
@@ -602,8 +603,9 @@ exp2.integration <- data.frame(
     " ")
 )
 # ----------------------------- INTEGRATION DATAFRAME: Write to excel -----------  
-xtable(exp2.integration, caption =c("Category Coordinate mean integration rating", "CAT COORD Integration"))
+xtable(exp2.integration, caption =c("Category Coordinate mean integration rating", "CAT COORD Integration"), caption.placement = 'top')
 @
+
 \begin{landscape}
 <<table 11, results='asis'>>=
 # -------------------- TABLE 11 SEMREL2: PROPERTY RELATEDNESS -----------------------------
@@ -668,7 +670,7 @@ exp2.related <- data.frame(
     "" 
   ))
 
-xtable(exp2.related, caption =c("Property mean relatedness ratings", "PROP Relatedness"))
+xtable(exp2.related, caption =c("Property mean relatedness ratings", "PROP Relatedness"), caption.placement = 'top')
 @
 
 <<table 12, results='asis'>>=
@@ -730,7 +732,7 @@ exp2.integration <- data.frame(
 # ----------------------------- INTEGRATION DATAFRAME: Write to excel ----------
 
 
-xtable(exp2.integration, caption =c("Property mean integration ratings", "PROP Integration"))
+xtable(exp2.integration, caption =c("Property mean integration ratings", "PROP Integration"), caption.placement = 'top')
 
 @
 
@@ -794,7 +796,7 @@ exp2.association <- data.frame(
     "" 
   ))
 
-xtable(exp2.association, caption =c("Property head-to-local association proportions", "PROP association"))
+xtable(exp2.association, caption =c("Property head-to-local association proportions", "PROP association"), caption.placement = 'top')
 
 @
 
@@ -803,6 +805,7 @@ xtable(exp2.association, caption =c("Property head-to-local association proporti
 # ----------------------------- CAT ERROR RATE DATAFRAME: Import Data -------
 setwd("/Users/darrellpenta/Desktop/Manuscripts/semrel_manuscript/Tables_Figures")
 source( file = "clear_and_setup.R")
+setwd("/Users/darrellpenta/Desktop/Manuscripts/semrel_manuscript/Tables_Figures")
 source( file = "semrel2_CAT_error_data_read_in_dataframe.R")
 source( file = "semrel2_CAT_error_rate_SEMs.R")
 # ----------------------------- CAT ERROR RATE DATAFRAME: Conditions -------------
@@ -937,8 +940,865 @@ exp2.prop.err.rates <- data.frame(
 # ----------------------------- CAT & PROP ERROR RATE DATAFRAME: Combine to Excel ---------------
 exp2.err.rates <-  rbind(exp2.cat.err.rates, exp2.prop.err.rates)
 
-xtable(exp2.err.rates, caption=c("Experiment 2 Error rates and response counts", "Exp. 2 Error rates"))
+xtable(exp2.err.rates, caption=c("Experiment 2 Error rates and response counts", "Exp. 2 Error rates"), caption.placement = 'top')
 @
 \end{landscape}
+
+<<table 15, results='asis'>>=
+setwd("/Users/darrellpenta/Desktop/Manuscripts/semrel_manuscript/Tables_Figures")
+source( file = "clear_and_setup.R")
+setwd("/Users/darrellpenta/Desktop/Manuscripts/semrel_manuscript/Tables_Figures")
+source( file = "semrel2_CAT_f1_ANOVAS_read_in_dataframe.R")
+
+
+a.2x2 <- aov(error ~ related * n2num + Error( subj / ( related * n2num)), data = data.subj)
+
+aov.sum <- summary( a.2x2)
+# ----------------------------- F1 EXTRACT MODEL STATS  -------------
+#n2num
+f.n2n <- zapsmall( aov.sum[[3]][[1]][["F value"]][1], digits = 4)
+p.n2n <- zapsmall( aov.sum[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2n <- zapsmall( aov.sum[[3]][[1]][["Mean Sq"]][2], digits = 4)
+#related
+f.rel <- zapsmall( aov.sum[[2]][[1]][["F value"]][1], digits = 4)
+p.rel <- zapsmall( aov.sum[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.rel <- zapsmall( aov.sum[[2]][[1]][["Mean Sq"]][2], digits = 4)
+#n2n X rel
+f.n2r <- zapsmall( aov.sum[[4]][[1]][["F value"]][1], digits = 4)
+p.n2r <- zapsmall( aov.sum[[4]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2r <- zapsmall( aov.sum[[4]][[1]][["Mean Sq"]][2], digits = 4)
+# ----------------------------- F1 ANALYSIS DATAFRAME -------------
+error.rate.ANOVA.1 <- data.frame(
+  
+  Effect = c(
+    "Local Noun Number",
+    "Related",
+    "Local Noun Number X Relatedness"
+  ),
+  
+  F1    = c(
+    f.n2n,
+    f.rel,
+    f.n2r
+  ),
+  
+  MSe   =c(
+    paste( m.n2n," (", get_stars( p.n2n),")", sep = ""),
+    paste( m.rel," (", get_stars( p.rel),")", sep = ""),
+    paste( m.n2r," (", get_stars( p.n2r),")", sep = ""))   
+)
+# ----------------------------- F2 ANALYSIS -------------
+source( file = "semrel2_CAT_f2_ANOVAS_read_in_dataframe.R")
+a.2x2 <- aov(error ~ related * n2num + Error(item / (related * n2num)), data = data.item)
+
+aov.sum <- summary( a.2x2)
+# ----------------------------- F2 EXTRACT MODEL STATS -------------
+#n2num
+f.n2n <- zapsmall( aov.sum[[3]][[1]][["F value"]][1], digits = 4)
+p.n2n <- zapsmall( aov.sum[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2n <- zapsmall( aov.sum[[3]][[1]][["Mean Sq"]][2], digits = 4)
+#related
+f.rel <- zapsmall( aov.sum[[2]][[1]][["F value"]][1], digits = 4)
+p.rel <- zapsmall( aov.sum[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.rel <- zapsmall( aov.sum[[2]][[1]][["Mean Sq"]][2], digits = 4)
+#n2n X rel
+f.n2r <- zapsmall( aov.sum[[4]][[1]][["F value"]][1], digits = 4)
+p.n2r <- zapsmall( aov.sum[[4]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2r <- zapsmall( aov.sum[[4]][[1]][["Mean Sq"]][2], digits = 4)
+# ----------------------------- F2 ANALYSIS DATAFRAME -------------
+error.rate.ANOVA.2 <- data.frame(
+  
+  Effect = c(
+    "Local Noun Number",
+    "Related",
+    "Local Noun Number X Relatedness"
+  ),
+  
+  F2    = c(
+    f.n2n,
+    f.rel,
+    f.n2r
+  ),
+  
+  MSe   =c(
+    paste( m.n2n," (", get_stars( p.n2n), ")", sep = ""),
+    paste( m.rel," (", get_stars( p.rel), ")", sep = ""),
+    paste( m.n2r," (", get_stars( p.n2r), ")", sep = ""))   
+)
+error.rate.ANOVA <- cbind(error.rate.ANOVA.1,error.rate.ANOVA.2[,c(2:3)])
+
+xtable(error.rate.ANOVA, caption=c("CAT error rate ANOVAs", "CAT Error Rate ANOVAs"), caption.placement='top')
+@
+
+<<table 16, results='asis'>>=
+setwd("/Users/darrellpenta/Desktop/Manuscripts/semrel_manuscript/Tables_Figures")
+source( file = "clear_and_setup.R")
+setwd("/Users/darrellpenta/Desktop/Manuscripts/semrel_manuscript/Tables_Figures")
+# -------------------- TABLE 16 SEMREL2: PROPERTY ERROR RATE ANOVA RESULTS ------------
+# ----------------------------- F1 ANALYSIS ------
+source( file = "semrel2_PROP_f1_ANOVAS_read_in_dataframe.R")
+
+a.2x3 <- aov(error ~ related * n2num + Error( subj / ( related * n2num)), data = data.subj)
+
+aov.sum <- summary( a.2x3)
+# ----------------------------- F1 EXTRACT MODEL STATS ------
+#n2num
+f.n2n <- zapsmall( aov.sum[[3]][[1]][["F value"]][1], digits = 4)
+p.n2n <- zapsmall( aov.sum[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2n <- zapsmall( aov.sum[[3]][[1]][["Mean Sq"]][2], digits = 4)
+#rel
+f.rel <- zapsmall( aov.sum[[2]][[1]][["F value"]][1], digits = 4)
+p.rel <- zapsmall( aov.sum[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.rel <- zapsmall( aov.sum[[2]][[1]][["Mean Sq"]][2], digits = 4)
+#n2n X rel
+f.n2r <- zapsmall( aov.sum[[4]][[1]][["F value"]][1], digits = 4)
+p.n2r <- zapsmall( aov.sum[[4]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2r <- zapsmall( aov.sum[[4]][[1]][["Mean Sq"]][2], digits = 4)
+# ----------------------------- F1 ANALYSIS DATAFRAME ------
+error.rate.ANOVA.1 <- data.frame(
+  
+  Effect = c(
+    "Local Noun Number",
+    "Related",
+    "Local Noun Number X Relatedness"
+  ),
+  
+  F1    = c(
+    f.n2n,
+    f.rel,
+    f.n2r
+  ),
+  
+  MSe   =c(
+    paste( m.n2n," (", get_stars( p.n2n),")", sep = ""),
+    paste( m.rel," (", get_stars( p.rel),")", sep = ""),
+    paste( m.n2r," (", get_stars( p.n2r),")", sep = ""))   
+)
+# ----------------------------- F2 ANALYSIS ------
+source( file = "semrel2_PROP_f2_ANOVAS_read_in_dataframe.R")
+a.2x3 <- aov(error ~ related * n2num + Error(item / (related * n2num)), data = data.item)
+
+aov.sum <- summary( a.2x3)
+# ----------------------------- F2 EXTRACT MODEL STATS ------
+#n2num
+f.n2n <- zapsmall( aov.sum[[3]][[1]][["F value"]][1], digits = 4)
+p.n2n <- zapsmall( aov.sum[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2n <- zapsmall( aov.sum[[3]][[1]][["Mean Sq"]][2], digits = 4)
+#related
+f.rel <- zapsmall( aov.sum[[2]][[1]][["F value"]][1], digits = 4)
+p.rel <- zapsmall( aov.sum[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.rel <- zapsmall( aov.sum[[2]][[1]][["Mean Sq"]][2], digits = 4)
+#n2n X rel
+f.n2r <- zapsmall( aov.sum[[4]][[1]][["F value"]][1], digits = 4)
+p.n2r <- zapsmall( aov.sum[[4]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2r <- zapsmall( aov.sum[[4]][[1]][["Mean Sq"]][2], digits = 4)
+# ----------------------------- F2 ANALYSIS DATAFRAME ------
+error.rate.ANOVA.2 <- data.frame(
+  
+  Effect = c(
+    "Local Noun Number",
+    "Related",
+    "Local Noun Number X Relatedness"
+  ),
+  
+  F2    = c(
+    f.n2n,
+    f.rel,
+    f.n2r
+  ),
+  
+  MSe   =c(
+    paste( m.n2n," (", get_stars( p.n2n), ")", sep = ""),
+    paste( m.rel," (", get_stars( p.rel), ")", sep = ""),
+    paste( m.n2r," (", get_stars( p.n2r), ")", sep = ""))   
+)
+error.rate.ANOVA <- cbind(error.rate.ANOVA.1,error.rate.ANOVA.2[,c(2:3)])
+
+
+xtable(error.rate.ANOVA, caption=c("PROP error rate ANOVAs", "PROP Error Rate ANOVAs"), caption.placement='top')
+@
+
+<<table 17, results='asis'>>=
+setwd("/Users/darrellpenta/Desktop/Manuscripts/semrel_manuscript/Tables_Figures")
+source( file = "clear_and_setup.R")
+setwd("/Users/darrellpenta/Desktop/Manuscripts/semrel_manuscript/Tables_Figures")
+source( file = "semrel_error_data_read_in_dataframe.R")
+
+a.2x2x2.f1 <- aov(unind ~ integrated * related * n2num + Error( subject / ( integrated * related * n2num)), data = d.sr)
+
+
+aov.sum <- summary( a.2x2x2.f1)
+
+#n2num
+f.n2n <- zapsmall( aov.sum[[4]][[1]][["F value"]][1], digits = 4)
+p.n2n <- zapsmall( aov.sum[[4]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2n <- zapsmall( aov.sum[[4]][[1]][["Mean Sq"]][2], digits = 4)
+#related
+f.rel <- zapsmall( aov.sum[[3]][[1]][["F value"]][1], digits = 4)
+p.rel <- zapsmall( aov.sum[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.rel <- zapsmall( aov.sum[[3]][[1]][["Mean Sq"]][2], digits = 4)
+#n2n X rel
+f.n2r <- zapsmall( aov.sum[[7]][[1]][["F value"]][1], digits = 4)
+p.n2r <- zapsmall( aov.sum[[7]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2r <- zapsmall( aov.sum[[7]][[1]][["Mean Sq"]][2], digits = 4)
+#semint
+f.int <- zapsmall( aov.sum[[2]][[1]][["F value"]][1], digits = 4)
+p.int <- zapsmall( aov.sum[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.int <- zapsmall( aov.sum[[2]][[1]][["Mean Sq"]][2], digits = 4)
+#n2n X int 
+f.n2i <- zapsmall( aov.sum[[6]][[1]][["F value"]][1], digits = 4)
+p.n2i <- zapsmall( aov.sum[[6]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2i <- zapsmall( aov.sum[[6]][[1]][["Mean Sq"]][2], digits = 4)
+#rel X int
+f.rXi <- zapsmall( aov.sum[[5]][[1]][["F value"]][1], digits = 4)
+p.rXi <- zapsmall( aov.sum[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.rXi <- zapsmall( aov.sum[[5]][[1]][["Mean Sq"]][2], digits = 4)
+#rel X int
+f.rXi <- zapsmall( aov.sum[[5]][[1]][["F value"]][1], digits = 4)
+p.rXi <- zapsmall( aov.sum[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.rXi <- zapsmall( aov.sum[[5]][[1]][["Mean Sq"]][2], digits = 4)
+#n2num X rel X int
+f.2ri <- zapsmall( aov.sum[[8]][[1]][["F value"]][1], digits = 4)
+p.2ri <- zapsmall( aov.sum[[8]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.2ri <- zapsmall( aov.sum[[8]][[1]][["Mean Sq"]][2], digits = 4)
+
+
+error.rate.ANOVA.1 <- data.frame(
+  
+  Effect = c(
+    "Local Noun Number",
+    "Related",
+    "Local Noun Number X Relatedness",
+    "Integration",
+    "Local Noun Number X Integration",
+    "Relatedness X Integration",
+    "Local Noun Number X Relatedness X Integration"
+  ),
+  
+  F1    = c(
+    f.n2n,
+    f.rel,
+    f.n2r,
+    f.int,
+    f.n2i,
+    f.rXi,
+    f.2ri
+  ),
+  
+  MSe   =c(
+    paste( m.n2n," (", get_stars( p.n2n),")", sep = ""),
+    paste( m.rel," (", get_stars( p.rel),")", sep = ""),
+    paste( m.n2r," (", get_stars( p.n2r),")", sep = ""),
+    paste( m.int," (", get_stars( p.int),")", sep = ""),
+    paste( m.n2i," (", get_stars( p.n2i),")", sep = ""),
+    paste( m.rXi," (", get_stars( p.rXi),")", sep = ""),
+    paste( m.2ri," (", get_stars( p.2ri),")", sep = ""))   
+)
+
+# F2
+source( file = "semrel_uninflected_f2_read_in_dataframe.R")
+a.2x2x2.f2 <- aov(unind ~ semint * related * n2num + Error( item / ( semint * related * n2num)), data = d.sr)
+aov.sum2 <- summary( a.2x2x2.f2)
+
+#n2num
+f.n2n <- zapsmall( aov.sum2[[4]][[1]][["F value"]][1], digits = 4)
+p.n2n <- zapsmall( aov.sum2[[4]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2n <- zapsmall( aov.sum2[[4]][[1]][["Mean Sq"]][2], digits = 4)
+#related
+f.rel <- zapsmall( aov.sum2[[3]][[1]][["F value"]][1], digits = 4)
+p.rel <- zapsmall( aov.sum2[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.rel <- zapsmall( aov.sum2[[3]][[1]][["Mean Sq"]][2], digits = 4)
+#n2n X rel
+f.n2r <- zapsmall( aov.sum2[[7]][[1]][["F value"]][1], digits = 4)
+p.n2r <- zapsmall( aov.sum2[[7]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2r <- zapsmall( aov.sum2[[7]][[1]][["Mean Sq"]][2], digits = 4)
+#semint
+f.int <- zapsmall( aov.sum2[[2]][[1]][["F value"]][1], digits = 4)
+p.int <- zapsmall( aov.sum2[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.int <- zapsmall( aov.sum2[[2]][[1]][["Mean Sq"]][2], digits = 4)
+#n2n X int 
+f.n2i <- zapsmall( aov.sum2[[6]][[1]][["F value"]][1], digits = 4)
+p.n2i <- zapsmall( aov.sum2[[6]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2i <- zapsmall( aov.sum2[[6]][[1]][["Mean Sq"]][2], digits = 4)
+#rel X int
+f.rXi <- zapsmall( aov.sum2[[5]][[1]][["F value"]][1], digits = 4)
+p.rXi <- zapsmall( aov.sum2[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.rXi <- zapsmall( aov.sum2[[5]][[1]][["Mean Sq"]][2], digits = 4)
+#rel X int
+f.rXi <- zapsmall( aov.sum2[[5]][[1]][["F value"]][1], digits = 4)
+p.rXi <- zapsmall( aov.sum2[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.rXi <- zapsmall( aov.sum2[[5]][[1]][["Mean Sq"]][2], digits = 4)
+#n2num X rel X int
+f.2ri <- zapsmall( aov.sum2[[8]][[1]][["F value"]][1], digits = 4)
+p.2ri <- zapsmall( aov.sum2[[8]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.2ri <- zapsmall( aov.sum2[[8]][[1]][["Mean Sq"]][2], digits = 4)
+
+error.rate.ANOVA.2 <- data.frame(
+  
+  Effect = c(
+    "Local Noun Number",
+    "Related",
+    "Local Noun Number X Relatedness",
+    "Integration",
+    "Local Noun Number X Integration",
+    "Relatedness X Integration",
+    "Local Noun Number X Relatedness X Integration"
+  ),
+  
+  F2    = c(
+    f.n2n,
+    f.rel,
+    f.n2r,
+    f.int,
+    f.n2i,
+    f.rXi,
+    f.2ri
+  ),
+  
+  MSe   =c(
+    paste( m.n2n," (", get_stars( p.n2n), ")", sep = ""),
+    paste( m.rel," (", get_stars( p.rel), ")", sep = ""),
+    paste( m.n2r," (", get_stars( p.n2r), ")", sep = ""),
+    paste( m.int," (", get_stars( p.int), ")", sep = ""),
+    paste( m.n2i," (", get_stars( p.n2i), ")", sep = ""),
+    paste( m.rXi," (", get_stars( p.rXi), ")", sep = ""),
+    paste( m.2ri," (", get_stars( p.2ri), ")", sep = ""))   
+)
+error.rate.ANOVA <- cbind(error.rate.ANOVA.1,error.rate.ANOVA.2[,c(2:3)])
+
+xtable(error.rate.ANOVA, caption = c("Experiment 1 Uninflected Responses","Exp. 1 Uninflected"))
+@
+
+<<table 18, results='asis'>>=
+
+#-------------MISCELLANEOUS
+setwd("/Users/darrellpenta/Desktop/Manuscripts/semrel_manuscript/Tables_Figures")
+source( file = "clear_and_setup.R")
+setwd("/Users/darrellpenta/Desktop/Manuscripts/semrel_manuscript/Tables_Figures")
+source( file = "semrel_error_data_read_in_dataframe.R")
+
+a.2x2x2.f1 <- aov(misc ~ integrated * related * n2num + Error( subject / ( integrated * related * n2num)), data = d.sr)
+aov.sum <- summary( a.2x2x2.f1)
+
+#n2num
+f.n2n <- zapsmall( aov.sum[[4]][[1]][["F value"]][1], digits = 4)
+p.n2n <- zapsmall( aov.sum[[4]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2n <- zapsmall( aov.sum[[4]][[1]][["Mean Sq"]][2], digits = 4)
+#related
+f.rel <- zapsmall( aov.sum[[3]][[1]][["F value"]][1], digits = 4)
+p.rel <- zapsmall( aov.sum[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.rel <- zapsmall( aov.sum[[3]][[1]][["Mean Sq"]][2], digits = 4)
+#n2n X rel
+f.n2r <- zapsmall( aov.sum[[7]][[1]][["F value"]][1], digits = 4)
+p.n2r <- zapsmall( aov.sum[[7]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2r <- zapsmall( aov.sum[[7]][[1]][["Mean Sq"]][2], digits = 4)
+#semint
+f.int <- zapsmall( aov.sum[[2]][[1]][["F value"]][1], digits = 4)
+p.int <- zapsmall( aov.sum[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.int <- zapsmall( aov.sum[[2]][[1]][["Mean Sq"]][2], digits = 4)
+#n2n X int 
+f.n2i <- zapsmall( aov.sum[[6]][[1]][["F value"]][1], digits = 4)
+p.n2i <- zapsmall( aov.sum[[6]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2i <- zapsmall( aov.sum[[6]][[1]][["Mean Sq"]][2], digits = 4)
+#rel X int
+f.rXi <- zapsmall( aov.sum[[5]][[1]][["F value"]][1], digits = 4)
+p.rXi <- zapsmall( aov.sum[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.rXi <- zapsmall( aov.sum[[5]][[1]][["Mean Sq"]][2], digits = 4)
+#rel X int
+f.rXi <- zapsmall( aov.sum[[5]][[1]][["F value"]][1], digits = 4)
+p.rXi <- zapsmall( aov.sum[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.rXi <- zapsmall( aov.sum[[5]][[1]][["Mean Sq"]][2], digits = 4)
+#n2num X rel X int
+f.2ri <- zapsmall( aov.sum[[8]][[1]][["F value"]][1], digits = 4)
+p.2ri <- zapsmall( aov.sum[[8]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.2ri <- zapsmall( aov.sum[[8]][[1]][["Mean Sq"]][2], digits = 4)
+
+
+error.rate.ANOVA.1 <- data.frame(
+  
+  Effect = c(
+    "Local Noun Number",
+    "Related",
+    "Local Noun Number X Relatedness",
+    "Integration",
+    "Local Noun Number X Integration",
+    "Relatedness X Integration",
+    "Local Noun Number X Relatedness X Integration"
+  ),
+  
+  F1    = c(
+    f.n2n,
+    f.rel,
+    f.n2r,
+    f.int,
+    f.n2i,
+    f.rXi,
+    f.2ri
+  ),
+  
+  MSe   =c(
+    paste( m.n2n," (", get_stars( p.n2n),")", sep = ""),
+    paste( m.rel," (", get_stars( p.rel),")", sep = ""),
+    paste( m.n2r," (", get_stars( p.n2r),")", sep = ""),
+    paste( m.int," (", get_stars( p.int),")", sep = ""),
+    paste( m.n2i," (", get_stars( p.n2i),")", sep = ""),
+    paste( m.rXi," (", get_stars( p.rXi),")", sep = ""),
+    paste( m.2ri," (", get_stars( p.2ri),")", sep = ""))   
+)
+
+
+# F2
+source( file = "semrel_uninflected_f2_read_in_dataframe.R")
+a.2x2x2.f2 <- aov(misc ~ semint * related * n2num + Error( item / ( semint * related * n2num)), data = d.sr)
+
+aov.sum2 <- summary( a.2x2x2.f2)
+
+#n2num
+f.n2n <- zapsmall( aov.sum2[[4]][[1]][["F value"]][1], digits = 4)
+p.n2n <- zapsmall( aov.sum2[[4]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2n <- zapsmall( aov.sum2[[4]][[1]][["Mean Sq"]][2], digits = 4)
+#related
+f.rel <- zapsmall( aov.sum2[[3]][[1]][["F value"]][1], digits = 4)
+p.rel <- zapsmall( aov.sum2[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.rel <- zapsmall( aov.sum2[[3]][[1]][["Mean Sq"]][2], digits = 4)
+#n2n X rel
+f.n2r <- zapsmall( aov.sum2[[7]][[1]][["F value"]][1], digits = 4)
+p.n2r <- zapsmall( aov.sum2[[7]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2r <- zapsmall( aov.sum2[[7]][[1]][["Mean Sq"]][2], digits = 4)
+#semint
+f.int <- zapsmall( aov.sum2[[2]][[1]][["F value"]][1], digits = 4)
+p.int <- zapsmall( aov.sum2[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.int <- zapsmall( aov.sum2[[2]][[1]][["Mean Sq"]][2], digits = 4)
+#n2n X int 
+f.n2i <- zapsmall( aov.sum2[[6]][[1]][["F value"]][1], digits = 4)
+p.n2i <- zapsmall( aov.sum2[[6]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2i <- zapsmall( aov.sum2[[6]][[1]][["Mean Sq"]][2], digits = 4)
+#rel X int
+f.rXi <- zapsmall( aov.sum2[[5]][[1]][["F value"]][1], digits = 4)
+p.rXi <- zapsmall( aov.sum2[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.rXi <- zapsmall( aov.sum2[[5]][[1]][["Mean Sq"]][2], digits = 4)
+#rel X int
+f.rXi <- zapsmall( aov.sum2[[5]][[1]][["F value"]][1], digits = 4)
+p.rXi <- zapsmall( aov.sum2[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.rXi <- zapsmall( aov.sum2[[5]][[1]][["Mean Sq"]][2], digits = 4)
+#n2num X rel X int
+f.2ri <- zapsmall( aov.sum2[[8]][[1]][["F value"]][1], digits = 4)
+p.2ri <- zapsmall( aov.sum2[[8]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.2ri <- zapsmall( aov.sum2[[8]][[1]][["Mean Sq"]][2], digits = 4)
+
+error.rate.ANOVA.2 <- data.frame(
+  
+  Effect = c(
+    "Local Noun Number",
+    "Related",
+    "Local Noun Number X Relatedness",
+    "Integration",
+    "Local Noun Number X Integration",
+    "Relatedness X Integration",
+    "Local Noun Number X Relatedness X Integration"
+  ),
+  
+  F2    = c(
+    f.n2n,
+    f.rel,
+    f.n2r,
+    f.int,
+    f.n2i,
+    f.rXi,
+    f.2ri
+  ),
+  
+  MSe   =c(
+    paste( m.n2n," (", get_stars( p.n2n), ")", sep = ""),
+    paste( m.rel," (", get_stars( p.rel), ")", sep = ""),
+    paste( m.n2r," (", get_stars( p.n2r), ")", sep = ""),
+    paste( m.int," (", get_stars( p.int), ")", sep = ""),
+    paste( m.n2i," (", get_stars( p.n2i), ")", sep = ""),
+    paste( m.rXi," (", get_stars( p.rXi), ")", sep = ""),
+    paste( m.2ri," (", get_stars( p.2ri), ")", sep = ""))   
+)
+
+
+error.rate.ANOVA <- cbind(error.rate.ANOVA.1,error.rate.ANOVA.2[,c(2:3)])
+
+xtable(error.rate.ANOVA, caption = c("Experiment 1 Miscellaneous responses","Exp. 1 Miscellaneous"))
+@
+
+<<table 19, results='asis'>>=
+setwd("/Users/darrellpenta/Desktop/Manuscripts/semrel_manuscript/Tables_Figures")
+source( file = "clear_and_setup.R")
+setwd("/Users/darrellpenta/Desktop/Manuscripts/semrel_manuscript/Tables_Figures")
+source( file = "semrel2_CAT_error_data_read_in_dataframe.R")
+a.2x2.f1 <- aov(unind ~ related * n2num + Error( subject / ( related * n2num)), data = d.cat)
+aov.sum1 <- summary( a.2x2.f1)
+
+#n2num
+f.n2n <- zapsmall( aov.sum1[[3]][[1]][["F value"]][1], digits = 4)
+p.n2n <- zapsmall( aov.sum1[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2n <- zapsmall( aov.sum1[[3]][[1]][["Mean Sq"]][2], digits = 4)
+#related
+f.rel <- zapsmall( aov.sum1[[2]][[1]][["F value"]][1], digits = 4)
+p.rel <- zapsmall( aov.sum1[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.rel <- zapsmall( aov.sum1[[2]][[1]][["Mean Sq"]][2], digits = 4)
+#n2n X rel
+f.n2r <- zapsmall( aov.sum1[[4]][[1]][["F value"]][1], digits = 4)
+p.n2r <- zapsmall( aov.sum1[[4]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2r <- zapsmall( aov.sum1[[4]][[1]][["Mean Sq"]][2], digits = 4)
+
+error.rate.ANOVA.1 <- data.frame(
+  
+  Effect = c(
+    "Local Noun Number",
+    "Related",
+    "Local Noun Number X Relatedness"
+  ),
+  
+  F1    = c(
+    f.n2n,
+    f.rel,
+    f.n2r
+  ),
+  
+  MSe   =c(
+    paste( m.n2n," (", get_stars( p.n2n),")", sep = ""),
+    paste( m.rel," (", get_stars( p.rel),")", sep = ""),
+    paste( m.n2r," (", get_stars( p.n2r),")", sep = ""))   
+)
+
+
+# ------------------------------------- CAT UNINFL F2------------------------------
+source(file = "semrel2_CAT_uninflected_f2_read_in_dataframe.R")
+
+a.2x2.f2 <- aov(unind ~ related * n2num + Error(item / (related * n2num)), data = d.cat)
+aov.sum2 <- summary( a.2x2.f2)
+
+#n2num
+f.n2n <- zapsmall( aov.sum2[[3]][[1]][["F value"]][1], digits = 4)
+p.n2n <- zapsmall( aov.sum2[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2n <- zapsmall( aov.sum2[[3]][[1]][["Mean Sq"]][2], digits = 4)
+#related
+f.rel <- zapsmall( aov.sum2[[2]][[1]][["F value"]][1], digits = 4)
+p.rel <- zapsmall( aov.sum2[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.rel <- zapsmall( aov.sum2[[2]][[1]][["Mean Sq"]][2], digits = 4)
+#n2n X rel
+f.n2r <- zapsmall( aov.sum2[[4]][[1]][["F value"]][1], digits = 4)
+p.n2r <- zapsmall( aov.sum2[[4]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2r <- zapsmall( aov.sum2[[4]][[1]][["Mean Sq"]][2], digits = 4)
+
+
+error.rate.ANOVA.2 <- data.frame(
+  
+  Effect = c(
+    "Local Noun Number",
+    "Related",
+    "Local Noun Number X Relatedness"
+  ),
+  
+  F2    = c(
+    f.n2n,
+    f.rel,
+    f.n2r
+  ),
+  
+  MSe   =c(
+    paste( m.n2n," (", get_stars( p.n2n), ")", sep = ""),
+    paste( m.rel," (", get_stars( p.rel), ")", sep = ""),
+    paste( m.n2r," (", get_stars( p.n2r), ")", sep = ""))   
+)
+
+
+error.rate.ANOVA <- cbind(error.rate.ANOVA.1,error.rate.ANOVA.2[,c(2:3)])
+
+xtable(error.rate.ANOVA, caption = c("CAT Uninflected ANOVAs","CAT Uninflected ANOVAs"))
+
+@
+
+<<table 20, results='asis'>>=
+setwd("/Users/darrellpenta/Desktop/Manuscripts/semrel_manuscript/Tables_Figures")
+source( file = "clear_and_setup.R")
+setwd("/Users/darrellpenta/Desktop/Manuscripts/semrel_manuscript/Tables_Figures")
+source( file = "clear_and_setup.R")
+source( file = "semrel2_CAT_error_data_read_in_dataframe.R")
+a.2x2.f1 <- aov(misc ~ related * n2num + Error( subject / ( related * n2num)), data = d.cat)
+
+aov.sum1 <- summary( a.2x2.f1)
+
+#n2num
+f.n2n <- zapsmall( aov.sum1[[3]][[1]][["F value"]][1], digits = 4)
+p.n2n <- zapsmall( aov.sum1[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2n <- zapsmall( aov.sum1[[3]][[1]][["Mean Sq"]][2], digits = 4)
+#related
+f.rel <- zapsmall( aov.sum1[[2]][[1]][["F value"]][1], digits = 4)
+p.rel <- zapsmall( aov.sum1[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.rel <- zapsmall( aov.sum1[[2]][[1]][["Mean Sq"]][2], digits = 4)
+#n2n X rel
+f.n2r <- zapsmall( aov.sum1[[4]][[1]][["F value"]][1], digits = 4)
+p.n2r <- zapsmall( aov.sum1[[4]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2r <- zapsmall( aov.sum1[[4]][[1]][["Mean Sq"]][2], digits = 4)
+
+error.rate.ANOVA.1 <- data.frame(
+  
+  Effect = c(
+    "Local Noun Number",
+    "Related",
+    "Local Noun Number X Relatedness"
+  ),
+  
+  F1    = c(
+    f.n2n,
+    f.rel,
+    f.n2r
+  ),
+  
+  MSe   =c(
+    paste( m.n2n," (", get_stars( p.n2n),")", sep = ""),
+    paste( m.rel," (", get_stars( p.rel),")", sep = ""),
+    paste( m.n2r," (", get_stars( p.n2r),")", sep = ""))   
+)
+
+
+# F2
+
+source(file = "semrel2_CAT_uninflected_f2_read_in_dataframe.R")
+a.2x2.f2 <- aov(misc ~ related * n2num + Error(item / (related * n2num)), data = d.cat)
+
+
+aov.sum2 <- summary( a.2x2.f2)
+
+#n2num
+f.n2n <- zapsmall( aov.sum2[[3]][[1]][["F value"]][1], digits = 4)
+p.n2n <- zapsmall( aov.sum2[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2n <- zapsmall( aov.sum2[[3]][[1]][["Mean Sq"]][2], digits = 4)
+#related
+f.rel <- zapsmall( aov.sum2[[2]][[1]][["F value"]][1], digits = 4)
+p.rel <- zapsmall( aov.sum2[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.rel <- zapsmall( aov.sum2[[2]][[1]][["Mean Sq"]][2], digits = 4)
+#n2n X rel
+f.n2r <- zapsmall( aov.sum2[[4]][[1]][["F value"]][1], digits = 4)
+p.n2r <- zapsmall( aov.sum2[[4]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2r <- zapsmall( aov.sum2[[4]][[1]][["Mean Sq"]][2], digits = 4)
+
+
+error.rate.ANOVA.2 <- data.frame(
+  
+  Effect = c(
+    "Local Noun Number",
+    "Related",
+    "Local Noun Number X Relatedness"
+  ),
+  
+  F2    = c(
+    f.n2n,
+    f.rel,
+    f.n2r
+  ),
+  
+  MSe   =c(
+    paste( m.n2n," (", get_stars( p.n2n), ")", sep = ""),
+    paste( m.rel," (", get_stars( p.rel), ")", sep = ""),
+    paste( m.n2r," (", get_stars( p.n2r), ")", sep = ""))   
+)
+
+
+error.rate.ANOVA <- cbind(error.rate.ANOVA.1,error.rate.ANOVA.2[,c(2:3)])
+
+
+xtable(error.rate.ANOVA, caption = c("CAT Miscellaneous ANOVAs","CAT Miscellaneous ANOVAs"))
+@
+
+<<table 21, results='asis'>>=
+setwd("/Users/darrellpenta/Desktop/Manuscripts/semrel_manuscript/Tables_Figures")
+source( file = "clear_and_setup.R")
+setwd("/Users/darrellpenta/Desktop/Manuscripts/semrel_manuscript/Tables_Figures")
+source( file = "semrel2_PROP_error_data_read_in_dataframe.R")
+
+a.2x3 <- aov(unind ~ related * n2num + Error( subject / ( related * n2num)), data = d.prop)
+aov.sum <- summary( a.2x3)
+
+#n2num
+f.n2n <- zapsmall( aov.sum[[3]][[1]][["F value"]][1], digits = 4)
+p.n2n <- zapsmall( aov.sum[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2n <- zapsmall( aov.sum[[3]][[1]][["Mean Sq"]][2], digits = 4)
+#rel
+f.rel <- zapsmall( aov.sum[[2]][[1]][["F value"]][1], digits = 4)
+p.rel <- zapsmall( aov.sum[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.rel <- zapsmall( aov.sum[[2]][[1]][["Mean Sq"]][2], digits = 4)
+#n2n X rel
+f.n2r <- zapsmall( aov.sum[[4]][[1]][["F value"]][1], digits = 4)
+p.n2r <- zapsmall( aov.sum[[4]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2r <- zapsmall( aov.sum[[4]][[1]][["Mean Sq"]][2], digits = 4)
+
+error.rate.ANOVA.1 <- data.frame(
+  
+  Effect = c(
+    "Local Noun Number",
+    "Related",
+    "Local Noun Number X Relatedness"
+  ),
+  F1    = c(
+    f.n2n,
+    f.rel,
+    f.n2r
+  ),
+  
+  MSe   =c(
+    paste( m.n2n," (", get_stars( p.n2n),")", sep = ""),
+    paste( m.rel," (", get_stars( p.rel),")", sep = ""),
+    paste( m.n2r," (", get_stars( p.n2r),")", sep = ""))   
+)
+
+# ------------------------------------- PROP UNINFL F2 ------------------------------
+
+source(file = "semrel2_PROP_uninflected_f2_read_in_dataframe.R")
+
+a.2x3 <- aov(unind ~ related * n2num + Error(item / (related * n2num)), data = d.prop)
+aov.sum <- summary( a.2x3)
+
+#n2num
+f.n2n <- zapsmall( aov.sum[[3]][[1]][["F value"]][1], digits = 4)
+p.n2n <- zapsmall( aov.sum[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2n <- zapsmall( aov.sum[[3]][[1]][["Mean Sq"]][2], digits = 4)
+#related
+f.rel <- zapsmall( aov.sum[[2]][[1]][["F value"]][1], digits = 4)
+p.rel <- zapsmall( aov.sum[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.rel <- zapsmall( aov.sum[[2]][[1]][["Mean Sq"]][2], digits = 4)
+#n2n X rel
+f.n2r <- zapsmall( aov.sum[[4]][[1]][["F value"]][1], digits = 4)
+p.n2r <- zapsmall( aov.sum[[4]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2r <- zapsmall( aov.sum[[4]][[1]][["Mean Sq"]][2], digits = 4)
+
+
+error.rate.ANOVA.2 <- data.frame(
+  
+  Effect = c(
+    "Local Noun Number",
+    "Related",
+    "Local Noun Number X Relatedness"
+  ),
+  
+  F2    = c(
+    f.n2n,
+    f.rel,
+    f.n2r
+  ),
+  
+  MSe   =c(
+    paste( m.n2n," (", get_stars( p.n2n), ")", sep = ""),
+    paste( m.rel," (", get_stars( p.rel), ")", sep = ""),
+    paste( m.n2r," (", get_stars( p.n2r), ")", sep = ""))   
+)
+
+
+error.rate.ANOVA <- cbind(error.rate.ANOVA.1,error.rate.ANOVA.2[,c(2:3)])
+
+xtable(error.rate.ANOVA, caption = c("PROP Uninflected ANOVAs","PROP Uninflected ANOVAs"))
+
+@
+
+
+<<table 22, results='asis'>>=
+setwd("/Users/darrellpenta/Desktop/Manuscripts/semrel_manuscript/Tables_Figures")
+source( file = "clear_and_setup.R")
+setwd("/Users/darrellpenta/Desktop/Manuscripts/semrel_manuscript/Tables_Figures")
+source( file = "semrel2_PROP_error_data_read_in_dataframe.R")
+
+a.2x3 <- aov(misc ~ related * n2num + Error( subject / ( related * n2num)), data = d.prop)
+aov.sum <- summary( a.2x3)
+
+#n2num
+f.n2n <- zapsmall( aov.sum[[3]][[1]][["F value"]][1], digits = 4)
+p.n2n <- zapsmall( aov.sum[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2n <- zapsmall( aov.sum[[3]][[1]][["Mean Sq"]][2], digits = 4)
+#rel
+f.rel <- zapsmall( aov.sum[[2]][[1]][["F value"]][1], digits = 4)
+p.rel <- zapsmall( aov.sum[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.rel <- zapsmall( aov.sum[[2]][[1]][["Mean Sq"]][2], digits = 4)
+#n2n X rel
+f.n2r <- zapsmall( aov.sum[[4]][[1]][["F value"]][1], digits = 4)
+p.n2r <- zapsmall( aov.sum[[4]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2r <- zapsmall( aov.sum[[4]][[1]][["Mean Sq"]][2], digits = 4)
+
+error.rate.ANOVA.1 <- data.frame(
+  
+  Effect = c(
+    "Local Noun Number",
+    "Related",
+    "Local Noun Number X Relatedness"
+  ),
+  
+  F1    = c(
+    f.n2n,
+    f.rel,
+    f.n2r
+  ),
+  
+  MSe   =c(
+    paste( m.n2n," (", get_stars( p.n2n),")", sep = ""),
+    paste( m.rel," (", get_stars( p.rel),")", sep = ""),
+    paste( m.n2r," (", get_stars( p.n2r),")", sep = ""))   
+)
+
+
+source(file = "semrel2_PROP_uninflected_f2_read_in_dataframe.R")
+a.2x3 <- aov(misc ~ related * n2num + Error(item / (related * n2num)), data = d.prop)
+
+aov.sum <- summary( a.2x3)
+
+#n2num
+f.n2n <- zapsmall( aov.sum[[3]][[1]][["F value"]][1], digits = 4)
+p.n2n <- zapsmall( aov.sum[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2n <- zapsmall( aov.sum[[3]][[1]][["Mean Sq"]][2], digits = 4)
+#related
+f.rel <- zapsmall( aov.sum[[2]][[1]][["F value"]][1], digits = 4)
+p.rel <- zapsmall( aov.sum[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.rel <- zapsmall( aov.sum[[2]][[1]][["Mean Sq"]][2], digits = 4)
+#n2n X rel
+f.n2r <- zapsmall( aov.sum[[4]][[1]][["F value"]][1], digits = 4)
+p.n2r <- zapsmall( aov.sum[[4]][[1]][["Pr(>F)"]][1],  digits = 4)
+m.n2r <- zapsmall( aov.sum[[4]][[1]][["Mean Sq"]][2], digits = 4)
+
+
+error.rate.ANOVA.2 <- data.frame(
+  
+  Effect = c(
+    "Local Noun Number",
+    "Related",
+    "Local Noun Number X Relatedness"
+  ),
+  
+  F2    = c(
+    f.n2n,
+    f.rel,
+    f.n2r
+  ),
+  
+  MSe   =c(
+    paste( m.n2n," (", get_stars( p.n2n), ")", sep = ""),
+    paste( m.rel," (", get_stars( p.rel), ")", sep = ""),
+    paste( m.n2r," (", get_stars( p.n2r), ")", sep = ""))   
+)
+
+
+error.rate.ANOVA <- cbind(error.rate.ANOVA.1,error.rate.ANOVA.2[,c(2:3)])
+xtable(error.rate.ANOVA, caption = c("PROP Miscellaneous ANOVAs","PROP Miscellaneous ANOVAs"))
+@
+
+\clearpage{}
+<<table 23, results='asis'>>=
+
+example = data.frame(
+  
+  Space = c(
+    "cell",
+    "cell1"
+  ),
+  
+  Space2 = c(
+    "cell2",
+    "cell3"
+  ))
+
+xtable(example, caption = c("Regression model comparisons", "Regression model comparisons"), caption.placement = 'top')
+@
 
 \end{document}

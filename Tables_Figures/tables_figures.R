@@ -1,5 +1,5 @@
 source( file = "clear_and_setup.R")
-# Forked after this point 
+
 # ------------------------------------------- EXP. 1-------------------------------------------------------------
 # -------------------- TABLE 01 SEMREL: EXPERIMENTAL ITEM VERSIONS -----------------------------
 
@@ -114,7 +114,7 @@ exp1.integration <- data.frame(
     " ",
     paste("SD in parens.")
   ),
-  # ----------------------------- INTEGRATION DATAFRAME: Related ---------------
+
 # ----------------------------- INTEGRATION DATAFRAME: Related  ------
   Related =            c(
     paste( round( mean( relat.int.sing$Integrated), 2),  " (", round( sd( relat.int.sing$Integrated), 2),  ")", sep = ""),
@@ -126,7 +126,7 @@ exp1.integration <- data.frame(
     " ",
     " "
   ),
-  # ----------------------------- INTEGRATION DATAFRAME: Unrelated ---------------
+
 # ----------------------------- INTEGRATION DATAFRAME: Unelated--------  
   Unrelated =            c(
     paste( round( mean( unrel.int.sing$Integrated), 2), " (", round( sd( unrel.int.sing$Integrated), 2), ")", sep = ""),
@@ -176,14 +176,14 @@ exp1.assoc <- data.frame(
     "Plural",
     paste("Note: Back transofmred proportions of ASIN transformed proportions.")    
   ),
-  # ----------------------------- ASSOCIATION DATAFRAME: Related ---------------
+
 # ----------------------------- INTEGRATION DATAFRAME: Related --------  
   Related =     c(
     paste( round( mean( relat.sing$back.trans), 2), " (", round( sd( relat.sing$back.trans), 2), ")", sep = ""),
     paste( round( mean(relat.plur$back.trans), 2),  " (", round( sd( relat.plur$back.trans), 2), ")", sep = ""),
     paste("SD in parens.")   
   ),
-  # ----------------------------- ASSOCIATION DATAFRAME: Unrelated ---------------
+
 # ----------------------------- INTEGRATION DATAFRAME: Unrelated --------  
   Unrelated =   c(
     paste( round( mean( unrel.sing$back.trans), 2), " (", round( sd( unrel.sing$back.trans), 2), ")", sep = ""),
@@ -248,7 +248,7 @@ exp1.err.rates <- data.frame(
     "Plural",
     "Singular"
   ),
-  # ----------------------------- ERROR RATE DATAFRAME: Error rate ---------------
+
 # ----------------------------- ERROR RATE DATAFRAME: Error rate  -----------
   Error.Rate   = c(
     paste(round(100*( sum( relat.int.plur$errd)   / sum(   relat.int.plur$errcord)), digits=1)," (",round(rip.1$se, digits = 1),", ",round(rip.2$se, digits = 1),")",sep="")    ,
@@ -283,7 +283,7 @@ exp1.err.rates <- data.frame(
     paste( sum( unrel.unint.plur$corrd),    " (", sum( unrel.unint.plur$corrd -  unrel.unint.plur$corr), ")", sep = ""),
     paste( sum( unrel.unint.sing$corrd),    " (", sum( unrel.unint.sing$corrd -  unrel.unint.sing$corr), ")", sep = "")
   ),
-  # ----------------------------- ERROR RATE DATAFRAME: Uninflected count ---------------
+
 # ----------------------------- ERROR RATE DATAFRAME: Uninflected ----------
   Uninflected   = c(
     paste( sum( relat.int.plur$unind)  ,    " (", sum( relat.int.plur$unind   -  relat.int.plur$unin ) , ")", sep = ""),  
@@ -295,7 +295,7 @@ exp1.err.rates <- data.frame(
     paste( sum( unrel.unint.plur$unind),    " (", sum( unrel.unint.plur$unind -  unrel.unint.plur$unin), ")", sep = ""),
     paste( sum( unrel.unint.sing$unind),    " (", sum( unrel.unint.sing$unind -  unrel.unint.sing$unin), ")", sep = "")
   ),
-  # ----------------------------- ERROR RATE DATAFRAME: Miscellaneous count ---------------
+
 # ----------------------------- ERROR RATE DATAFRAME: Miscellaneous ---------
   Miscellaneous   = c(
     sum( relat.int.plur$misc)  ,   
@@ -562,7 +562,7 @@ exp2.related <- data.frame(
     "Mean",               
     paste("Note: Scale was 1(unrelated) to 7(very related).") 
   ), 
-  # ----------------------------- RELATEDNESS DATAFRAME: Related ----------- 
+
 # ----------------------------- RELATEDNESS DATAFRAME: Related --------  
   Related =            c(
     paste( round( mean( relat.sing$RelatedHL), 2), " (", round( sd( relat.sing$RelatedHL), 2), ")", sep = ""),
@@ -570,7 +570,7 @@ exp2.related <- data.frame(
     paste( round( mean( relat$RelatedHL), 2)),
     paste("SD in parens." )
   ),
-  # ----------------------------- RELATEDNESS DATAFRAME: Unrelated ----------- 
+ 
 # ----------------------------- RELATEDNESS DATAFRAME: Unrelated  --------
   Unrelated =           c(
     paste( round( mean( unrel.sing$RelatedHL), 2), " (", round( sd( unrel.sing$RelatedHL), 2), ")", sep = ""),
@@ -612,7 +612,7 @@ exp2.integration <- data.frame(
     paste("Int. vs. Unint. p-val:", p.int.unint,  get_stars( p.int.unint)),
     paste("Note: Scale was 1 (not linked) to 7 (tightly linked).")
   ),
-  # ----------------------------- INTEGRATION DATAFRAME: Related -----------  
+  
 # ----------------------------- INTEGRATION DATAFRAME: Related ---------
     Related =            c(
     paste( round( mean( relat.sing$Integrated), 2),  " (", round( sd( relat.sing$Integrated), 2),  ")", sep = ""),
@@ -664,7 +664,7 @@ exp2.related <- data.frame(
     "Assoc. vs Unrel pval",
     "Att. vs Unrel pval"
   ), 
-  # ----------------------------- RELATEDNES DATAFRAME: Attribute means -----------  
+  
 # ----------------------------- RELATEDNES DATAFRAME: Attribute means---------
     Attribute =            c(
     paste( round( mean( attrb.sing$RelatedHL), 2), " (", round( sd( attrb.sing$RelatedHL), 2), ")", sep = ""),
@@ -687,7 +687,7 @@ exp2.related <- data.frame(
     "",
     ""
   ),
-  # ----------------------------- RELATEDNES DATAFRAME: Unrelated means -----------  
+ 
 # ----------------------------- RELATEDNES DATAFRAME: Unrelated means ------
   Unrelated =           c(
     paste( round( mean( unrel.sing$RelatedHL), 2), " (", round( sd( unrel.sing$RelatedHL), 2), ")", sep = ""),
@@ -733,7 +733,7 @@ exp2.integration <- data.frame(
     "Assoc. vs Unrel pval",
     "Att. vs Unrel pval"
   ), 
-  # ----------------------------- INTEGRATION DATAFRAME: Attribute Means ----------  
+
 # ----------------------------- INTEGRATION DATAFRAME: Attribute means --------
     Attribute =            c(
     paste( round( mean( attrb.sing$Integrated), 2), " (", round( sd( attrb.sing$Integrated), 2), ")", sep = ""),
@@ -756,7 +756,7 @@ exp2.integration <- data.frame(
     "",
     ""
   ),
-  # ----------------------------- INTEGRATION DATAFRAME: Unrelated Means ----------  
+
 # ----------------------------- INTEGRATION DATAFRAME: Unrleated means --------
   Unrelated =           c(
     paste( round( mean( unrel.sing$Integrated), 2), " (", round( sd( unrel.sing$Integrated), 2), ")", sep = ""),
@@ -807,7 +807,7 @@ exp2.association <- data.frame(
     "Assoc. vs Unrel pval",
     "Att. vs Unrel pval"
   ), 
-  # ----------------------------- ASSOCIATION DATAFRAME: Attribute Means ---------------
+
 # ----------------------------- ASSOCIATION DATAFRAME: Attribute means--------
     Attribute =            c(
     paste( round( mean( attrb.sing$back.trans), 2), " (", round( sd( attrb.sing$back.trans), 2), ")", sep = ""),
@@ -819,7 +819,7 @@ exp2.association <- data.frame(
     paste( p.ass.unr,  get_stars( p.att.unr)),
     paste( p.att.unr,  get_stars( p.att.unr))
   ),
-  # ----------------------------- ASSOCIATION DATAFRAME: Associate Means ---------------
+
 # ----------------------------- ASSOCIATION DATAFRAME: Associate means--------
   Associate =            c(
     paste( round( mean( assoc.sing$back.trans), 2), " (", round( sd( assoc.sing$back.trans), 2), ")", sep = ""),
@@ -831,7 +831,7 @@ exp2.association <- data.frame(
     "",
     ""
   ),
-  # ----------------------------- ASSOCIATION DATAFRAME: Unrelated Means ---------------
+
 # ----------------------------- ASSOCIATION DATAFRAME: Unrelated means--------  
   Unrelated =           c(
     paste( round( mean( unrel.sing$back.trans), 2), " (", round( sd( unrel.sing$back.trans), 2), ")", sep = ""),
@@ -883,7 +883,6 @@ exp2.cat.err.rates <- data.frame(
     "Singular"
   ),
   
-  # ----------------------------- CAT ERROR RATE DATAFRAME: Error Rate -------------  
 # ----------------------------- CAT ERROR RATE DATAFRAME: Error Rate ---------
     Error.Rate   = c(
     paste(round(100*( sum( relat.plur$errd)   / sum(   relat.plur$errcord)), digits=1)," (",round(cat.rp.1$se, digits = 1),", ",round(cat.rp.2$se, digits = 1),")",sep=""),  
@@ -891,7 +890,6 @@ exp2.cat.err.rates <- data.frame(
     paste(round(100*( sum( unrel.plur$errd)   / sum(   unrel.plur$errcord)), digits=1)," (",round(cat.up.1$se, digits = 1),", ",round(cat.up.2$se, digits = 1),")",sep=""),  
     paste(round(100*( sum( unrel.sing$errd)   / sum(   unrel.sing$errcord)), digits=1)," (",round(cat.us.1$se, digits = 1),", ",round(cat.us.2$se, digits = 1),")",sep="")
   ),
-  # ----------------------------- CAT ERROR RATE DATAFRAME: Error Count ------------- 
 # ----------------------------- CAT ERROR RATE DATAFRAME: Error Counts --------
 Error   = c(
     paste( sum( relat.plur$errd)  ,    " (", sum( relat.plur$errd   -  relat.plur$err ) , ")", sep = ""),  
@@ -906,7 +904,6 @@ Error   = c(
     paste( sum(unrel.plur$corrd),   " (", sum( unrel.plur$corrd   -  unrel.plur$corr ) , ")", sep = ""),
     paste( sum(unrel.sing$corrd),   " (", sum( unrel.sing$corrd   -  unrel.sing$corr ) , ")", sep = "")  
   ),
-  # ----------------------------- CAT ERROR RATE DATAFRAME: Uninflected Count ------------- 
 # ----------------------------- CAT ERROR RATE DATAFRAME: Uninflected Count ----------
   Uninflected   = c(
     paste( sum( relat.plur$unind)  ,    " (", sum( relat.plur$unind   -  relat.plur$unin ) , ")", sep = ""),  
@@ -914,7 +911,6 @@ Error   = c(
     paste( sum( unrel.plur$unind)  ,    " (", sum( unrel.plur$unind   -  unrel.plur$unin ) , ")", sep = ""),     
     paste( sum( unrel.sing$unind)  ,    " (", sum( unrel.sing$unind   -  unrel.sing$unin ) , ")", sep = "")
   ),
-  # ----------------------------- CAT ERROR RATE DATAFRAME: Miscellaneous Count ------------- 
 # ----------------------------- CAT ERROR RATE DATAFRAME: Miscellaneous Count --------
   Miscellaneous   = c(
     sum( relat.plur$misc)  ,   
@@ -945,7 +941,6 @@ exp2.prop.err.rates <- data.frame(
     "Plural",
     "Singular"
   ),
-  # ----------------------------- PROP ERROR RATE DATAFRAME: Error rate ---------------
 # ----------------------------- PROP ERROR RATE DATAFRAME: Error rate ---------  
   Error.Rate   = c(
     paste(round(100*( sum( attrb.plur$errd)   / sum(   attrb.plur$errcord)), digits=1)," (",round(prop.rp.1$se, digits = 1),", ",round(prop.rp.2$se, digits = 1),")",sep=""),  
@@ -955,7 +950,6 @@ exp2.prop.err.rates <- data.frame(
     paste(round(100*( sum( unrel.plur$errd)   / sum(   unrel.plur$errcord)), digits=1)," (",round(prop.up.1$se, digits = 1),", ",round(prop.up.2$se, digits = 1),")",sep=""),  
     paste(round(100*( sum( unrel.sing$errd)   / sum(   unrel.sing$errcord)), digits=1)," (",round(prop.us.1$se, digits = 1),", ",round(prop.us.2$se, digits = 1),")",sep="")
   ),
-  # ----------------------------- PROP ERROR RATE DATAFRAME: Error count ---------------
 # ----------------------------- PROP ERROR RATE DATAFRAME: Error count -------
   Error   = c(
     paste( sum( attrb.plur$errd),    " (", sum( attrb.plur$errd -  attrb.plur$err), ")", sep = ""),  
@@ -984,7 +978,6 @@ exp2.prop.err.rates <- data.frame(
     paste( sum( unrel.plur$unind),    " (", sum( unrel.plur$unind -  unrel.plur$unin), ")", sep = ""),
     paste( sum( unrel.sing$unind),    " (", sum( unrel.sing$unind -  unrel.sing$unin), ")", sep = "")
   ),
-  # ----------------------------- PROP ERROR RATE DATAFRAME: Miscellaneous count ---------------
 # ----------------------------- PROP ERROR RATE DATAFRAME: Miscellaneous count --------
   Miscellaneous   = c(
     sum( attrb.plur$misc)  ,   
@@ -1210,7 +1203,7 @@ source(file="semrel_unin_misc_ANOVAs.R")
 # -------------------- TABLE 18 SEMREL: MISCELLNANEOUS ANOVA RESULTS -----------------
 
 # -------------------- TABLE 19 SEMREL2: CATEGORY COORDINATE UNINFLECTED ANOVA RESULTS --------------------
-source(file="semrel_unin_misc_ANOVAs.R")
+source(file="semrel2_unin_misc_ANOVAs.R")
 # -------------------- TABLE 20 SEMREL2: CATEGORY MISCELLANEOUS ANOVA RESULTS --------------------
 # -------------------- TABLE 21 SEMREL2: PROPERTY UNINFLECTED ANOVA RESULTS --------------------
 # -------------------- TABLE 22 SEMREL2: PROPERTY MISCELLANEOUS ANOVA RESULTS --------------------
