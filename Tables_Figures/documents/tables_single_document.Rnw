@@ -1,4 +1,3 @@
-
 \documentclass[a4paper,11pt]{article}
 \usepackage{lipsum} % Required to insert dummy text
 \hyphenation{FORTRAN Hy-phen-a-tion}
@@ -12,7 +11,7 @@
 \begin{document}
 \listoftables{}
 <<global>>=
-opts_chunk$set(echo=FALSE, message = FALSE, warning = FALSE, error = FALSE, eval = TRUE, cahce=TRUE)
+opts_chunk$set(echo=FALSE, message = FALSE, warning = FALSE, error = FALSE, eval = TRUE, cache=TRUE)
 library(knitr)
 library(xtable)
 @
@@ -54,6 +53,7 @@ xtable(exp1.example, caption = c(" Experiment 1 critical item example","Exp.1 Cr
 
 <<table 2, results='asis'>>=
 # -------------------- TABLE 02 SEMREL: RELATEDNESS -----------------------------
+setwd("/Users/darrellpenta/Desktop/Manuscripts/semrel_manuscript/Tables_Figures")
 source( file = "clear_and_setup.R")
 source( file = "semrel_ratings_data_read_in_dataframe.R")
 
@@ -215,6 +215,7 @@ xtable(exp1.assoc, caption=c("Experiment 1 head-to-local association proportions
 <<table 5, results='asis'>>=
 # -------------------- TABLE 05 SEMREL: ERROR RATES AND RESPONSE COUNTS ------------
 # ----------------------------- ERROR RATE DATAFRAME: Import data ---------------
+setwd("/Users/darrellpenta/Desktop/Manuscripts/semrel_manuscript/Tables_Figures")
 source( file = "clear_and_setup.R")
 source( file = "semrel_error_data_read_in_dataframe.R")
 source( file = "semrel_error_rate_SEMs.R")
@@ -321,6 +322,7 @@ xtable(exp1.err.rates , caption = c("Experiment 1 Error Rate and Response Counts
 <<table 6, results='asis'>>=
 # -------------------- TABLE 06 SEMREL: ERROR RATE ANOVA RESULTS ------------
 # ----------------------------- F1 ANOVAS ---------------
+setwd("/Users/darrellpenta/Desktop/Manuscripts/semrel_manuscript/Tables_Figures")
 source( file = "clear_and_setup.R")
 source( file = "semrel_f1_ANOVAS_read_in_dataframe.R")
 
@@ -520,6 +522,7 @@ xtable( exp2.prop.example, caption = c("Property critical item versions", "Prope
 
 <<table 9, results='asis'>>=
 # -------------------- TABLE 09 SEMREL2: CATEGORY COORDINATE RELATEDNESS -----------------------------
+setwd("/Users/darrellpenta/Desktop/Manuscripts/semrel_manuscript/Tables_Figures")
 source( file = "clear_and_setup.R")
 source( file = "semrel2_CAT_ratings_data_read_in_dataframe.R")
 # ----------------------------- RELATEDNESS DATAFRAME: ANOVAs -----------  
@@ -601,9 +604,10 @@ exp2.integration <- data.frame(
 # ----------------------------- INTEGRATION DATAFRAME: Write to excel -----------  
 xtable(exp2.integration, caption =c("Category Coordinate mean integration rating", "CAT COORD Integration"))
 @
-
+\begin{landscape}
 <<table 11, results='asis'>>=
 # -------------------- TABLE 11 SEMREL2: PROPERTY RELATEDNESS -----------------------------
+setwd("/Users/darrellpenta/Desktop/Manuscripts/semrel_manuscript/Tables_Figures")
 source( file = "clear_and_setup.R")
 source( file = "semrel2_PROP_ratings_data_read_in_dataframe.R")
 # ----------------------------- RELATEDNES DATAFRAME: ANOVAs ------------  
@@ -794,5 +798,147 @@ xtable(exp2.association, caption =c("Property head-to-local association proporti
 
 @
 
+<<table 14, results='asis'>>=
+# -------------------- TABLE 14 SEMREL2: ERROR RATES AND RESPONSE COUNTS ------------
+# ----------------------------- CAT ERROR RATE DATAFRAME: Import Data -------
+setwd("/Users/darrellpenta/Desktop/Manuscripts/semrel_manuscript/Tables_Figures")
+source( file = "clear_and_setup.R")
+source( file = "semrel2_CAT_error_data_read_in_dataframe.R")
+source( file = "semrel2_CAT_error_rate_SEMs.R")
+# ----------------------------- CAT ERROR RATE DATAFRAME: Conditions -------------
+exp2.cat.err.rates <- data.frame(
+  
+  Condition.Related = c(
+    "Related",
+    "Related",
+    "Unrelated",
+    "Unrelated"
+  ),
+  
+  Local.Noun.Number = c(
+    "Plural",
+    "Singular",    
+    "Plural",
+    "Singular"
+  ),
+  
+  # ----------------------------- CAT ERROR RATE DATAFRAME: Error Rate -------------  
+# ----------------------------- CAT ERROR RATE DATAFRAME: Error Rate ---------
+    Error.Rate   = c(
+    paste(round(100*( sum( relat.plur$errd)   / sum(   relat.plur$errcord)), digits=1)," (",round(cat.rp.1$se, digits = 1),", ",round(cat.rp.2$se, digits = 1),")",sep=""),  
+    paste(round(100*( sum( relat.sing$errd)   / sum(   relat.sing$errcord)), digits=1)," (",round(cat.rs.1$se, digits = 1),", ",round(cat.rs.2$se, digits = 1),")",sep=""),  
+    paste(round(100*( sum( unrel.plur$errd)   / sum(   unrel.plur$errcord)), digits=1)," (",round(cat.up.1$se, digits = 1),", ",round(cat.up.2$se, digits = 1),")",sep=""),  
+    paste(round(100*( sum( unrel.sing$errd)   / sum(   unrel.sing$errcord)), digits=1)," (",round(cat.us.1$se, digits = 1),", ",round(cat.us.2$se, digits = 1),")",sep="")
+  ),
+  # ----------------------------- CAT ERROR RATE DATAFRAME: Error Count ------------- 
+# ----------------------------- CAT ERROR RATE DATAFRAME: Error Counts --------
+Error   = c(
+    paste( sum( relat.plur$errd)  ,    " (", sum( relat.plur$errd   -  relat.plur$err ) , ")", sep = ""),  
+    paste( sum( relat.sing$errd)  ,    " (", sum( relat.sing$errd   -  relat.sing$err ) , ")", sep = ""),  
+    paste( sum( unrel.plur$errd)  ,    " (", sum( unrel.plur$errd   -  unrel.plur$err ) , ")", sep = ""),     
+    paste( sum( unrel.sing$errd)  ,    " (", sum( unrel.sing$errd   -  unrel.sing$err ) , ")", sep = "")  
+  ),
+# ----------------------------- CAT ERROR RATE DATAFRAME: Correct Count ------------- 
+  Correct   = c(
+    paste( sum(relat.plur$corrd),   " (", sum( relat.plur$corrd   -  relat.plur$corr ) , ")", sep = ""),  
+    paste( sum(relat.sing$corrd),   " (", sum( relat.sing$corrd   -  relat.sing$corr ) , ")", sep = ""),  
+    paste( sum(unrel.plur$corrd),   " (", sum( unrel.plur$corrd   -  unrel.plur$corr ) , ")", sep = ""),
+    paste( sum(unrel.sing$corrd),   " (", sum( unrel.sing$corrd   -  unrel.sing$corr ) , ")", sep = "")  
+  ),
+  # ----------------------------- CAT ERROR RATE DATAFRAME: Uninflected Count ------------- 
+# ----------------------------- CAT ERROR RATE DATAFRAME: Uninflected Count ----------
+  Uninflected   = c(
+    paste( sum( relat.plur$unind)  ,    " (", sum( relat.plur$unind   -  relat.plur$unin ) , ")", sep = ""),  
+    paste( sum( relat.sing$unind)  ,    " (", sum( relat.sing$unind   -  relat.sing$unin ) , ")", sep = ""),
+    paste( sum( unrel.plur$unind)  ,    " (", sum( unrel.plur$unind   -  unrel.plur$unin ) , ")", sep = ""),     
+    paste( sum( unrel.sing$unind)  ,    " (", sum( unrel.sing$unind   -  unrel.sing$unin ) , ")", sep = "")
+  ),
+  # ----------------------------- CAT ERROR RATE DATAFRAME: Miscellaneous Count ------------- 
+# ----------------------------- CAT ERROR RATE DATAFRAME: Miscellaneous Count --------
+  Miscellaneous   = c(
+    sum( relat.plur$misc)  ,   
+    sum( relat.sing$misc)  ,
+    sum( unrel.plur$misc)  ,      
+    sum( unrel.sing$misc) )    
+)
+# ----------------------------- PROP ERROR RATE DATAFRAME: Import Data ---------------
+setwd("/Users/darrellpenta/Desktop/Manuscripts/semrel_manuscript/Tables_Figures")
+source( file = "semrel2_PROP_error_data_read_in_dataframe.R")
+source( file = "semrel2_PROP_error_rate_SEMs.R")
+# ----------------------------- PROP ERROR RATE DATAFRAME: Conditions ---------------
+exp2.prop.err.rates <- data.frame(
+  
+  Condition.Related = c(
+    "Attribute",
+    "Attribute",
+    "Associate ",
+    "Associate ",
+    "Unrelated",
+    "Unrelated"
+  ),
+  
+  Local.Noun.Number = c(
+    "Plural",
+    "Singular",    
+    "Plural",
+    "Singular",    
+    "Plural",
+    "Singular"
+  ),
+  # ----------------------------- PROP ERROR RATE DATAFRAME: Error rate ---------------
+# ----------------------------- PROP ERROR RATE DATAFRAME: Error rate ---------  
+  Error.Rate   = c(
+    paste(round(100*( sum( attrb.plur$errd)   / sum(   attrb.plur$errcord)), digits=1)," (",round(prop.rp.1$se, digits = 1),", ",round(prop.rp.2$se, digits = 1),")",sep=""),  
+    paste(round(100*( sum( attrb.sing$errd)   / sum(   attrb.sing$errcord)), digits=1)," (",round(prop.rs.1$se, digits = 1),", ",round(prop.rs.2$se, digits = 1),")",sep=""),  
+    paste(round(100*( sum( assoc.plur$errd)   / sum(   assoc.plur$errcord)), digits=1)," (",round(prop.ap.1$se, digits = 1),", ",round(prop.ap.2$se, digits = 1),")",sep=""),  
+    paste(round(100*( sum( assoc.sing$errd)   / sum(   assoc.sing$errcord)), digits=1)," (",round(prop.as.1$se, digits = 1),", ",round(prop.as.2$se, digits = 1),")",sep=""),  
+    paste(round(100*( sum( unrel.plur$errd)   / sum(   unrel.plur$errcord)), digits=1)," (",round(prop.up.1$se, digits = 1),", ",round(prop.up.2$se, digits = 1),")",sep=""),  
+    paste(round(100*( sum( unrel.sing$errd)   / sum(   unrel.sing$errcord)), digits=1)," (",round(prop.us.1$se, digits = 1),", ",round(prop.us.2$se, digits = 1),")",sep="")
+  ),
+  # ----------------------------- PROP ERROR RATE DATAFRAME: Error count ---------------
+# ----------------------------- PROP ERROR RATE DATAFRAME: Error count -------
+  Error   = c(
+    paste( sum( attrb.plur$errd),    " (", sum( attrb.plur$errd -  attrb.plur$err), ")", sep = ""),  
+    paste( sum( attrb.sing$errd),    " (", sum( attrb.sing$errd -  attrb.sing$err), ")", sep = ""),  
+    paste( sum( assoc.plur$errd),    " (", sum( assoc.plur$errd -  assoc.plur$err), ")", sep = ""),
+    paste( sum( assoc.sing$errd),    " (", sum( assoc.sing$errd -  assoc.sing$err), ")", sep = ""), 
+    paste( sum( unrel.plur$errd),    " (", sum( unrel.plur$errd -  unrel.plur$err), ")", sep = ""),
+    paste( sum( unrel.sing$errd),    " (", sum( unrel.sing$errd -  unrel.sing$err), ")", sep = "")
+  ),
+# ----------------------------- PROP ERROR RATE DATAFRAME: Correct count ---------------
+# ----------------------------- PROP ERROR RATE DATAFRAME: Uninflected count -----
+  Correct   = c(
+    paste( sum( attrb.plur$corrd),    " (", sum( attrb.plur$corrd -  attrb.plur$corr), ")", sep = ""),  
+    paste( sum( attrb.sing$corrd),    " (", sum( attrb.sing$corrd -  attrb.sing$corr), ")", sep = ""),  
+    paste( sum( assoc.plur$corrd),    " (", sum( assoc.plur$corrd -  assoc.plur$corr), ")", sep = ""),
+    paste( sum( assoc.sing$corrd),    " (", sum( assoc.sing$corrd -  assoc.sing$corr), ")", sep = ""), 
+    paste( sum( unrel.plur$corrd),    " (", sum( unrel.plur$corrd -  unrel.plur$corr), ")", sep = ""),
+    paste( sum( unrel.sing$corrd),    " (", sum( unrel.sing$corrd -  unrel.sing$corr), ")", sep = "")
+  ),
+# ----------------------------- PROP ERROR RATE DATAFRAME: Uninflected count ---------------
+  Uninflected   = c(
+    paste( sum( attrb.plur$unind),    " (", sum( attrb.plur$unind -  attrb.plur$unin), ")", sep = ""),  
+    paste( sum( attrb.sing$unind),    " (", sum( attrb.sing$unind -  attrb.sing$unin), ")", sep = ""),  
+    paste( sum( assoc.plur$unind),    " (", sum( assoc.plur$unind -  assoc.plur$unin), ")", sep = ""),
+    paste( sum( assoc.sing$unind),    " (", sum( assoc.sing$unind -  assoc.sing$unin), ")", sep = ""), 
+    paste( sum( unrel.plur$unind),    " (", sum( unrel.plur$unind -  unrel.plur$unin), ")", sep = ""),
+    paste( sum( unrel.sing$unind),    " (", sum( unrel.sing$unind -  unrel.sing$unin), ")", sep = "")
+  ),
+  # ----------------------------- PROP ERROR RATE DATAFRAME: Miscellaneous count ---------------
+# ----------------------------- PROP ERROR RATE DATAFRAME: Miscellaneous count --------
+  Miscellaneous   = c(
+    sum( attrb.plur$misc)  ,   
+    sum( attrb.sing$misc)  ,   
+    sum( assoc.plur$misc), 
+    sum( assoc.sing$misc),  
+    sum( unrel.plur$misc), 
+    sum( unrel.sing$misc))
+)    
+# ----------------------------- CAT & PROP ERROR RATE DATAFRAME: Combine to Excel ---------------
+exp2.err.rates <-  rbind(exp2.cat.err.rates, exp2.prop.err.rates)
+
+xtable(exp2.err.rates, caption=c("Experiment 2 Error rates and response counts", "Exp. 2 Error rates"))
+@
+\end{landscape}
 
 \end{document}
