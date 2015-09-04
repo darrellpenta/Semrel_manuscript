@@ -1,0 +1,95 @@
+
+\documentclass[a4paper,11pt]{article}
+\usepackage{lipsum} % Required to insert dummy text
+\hyphenation{FORTRAN Hy-phen-a-tion}
+\usepackage{hyperref}
+\usepackage[autostyle]{csquotes}
+\usepackage{textgreek}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{fullpage}
+\usepackage{pdflscape}
+\begin{document}
+\listoftables{}
+<<global>>=
+opts_chunk$set(echo=FALSE, message = FALSE, warning = FALSE, error = FALSE, eval = TRUE)
+library(knitr)
+library(xtable)
+@
+
+\landscape{
+<<results='asis'>>=
+
+exp1.example = data.frame( 
+  
+  Semantic.Integration = c( 
+    "Integrated",
+    " ",  
+    "Unintegrated",   
+    " "  
+    ),
+  
+  Local.Noun.Number = c( 
+    "Singular",
+    "Plural" ,   
+    "Singular",
+    "Plural"    
+    ),
+  
+  Related = c( 
+    "The necklace with the colorful diamond",
+    "The necklace with the colorful diamonds",
+    "The necklace near the colorful diamond",
+    "The necklace near the colorful diamonds"
+  ),
+  
+  Unrelated = c( 
+    "The necklace with the colorful feather",
+    "The necklace with the colorful feathers",
+    "The necklace near the colorful feather",
+    "The necklace near the colorful feathers"
+  ))
+xtable(exp1.example, caption = c(" Experiment 1 critical item example","Exp.1 Critical item"), align = "lllll")
+@
+
+<<results='asis'>>=
+source( file = "/Users/darrellpenta/Desktop/Manuscripts/semrel_manuscript/Tables_Figures/clear_and_setup.R")
+source( file = "/Users/darrellpenta/Desktop/Manuscripts/semrel_manuscript/Tables_Figures/semrel_ratings_data_read_in_dataframe.R")
+
+aov.rel <- summary( aov( RelatedHL ~ related + Error(item / related ), data = d.sr))
+p       <- zapsmall( aov.rel[[2]][[1]][["Pr(>F)"]][1], digits = 6)
+
+exp1.related <- data.frame( 
+   Local.Noun.Number = c( 
+    "Singular",
+    "Plural", 
+    "Mean",               
+    paste( "Note: Scale was 1( unrelated) to 7( very related).")), 
+  
+  Related =            c( 
+    paste( round( mean( relat.sing$RelatedHL), 2), " (", round( sd( relat.sing$RelatedHL), 2), ")", sep = ""),
+    paste( round( mean( relat.plur$RelatedHL), 2), " (", round( sd( relat.plur$RelatedHL), 2), ")", sep = ""),
+    paste( round( mean( relat$RelatedHL), 2)),
+    paste( "SD in parens." )
+    ),
+  
+  Unrelated =           c( 
+    paste( round( mean( unrel.sing$RelatedHL), 2), " (", round( sd( unrel.sing$RelatedHL), 2), ")", sep = ""),
+    paste( round( mean( unrel.plur$RelatedHL), 2), " (", round( sd( unrel.plur$RelatedHL), 2), ")", sep = ""),
+    paste( round( mean( unrel$RelatedHL), 2)),
+    paste( " ") 
+    ),
+  
+  pval =                 c( 
+    paste( " ", sep = ""),
+    paste( " ", sep = ""),
+    paste( p,  get_stars( p)),
+    paste( " "))
+)
+
+xtable(exp1.related, caption = c(" Experiment 1 relatedness ratings","Exp.1 Relatedness Ratings"), align = "lllll")
+
+@
+}
+
+\end{document}
