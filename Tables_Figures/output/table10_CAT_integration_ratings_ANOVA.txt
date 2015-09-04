@@ -1,5 +1,5 @@
 Table 10: Experiment 2 Category Critical Item Mean Inteagration Ratings ANOVA
-Sep. 03, 2015 at 15:22:35
+Sep. 03, 2015 at 23:30:08
 
 Error: item
           Df Sum Sq Mean Sq F value Pr(>F)
