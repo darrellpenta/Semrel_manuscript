@@ -4,57 +4,23 @@ SEMREL RESULTS
 Accross all 5640 trials, there were 2801 correctly inflected respones, 109 agreement errors, 1241 uninflected responses, 1462 miscellaneous cases, and 27 trials with no response. 
  
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-Participants produced more agreement errors in the plural local noun conditions than in the singular local noun conditions. Aditionally, more agreement errors were made for realted preambles versus unrelated preambles. Crucially, there was a two-way interaction bewteen local noun number and relatedness, and the head-local mismatch effect was larger for related cases (r\textit{F$_1$}(1,234)=42.8, r\textit{MS$_e$}=220.26,r\textit{p}<.001; Linear mixed model fit by maximum likelihood  
-t-tests use  Satterthwaite approximations to degrees of freedom ['lmerMod']
-Formula: elog ~ 1 + len.phon + len.syll + lf.head + lf.prep + lf.adj +      lf.noun + plaus + rel * int + (1 + rel * int | subject)
-   Data: f1.sr
-Weights: (1/v)
-
-     AIC      BIC   logLik deviance df.resid 
-  2905.0   3020.9  -1430.5   2861.0     1408 
-
-Scaled residuals: 
-    Min      1Q  Median      3Q     Max 
--2.3350 -0.8104 -0.3136  0.2679  2.6797 
-
-Random effects:
- Groups   Name        Variance Std.Dev. Corr             
- subject  (Intercept) 0.04045  0.2011                    
-          rel         0.08339  0.2888   -0.56            
-          int         0.18501  0.4301    0.21 -0.93      
-          rel:int     0.04711  0.2171   -0.73 -0.15  0.51
- Residual             0.40701  0.6380                    
-Number of obs: 1430, groups:  subject, 233
-
-Fixed effects:
-              Estimate Std. Error         df t value Pr(>|t|)    
-(Intercept)   -2.28261    0.02829  293.00000 -80.685  < 2e-16 ***
-len.phon      -0.11412    0.03126 1297.10000  -3.651 0.000272 ***
-len.syll       0.36070    0.02994 1262.40000  12.049  < 2e-16 ***
-lf.head       -0.17992    0.01853 1248.60000  -9.710  < 2e-16 ***
-lf.prep        0.04792    0.02212 1238.30000   2.167 0.030455 *  
-lf.adj         0.17191    0.02066 1270.30000   8.322 2.22e-16 ***
-lf.noun        0.14371    0.01714 1241.60000   8.385  < 2e-16 ***
-plaus         -0.10415    0.01987 1337.70000  -5.242 1.85e-07 ***
-rel            0.21949    0.04164  356.10000   5.271 2.36e-07 ***
-int            0.19936    0.04889  416.80000   4.078 5.45e-05 ***
-rel:int        0.10530    0.02775  286.10000   3.794 0.000181 ***
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-Correlation of Fixed Effects:
-         (Intr) ln.phn ln.syl lf.hed lf.prp lf.adj lf.non plaus  rel    int   
-len.phon  0.167                                                               
-len.syll -0.285 -0.786                                                        
-lf.head   0.003  0.227  0.040                                                 
-lf.prep  -0.079  0.100 -0.122 -0.061                                          
-lf.adj   -0.090 -0.259 -0.054 -0.505  0.015                                   
-lf.noun   0.023 -0.092  0.164  0.034 -0.137  0.105                            
-plaus     0.071  0.046 -0.040 -0.024 -0.126 -0.049 -0.185                     
-rel      -0.327  0.020 -0.048 -0.046  0.545  0.140 -0.191 -0.182              
-int       0.110 -0.052  0.104 -0.010 -0.558 -0.070  0.108 -0.068 -0.843       
-rel:int  -0.756 -0.115  0.259  0.061  0.104 -0.028 -0.089 -0.043  0.168  0.093
-=137.53, \textit{p}<.001; \textit{F$_2$}(1,23)=15.872, \textit{MS$_e$}=26.967, \textit{p}<.001). 
+Participants produced more agreement errors in the plural local noun conditions than in the singular local noun conditions. Aditionally, more agreement errors were made for realted preambles versus unrelated preambles. Crucially, there was a two-way interaction bewteen local noun number and relatedness, and the head-local mismatch effect was larger for related cases (r\textit{F$_1$}(1,234)=42.8, r\textit{MS$_e$}=220.26,r\textit{p}<.001; \textit{F$_2$}(1,23)=28.368, \textit{MS$_e$}=31.98,\textit{p}<.001) than for unrelated cases(\textit{F$_1$}(1,234)=22.515, \textit{MS$_e$}=152.02,\textit{p}<.001; \textit{F$_2$}(1,23)=21.404, \textit{MS$_e$}=12.65,\textit{p}<.001. There was no main effect of integration, nor a reliable interaciton between integration and any other factor.
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+===== RELATED x N2NUM  MISMATCH ALTERNATIVE ANALYSES 
+===== 1. ARCSIN TRANSFORMED PROPORTIONS: RELATED (\textit{F$_1$}(1,234)=49.39, \textit{MS$_e$}=0.23182, \textit{p}<.001; \textit{F$_2$}(1,23)=83.5, \textit{MS$_e$}=0.04077, \textit{p}<.001; UNRELATED(\textit{F$_1$}(1,234)=26.254, \textit{MS$_e$}=0.15826, \textit{p}<.001; \textit{F$_2$}(1,23)=35.89, \textit{MS$_e$}=0.03989, \textit{p}<.001. 
+===== 2. ERRORS NO DYSFLUENCIES: RELATED (\textit{F$_1$}(1,234)=36.08, \textit{MS$_e$}=238.27, \textit{p}<.001; \textit{F$_2$}(1,23)=26.432, \textit{MS$_e$}=31.91, \textit{p}<.001; UNRELATED(\textit{F$_1$}(1,234)=18.882, \textit{MS$_e$}=148.16, \textit{p}<.001; \textit{F$_2$}(1,23)=17.14, \textit{MS$_e$}=12.406, \textit{p}<.001. 
+===== 3. ERRORS COUNTS: RELATED (\textit{F$_1$}(1,234)=55.95, \textit{MS$_e$}=0.17072, \textit{p}<.001; \textit{F$_2$}(1,23)=18.708, \textit{MS$_e$}=4.999, \textit{p}<.001; UNRELATED(\textit{F$_1$}(1,234)=27.761, \textit{MS$_e$}=0.09933, \textit{p}<.001; \textit{F$_2$}(1,23)=20.032, \textit{MS$_e$}=1.3478, \textit{p}<.001.
+ 
+ 
+ 
+SEMREL 2 RESULTS 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+Accross all 6192 trials, there were 3826 correctly inflected respones, 124 agreement errors, 947 uninflected responses, 1278 miscellaneous cases, and 17 trials with no response.
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+Comparing attributes and associates, there was a main effect of relationship, with associates generating more errors than attributes (\textit{F$_1$}(1,128)=4.812, \textit{MS$_e$}=121.83, \textit{p}<.05; \textit{F$_2$}(1,23)=4.683, \textit{MS$_e$}=22.024, \textit{p}<.05).There was also a marginally significant interaction between relatedness and local noun number  (\textit{F$_1$}(1,128)=2.945, \textit{MS$_e$}=123.57, \textit{p}<.10; \textit{F$_2$}(1,23)=2.149, \textit{MS$_e$}=27.441, \textit{p} ), the mismatch effect being larger for associates (\textit{F$_1$}(1,128)=26.175, \textit{MS$_e$}=193.01, \textit{p}<.001;\textit{F$_2$}(1,23)=20.922, \textit{MS$_e$}=47.57, \textit{p}<.001) than for attributes (\textit{F$_1$}(1,128)=14.14, \textit{MS$_e$}=137.53, \textit{p}<.001; \textit{F$_2$}(1,23)=15.872, \textit{MS$_e$}=26.967, \textit{p}<.001). 
 
  
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
