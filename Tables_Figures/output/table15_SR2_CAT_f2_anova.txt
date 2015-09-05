@@ -1,4 +1,4 @@
-Table 15: CAT F2 2 x 2 ANOVASep. 04, 2015 at 14:06:39
+Table 15: CAT F2 2 x 2 ANOVASep. 05, 2015 at 10:38:24
 
 Error: item
           Df  Sum Sq Mean Sq F value Pr(>F)

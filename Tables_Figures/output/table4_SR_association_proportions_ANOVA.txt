@@ -1,5 +1,5 @@
 Table 04: Experiment 1 Critical Item Mean Head-to-Local Association Proportions ANOVA
-Sep. 04, 2015 at 14:06:27
+Sep. 05, 2015 at 10:38:12
 
 Error: item
           Df Sum Sq  Mean Sq F value Pr(>F)

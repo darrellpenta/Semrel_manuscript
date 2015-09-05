@@ -1,4 +1,4 @@
-\documentclass[a4paper,11pt]{article} % THIS IS TEST
+\documentclass[a4paper,11pt]{article} 
 \usepackage{lipsum} % Required to insert dummy text
 \hyphenation{FORTRAN Hy-phen-a-tion}
 \usepackage{hyperref}
@@ -12,7 +12,7 @@
 \listoftables{}
 
 <<global, echo=FALSE>>=
-opts_chunk$set(echo=FALSE, message = FALSE, warning = FALSE, error = FALSE, eval = TRUE, cache=TRUE)
+opts_chunk$set(echo=FALSE, message = FALSE, warning = FALSE, error = FALSE, eval = TRUE, cache=FALSE)
 library(knitr)
 library(xtable)
 @

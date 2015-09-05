@@ -1,4 +1,4 @@
-Table 20: CAT MISCELLANEOUS F2 2 x 2 ANOVASep. 04, 2015 at 14:07:32
+Table 20: CAT MISCELLANEOUS F2 2 x 2 ANOVASep. 05, 2015 at 10:39:22
 
 Error: item
           Df  Sum Sq Mean Sq F value Pr(>F)

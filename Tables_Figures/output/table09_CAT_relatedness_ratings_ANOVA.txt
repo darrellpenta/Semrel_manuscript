@@ -1,5 +1,5 @@
 Table 09: Experiment 2 CAT Critical Item Mean Relatedness Ratings ANOVA
-Sep. 04, 2015 at 14:06:36
+Sep. 05, 2015 at 10:38:20
 
 Error: item
           Df Sum Sq Mean Sq F value Pr(>F)
