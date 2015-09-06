@@ -4,13 +4,13 @@ SEMREL RESULTS
 Accross all 5640 trials, there were 2801 correctly inflected respones, 109 agreement errors, 1241 uninflected responses, 1462 miscellaneous cases, and 27 trials with no response. 
  
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-Participants produced more agreement errors in the plural local noun conditions than in the singular local noun conditions. Aditionally, more agreement errors were made for realted preambles versus unrelated preambles. Crucially, there was a two-way interaction bewteen local noun number and relatedness, and the head-local mismatch effect was larger for related cases (r\textit{F$_1$}(1,234)=42.8, r\textit{MS$_e$}=220.26,r\textit{p}<.001; \textit{F$_2$}(1,23)=28.368, \textit{MS$_e$}=31.98,\textit{p}<.001) than for unrelated cases(\textit{F$_1$}(1,234)=22.515, \textit{MS$_e$}=152.02,\textit{p}<.001; \textit{F$_2$}(1,23)=21.404, \textit{MS$_e$}=12.65,\textit{p}<.001. There was no main effect of integration, nor a reliable interaciton between integration and any other factor.
+Participants produced more agreement errors in the plural local noun conditions than in the singular local noun conditions. Aditionally, more agreement errors were made for related preambles compared to unrelated preambles. Crucially, there was a two-way interaction bewteen local noun number and relatedness, and the head-local mismatch effect was larger for related cases (r\textit{F$_1$}(1,234)=42.8, r\textit{MS$_e$}=220.26,r\textit{p}\textless.001; \textit{F$_2$}(1,23)=28.368, \textit{MS$_e$}=31.98, \textit{p}\textless.001) than for unrelated cases(\textit{F$_1$}(1,234)=22.515, \textit{MS$_e$}=152.02, \textit{p}\textless.001; \textit{F$_2$}(1,23)=21.404, \textit{MS$_e$}=12.65, \textit{p}\textless.001. There was no main effect of integration, nor a reliable interaciton between integration and any other factor.
  
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 ===== RELATED x N2NUM  MISMATCH ALTERNATIVE ANALYSES 
-===== 1. ARCSIN TRANSFORMED PROPORTIONS: RELATED (\textit{F$_1$}(1,234)=49.39, \textit{MS$_e$}=0.23182, \textit{p}<.001; \textit{F$_2$}(1,23)=83.5, \textit{MS$_e$}=0.04077, \textit{p}<.001; UNRELATED(\textit{F$_1$}(1,234)=26.254, \textit{MS$_e$}=0.15826, \textit{p}<.001; \textit{F$_2$}(1,23)=35.89, \textit{MS$_e$}=0.03989, \textit{p}<.001. 
-===== 2. ERRORS NO DYSFLUENCIES: RELATED (\textit{F$_1$}(1,234)=36.08, \textit{MS$_e$}=238.27, \textit{p}<.001; \textit{F$_2$}(1,23)=26.432, \textit{MS$_e$}=31.91, \textit{p}<.001; UNRELATED(\textit{F$_1$}(1,234)=18.882, \textit{MS$_e$}=148.16, \textit{p}<.001; \textit{F$_2$}(1,23)=17.14, \textit{MS$_e$}=12.406, \textit{p}<.001. 
-===== 3. ERRORS COUNTS: RELATED (\textit{F$_1$}(1,234)=55.95, \textit{MS$_e$}=0.17072, \textit{p}<.001; \textit{F$_2$}(1,23)=18.708, \textit{MS$_e$}=4.999, \textit{p}<.001; UNRELATED(\textit{F$_1$}(1,234)=27.761, \textit{MS$_e$}=0.09933, \textit{p}<.001; \textit{F$_2$}(1,23)=20.032, \textit{MS$_e$}=1.3478, \textit{p}<.001.
+===== 1. ARCSIN TRANSFORMED PROPORTIONS: RELATED (\textit{F$_1$}(1,234)=49.39, \textit{MS$_e$}=0.23182, \textit{p}\textless.001; \textit{F$_2$}(1,23)=83.5, \textit{MS$_e$}=0.04077, \textit{p}\textless.001; UNRELATED(\textit{F$_1$}(1,234)=26.254, \textit{MS$_e$}=0.15826, \textit{p}\textless.001; \textit{F$_2$}(1,23)=35.89, \textit{MS$_e$}=0.03989, \textit{p}\textless.001. 
+===== 2. ERRORS NO DYSFLUENCIES: RELATED (\textit{F$_1$}(1,234)=36.08, \textit{MS$_e$}=238.27, \textit{p}\textless.001; \textit{F$_2$}(1,23)=26.432, \textit{MS$_e$}=31.91, \textit{p}\textless.001; UNRELATED(\textit{F$_1$}(1,234)=18.882, \textit{MS$_e$}=148.16, \textit{p}\textless.001; \textit{F$_2$}(1,23)=17.14, \textit{MS$_e$}=12.406, \textit{p}\textless.001. 
+===== 3. ERRORS COUNTS: RELATED (\textit{F$_1$}(1,234)=55.95, \textit{MS$_e$}=0.17072, \textit{p}\textless.001; \textit{F$_2$}(1,23)=18.708, \textit{MS$_e$}=4.999, \textit{p}\textless.001; UNRELATED(\textit{F$_1$}(1,234)=27.761, \textit{MS$_e$}=0.09933, \textit{p}\textless.001; \textit{F$_2$}(1,23)=20.032, \textit{MS$_e$}=1.3478, \textit{p}\textless.001.
  
  
  
@@ -20,70 +20,70 @@ SEMREL 2 RESULTS
 Accross all 6192 trials, there were 3826 correctly inflected respones, 124 agreement errors, 947 uninflected responses, 1278 miscellaneous cases, and 17 trials with no response.
  
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-Comparing attributes and associates, there was a main effect of relationship, with associates generating more errors than attributes (\textit{F$_1$}(1,128)=4.812, \textit{MS$_e$}=121.83, \textit{p}<.05; \textit{F$_2$}(1,23)=4.683, \textit{MS$_e$}=22.024, \textit{p}<.05).There was also a marginally significant interaction between relatedness and local noun number  (\textit{F$_1$}(1,128)=2.945, \textit{MS$_e$}=123.57, \textit{p}<.10; \textit{F$_2$}(1,23)=2.149, \textit{MS$_e$}=27.441, \textit{p} ), the mismatch effect being larger for associates (\textit{F$_1$}(1,128)=26.175, \textit{MS$_e$}=193.01, \textit{p}<.001;\textit{F$_2$}(1,23)=20.922, \textit{MS$_e$}=47.57, \textit{p}<.001) than for attributes (\textit{F$_1$}(1,128)=14.14, \textit{MS$_e$}=137.53, \textit{p}<.001; \textit{F$_2$}(1,23)=15.872, \textit{MS$_e$}=26.967, \textit{p}<.001). 
+Comparing attributes and associates, there was a main effect of relationship, with associates generating more errors than attributes (\textit{F$_1$}(1,128)=4.812, \textit{MS$_e$}=121.83, \textit{p}\textless.05; \textit{F$_2$}(1,23)=4.683, \textit{MS$_e$}=22.024, \textit{p}\textless.05).There was also a marginally significant interaction between relatedness and local noun number  (\textit{F$_1$}(1,128)=2.945, \textit{MS$_e$}=123.57, \textit{p}\textless.10; \textit{F$_2$}(1,23)=2.149, \textit{MS$_e$}=27.441, \textit{p}\textgreater.10), the mismatch effect being larger for associates (\textit{F$_1$}(1,128)=26.175, \textit{MS$_e$}=193.01, \textit{p}\textless.001;\textit{F$_2$}(1,23)=20.922, \textit{MS$_e$}=47.57, \textit{p}\textless.001) than for attributes (\textit{F$_1$}(1,128)=14.14, \textit{MS$_e$}=137.53, \textit{p}\textless.001; \textit{F$_2$}(1,23)=15.872, \textit{MS$_e$}=26.967, \textit{p}\textless.001). 
 
  
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 ===== MAIN EFFECT OF RELATEDNESS 
-===== 1. ARCSIN TRANSFORMED PROPORTIONS: (\textit{F$_1$}(1,128)=5.635, \textit{MS$_e$}=0.13692, \textit{p}<.05; \textit{F$_2$}(1,23)=5.25, \textit{MS$_e$}=0.04658, \textit{p}<.05 
-===== 2. ERRORS NO DYSFLUENCIES: (\textit{F$_1$}(1,128)=9.217, \textit{MS$_e$}=98.18, \textit{p}<.01; \textit{F$_2$}(1,23)=4.105, \textit{MS$_e$}=29.551, \textit{p}<.10 
-===== 3. ERROR COUNTS: (\textit{F$_1$}(1,128)=8.488, \textit{MS$_e$}=0.08242, \textit{p}<.01; \textit{F$_2$}(1,23)=9.114, \textit{MS$_e$}=0.4126, \textit{p}<.01 
+===== 1. ARCSIN TRANSFORMED PROPORTIONS: (\textit{F$_1$}(1,128)=5.635, \textit{MS$_e$}=0.13692, \textit{p}\textless.05; \textit{F$_2$}(1,23)=5.25, \textit{MS$_e$}=0.04658, \textit{p}\textless.05 
+===== 2. ERRORS NO DYSFLUENCIES: (\textit{F$_1$}(1,128)=9.217, \textit{MS$_e$}=98.18, \textit{p}\textless.01; \textit{F$_2$}(1,23)=4.105, \textit{MS$_e$}=29.551, \textit{p}\textless.10 
+===== 3. ERROR COUNTS: (\textit{F$_1$}(1,128)=8.488, \textit{MS$_e$}=0.08242, \textit{p}\textless.01; \textit{F$_2$}(1,23)=9.114, \textit{MS$_e$}=0.4126, \textit{p}\textless.01 
 
  
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 ===== RELATEDNESS X N2NUM  
-===== 1. ARCSIN TRANSFORMED PROPORTIONS: (\textit{F$_1$}(1,128)=3.296, \textit{MS$_e$}=0.13936, \textit{p}<.10; \textit{F$_2$}(1,23)=1.2243, \textit{MS$_e$}=0.06934, \textit{p}  
-===== 2. ERRORS NO DYSFLUENCIES: (\textit{F$_1$}(1,128)=6.199, \textit{MS$_e$}=100.39, \textit{p}<.05; \textit{F$_2$}(1,23)=2.0381, \textit{MS$_e$}=35.14, \textit{p}  
-===== 3. ERROR COUNTS: (\textit{F$_1$}(1,128)=5.161, \textit{MS$_e$}=0.08448, \textit{p}<.05; \textit{F$_2$}(1,23)=4.177, \textit{MS$_e$}=0.5611, \textit{p}<.10 
+===== 1. ARCSIN TRANSFORMED PROPORTIONS: (\textit{F$_1$}(1,128)=3.296, \textit{MS$_e$}=0.13936, \textit{p}\textless.10; \textit{F$_2$}(1,23)=1.2243, \textit{MS$_e$}=0.06934, \textit{p}\textgreater.10 
+===== 2. ERRORS NO DYSFLUENCIES: (\textit{F$_1$}(1,128)=6.199, \textit{MS$_e$}=100.39, \textit{p}\textless.05; \textit{F$_2$}(1,23)=2.0381, \textit{MS$_e$}=35.14, \textit{p}\textgreater.10 
+===== 3. ERROR COUNTS: (\textit{F$_1$}(1,128)=5.161, \textit{MS$_e$}=0.08448, \textit{p}\textless.05; \textit{F$_2$}(1,23)=4.177, \textit{MS$_e$}=0.5611, \textit{p}\textless.10 
 
  
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 ===== ASSOCIATES X ATTRIBUTES MISMATCH EFFECTS 
-===== 1. ARCSIN TRANSFORMED PROPORTIONS: ASSOCIATED (\textit{F$_1$}(1,128)=27.51, \textit{MS$_e$}=0.21012, \textit{p}<.001; \textit{F$_2$}(1,23)=25.629, \textit{MS$_e$}=0.1007, \textit{p}<.001; ATTRIBUTE(\textit{F$_1$}(1,128)=15.018, \textit{MS$_e$}=0.13918, \textit{p}<.001; \textit{F$_2$}(1,23)=20.58, \textit{MS$_e$}=0.06933, \textit{p}<.001. 
-===== 2. ERRORS NO DYSFLUENCIES: ASSOCIATED (\textit{F$_1$}(1,23)=20.58, \textit{MS$_e$}=0.06933, \textit{p}<.001; \textit{F$_2$}(1,23)=18.214, \textit{MS$_e$}=51.36, \textit{p}<.001; ATTRIBUTE(\textit{F$_1$}(1,128)=11.605, \textit{MS$_e$}=86.31, \textit{p}<.001; \textit{F$_2$}(1,23)=12.365, \textit{MS$_e$}=28.027, \textit{p}<.01. 
-===== 3. ERRORS COUNTS: ASSOCIATED (\textit{F$_1$}(1,23)=12.365, \textit{MS$_e$}=28.027, \textit{p}<.01; \textit{F$_2$}(1,23)=19.117, \textit{MS$_e$}=1.1159, \textit{p}<.001; ATTRIBUTE(\textit{F$_1$}(1,128)=15.286, \textit{MS$_e$}=0.07328, \textit{p}<.001; \textit{F$_2$}(1,23)=18.515, \textit{MS$_e$}=0.3252, \textit{p}<.001. 
+===== 1. ARCSIN TRANSFORMED PROPORTIONS: ASSOCIATED (\textit{F$_1$}(1,128)=27.51, \textit{MS$_e$}=0.21012, \textit{p}\textless.001; \textit{F$_2$}(1,23)=25.629, \textit{MS$_e$}=0.1007, \textit{p}\textless.001; ATTRIBUTE(\textit{F$_1$}(1,128)=15.018, \textit{MS$_e$}=0.13918, \textit{p}\textless.001; \textit{F$_2$}(1,23)=20.58, \textit{MS$_e$}=0.06933, \textit{p}\textless.001. 
+===== 2. ERRORS NO DYSFLUENCIES: ASSOCIATED (\textit{F$_1$}(1,23)=20.58, \textit{MS$_e$}=0.06933, \textit{p}\textless.001; \textit{F$_2$}(1,23)=18.214, \textit{MS$_e$}=51.36, \textit{p}\textless.001; ATTRIBUTE(\textit{F$_1$}(1,128)=11.605, \textit{MS$_e$}=86.31, \textit{p}\textless.001; \textit{F$_2$}(1,23)=12.365, \textit{MS$_e$}=28.027, \textit{p}\textless.01. 
+===== 3. ERRORS COUNTS: ASSOCIATED (\textit{F$_1$}(1,23)=12.365, \textit{MS$_e$}=28.027, \textit{p}\textless.01; \textit{F$_2$}(1,23)=19.117, \textit{MS$_e$}=1.1159, \textit{p}\textless.001; ATTRIBUTE(\textit{F$_1$}(1,128)=15.286, \textit{MS$_e$}=0.07328, \textit{p}\textless.001; \textit{F$_2$}(1,23)=18.515, \textit{MS$_e$}=0.3252, \textit{p}\textless.001. 
 
  
  
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-Associates also generated more agreement errors than unrelated items (\textit{F$_1$}(1,128)=12.717, \textit{MS$_e$}=107.95, \textit{p}<.001; \textit{F$_2$}(1,23)=11.887, \textit{MS$_e$}=24.499, \textit{p}<.01),and there was a local noun number by associate interaction (\textit{F$_1$}(1,128)=11.844, \textit{MS$_e$}=120.55, \textit{p}<.001; \textit{F$_2$}(1,23)=14.883, \textit{MS$_e$}=20.762, \textit{p}<.001), the mismatch effect being larger for associates than for unrelated items (\textit{F$_1$}(1,128)=3.76, \textit{MS$_e$}=82.75, \textit{p}<.10; \textit{F$_2$}(1,23)=4.543, \textit{MS$_e$}=9.849, \textit{p}<.05). 
+Associates also generated more agreement errors than unrelated items (\textit{F$_1$}(1,128)=12.717, \textit{MS$_e$}=107.95, \textit{p}\textless.001; \textit{F$_2$}(1,23)=11.887, \textit{MS$_e$}=24.499, \textit{p}\textless.01),and there was a local noun number by associate interaction (\textit{F$_1$}(1,128)=11.844, \textit{MS$_e$}=120.55, \textit{p}\textless.001; \textit{F$_2$}(1,23)=14.883, \textit{MS$_e$}=20.762, \textit{p}\textless.001), the mismatch effect being larger for associates than for unrelated items (\textit{F$_1$}(1,128)=3.76, \textit{MS$_e$}=82.75, \textit{p}\textless.10; \textit{F$_2$}(1,23)=4.543, \textit{MS$_e$}=9.849, \textit{p}\textless.05). 
 
  
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 ===== MAIN EFFECT OF RELATEDNESS 
-===== 1. ARCSIN TRANSFORMED PROPORTIONS: (\textit{F$_1$}(1,128)=13.487, \textit{MS$_e$}=0.11788, \textit{p}<.001; \textit{F$_2$}(1,23)=10.988, \textit{MS$_e$}=0.05907, \textit{p}<.01 
-===== 2. ERRORS NO DYSFLUENCIES: (\textit{F$_1$}(1,128)=10.338, \textit{MS$_e$}=107.8, \textit{p}<.01; \textit{F$_2$}(1,23)=10.007, \textit{MS$_e$}=25.663, \textit{p}<.01 
-===== 3. ERROR COUNTS: (\textit{F$_1$}(1,128)=17.306, \textit{MS$_e$}=0.0757, \textit{p}<.001; \textit{F$_2$}(1,23)=12.498, \textit{MS$_e$}=0.5634, \textit{p}<.01 
+===== 1. ARCSIN TRANSFORMED PROPORTIONS: (\textit{F$_1$}(1,128)=13.487, \textit{MS$_e$}=0.11788, \textit{p}\textless.001; \textit{F$_2$}(1,23)=10.988, \textit{MS$_e$}=0.05907, \textit{p}\textless.01 
+===== 2. ERRORS NO DYSFLUENCIES: (\textit{F$_1$}(1,128)=10.338, \textit{MS$_e$}=107.8, \textit{p}\textless.01; \textit{F$_2$}(1,23)=10.007, \textit{MS$_e$}=25.663, \textit{p}\textless.01 
+===== 3. ERROR COUNTS: (\textit{F$_1$}(1,128)=17.306, \textit{MS$_e$}=0.0757, \textit{p}\textless.001; \textit{F$_2$}(1,23)=12.498, \textit{MS$_e$}=0.5634, \textit{p}\textless.01 
 
  
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 ===== RELATEDNESS X N2NUM  
-===== 1. ARCSIN TRANSFORMED PROPORTIONS: (\textit{F$_1$}(1,128)=12.294, \textit{MS$_e$}=0.13266, \textit{p}<.001; \textit{F$_2$}(1,23)=15.749, \textit{MS$_e$}=0.04318, \textit{p}<.001 
-===== 2. ERRORS NO DYSFLUENCIES: (\textit{F$_1$}(1,128)=10.584, \textit{MS$_e$}=119.64, \textit{p}<.01; \textit{F$_2$}(1,23)=12.623, \textit{MS$_e$}=22.135, \textit{p}<.01 
-===== 3. ERROR COUNTS: (\textit{F$_1$}(1,128)=15.687, \textit{MS$_e$}=0.08352, \textit{p}<.001; \textit{F$_2$}(1,23)=4.177, \textit{MS$_e$}=0.5611, \textit{p}<.10 
+===== 1. ARCSIN TRANSFORMED PROPORTIONS: (\textit{F$_1$}(1,128)=12.294, \textit{MS$_e$}=0.13266, \textit{p}\textless.001; \textit{F$_2$}(1,23)=15.749, \textit{MS$_e$}=0.04318, \textit{p}\textless.001 
+===== 2. ERRORS NO DYSFLUENCIES: (\textit{F$_1$}(1,128)=10.584, \textit{MS$_e$}=119.64, \textit{p}\textless.01; \textit{F$_2$}(1,23)=12.623, \textit{MS$_e$}=22.135, \textit{p}\textless.01 
+===== 3. ERROR COUNTS: (\textit{F$_1$}(1,128)=15.687, \textit{MS$_e$}=0.08352, \textit{p}\textless.001; \textit{F$_2$}(1,23)=4.177, \textit{MS$_e$}=0.5611, \textit{p}\textless.10 
 
  
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 ===== ASSOCIATES X UNRELEATED MISMATCH EFFECTS 
-===== 1. ARCSIN TRANSFORMED PROPORTIONS: UNRELATED (\textit{F$_1$}(1,128)=3.84, \textit{MS$_e$}=0.0932, \textit{p}<.10; \textit{F$_2$}(1,23)=4.522, \textit{MS$_e$}=0.04286, \textit{p}<.05 
-===== 2. ERRORS NO DYSFLUENCIES: UNRELATED (\textit{F$_1$}(1,23)=4.522, \textit{MS$_e$}=0.04286, \textit{p}<.05; \textit{F$_2$}(1,23)=4.356, \textit{MS$_e$}=11.072, \textit{p}<.05 
-===== 3. ERRORS COUNTS: UNRELATED (\textit{F$_1$}(1,23)=4.356, \textit{MS$_e$}=11.072, \textit{p}<.05; \textit{F$_2$}(1,23)=5.308, \textit{MS$_e$}=0.1413, \textit{p}<.05 
+===== 1. ARCSIN TRANSFORMED PROPORTIONS: UNRELATED (\textit{F$_1$}(1,128)=3.84, \textit{MS$_e$}=0.0932, \textit{p}\textless.10; \textit{F$_2$}(1,23)=4.522, \textit{MS$_e$}=0.04286, \textit{p}\textless.05 
+===== 2. ERRORS NO DYSFLUENCIES: UNRELATED (\textit{F$_1$}(1,23)=4.522, \textit{MS$_e$}=0.04286, \textit{p}\textless.05; \textit{F$_2$}(1,23)=4.356, \textit{MS$_e$}=11.072, \textit{p}\textless.05 
+===== 3. ERRORS COUNTS: UNRELATED (\textit{F$_1$}(1,23)=4.356, \textit{MS$_e$}=11.072, \textit{p}\textless.05; \textit{F$_2$}(1,23)=5.308, \textit{MS$_e$}=0.1413, \textit{p}\textless.05 
 
  
  
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-A comparison of attribute and unrelated items revealed a marginal main effect of relationship as related items generated more errors than unrelated items (\textit{F$_1$}(1,128)=2.8975, \textit{MS$_e$}=56.9, \textit{p}<.10; \textit{F$_2$}(1,23)=3.168, \textit{MS$_e$}=15.068, \textit{p}<.10).There was also an interaction that was significant by items and marginally significant by subjects (\textit{F$_1$}(1,128)=3.541, \textit{MS$_e$}=98.85, \textit{p}<.10; \textit{F$_2$}(1,23)=5.74, \textit{MS$_e$}=17.072, \textit{p}<.05), the mismatch effect being larger for attributes than for unrelated items. 
+A comparison of attribute and unrelated items revealed a marginal main effect of relationship, as related items generated more errors than unrelated items (\textit{F$_1$}(1,128)=2.8975, \textit{MS$_e$}=56.9, \textit{p}\textless.10; \textit{F$_2$}(1,23)=3.168, \textit{MS$_e$}=15.068, \textit{p}\textless.10).There was also an interaction that was significant by items and marginally significant by subjects (\textit{F$_1$}(1,128)=3.541, \textit{MS$_e$}=98.85, \textit{p}\textless.10; \textit{F$_2$}(1,23)=5.74, \textit{MS$_e$}=17.072, \textit{p}\textless.05), the mismatch effect being larger for attributes than for unrelated items. 
 
  
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 ===== MAIN EFFECT OF RELATEDNESS 
-===== 1. ARCSIN TRANSFORMED PROPORTIONS: (\textit{F$_1$}(1,128)=2.4701, \textit{MS$_e$}=0.05924, \textit{p} ; \textit{F$_2$}(1,23)=1.8632, \textit{MS$_e$}=0.05196, \textit{p}  
-===== 2. ERRORS NO DYSFLUENCIES: (\textit{F$_1$}(1,128)=0.17015, \textit{MS$_e$}=64.07, \textit{p} ; \textit{F$_2$}(1,23)=1.539, \textit{MS$_e$}=16.317, \textit{p}  
-===== 3. ERROR COUNTS: (\textit{F$_1$}(1,128)=3.326, \textit{MS$_e$}=0.028555, \textit{p}<.10; \textit{F$_2$}(1,23)=1.7419, \textit{MS$_e$}=0.29303, \textit{p}  
+===== 1. ARCSIN TRANSFORMED PROPORTIONS: (\textit{F$_1$}(1,128)=2.4701, \textit{MS$_e$}=0.05924, \textit{p}\textgreater.10; \textit{F$_2$}(1,23)=1.8632, \textit{MS$_e$}=0.05196, \textit{p}\textgreater.10 
+===== 2. ERRORS NO DYSFLUENCIES: (\textit{F$_1$}(1,128)=0.17015, \textit{MS$_e$}=64.07, \textit{p}\textgreater.10; \textit{F$_2$}(1,23)=1.539, \textit{MS$_e$}=16.317, \textit{p}\textgreater.10 
+===== 3. ERROR COUNTS: (\textit{F$_1$}(1,128)=3.326, \textit{MS$_e$}=0.028555, \textit{p}\textless.10; \textit{F$_2$}(1,23)=1.7419, \textit{MS$_e$}=0.29303, \textit{p}\textgreater.10 
 
  
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 ===== RELATEDNESS X N2NUM  
-===== 1. ARCSIN TRANSFORMED PROPORTIONS: (\textit{F$_1$}(1,128)=3.383, \textit{MS$_e$}=0.10617, \textit{p}<.10; \textit{F$_2$}(1,23)=5.489, \textit{MS$_e$}=0.05182, \textit{p}<.05 
-===== 2. ERRORS NO DYSFLUENCIES: (\textit{F$_1$}(1,128)=1.4037, \textit{MS$_e$}=80.63, \textit{p} ; \textit{F$_2$}(1,23)=3.546, \textit{MS$_e$}=19.208, \textit{p}<.10 
-===== 3. ERROR COUNTS: (\textit{F$_1$}(1,128)=4.607, \textit{MS$_e$}=0.0509, \textit{p}<.05; \textit{F$_2$}(1,23)=4.177, \textit{MS$_e$}=0.5611, \textit{p}<.10 
+===== 1. ARCSIN TRANSFORMED PROPORTIONS: (\textit{F$_1$}(1,128)=3.383, \textit{MS$_e$}=0.10617, \textit{p}\textless.10; \textit{F$_2$}(1,23)=5.489, \textit{MS$_e$}=0.05182, \textit{p}\textless.05 
+===== 2. ERRORS NO DYSFLUENCIES: (\textit{F$_1$}(1,128)=1.4037, \textit{MS$_e$}=80.63, \textit{p}\textgreater.10; \textit{F$_2$}(1,23)=3.546, \textit{MS$_e$}=19.208, \textit{p}\textless.10 
+===== 3. ERROR COUNTS: (\textit{F$_1$}(1,128)=4.607, \textit{MS$_e$}=0.0509, \textit{p}\textless.05; \textit{F$_2$}(1,23)=4.177, \textit{MS$_e$}=0.5611, \textit{p}\textless.10 
