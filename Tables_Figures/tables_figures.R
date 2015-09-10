@@ -38,9 +38,6 @@ write.xlsx( exp1.example, file = "output/table01_example_stimulus.xlsx", col.nam
 source( file = "clear_and_setup.R")
 source( file = "semrel_ratings_data_read_in_dataframe.R")
 
-aov.rel <- summary( aov( RelatedHL ~ related * n2num + Error(item / related * n2num), data = d.sr))
-p       <- zapsmall( aov.rel[[2]][[1]][["Pr(>F)"]][1], digits = 6)
-
 exp1.related <- data.frame(
   Local.Noun.Number = c(
     "Singular",
@@ -66,23 +63,26 @@ exp1.related <- data.frame(
 
 
 write.xlsx( exp1.related, file = "output/table02_SR_relatedness_ratings.xlsx", col.names = TRUE, row.names = TRUE, append = FALSE)
-
+# ------------------------------ RELATEDNESS ANOVA: Set up and Print ---------------
 sink("output/table02_SR_relatedness_ratings_ANOVA.txt")
 cat("Table 02: Experiment 1 Critical Item Mean Relatedness Ratings ANOVA", format( Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
-print( aov.rel)
+
+d0    <-  aov( RelatedHL ~ related * n2num + Error(item /related * n2num), data = d.sr)
+
+d0.s <-summary(d0) 
+dfr1 <- (d0.s[[3]][[1]][["Df"]][[1]])
+dfr2 <- (d0.s[[3]][[1]][["Df"]][[2]])
+f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
+m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
+p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
+rel.norm  <- paste(
+  "A 2 (relatedness) $\\times$ 2 (local noun number) ANOVA on the data revealed a main effect of relatedness (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),"). There was no main effect of local noun number, nor an interaction between the two factors.", sep="" )
+cat(line,br)
+cat(rel.norm)
+print(d0.s)
 sink()
 
 # -------------------- TABLE 03 SEMREL: INTEGRATION ------------------------
-# ----------------------------- INTEGRATION DATAFRAME: ANOVAs ---------------
-
-aov.int.unint <- summary( aov(Integrated ~ integrated * related * n2num + Error(item / integrated * related * n2num ), data = d.sr))
-p.int.unint   <- zapsmall( aov.int.unint[[2]][[1]][["Pr(>F)"]][1], digits = 6)
-
-aov.int       <- summary( aov(Integrated ~ related + Error(item / related ), data = integ))
-p.int         <- zapsmall( aov.int[[2]][[1]][["Pr(>F)"]][1], digits = 6)
-
-aov.unint     <- summary( aov(Integrated ~ related + Error(item / related ), data = unint))
-p.unint       <- zapsmall( aov.unint[[2]][[1]][["Pr(>F)"]][1], digits = 6)
 # ----------------------------- INTEGRATION DATAFRAME: Conditions ---------------
 
 exp1.integration <- data.frame(
@@ -131,20 +131,98 @@ write.xlsx(exp1.integration, file ="output/table03_SR_integration_ratings.xlsx",
 # ----------------------------- INTEGRATION ANOVA SUMMARIES: Set up & Print ---------------
 sink( "output/table03_SR_integration_ratings_ANOVA.txt")
 cat("Table 03: Experiment 1 Critical Item Mean Integration Ratings ANOVA", format( Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
-cat( "Integrated vs. Unintegrated",br)
-print( aov.int.unint)
-cat( br, br, line, br, br, "Integrated", br, br)
-print( aov.int)
-cat( br, br, line, br, br, "Unntegrated", br, br)
-print( aov.unint)
+# ----------------------------- INTEGRATION DATAFRAME: ANOVAs ---------------
 
+d0    <-  aov( Integrated ~ (integrated + related + n2num)^3 + Error(item /(integrated + related + n2num)^3), data = d.sr)
+
+d0.s <-summary(d0) 
+dfr1.i <- (d0.s[[2]][[1]][["Df"]][[1]])
+dfr2.i <- (d0.s[[2]][[1]][["Df"]][[2]])
+f.i    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
+m.i    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
+p.i    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+dfr1.r <- (d0.s[[3]][[1]][["Df"]][[1]])
+dfr2.r <- (d0.s[[3]][[1]][["Df"]][[2]])
+f.r    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
+m.r    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
+p.r    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+int.norm1  <- paste( "A 2 (integration) $\\times$ 2 (relatedness) $\\times$ 2 (local noun number) ANOVA on the data revealed a main effect of integration (\\textit{F}(", dfr1.i,",",dfr2.i,")=",f.i,", \\textit{MS$_e$}=",m.i,", \\textit{p}", get_range.tex(p.i),"), and a main effect of relatedness (\\textit{F}(", dfr1.r,",",dfr2.r,")=",f.i,", \\textit{MS$_e$}=",m.r,", \\textit{p}", get_range.tex(p.r),"). There was no interactions among the factors.", sep = "")
+cat("FULL 2x2x2", br)
+print(d0.s)
+
+d0   <- aov(Integrated ~ related + Error(item / related), data = d.sr)
+d0.s  <- summary(d0)
+dfr1 <- (d0.s[[2]][[1]][["Df"]][[1]])
+dfr2 <- (d0.s[[2]][[1]][["Df"]][[2]])
+f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
+m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
+p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+int.norm2   <- paste(int.norm1, " Collapsing across local noun number, related items were rated significantly more integrated than unrelated items (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),"); ", sep = "")
+
+cat(line, br)
+cat("COLLAPSING OVER LOCAL NOUN", br)
+print(d0.s)
+
+
+d0   <- aov(Integrated ~ related + Error(item / related), data = integ.sing)
+d0.s  <- summary(d0)
+dfr1 <- (d0.s[[2]][[1]][["Df"]][[1]])
+dfr2 <- (d0.s[[2]][[1]][["Df"]][[2]])
+f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
+m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
+p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+int.norm3   <- paste(int.norm2, " pairwise comparisons revealed that integration ratings were significantly larger for related items than for unrelated items for integrated-singular items (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),"), ", sep = "")
+cat(line, br)
+cat("INTEGRATED SINGULAR", br)
+print(d0.s)
+
+d0   <- aov(Integrated ~ related + Error(item / related), data = integ.plur)
+d0.s  <- summary(d0)
+dfr1 <- (d0.s[[2]][[1]][["Df"]][[1]])
+dfr2 <- (d0.s[[2]][[1]][["Df"]][[2]])
+f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
+m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
+p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+int.norm4  <- paste(int.norm3, "integrated-plural items (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),")", sep = "")
+cat(line, br)
+cat("INTEGRATED PLURAL", br)
+print(d0.s)
+
+d0   <- aov(Integrated ~ related + Error(item / related), data = unint.sing)
+d0.s  <- summary(d0)
+dfr1 <- (d0.s[[2]][[1]][["Df"]][[1]])
+dfr2 <- (d0.s[[2]][[1]][["Df"]][[2]])
+f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
+m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
+p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+int.norm5  <- paste(int.norm4, "unintegrated-singular items (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),")", sep = "")
+cat(line, br)
+cat("UNINTEGRATED SINGULAR", br)
+print(d0.s)
+
+
+d0   <- aov(Integrated ~ related + Error(item / related), data = unint.plur)
+d0.s  <- summary(d0)
+dfr1 <- (d0.s[[2]][[1]][["Df"]][[1]])
+dfr2 <- (d0.s[[2]][[1]][["Df"]][[2]])
+f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
+m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
+p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+int.norm6  <- paste(int.norm5, "and unintegrated plural items (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),")", sep = "")
+cat(line, br)
+cat("UNINTEGRATED PLURAL", br)
+print(d0.s)
+cat(int.norm6)
 sink()
 
 # -------------------- TABLE 04 SEMREL: ASSOCIATION ------------------
-# ----------------------------- ASSOCIATION DATAFRAME: ANOVAs ---------------
-
-aov.assoc <- summary( aov(back.trans ~ related + Error(item / related ), data = d.sr))
-p         <- zapsmall( aov.assoc[[2]][[1]][["Pr(>F)"]][1], digits = 6)
 # ----------------------------- ASSOCIATION DATAFRAME: Conditions ---------------
 
 exp1.assoc <- data.frame(
@@ -178,7 +256,49 @@ write.xlsx(exp1.related, file="output/table04_SR_association_proportions.xlsx", 
 
 sink("output/table4_SR_association_proportions_ANOVA.txt")
 cat("Table 04: Experiment 1 Critical Item Mean Head-to-Local Association Proportions ANOVA", format( Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
-print( aov.assoc)
+# ----------------------------- ASSOCIATION DATAFRAME: ANOVAs ---------------
+cat("ASSOCIATION NORMING PARA")
+d0    <-  aov( AssArc.H.L ~  related * n2num + Error(item /(related * n2num)), data = d.sr)
+
+d0.s <-summary(d0) 
+dfr1.r <- (d0.s[[2]][[1]][["Df"]][[1]])
+dfr2.r <- (d0.s[[2]][[1]][["Df"]][[2]])
+f.r    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
+m.r    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
+p.r    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+dfr1.n <- (d0.s[[3]][[1]][["Df"]][[1]])
+dfr2.n <- (d0.s[[3]][[1]][["Df"]][[2]])
+f.n    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
+m.n    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
+p.n    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+dfr1.rn <- (d0.s[[4]][[1]][["Df"]][[1]])
+dfr2.rn <- (d0.s[[4]][[1]][["Df"]][[2]])
+f.rn    <- zapsmall( d0.s[[4]][[1]][["F value"]][1], digits = 4)
+m.rn    <- zapsmall( d0.s[[4]][[1]][["Mean Sq"]][2], digits = 4)
+p.rn    <- zapsmall( d0.s[[4]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+ass.norm.1  <- paste( "A 2 (relatedness) $\\times$ 2 (local noun number) ANOVA on the data revealed a main effect of relatedness (\\textit{F}(", dfr1.r,",",dfr2.r,")=",f.r,", \\textit{MS$_e$}=",m.r,", \\textit{p}", get_range.tex(p.r),"),  a main effect of local noun number (\\textit{F}(", dfr1.n,",",dfr2.n,")=",f.n,", \\textit{MS$_e$}=",m.n,", \\textit{p}", get_range.tex(p.n),"), and a significant interaction between the relatedness and local noun number (\\textit{F}(", dfr1.rn,",",dfr2.rn,")=",f.rn,", \\textit{MS$_e$}=",m.rn,", \\textit{p}", get_range.tex(p.rn),").", sep = "")
+
+cat("FULL ANOVA", br)
+print(d0.s)
+d0    <-  aov( AssArc.H.L ~   n2num + Error(item / n2num), data = relat)
+
+d0.s <-summary(d0) 
+dfr1 <- (d0.s[[2]][[1]][["Df"]][[1]])
+dfr2 <- (d0.s[[2]][[1]][["Df"]][[2]])
+f   <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
+m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
+p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+ass.norm.2 <-paste(ass.norm.1, "The main effect of n2num and the interaction are being driven by the difference in association for related singular versus related plural items (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),").", ssep = "")
+cat(line, br)
+cat("RELATED ITEMS ANOVA", br)
+print(d0.s)
+cat(line, br)
+cat(ass.norm.2)
+
 sink()
 
 # -------------------- TABLE 05 SEMREL: ERROR RATES AND RESPONSE COUNTS ------------
@@ -522,9 +642,6 @@ write.xlsx( exp2.prop.example, file = "output/table08_PROP_example_stimulus.xlsx
 # -------------------- TABLE 09 SEMREL2: CATEGORY COORDINATE RELATEDNESS -----------------------------
 source( file = "clear_and_setup.R")
 source( file = "semrel2_CAT_ratings_data_read_in_dataframe.R")
-# ----------------------------- RELATEDNESS DATAFRAME: ANOVAs -----------  
-aov.rel <- summary( aov( RelatedHL ~ related * n2num + Error(item / related * n2num), data = d.cat))
-p       <- zapsmall( aov.rel[[2]][[1]][["Pr(>F)"]][1], digits = 6)
 # ----------------------------- RELATEDNESS DATAFRAME: Categories -----------  
 
 exp2.related <- data.frame(
@@ -549,13 +666,7 @@ exp2.related <- data.frame(
     paste( round( mean( unrel.plur$RelatedHL), 2), " (", round( sd( unrel.plur$RelatedHL), 2), ")", sep = ""),
     paste( round( mean( unrel$RelatedHL), 2)),
     paste(" ") 
-  ),
-  
-  pval =                 c(
-    paste(" ", sep = ""),
-    paste(" ", sep = ""),
-    paste( p,  get_stars( p)),
-    paste(" "))
+  )
 )
 # ----------------------------- RELATEDNESS DATAFRAME: Write to excel ----------- 
 write.xlsx( exp2.related, file = "output/table09_CAT_relatedness_ratings.xlsx", col.names = TRUE, row.names = TRUE, append = FALSE)
@@ -563,14 +674,26 @@ write.xlsx( exp2.related, file = "output/table09_CAT_relatedness_ratings.xlsx", 
 
 sink("output/table09_CAT_relatedness_ratings_ANOVA.txt")
 cat("Table 09: Experiment 2 CAT Critical Item Mean Relatedness Ratings ANOVA", format( Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
-print( aov.rel)
+# ----------------------------- RELATEDNESS DATAFRAME: ANOVAs -----------  
+
+d0    <-  aov( RelatedHL ~ related * n2num + Error(item /related * n2num), data = d.cat)
+
+d0.s <-summary(d0) 
+dfr1 <- (d0.s[[3]][[1]][["Df"]][[1]])
+dfr2 <- (d0.s[[3]][[1]][["Df"]][[2]])
+f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
+m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
+p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
+rel.norm  <- paste(
+  "A 2 (relatedness) $\\times$ 2 (local noun number) ANOVA on the data revealed a main effect of relatedness (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),"). There was no main effect of local noun number, nor an interaction between the two factors.", sep="" )
+cat("FULL ANOVA", br)
+print(d0.s)
+car(line, br)
+cat(rel.norm)
+
 sink()
 
 # -------------------- TABLE 10 SEMREL2: CATEGORY COORDINATE INTEGRATION ------------------------
-# ----------------------------- INTEGRATION DATAFRAME: ANOVAs -----------  
-
-aov.int.unint <- summary( aov(Integrated ~ related + Error(item / related ), data = d.cat))
-p.int.unint   <- zapsmall( aov.int.unint[[2]][[1]][["Pr(>F)"]][1], digits = 6)
 # ----------------------------- INTEGRATION DATAFRAME: Categories -----------  
 
 exp2.integration <- data.frame(
@@ -581,7 +704,6 @@ exp2.integration <- data.frame(
     "Singular",
     "Plural", 
     "Mean",
-    paste("Int. vs. Unint. p-val:", p.int.unint,  get_stars( p.int.unint)),
     paste("Note: Scale was 1 (not linked) to 7 (tightly linked).")
   ),
   
@@ -590,7 +712,6 @@ exp2.integration <- data.frame(
     paste( round( mean( relat.sing$Integrated), 2),  " (", round( sd( relat.sing$Integrated), 2),  ")", sep = ""),
     paste( round( mean(relat.plur$Integrated), 2),   " (", round( sd( relat.plur$Integrated), 2),  ")", sep = ""),
     paste( round( mean( relat$Integrated), 2)),
-    " ",
     "SD in Parens."
   ),
 # ----------------------------- INTEGRATION DATAFRAME: Unrelated -----------  
@@ -598,7 +719,6 @@ exp2.integration <- data.frame(
     paste( round( mean( unrel.sing$Integrated), 2), " (", round( sd( unrel.sing$Integrated), 2), ")", sep = ""),
     paste( round( mean(unrel.plur$Integrated), 2),  " (", round( sd( unrel.plur$Integrated), 2), ")", sep = ""),
     paste( round( mean( unrel$Integrated), 2)),
-    " ",
     " ")
 )
 # ----------------------------- INTEGRATION DATAFRAME: Write to excel -----------  
@@ -608,33 +728,36 @@ write.xlsx(exp2.integration, file ="output/table10_CAT_integration_ratings.xlsx"
 
 sink("output/table10_CAT_integration_ratings_ANOVA.txt")
 cat("Table 10: Experiment 2 Category Critical Item Mean Inteagration Ratings ANOVA", format( Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
-print( aov.int.unint)
+# ----------------------------- INTEGRATION DATAFRAME: ANOVAs -----------  
+source( file = "clear_and_setup.R")
+source( file = "semrel2_CAT_ratings_data_read_in_dataframe.R")
+cat("CAT: RELATEDNESS NORMING PARA")
+d0    <-  aov( Integrated ~ related * n2num + Error(item /related * n2num), data = d.cat)
+
+d0.s <-summary(d0) 
+dfr1 <- (d0.s[[3]][[1]][["Df"]][[1]])
+dfr2 <- (d0.s[[3]][[1]][["Df"]][[2]])
+f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
+m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
+p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
+int.norm  <- paste(
+  "A 2 (relatedness) $\\times$ 2 (local noun number) ANOVA on the data revealed a main effect of relatedness (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),"). There was no main effect of local noun number, nor an interaction between the two factors.", sep="" )
+
+print(d0.s)
+cat(line, br)
+cat(int.norm)
 sink()
 
 # -------------------- TABLE 11 SEMREL2: PROPERTY RELATEDNESS -----------------------------
 source( file = "clear_and_setup.R")
 source( file = "semrel2_PROP_ratings_data_read_in_dataframe.R")
-# ----------------------------- RELATEDNES DATAFRAME: ANOVAs ------------  
-
-aov.att.ass <- summary( aov( RelatedHL ~ related + Error(item / related ), data = attrb.assoc))
-p.att.ass   <- zapsmall( aov.att.ass[[2]][[1]][["Pr(>F)"]][1], digits = 6)
-
-aov.ass.unr <- summary( aov( RelatedHL ~ related + Error(item / related ), data = assoc.unrel))
-p.ass.unr   <- zapsmall( aov.ass.unr[[2]][[1]][["Pr(>F)"]][1], digits = 6)
-
-aov.att.unr <- summary( aov( RelatedHL ~ related + Error(item / related ), data = attrb.unrel))
-p.att.unr   <- zapsmall( aov.att.unr[[2]][[1]][["Pr(>F)"]][1], digits = 6)
 # ----------------------------- RELATEDNES DATAFRAME: Conditions -----------  
 exp2.related <- data.frame(
   Local.Noun.Number = c(
     "Singular",
     "Plural", 
     "Mean",               
-    paste("Note: Scale was 1(unrelated) to 7(very related)."), 
-    "",
-    "Att. vs Assoc pval",
-    "Assoc. vs Unrel pval",
-    "Att. vs Unrel pval"
+    paste("Note: Scale was 1(unrelated) to 7(very related).")
   ), 
   
 # ----------------------------- RELATEDNES DATAFRAME: Attribute means---------
@@ -642,21 +765,13 @@ exp2.related <- data.frame(
     paste( round( mean( attrb.sing$RelatedHL), 2), " (", round( sd( attrb.sing$RelatedHL), 2), ")", sep = ""),
     paste( round( mean( attrb.plur$RelatedHL), 2), " (", round( sd( attrb.plur$RelatedHL), 2), ")", sep = ""),
     paste( round( mean( attrb$RelatedHL), 2)),
-    paste("SD in parens." ),
-    "",
-    paste( p.att.ass,  get_stars( p.att.ass)),
-    paste( p.ass.unr,  get_stars( p.att.unr)),
-    paste( p.att.unr,  get_stars( p.att.unr))
+    paste("SD in parens." )
   ),
 # ----------------------------- RELATEDNES DATAFRAME: Associate means -----------  
   Associate =            c(
     paste( round( mean( assoc.sing$RelatedHL), 2), " (", round( sd( assoc.sing$RelatedHL), 2), ")", sep = ""),
     paste( round( mean( assoc.plur$RelatedHL), 2), " (", round( sd( assoc.plur$RelatedHL), 2), ")", sep = ""),
     paste( round( mean( assoc$RelatedHL), 2)),
-    "",
-    "",
-    "",
-    "",
     ""
   ),
  
@@ -665,10 +780,6 @@ exp2.related <- data.frame(
     paste( round( mean( unrel.sing$RelatedHL), 2), " (", round( sd( unrel.sing$RelatedHL), 2), ")", sep = ""),
     paste( round( mean( unrel.plur$RelatedHL), 2), " (", round( sd( unrel.plur$RelatedHL), 2), ")", sep = ""),
     paste( round( mean( unrel$RelatedHL), 2)),
-    "",
-    "",
-    "",
-    "",
     "" 
   ))
 # ----------------------------- RELATEDNES DATAFRAME: Write to excel ---------
@@ -676,22 +787,75 @@ write.xlsx( exp2.related, file = "output/table11_PROP_relatedness_ratings.xlsx",
 # ----------------------------- RELATEDNESS ANOVA SUMMARIES: Set up & Print ------
 sink("output/table11_PROP_relatedness_ratings_ANOVA.txt")
 cat("Table 11: Experiment 2 CAT Critical Item Mean Relatedness Ratings ANOVA", format( Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
-cat("Attrb vs. Assoc")
-print( aov.att.ass)
-cat( br, br, line, br, br, "Assoc. vs. Unrel", br, br)
-print( aov.ass.unr)
-cat( br, br, line, br, br, "Attrb vs. Unrel", br, br)
-print( aov.att.unr)
+# ----------------------------- RELATEDNES DATAFRAME: ANOVAs ------------  
+
+d0    <-  aov( RelatedHL ~ related * n2num + Error(item /related * n2num), data = d.prop)
+d0.s <-summary(d0)
+
+dfr1 <- (d0.s[[3]][[1]][["Df"]][[1]])
+dfr2 <- (d0.s[[3]][[1]][["Df"]][[2]])
+f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
+m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
+p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+dfr1.rn <- (d0.s[[5]][[1]][["Df"]][[1]])
+dfr2.rn <- (d0.s[[5]][[1]][["Df"]][[2]])
+f.rn    <- zapsmall( d0.s[[5]][[1]][["F value"]][1], digits = 4)
+m.rn    <- zapsmall( d0.s[[5]][[1]][["Mean Sq"]][2], digits = 4)
+p.rn    <- zapsmall( d0.s[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+rel.norm1  <- paste("A 2 (relatedness) $\\times$ 2 (local noun number) ANOVA on the data revealed a main effect of relatedness (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),"), as well as a marginally significant interaction between relatedness and local noun number (\\textit{F}(", dfr1.rn,",",dfr2.rn,")=",f,", \\textit{MS$_e$}=",m.rn,", \\textit{p}", get_range.tex(p.rn),").", sep="" )
+
+cat("FULL ANOVA", br)
+print(d0.s)
+
+d0   <- aov(RelatedHL ~ n2num + Error(item / n2num), data = assoc.unrel)
+d0.s  <- summary(d0)
+dfr1 <- (d0.s[[2]][[1]][["Df"]][[1]])
+dfr2 <- (d0.s[[2]][[1]][["Df"]][[2]])
+f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
+m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
+p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+rel.norm2   <- paste(rel.norm1, " Analyses of singular vs. plural conditions for each combination of the levels of relatedness revealed a marginally significant effect of local noun number when associates were compared with unrelated items (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),".", sep = "")
+cat(line,br)
+cat("ASSOC & UNREL", br)
+print(d0.s)
+
+d0   <- aov(RelatedHL ~ related + Error(item / related), data = assoc.unrel.sing)
+d0.s  <- summary(d0)
+dfr1 <- (d0.s[[2]][[1]][["Df"]][[1]])
+dfr2 <- (d0.s[[2]][[1]][["Df"]][[2]])
+f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
+m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
+p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+rel.norm3   <- paste(rel.norm2, ": Relatedness ratings for singular associates were significantly larger than for singular unrelated items  (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),",", sep = "")
+
+cat(line,br)
+cat("ASSOC UNREL SING", br)
+print(d0.s)
+
+d0   <- aov(RelatedHL ~ related + Error(item / related), data = assoc.unrel.plur)
+d0.s  <- summary(d0)
+dfr1 <- (d0.s[[2]][[1]][["Df"]][[1]])
+dfr2 <- (d0.s[[2]][[1]][["Df"]][[2]])
+f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
+m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
+p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+rel.norm4   <- paste(rel.norm3, "and ratings for plural associates were significantly larger than for plural unrelated items  (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),".", sep = "")
+cat(line,br)
+cat("ASSOC UNREL PLUR", br)
+cat(line, br)
+print(d0.s)
+
+cat(rel.norm4)
 
 sink()
 
 # -------------------- TABLE 12 SEMREL2: PROPERTY INTEGRATION ------------------------
-# ----------------------------- INTEGRATION DATAFRAME: ANOVAS ---------------
-aov.ass.unr <- summary( aov( Integrated ~ related + Error(item / related ), data = assoc.unrel))
-p.ass.unr   <- zapsmall( aov.ass.unr[[2]][[1]][["Pr(>F)"]][1], digits = 6)
 
-aov.att.unr <- summary( aov( Integrated ~ related + Error(item / related ), data = attrb.unrel))
-p.att.unr   <- zapsmall( aov.att.unr[[2]][[1]][["Pr(>F)"]][1], digits = 6)
 # ----------------------------- INTEGRATION DATAFRAME: Conditions ---------------
 
 exp2.integration <- data.frame(
@@ -699,11 +863,7 @@ exp2.integration <- data.frame(
     "Singular",
     "Plural", 
     "Mean",               
-    paste("Note: Scale was 1(not linked) to 7(tighly linked)."), 
-    "",
-    "Att. vs Assoc pval",
-    "Assoc. vs Unrel pval",
-    "Att. vs Unrel pval"
+    paste("Note: Scale was 1(not linked) to 7(tighly linked).")
   ), 
 
 # ----------------------------- INTEGRATION DATAFRAME: Attribute means --------
@@ -711,21 +871,13 @@ exp2.integration <- data.frame(
     paste( round( mean( attrb.sing$Integrated), 2), " (", round( sd( attrb.sing$Integrated), 2), ")", sep = ""),
     paste( round( mean( attrb.plur$Integrated), 2), " (", round( sd( attrb.plur$Integrated), 2), ")", sep = ""),
     paste( round( mean( attrb$Integrated), 2)),
-    paste("SD in parens." ),
-    "",
-    paste( p.att.ass,  get_stars( p.att.ass)),
-    paste( p.ass.unr,  get_stars( p.att.unr)),
-    paste( p.att.unr,  get_stars( p.att.unr))
+    paste("SD in parens." )
   ),
 # ----------------------------- INTEGRATION DATAFRAME: Associate means ----------
   Associate =            c(
     paste( round( mean( assoc.sing$Integrated), 2), " (", round( sd( assoc.sing$Integrated), 2), ")", sep = ""),
     paste( round( mean( assoc.plur$Integrated), 2), " (", round( sd( assoc.plur$Integrated), 2), ")", sep = ""),
     paste( round( mean( assoc$Integrated), 2)),
-    "",
-    "",
-    "",
-    "",
     ""
   ),
 
@@ -734,11 +886,7 @@ exp2.integration <- data.frame(
     paste( round( mean( unrel.sing$Integrated), 2), " (", round( sd( unrel.sing$Integrated), 2), ")", sep = ""),
     paste( round( mean( unrel.plur$Integrated), 2), " (", round( sd( unrel.plur$Integrated), 2), ")", sep = ""),
     paste( round( mean( unrel$Integrated), 2)),
-    "",
-    "",
-    "",
-    "",
-    "" 
+    ""
   ))
 # ----------------------------- INTEGRATION DATAFRAME: Write to excel ----------
 write.xlsx(exp2.integration, file ="output/table12_PROP_integration_ratings.xlsx", 
@@ -746,38 +894,87 @@ write.xlsx(exp2.integration, file ="output/table12_PROP_integration_ratings.xlsx
 # ----------------------------- INTEGRATION ANOVA SUMMARIES: Set up & Print -------
 sink("output/table12_PROP_integration_ratings_ANOVA.txt")
 cat("Table 12: Experiment 2 Property Item Mean Inteagration Ratings ANOVA", format( Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
+# ----------------------------- INTEGRATION DATAFRAME: ANOVAS ---------------
+source( file = "clear_and_setup.R")
+source( file = "semrel2_PROP_ratings_data_read_in_dataframe.R")
+cat("PROP: Integration NORMING PARA")
+d0    <-  aov( Integrated ~ related * n2num + Error(item /related * n2num), data = d.prop)
+d0.s <-summary(d0)
 
-cat("Attrb vs. Assoc")
-print( aov.att.ass)
-cat( br, br, line, br, br, "Assoc. vs. Unrel", br, br)
-print( aov.ass.unr)
-cat( br, br, line, br, br, "Attrb vs. Unrel", br, br)
-print( aov.att.unr)
+dfr1 <- (d0.s[[3]][[1]][["Df"]][[1]])
+dfr2 <- (d0.s[[3]][[1]][["Df"]][[2]])
+f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
+m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
+p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+int.norm1  <- paste("A 3 (relatedness) $\\times$ 2 (local noun number) ANOVA on the data revealed a main effect of relatedness (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),");", sep="" )
+
+cat(line,br)
+cat("FULL 3X2", br)
+print(d0.s)
+
+d0    <-  aov( Integrated ~ related * n2num + Error(item /related * n2num), data = attrb.assoc)
+d0.s <-summary(d0)
+
+dfr1 <- (d0.s[[3]][[1]][["Df"]][[1]])
+dfr2 <- (d0.s[[3]][[1]][["Df"]][[2]])
+f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
+m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
+p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+int.norm2  <- paste(int.norm1, "A comparison of Attribute and Associates showed a signficant main effect of relatedness (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),"), with attribute ratings higher than associates", sep="" )
+
+cat(line,br)
+cat("ATTRIBUTES & ASSOCIATES", br)
+print(d0.s)
+
+d0    <-  aov( Integrated ~ related * n2num + Error(item /related * n2num), data = assoc.unrel)
+d0.s <-summary(d0)
+
+dfr1 <- (d0.s[[3]][[1]][["Df"]][[1]])
+dfr2 <- (d0.s[[3]][[1]][["Df"]][[2]])
+f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
+m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
+p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+int.norm3  <- paste(int.norm2, " Associates were also rated higher than the unrelated items (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),"), ", sep="" )
+
+cat(line,br)
+cat("ASSOCIATES & UNRELATED", br)
+print(d0.s)
+
+d0    <-  aov( Integrated ~ related * n2num + Error(item /related * n2num), data = attrb.unrel)
+d0.s <-summary(d0)
+
+dfr1 <- (d0.s[[3]][[1]][["Df"]][[1]])
+dfr2 <- (d0.s[[3]][[1]][["Df"]][[2]])
+f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
+m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
+p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+int.norm4  <- paste(int.norm3, " as were attributes  (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),"), ", sep="" )
+
+cat(line,br)
+cat("ATTRIBUTES & UNRELATED",br)
+print(d0.s)
+cat(line, br)
+cat(int.norm4)
+
+
+
+
 
 sink()
 
 # -------------------- TABLE 13 SEMREL2: PROPERTY ASSOCIATION ------------------------
-# ----------------------------- ASSOCIATION DATAFRAME: ANOVAS ---------------
 
-aov.att.ass <- summary( aov( AssArc.H.L ~ related + Error(item / related ), data = attrb.assoc))
-p.att.ass   <- zapsmall( aov.att.ass[[2]][[1]][["Pr(>F)"]][1], digits = 6)
-
-aov.ass.unr <- summary( aov( AssArc.H.L  ~ related + Error(item / related ), data = assoc.unrel))
-p.ass.unr   <- zapsmall( aov.ass.unr[[2]][[1]][["Pr(>F)"]][1], digits = 6)
-
-aov.att.unr <- summary( aov( AssArc.H.L  ~ related + Error(item / related ), data = attrb.unrel))
-p.att.unr   <- zapsmall( aov.att.unr[[2]][[1]][["Pr(>F)"]][1], digits = 6)
 # ----------------------------- ASSOCIATION DATAFRAME: Conditions ---------------
 exp2.association <- data.frame(
   Local.Noun.Number = c(
     "Singular",
     "Plural", 
     "Mean",               
-    paste("Note: Back transofmred proportions of ASIN transformed proportions."),    
-    "",
-    "Att. vs Assoc pval",
-    "Assoc. vs Unrel pval",
-    "Att. vs Unrel pval"
+    paste("Note: Back transofmred proportions of ASIN transformed proportions.")
   ), 
 
 # ----------------------------- ASSOCIATION DATAFRAME: Attribute means--------
@@ -785,11 +982,7 @@ exp2.association <- data.frame(
     paste( round( mean( attrb.sing$back.trans), 2), " (", round( sd( attrb.sing$back.trans), 2), ")", sep = ""),
     paste( round( mean( attrb.plur$back.trans), 2), " (", round( sd( attrb.plur$back.trans), 2), ")", sep = ""),
     paste( round( mean( attrb$back.trans), 2)),
-    paste("SD in parens." ),
-    "",
-    paste( p.att.ass,  get_stars( p.att.ass)),
-    paste( p.ass.unr,  get_stars( p.att.unr)),
-    paste( p.att.unr,  get_stars( p.att.unr))
+    paste("SD in parens." )
   ),
 
 # ----------------------------- ASSOCIATION DATAFRAME: Associate means--------
@@ -797,10 +990,6 @@ exp2.association <- data.frame(
     paste( round( mean( assoc.sing$back.trans), 2), " (", round( sd( assoc.sing$back.trans), 2), ")", sep = ""),
     paste( round( mean( assoc.plur$back.trans), 2), " (", round( sd( assoc.plur$back.trans), 2), ")", sep = ""),
     paste( round( mean( assoc$back.trans), 2)),
-    "",
-    "",
-    "",
-    "",
     ""
   ),
 
@@ -809,11 +998,7 @@ exp2.association <- data.frame(
     paste( round( mean( unrel.sing$back.trans), 2), " (", round( sd( unrel.sing$back.trans), 2), ")", sep = ""),
     paste( round( mean( unrel.plur$back.trans), 2), " (", round( sd( unrel.plur$back.trans), 2), ")", sep = ""),
     paste( round( mean( unrel$back.trans), 2)),
-    "",
-    "",
-    "",
-    "",
-    "" 
+    ""
   ))
 # ----------------------------- ASSOCIATION DATAFRAME: Write to excel ---------------
 
@@ -824,12 +1009,135 @@ write.xlsx(exp2.integration, file ="output/table13_PROP_association_proportions.
 sink("output/table13_PROP_association_proportions_ANOVA.txt")
 cat("Table 13: Experiment 2 Property Item Mean Association Proportions ANOVA", format( Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
 
-cat("Attrb vs. Assoc")
-print( aov.att.ass)
-cat( br, br, line, br, br, "Assoc. vs. Unrel", br, br)
-print( aov.ass.unr)
-cat( br, br, line, br, br, "Attrb vs. Unrel", br, br)
-print( aov.att.unr)
+# ----------------------------- ASSOCIATION DATAFRAME: ANOVAS ---------------
+
+# ================== PROP. ASSOCIATION NORMING ============
+source( file = "clear_and_setup.R")
+source( file = "semrel2_PROP_ratings_data_read_in_dataframe.R")
+cat("PROP: ASSOCIATION NORMING ")
+d0    <-  aov( AssArc.H.L ~ related * n2num + Error(item /related * n2num), data = d.prop)
+d0.s <-summary(d0)
+
+dfr1 <- (d0.s[[3]][[1]][["Df"]][[1]])
+dfr2 <- (d0.s[[3]][[1]][["Df"]][[2]])
+f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
+m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
+p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+dfr1.an <-          (d0.s[[5]][[1]][["Df"]][[1]])
+dfr2.an <-          (d0.s[[5]][[1]][["Df"]][[2]])
+f.an    <- zapsmall( d0.s[[5]][[1]][["F value"]][1], digits = 4)
+m.an    <- zapsmall( d0.s[[5]][[1]][["Mean Sq"]][2], digits = 4)
+p.an    <- zapsmall( d0.s[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+ass.norm1  <- paste("A 3 (relatedness) $\\times$ 2 (local noun number) ANOVA on the data revealed a main effect of relatedness (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),") and a marginally significant interaction between relatedness and local noun number (\\textit{F}(", dfr1.an,",",dfr2.an,")=",f.an,", \\textit{MS$_e$}=",m.an,", \\textit{p}", get_range.tex(p.an),").", sep="")
+
+cat(line,br)
+cat("FULL 3X2", br)
+print(d0.s)
+
+d0   <- aov(AssArc.H.L ~ n2num + Error(item / n2num), data = attrb.assoc)
+d0.s  <- summary(d0)
+dfr1 <- (d0.s[[2]][[1]][["Df"]][[1]])
+dfr2 <- (d0.s[[2]][[1]][["Df"]][[2]])
+f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
+m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
+p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+ass.norm2   <- paste(ass.norm1, " Analyses of singular vs. plural conditions for each combination of the levels of relatedness revealed a  significant effect of local noun number when attributes were compared with associates items (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),".", sep = "")
+
+cat(line,br)
+cat("ATTRIBUTES & ASSOCIATION", br)
+print(d0.s)
+
+d0   <- aov(AssArc.H.L ~ related + Error(item / related), data = attrb.assoc.sing)
+d0.s  <- summary(d0)
+dfr1 <- (d0.s[[2]][[1]][["Df"]][[1]])
+dfr2 <- (d0.s[[2]][[1]][["Df"]][[2]])
+f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
+m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
+p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+ass.norm3   <- paste(ass.norm2, ": Association proportions for singular attributes were marginally significantly larger than for singular associates items  (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),",", sep = "")
+
+cat(line,br)
+cat("ATTRIBUTES & ASSOCIATION SINGULAR", br)
+print(d0.s)
+
+d0   <- aov(AssArc.H.L ~ n2num + Error(item / n2num), data = assoc.unrel)
+d0.s  <- summary(d0)
+
+dfr1 <- (d0.s[[2]][[1]][["Df"]][[1]])
+dfr2 <- (d0.s[[2]][[1]][["Df"]][[2]])
+f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
+m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
+p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+
+ass.norm4   <- paste(ass.norm3, ".  A comparison of associates and unrelated items revealed a main effect of relatedness (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),", with larger proportions for associates than for unrelated items.", sep = "")
+
+cat(line,br)
+cat("ASSOCIATION & UNRELATED", br)
+print(d0.s)
+
+d0   <- aov(AssArc.H.L ~ related + Error(item / related), data = assoc.unrel.sing)
+d0.s  <- summary(d0)
+dfr1 <- (d0.s[[2]][[1]][["Df"]][[1]])
+dfr2 <- (d0.s[[2]][[1]][["Df"]][[2]])
+f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
+m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
+p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+ass.norm5   <- paste(ass.norm4, ". Association proportions for singular associates were significantly larger than for singular unrelated items  (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),",", sep = "")
+
+cat(line,br)
+cat("ASSOCIATION & UNRELATED SINGULAR", br)
+print(d0.s)
+
+d0   <- aov(AssArc.H.L ~ n2num + Error(item / n2num), data = attrb.unrel)
+d0.s  <- summary(d0)
+dfr1 <- (d0.s[[2]][[1]][["Df"]][[1]])
+dfr2 <- (d0.s[[2]][[1]][["Df"]][[2]])
+f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
+m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
+p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+ass.norm6   <- paste(ass.norm5, " A comparison of attributes and unrelated items revealed a marginally signifcant main effect of relatedness (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),", in that attributes had higher association proportions than unrelated items.", sep = "")
+
+cat(line,br)
+cat("ATTRIBUTE & UNRELATED", br)
+print(d0.s)
+
+d0   <- aov(AssArc.H.L ~ related + Error(item / related), data = attrb.unrel.sing)
+d1   <- aov(AssArc.H.L ~ related + Error(item / related), data = attrb.unrel.plur)
+d0.s  <- summary(d0)
+dfr1 <- (d0.s[[2]][[1]][["Df"]][[1]])
+dfr2 <- (d0.s[[2]][[1]][["Df"]][[2]])
+f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
+m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
+p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+d1.s  <- summary(d1)
+dfr1.p <-          (d1.s[[2]][[1]][["Df"]][[1]])
+dfr2.p <-          (d1.s[[2]][[1]][["Df"]][[2]])
+f.p    <- zapsmall( d1.s[[2]][[1]][["F value"]][1], digits = 4)
+m.p    <- zapsmall( d1.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
+p.p    <- zapsmall( d1.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+
+
+ass.norm7  <- paste(ass.norm6, ". Association proportions for singular attributes were significantly larger than for singular unrelated items  (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),", as were proportions for plural attributes (\\textit{F}(", dfr1.p,",",dfr2.p,")=",f.p,", \\textit{MS$_e$}=",m.p,", \\textit{p}", get_range.tex(p.p),".", sep = "")
+
+cat(line,br)
+cat("ATTRIBUTE & UNRELATED SING", br)
+print(d0.s)
+
+cat(line,br)
+cat("ATTRIBUTE & UNRELATED PLUR", br)
+print(d1.s)
+
+cat(line, br)
+cat(ass.norm7)
 
 sink()
 

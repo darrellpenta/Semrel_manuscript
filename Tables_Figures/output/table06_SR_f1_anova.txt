@@ -1,4 +1,4 @@
-Table 6: F1 2 x 2 x 2 ANOVASep. 05, 2015 at 10:38:19
+Table 6: F1 2 x 2 x 2 ANOVASep. 10, 2015 at 16:50:16
 
 Error: subj
            Df  Sum Sq Mean Sq F value Pr(>F)

@@ -1,9 +1,14 @@
 Table 09: Experiment 2 CAT Critical Item Mean Relatedness Ratings ANOVA
-Sep. 05, 2015 at 10:38:20
+Sep. 10, 2015 at 16:50:17
+FULL ANOVA 
 
 Error: item
           Df Sum Sq Mean Sq F value Pr(>F)
 Residuals 23  26.59   1.156               
+
+Error: n2num
+      Df  Sum Sq Mean Sq
+n2num  1 0.07096 0.07096
 
 Error: item:related
           Df Sum Sq Mean Sq F value   Pr(>F)    
@@ -12,6 +17,12 @@ Residuals 23  25.62    1.11
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-Error: Within
+Error: item:n2num
           Df Sum Sq Mean Sq F value Pr(>F)
-Residuals 48  10.85  0.2261               
+Residuals 23  4.577   0.199               
+
+Error: item:related:n2num
+              Df Sum Sq Mean Sq F value Pr(>F)
+related:n2num  1  0.011 0.01063   0.039  0.844
+Residuals     23  6.192 0.26922               
+A 2 (relatedness) $\times$ 2 (local noun number) ANOVA on the data revealed a main effect of relatedness (\textit{F}(1,23)=81.53, \textit{MS$_e$}=1.1138, \textit{p}\textless.001). There was no main effect of local noun number, nor an interaction between the two factors.

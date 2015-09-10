@@ -20,9 +20,10 @@ cat(rel.norm)
 
 
 # ================== INTEGRATION NORMING ============
+
 source( file = "clear_and_setup.R")
 source( file = "semrel_ratings_data_read_in_dataframe.R")
-cat("INTEGRATION NORMING PARA")
+cat("INTEG NORMING PARA")
 d0    <-  aov( Integrated ~ (integrated + related + n2num)^3 + Error(item /(integrated + related + n2num)^3), data = d.sr)
 
 d0.s <-summary(d0) 
@@ -38,27 +39,133 @@ f.r    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
 m.r    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
 p.r    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-int.norm.1  <- paste( "A 2 (integration) $\\times$ 2 (relatedness) $\\times$ 2 (local noun number) ANOVA on the data revealed a main effect of integration (\\textit{F}(", dfr1.i,",",dfr2.i,")=",f.i,", \\textit{MS$_e$}=",m.i,", \\textit{p}", get_range.tex(p.i),"), and a main effect of relatedness (\\textit{F}(", dfr1.r,",",dfr2.r,")=",f.i,", \\textit{MS$_e$}=",m.r,", \\textit{p}", get_range.tex(p.r),"). There were no other reliable effects or interactions among the factors.", sep = "")
+int.norm1  <- paste( "A 2 (integration) $\\times$ 2 (relatedness) $\\times$ 2 (local noun number) ANOVA on the data revealed a main effect of integration (\\textit{F}(", dfr1.i,",",dfr2.i,")=",f.i,", \\textit{MS$_e$}=",m.i,", \\textit{p}", get_range.tex(p.i),"), and a main effect of relatedness (\\textit{F}(", dfr1.r,",",dfr2.r,")=",f.i,", \\textit{MS$_e$}=",m.r,", \\textit{p}", get_range.tex(p.r),"). There was no interactions among the factors.", sep = "")
 
 
-
-aov.int       <-  aov(Integrated ~ related * n2num + Error(item / related * n2num ), data = integ)
-aov.unint     <-  aov(Integrated ~ related * n2num + Error(item / related * n2num ), data = unint)
-
-d0.s <-summary(aov.int) 
+d0   <- aov(Integrated ~ related + Error(item / related), data = d.sr)
+d0.s  <- summary(d0)
 dfr1 <- (d0.s[[2]][[1]][["Df"]][[1]])
 dfr2 <- (d0.s[[2]][[1]][["Df"]][[2]])
 f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-d1.s <-summary(aov.int) 
+int.norm2   <- paste(int.norm1, " Collapsing across local noun number, related items were rated significantly more integrated than unrelated items (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),"); ", sep = "")
 
-dfr1.r <- (d1.s[[3]][[1]][["Df"]][[1]])
-dfr2.r <- (d1.s[[3]][[1]][["Df"]][[2]])
-f.r    <- zapsmall( d1.s[[3]][[1]][["F value"]][1], digits = 4)
-m.r    <- zapsmall( d1.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
-p.r    <- zapsmall( d1.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+
+d0   <- aov(Integrated ~ related + Error(item / related), data = integ.sing)
+d0.s  <- summary(d0)
+dfr1 <- (d0.s[[2]][[1]][["Df"]][[1]])
+dfr2 <- (d0.s[[2]][[1]][["Df"]][[2]])
+f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
+m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
+p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+int.norm3   <- paste(int.norm2, " pairwise comparisons revealed that integration ratings were significantly larger for related items than for unrelated items for integrated-singular items (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),"), ", sep = "")
+                     
+d0   <- aov(Integrated ~ related + Error(item / related), data = integ.plur)
+d0.s  <- summary(d0)
+dfr1 <- (d0.s[[2]][[1]][["Df"]][[1]])
+dfr2 <- (d0.s[[2]][[1]][["Df"]][[2]])
+f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
+m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
+p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+int.norm4  <- paste(int.norm3, "integrated-plural items (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),")", sep = "")
+
+
+d0   <- aov(Integrated ~ related + Error(item / related), data = unint.sing)
+d0.s  <- summary(d0)
+dfr1 <- (d0.s[[2]][[1]][["Df"]][[1]])
+dfr2 <- (d0.s[[2]][[1]][["Df"]][[2]])
+f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
+m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
+p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+int.norm5  <- paste(int.norm4, "unintegrated-singular items (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),")", sep = "")
+
+d0   <- aov(Integrated ~ related + Error(item / related), data = unint.plur)
+d0.s  <- summary(d0)
+dfr1 <- (d0.s[[2]][[1]][["Df"]][[1]])
+dfr2 <- (d0.s[[2]][[1]][["Df"]][[2]])
+f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
+m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
+p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+int.norm6  <- paste(int.norm5, "and unintegrated plural items (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),")", sep = "")
+
+cat(int.norm6)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ================== ASSOCIATION NORMING ============
+source( file = "clear_and_setup.R")
+source( file = "semrel_ratings_data_read_in_dataframe.R")
+cat("ASSOCIATION NORMING PARA")
+d0    <-  aov( AssArc.H.L ~  related * n2num + Error(item /(related * n2num)), data = d.sr)
+
+d0.s <-summary(d0) 
+dfr1.r <- (d0.s[[2]][[1]][["Df"]][[1]])
+dfr2.r <- (d0.s[[2]][[1]][["Df"]][[2]])
+f.r    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
+m.r    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
+p.r    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+dfr1.n <- (d0.s[[3]][[1]][["Df"]][[1]])
+dfr2.n <- (d0.s[[3]][[1]][["Df"]][[2]])
+f.n    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
+m.n    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
+p.n    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+dfr1.rn <- (d0.s[[4]][[1]][["Df"]][[1]])
+dfr2.rn <- (d0.s[[4]][[1]][["Df"]][[2]])
+f.rn    <- zapsmall( d0.s[[4]][[1]][["F value"]][1], digits = 4)
+m.rn    <- zapsmall( d0.s[[4]][[1]][["Mean Sq"]][2], digits = 4)
+p.rn    <- zapsmall( d0.s[[4]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+ass.norm.1  <- paste( "A 2 (relatedness) $\\times$ 2 (local noun number) ANOVA on the data revealed a main effect of relatedness (\\textit{F}(", dfr1.r,",",dfr2.r,")=",f.r,", \\textit{MS$_e$}=",m.r,", \\textit{p}", get_range.tex(p.r),"),  a main effect of local noun number (\\textit{F}(", dfr1.n,",",dfr2.n,")=",f.n,", \\textit{MS$_e$}=",m.n,", \\textit{p}", get_range.tex(p.n),"), and a significant interaction between the relatedness and local noun number (\\textit{F}(", dfr1.rn,",",dfr2.rn,")=",f.rn,", \\textit{MS$_e$}=",m.rn,", \\textit{p}", get_range.tex(p.rn),").", sep = "")
+
+d0    <-  aov( AssArc.H.L ~   n2num + Error(item / n2num), data = relat)
+
+d0.s <-summary(d0) 
+dfr1 <- (d0.s[[2]][[1]][["Df"]][[1]])
+dfr2 <- (d0.s[[2]][[1]][["Df"]][[2]])
+f   <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
+m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
+p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+ass.norm.2 <-paste(ass.norm.1, "The main effect of n2num and the interaction are being driven by the difference in association for related singular versus related plural items (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),").", ssep = "")
+
+cat(ass.norm.2)
+
+# aov.1       <-  aov(Integrated ~ integrated * related + Error(item /integrated * related ), data = d.sr)
+# 
+# d0.s <-summary(aov.1) 
+# dfr1 <- (d0.s[[2]][[1]][["Df"]][[1]])
+# dfr2 <- (d0.s[[2]][[1]][["Df"]][[2]])
+# f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
+# m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
+# p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+# 
+# d1.s <-summary(aov.2) 
+# 
+# dfr1.r <- (d1.s[[3]][[1]][["Df"]][[1]])
+# dfr2.r <- (d1.s[[3]][[1]][["Df"]][[2]])
+# f.r    <- zapsmall( d1.s[[3]][[1]][["F value"]][1], digits = 4)
+# m.r    <- zapsmall( d1.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
+# p.r    <- zapsmall( d1.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
 
 
 

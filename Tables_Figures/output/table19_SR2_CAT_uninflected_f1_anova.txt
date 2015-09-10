@@ -1,4 +1,4 @@
-Table 19: CAT UNINFLECTED F1 2 x 2 ANOVASep. 05, 2015 at 10:39:16
+Table 19: CAT UNINFLECTED F1 2 x 2 ANOVASep. 10, 2015 at 16:51:04
 
 Error: subject
            Df  Sum Sq  Mean Sq F value Pr(>F)

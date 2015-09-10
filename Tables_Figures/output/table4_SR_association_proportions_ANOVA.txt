@@ -1,17 +1,51 @@
 Table 04: Experiment 1 Critical Item Mean Head-to-Local Association Proportions ANOVA
-Sep. 05, 2015 at 10:38:12
+Sep. 10, 2015 at 16:50:10
+ASSOCIATION NORMING PARAFULL ANOVA 
 
 Error: item
-          Df Sum Sq  Mean Sq F value Pr(>F)
-Residuals 23 0.1856 0.008069               
+          Df Sum Sq Mean Sq F value Pr(>F)
+Residuals 23  3.805  0.1654               
 
 Error: item:related
-          Df  Sum Sq Mean Sq F value  Pr(>F)   
-related    1 0.09631 0.09631   11.94 0.00215 **
-Residuals 23 0.18559 0.00807                   
+          Df Sum Sq Mean Sq F value   Pr(>F)    
+related    1  3.020  3.0200   18.26 0.000285 ***
+Residuals 23  3.805  0.1654                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Error: item:n2num
+          Df Sum Sq Mean Sq F value Pr(>F)  
+n2num      1 0.5852  0.5852   7.167 0.0135 *
+Residuals 23 1.8780  0.0817                 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Error: item:related:n2num
+              Df Sum Sq Mean Sq F value Pr(>F)  
+related:n2num  1 0.5852  0.5852   7.167 0.0135 *
+Residuals     23 1.8780  0.0817                 
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Error: Within
-           Df Sum Sq  Mean Sq F value Pr(>F)
-Residuals 144 0.3177 0.002206               
+          Df    Sum Sq   Mean Sq F value Pr(>F)
+Residuals 96 7.233e-29 7.534e-31               
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+RELATED ITEMS ANOVA 
+
+Error: item
+          Df Sum Sq Mean Sq F value Pr(>F)
+Residuals 23   7.61  0.3308               
+
+Error: item:n2num
+          Df Sum Sq Mean Sq F value Pr(>F)  
+n2num      1  1.170  1.1704   7.167 0.0135 *
+Residuals 23  3.756  0.1633                 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Error: Within
+          Df    Sum Sq   Mean Sq F value Pr(>F)
+Residuals 48 1.191e-28 2.482e-30               
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+A 2 (relatedness) $\times$ 2 (local noun number) ANOVA on the data revealed a main effect of relatedness (\textit{F}(1,23)=18.256, \textit{MS$_e$}=0.16542, \textit{p}\textless.001),  a main effect of local noun number (\textit{F}(1,23)=7.167, \textit{MS$_e$}=0.08165, \textit{p}\textless.05), and a significant interaction between the relatedness and local noun number (\textit{F}(1,23)=7.167, \textit{MS$_e$}=0.08165, \textit{p}\textless.05). The main effect of n2num and the interaction are being driven by the difference in association for related singular versus related plural items (\textit{F}( 1 , 23 )= 7.167 , \textit{MS$_e$}= 0.1633 , \textit{p} \textless.05 ). 

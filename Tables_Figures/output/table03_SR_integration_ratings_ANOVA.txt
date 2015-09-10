@@ -1,6 +1,6 @@
 Table 03: Experiment 1 Critical Item Mean Integration Ratings ANOVA
-Sep. 05, 2015 at 10:38:12
-Integrated vs. Unintegrated 
+Sep. 10, 2015 at 16:50:10
+FULL 2x2x2 
 
 Error: item
           Df Sum Sq Mean Sq F value Pr(>F)
@@ -13,48 +13,104 @@ Residuals  23   8.06    0.35
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
+Error: item:related
+          Df Sum Sq Mean Sq F value   Pr(>F)    
+related    1 210.80  210.80   224.8 2.31e-13 ***
+Residuals 23  21.57    0.94                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Error: item:n2num
+          Df Sum Sq Mean Sq F value Pr(>F)
+n2num      1  0.001  0.0012   0.005  0.942
+Residuals 23  5.126  0.2229               
+
+Error: item:integrated:related
+                   Df Sum Sq Mean Sq F value Pr(>F)
+integrated:related  1  0.000 0.00047   0.002  0.961
+Residuals          23  4.452 0.19358               
+
+Error: item:integrated:n2num
+                 Df Sum Sq Mean Sq F value Pr(>F)
+integrated:n2num  1 0.0005 0.00053   0.004  0.948
+Residuals        23 2.8619 0.12443               
+
+Error: item:related:n2num
+              Df Sum Sq Mean Sq F value Pr(>F)
+related:n2num  1  0.131  0.1313   0.404  0.531
+Residuals     23  7.472  0.3249               
+
+Error: item:integrated:related:n2num
+                         Df Sum Sq Mean Sq F value Pr(>F)
+integrated:related:n2num  1  0.062 0.06235   0.422  0.522
+Residuals                23  3.397 0.14770               
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+COLLAPSING OVER LOCAL NOUN 
+
+Error: item
+          Df Sum Sq Mean Sq F value Pr(>F)
+Residuals 23  22.32  0.9705               
+
+Error: item:related
+          Df Sum Sq Mean Sq F value   Pr(>F)    
+related    1 210.80  210.80   224.8 2.31e-13 ***
+Residuals 23  21.57    0.94                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
 Error: Within
            Df Sum Sq Mean Sq F value Pr(>F)
-Residuals 144  255.9   1.777               
-
- 
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
- 
- Integrated 
- 
+Residuals 144  96.25  0.6684               
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+INTEGRATED SINGULAR 
 
 Error: item
           Df Sum Sq Mean Sq F value Pr(>F)
-Residuals 23  18.02  0.7835               
+Residuals 23  10.05  0.4371               
 
 Error: item:related
           Df Sum Sq Mean Sq F value   Pr(>F)    
-related    1 105.71  105.71   155.1 1.05e-11 ***
-Residuals 23  15.68    0.68                     
+related    1   57.4    57.4   145.1 2.05e-11 ***
+Residuals 23    9.1     0.4                     
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-Error: Within
-          Df Sum Sq Mean Sq F value Pr(>F)
-Residuals 48  6.589  0.1373               
-
- 
- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
- 
- Unntegrated 
- 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+INTEGRATED PLURAL 
 
 Error: item
           Df Sum Sq Mean Sq F value Pr(>F)
-Residuals 23  12.37  0.5376               
+Residuals 23  10.54  0.4585               
 
 Error: item:related
           Df Sum Sq Mean Sq F value   Pr(>F)    
-related    1 105.09  105.09   233.7 1.54e-13 ***
-Residuals 23  10.34    0.45                     
+related    1   48.5   48.50   107.2 3.94e-10 ***
+Residuals 23   10.4    0.45                     
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+UNINTEGRATED SINGULAR 
 
-Error: Within
+Error: item
           Df Sum Sq Mean Sq F value Pr(>F)
-Residuals 48  12.46  0.2597               
+Residuals 23  5.742  0.2497               
+
+Error: item:related
+          Df Sum Sq Mean Sq F value   Pr(>F)    
+related    1  53.36   53.36   133.6 4.64e-11 ***
+Residuals 23   9.18    0.40                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+UNINTEGRATED PLURAL 
+
+Error: item
+          Df Sum Sq Mean Sq F value Pr(>F)
+Residuals 23  12.03  0.5232               
+
+Error: item:related
+          Df Sum Sq Mean Sq F value   Pr(>F)    
+related    1  51.73   51.73     145 2.06e-11 ***
+Residuals 23   8.20    0.36                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+A 2 (integration) $\times$ 2 (relatedness) $\times$ 2 (local noun number) ANOVA on the data revealed a main effect of integration (\textit{F}(1,23)=184.48, \textit{MS$_e$}=0.3506, \textit{p}\textless.001), and a main effect of relatedness (\textit{F}(1,23)=184.48, \textit{MS$_e$}=0.9377, \textit{p}\textless.001). There was no interactions among the factors. Collapsing across local noun number, related items were rated significantly more integrated than unrelated items (\textit{F}(1,23)=224.8, \textit{MS$_e$}=0.9377, \textit{p}\textless.001);  pairwise comparisons revealed that integration ratings were significantly larger for related items than for unrelated items for integrated-singular items (\textit{F}(1,23)=145.09, \textit{MS$_e$}=0.3956, \textit{p}\textless.001), integrated-plural items (\textit{F}(1,23)=107.24, \textit{MS$_e$}=0.4523, \textit{p}\textless.001)unintegrated-singular items (\textit{F}(1,23)=133.63, \textit{MS$_e$}=0.3993, \textit{p}\textless.001)and unintegrated plural items (\textit{F}(1,23)=145.04, \textit{MS$_e$}=0.3567, \textit{p}\textless.001)
