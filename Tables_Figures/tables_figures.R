@@ -38,7 +38,7 @@ write.xlsx( exp1.example, file = "output/table01_example_stimulus.xlsx", col.nam
 source( file = "clear_and_setup.R")
 source( file = "semrel_ratings_data_read_in_dataframe.R")
 
-aov.rel <- summary( aov( RelatedHL ~ related + Error(item / related ), data = d.sr))
+aov.rel <- summary( aov( RelatedHL ~ related * n2num + Error(item / related * n2num), data = d.sr))
 p       <- zapsmall( aov.rel[[2]][[1]][["Pr(>F)"]][1], digits = 6)
 
 exp1.related <- data.frame(
@@ -61,13 +61,7 @@ exp1.related <- data.frame(
     paste( round( mean( unrel.plur$RelatedHL), 2), " (", round( sd( unrel.plur$RelatedHL), 2), ")", sep = ""),
     paste( round( mean( unrel$RelatedHL), 2)),
     paste(" ") 
-  ),
-  
-  pval =                 c(
-    paste(" ", sep = ""),
-    paste(" ", sep = ""),
-    paste( p,  get_stars( p)),
-    paste(" "))
+  )
 )
 
 
@@ -81,7 +75,7 @@ sink()
 # -------------------- TABLE 03 SEMREL: INTEGRATION ------------------------
 # ----------------------------- INTEGRATION DATAFRAME: ANOVAs ---------------
 
-aov.int.unint <- summary( aov(Integrated ~ integrated + Error(item / integrated ), data = d.sr))
+aov.int.unint <- summary( aov(Integrated ~ integrated * related * n2num + Error(item / integrated * related * n2num ), data = d.sr))
 p.int.unint   <- zapsmall( aov.int.unint[[2]][[1]][["Pr(>F)"]][1], digits = 6)
 
 aov.int       <- summary( aov(Integrated ~ related + Error(item / related ), data = integ))
@@ -100,7 +94,6 @@ exp1.integration <- data.frame(
     "Unintegrated",
     " ",
     " ",
-    paste("Int. vs. Unint. p-val:", p.int.unint,  get_stars( p.int.unint)),
     paste("Note: Scale was 1 (not linked) to 7 (tightly linked).")
   ),
   
@@ -111,10 +104,8 @@ exp1.integration <- data.frame(
     "Singular",
     "Plural", 
     "Mean",
-    " ",
     paste("SD in parens.")
   ),
-
 # ----------------------------- INTEGRATION DATAFRAME: Related  ------
   Related =            c(
     paste( round( mean( relat.int.sing$Integrated), 2),  " (", round( sd( relat.int.sing$Integrated), 2),  ")", sep = ""),
@@ -123,10 +114,8 @@ exp1.integration <- data.frame(
     paste( round( mean( relat.unint.sing$Integrated), 2)," (", round( sd( relat.unint.sing$Integrated), 2), ")", sep = ""),
     paste( round( mean(relat.unint.plur$Integrated), 2), " (", round( sd( relat.unint.plur$Integrated), 2), ")", sep = ""),
     paste( round( mean(unint.relat$Integrated), 2)),
-    " ",
     " "
   ),
-
 # ----------------------------- INTEGRATION DATAFRAME: Unelated--------  
   Unrelated =            c(
     paste( round( mean( unrel.int.sing$Integrated), 2), " (", round( sd( unrel.int.sing$Integrated), 2), ")", sep = ""),
@@ -135,20 +124,8 @@ exp1.integration <- data.frame(
     paste( round( mean( unrel.unint.sing$Integrated), 2)," (", round( sd( unrel.unint.sing$Integrated), 2), ")", sep = ""),
     paste( round( mean(unrel.unint.plur$Integrated), 2), " (", round( sd( unrel.unint.plur$Integrated), 2), ")", sep = ""),
     paste( round( mean(unint.unrel$Integrated), 2)),
-    " ",
-    " "),
-  
-  pval =   c(
-    " ",
-    " ",
-    paste( p.int,  get_stars( p.int)),
-    " ",
-    " ",
-    paste( p.unint,  get_stars( p.unint)),
-    " ",
-    " "
-  )
-)
+    " "))
+
 # ----------------------------- INTEGRATION DATAFRAME: Write to excel ---------------
 write.xlsx(exp1.integration, file ="output/table03_SR_integration_ratings.xlsx", col.names = TRUE, row.names = TRUE, append = FALSE)
 # ----------------------------- INTEGRATION ANOVA SUMMARIES: Set up & Print ---------------
@@ -176,14 +153,12 @@ exp1.assoc <- data.frame(
     "Plural",
     paste("Note: Back transofmred proportions of ASIN transformed proportions.")    
   ),
-
 # ----------------------------- INTEGRATION DATAFRAME: Related --------  
   Related =     c(
     paste( round( mean( relat.sing$back.trans), 2), " (", round( sd( relat.sing$back.trans), 2), ")", sep = ""),
     paste( round( mean(relat.plur$back.trans), 2),  " (", round( sd( relat.plur$back.trans), 2), ")", sep = ""),
     paste("SD in parens.")   
   ),
-
 # ----------------------------- INTEGRATION DATAFRAME: Unrelated --------  
   Unrelated =   c(
     paste( round( mean( unrel.sing$back.trans), 2), " (", round( sd( unrel.sing$back.trans), 2), ")", sep = ""),
@@ -548,7 +523,7 @@ write.xlsx( exp2.prop.example, file = "output/table08_PROP_example_stimulus.xlsx
 source( file = "clear_and_setup.R")
 source( file = "semrel2_CAT_ratings_data_read_in_dataframe.R")
 # ----------------------------- RELATEDNESS DATAFRAME: ANOVAs -----------  
-aov.rel <- summary( aov( RelatedHL ~ related + Error(item / related ), data = d.cat))
+aov.rel <- summary( aov( RelatedHL ~ related * n2num + Error(item / related * n2num), data = d.cat))
 p       <- zapsmall( aov.rel[[2]][[1]][["Pr(>F)"]][1], digits = 6)
 # ----------------------------- RELATEDNESS DATAFRAME: Categories -----------  
 

@@ -1,9 +1,72 @@
 # =============================================== SEMREL1 ========================================
+sink(file = "documents/SEMREL_results_section.txt")
+# ================== RELATEDNESS NORMING ============
+source( file = "clear_and_setup.R")
+source( file = "semrel_ratings_data_read_in_dataframe.R")
+cat("RELATEDNESS NORMING PARA")
+d0    <-  aov( RelatedHL ~ related * n2num + Error(item /related * n2num), data = d.sr)
+
+d0.s <-summary(d0) 
+dfr1 <- (d0.s[[3]][[1]][["Df"]][[1]])
+dfr2 <- (d0.s[[3]][[1]][["Df"]][[2]])
+f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
+m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
+p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
+rel.norm  <- paste(
+  "A 2 (relatedness) $\\times$ 2 (local noun number) ANOVA on the data revealed a main effect of relatedness (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),"). There was no main effect of local noun number, nor an interaction between the two factors.", sep="" )
+cat(rel.norm)
+
+
+
+
+# ================== INTEGRATION NORMING ============
+source( file = "clear_and_setup.R")
+source( file = "semrel_ratings_data_read_in_dataframe.R")
+cat("INTEGRATION NORMING PARA")
+d0    <-  aov( Integrated ~ (integrated + related + n2num)^3 + Error(item /(integrated + related + n2num)^3), data = d.sr)
+
+d0.s <-summary(d0) 
+dfr1.i <- (d0.s[[2]][[1]][["Df"]][[1]])
+dfr2.i <- (d0.s[[2]][[1]][["Df"]][[2]])
+f.i    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
+m.i    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
+p.i    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+dfr1.r <- (d0.s[[3]][[1]][["Df"]][[1]])
+dfr2.r <- (d0.s[[3]][[1]][["Df"]][[2]])
+f.r    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
+m.r    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
+p.r    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+int.norm.1  <- paste( "A 2 (integration) $\\times$ 2 (relatedness) $\\times$ 2 (local noun number) ANOVA on the data revealed a main effect of integration (\\textit{F}(", dfr1.i,",",dfr2.i,")=",f.i,", \\textit{MS$_e$}=",m.i,", \\textit{p}", get_range.tex(p.i),"), and a main effect of relatedness (\\textit{F}(", dfr1.r,",",dfr2.r,")=",f.i,", \\textit{MS$_e$}=",m.r,", \\textit{p}", get_range.tex(p.r),"). There were no other reliable effects or interactions among the factors.", sep = "")
+
+
+
+aov.int       <-  aov(Integrated ~ related * n2num + Error(item / related * n2num ), data = integ)
+aov.unint     <-  aov(Integrated ~ related * n2num + Error(item / related * n2num ), data = unint)
+
+d0.s <-summary(aov.int) 
+dfr1 <- (d0.s[[2]][[1]][["Df"]][[1]])
+dfr2 <- (d0.s[[2]][[1]][["Df"]][[2]])
+f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
+m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
+p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+d1.s <-summary(aov.int) 
+
+dfr1.r <- (d1.s[[3]][[1]][["Df"]][[1]])
+dfr2.r <- (d1.s[[3]][[1]][["Df"]][[2]])
+f.r    <- zapsmall( d1.s[[3]][[1]][["F value"]][1], digits = 4)
+m.r    <- zapsmall( d1.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
+p.r    <- zapsmall( d1.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+
+
 # ================== SEMREL SUMMARY PARAGRAPH ============
 source( file = "clear_and_setup.R")
 source( file = "semrel_error_data_read_in_dataframe.R")
 
-sink(file = "documents/SEMREL_results_section.txt")
+
 cat("SEMREL RESULTS",br)
 cat(line,br,line,br)
 summary <- paste("Accross all ",length( d.sr$maincode)," trials, there were ", sum( d.sr$corrd), " correctly inflected respones, ", sum( d.sr$errd), " agreement errors, ", sum( d.sr$unind), " uninflected responses, ", sum( d.sr$misc), " miscellaneous cases, and ",sum( d.sr$noresp), " trials with no response.", sep="")
@@ -22,7 +85,7 @@ m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
 
 
-main_effect1 <-cat("Participants produced more agreement errors in the plural local noun conditions than in the singular local noun conditions. Aditionally, more agreement errors were made for related preambles compared to unrelated preambles. Crucially, there was a two-way interaction bewteen local noun number and relatedness, and the head-local mismatch effect was larger for related cases (\\textit{F$_1$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,",\\textit{p}",get_range.tex( p),"; ", sep="" ) 
+main_effect1 <-cat("Participants produced more agreement errors in the plural local noun conditions than in the singular local noun conditions. Additionally, more agreement errors were made for related preambles compared to unrelated preambles. Crucially, there was a two-way interaction between local noun number and relatedness, and the head-local mismatch effect was larger for related cases (\\textit{F$_1$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,",\\textit{p}",get_range.tex( p),"; ", sep="" ) 
 # ================== RELATED MISMATCH F2 ==========
 source(file = "semrel_related_f2_ANOVAS_read_in_dataframe.R")
 d0   <- aov(error ~ n2num + Error(item / n2num), data = relat)
@@ -55,7 +118,7 @@ dfr2 <- (d0.s[[2]][[1]][["Df"]][[2]])
 f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
-main_effect4 <-paste(main_effect3,"\\textit{F$_2$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),". There was no main effect of integration, nor a reliable interaciton between integration and any other factor.", sep="" )
+main_effect4 <-paste(main_effect3,"\\textit{F$_2$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),". There was no main effect of integration, nor a reliable interaction between integration and any other factor.", sep="" )
 cat(main_effect4)
 
 # =============================================== SEMREL1 : ALTENRATIVE ANALYSES ========================

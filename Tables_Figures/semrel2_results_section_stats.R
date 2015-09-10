@@ -1,9 +1,31 @@
 
 # ============================================== SEMREL 2 Part 1==========================================
+# ================= CAT. RELATEDNESS NORMING
+
+sink(file = "documents/SEMREL2_results_section.txt")
+# ================== RELATEDNESS NORMING ============
+source( file = "clear_and_setup.R")
+source( file = "semrel2_CAT_ratings_data_read_in_dataframe.R")
+cat("CAT: RELATEDNESS NORMING PARA")
+d0    <-  aov( RelatedHL ~ related * n2num + Error(item /related * n2num), data = d.cat)
+
+d0.s <-summary(d0) 
+dfr1 <- (d0.s[[3]][[1]][["Df"]][[1]])
+dfr2 <- (d0.s[[3]][[1]][["Df"]][[2]])
+f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
+m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
+p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
+rel.norm  <- paste(
+  "A 2 (relatedness) $\\times$ 2 (local noun number) ANOVA on the data revealed a main effect of relatedness (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),"). There was no main effect of local noun number, nor an interaction between the two factors.", sep="" )
+cat(rel.norm)
+
+
+
+
 source( file = "clear_and_setup.R")
 source( file = "semrel2_ALL_error_data_read_in_dataframe.R")
 
-sink(file = "documents/SEMREL2_results_section.txt")
+
 
 # ================== SUMMARY PARAGRAPH ============
 cat("SEMREL 2 RESULTS",br)
