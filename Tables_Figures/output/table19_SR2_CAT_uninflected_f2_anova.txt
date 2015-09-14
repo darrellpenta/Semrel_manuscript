@@ -1,4 +1,4 @@
-Table 19: CAT UNINFLECTED F2 2 x 2 ANOVASep. 10, 2015 at 16:51:05
+Table 19: CAT UNINFLECTED F2 2 x 2 ANOVASep. 14, 2015 at 17:33:09
        data    n    N      mean        sd          se
 1     gmean   96   96 5.5208333 3.9255685 0.400651653
 2     relat 1548 1548 0.1660207 0.3722194 0.009460489

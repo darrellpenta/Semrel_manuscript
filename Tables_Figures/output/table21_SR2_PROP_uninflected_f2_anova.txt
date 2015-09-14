@@ -1,4 +1,4 @@
-Table 21: PROP F2 UNINFLECTED 2 x 2 ANOVASep. 10, 2015 at 16:51:08
+Table 21: PROP F2 UNINFLECTED 2 x 2 ANOVASep. 14, 2015 at 17:33:12
 
 Error: item
           Df  Sum Sq Mean Sq F value Pr(>F)

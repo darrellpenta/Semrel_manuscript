@@ -1,5 +1,5 @@
 Table 13: Experiment 2 Property Item Mean Association Proportions ANOVA
-Sep. 10, 2015 at 16:50:18
+Sep. 14, 2015 at 17:32:23
 PROP: ASSOCIATION NORMING - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 FULL 3X2 
 
@@ -29,82 +29,59 @@ Residuals     46 1.5086 0.03280
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-ATTRIBUTES & ASSOCIATION 
+ATTRB & ASSOC 
 
 Error: item
           Df Sum Sq Mean Sq F value Pr(>F)
 Residuals 23  2.098 0.09122               
 
-Error: item:n2num
-          Df Sum Sq Mean Sq F value  Pr(>F)   
-n2num      1 0.4902  0.4902   8.075 0.00924 **
-Residuals 23 1.3963  0.0607                   
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-Error: Within
-          Df Sum Sq Mean Sq F value Pr(>F)
-Residuals 48  2.627 0.05474               
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-ATTRIBUTES & ASSOCIATION SINGULAR 
-
-Error: item
-          Df Sum Sq Mean Sq F value Pr(>F)
-Residuals 23  2.342  0.1018               
+Error: n2num
+      Df Sum Sq Mean Sq
+n2num  1 0.4902  0.4902
 
 Error: item:related
           Df Sum Sq Mean Sq F value Pr(>F)  
-related    1 0.1292 0.12917   3.085 0.0923 .
-Residuals 23 0.9631 0.04187                 
+related    1 0.2709 0.27094   4.746 0.0399 *
+Residuals 23 1.3131 0.05709                 
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-ASSOCIATION & UNRELATED 
-
-Error: item
-          Df Sum Sq Mean Sq F value Pr(>F)
-Residuals 23 0.5128 0.02229               
 
 Error: item:n2num
-          Df Sum Sq Mean Sq F value Pr(>F)  
-n2num      1 0.1269  0.1269   5.178 0.0325 *
-Residuals 23 0.5635  0.0245                 
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-Error: Within
           Df Sum Sq Mean Sq F value Pr(>F)
-Residuals 48  1.695 0.03531               
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-ASSOCIATION & UNRELATED SINGULAR 
+Residuals 23  1.396 0.06071               
 
-Error: item
-          Df Sum Sq Mean Sq F value Pr(>F)
-Residuals 23 0.5624 0.02445               
-
-Error: item:related
-          Df Sum Sq Mean Sq F value    Pr(>F)    
-related    1 0.5590  0.5590   22.86 0.0000803 ***
-Residuals 23 0.5624  0.0245                      
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Error: item:related:n2num
+              Df Sum Sq Mean Sq F value Pr(>F)
+related:n2num  1 0.0001 0.00015   0.003  0.955
+Residuals     23 1.0431 0.04535               
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-ATTRIBUTE & UNRELATED 
+ATTRB & UNREL 
 
 Error: item
           Df Sum Sq Mean Sq F value Pr(>F)
 Residuals 23  1.193 0.05186               
 
-Error: item:n2num
-          Df Sum Sq Mean Sq F value Pr(>F)  
-n2num      1 0.1183 0.11830   4.147 0.0534 .
-Residuals 23 0.6562 0.02853                 
+Error: n2num
+      Df Sum Sq Mean Sq
+n2num  1 0.1183  0.1183
+
+Error: item:related
+          Df Sum Sq Mean Sq F value   Pr(>F)    
+related    1  1.492  1.4925   28.78 0.000019 ***
+Residuals 23  1.193  0.0519                     
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-Error: Within
+Error: item:n2num
           Df Sum Sq Mean Sq F value Pr(>F)
-Residuals 48   3.46 0.07208               
+Residuals 23 0.6562 0.02853               
+
+Error: item:related:n2num
+              Df Sum Sq Mean Sq F value Pr(>F)  
+related:n2num  1 0.1183 0.11830   4.147 0.0534 .
+Residuals     23 0.6562 0.02853                 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 ATTRIBUTE & UNRELATED SING 
 
@@ -132,4 +109,59 @@ Residuals 23 0.7590  0.0330
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-A 3 (relatedness) $\times$ 2 (local noun number) ANOVA on the data revealed a main effect of relatedness (\textit{F}(2,46)=17.182, \textit{MS$_e$}=0.04375, \textit{p}\textless.001) and a marginally significant interaction between relatedness and local noun number (\textit{F}(2,46)=2.4935, \textit{MS$_e$}=0.0328, \textit{p}\textless.10). Analyses of singular vs. plural conditions for each combination of the levels of relatedness revealed a  significant effect of local noun number when attributes were compared with associates items (\textit{F}(1,23)=8.075, \textit{MS$_e$}=0.06071, \textit{p}\textless.01.: Association proportions for singular attributes were marginally significantly larger than for singular associates items  (\textit{F}(1,23)=3.0848, \textit{MS$_e$}=0.04187, \textit{p}\textless.10,.  A comparison of associates and unrelated items revealed a main effect of relatedness (\textit{F}(1,23)=5.178, \textit{MS$_e$}=0.024502, \textit{p}\textless.05, with larger proportions for associates than for unrelated items.. Association proportions for singular associates were significantly larger than for singular unrelated items  (\textit{F}(1,23)=22.862, \textit{MS$_e$}=0.024452, \textit{p}\textless.001, A comparison of attributes and unrelated items revealed a marginally signifcant main effect of relatedness (\textit{F}(1,23)=4.147, \textit{MS$_e$}=0.028529, \textit{p}\textless.10, in that attributes had higher association proportions than unrelated items.. Association proportions for singular attributes were significantly larger than for singular unrelated items  (\textit{F}(1,23)=25.863, \textit{MS$_e$}=0.04739, \textit{p}\textless.001, as were proportions for plural attributes (\textit{F}(1,23)=11.673, \textit{MS$_e$}=0.033, \textit{p}\textless.01.
+ASSOC & UNREL 
+
+Error: item
+          Df Sum Sq Mean Sq F value Pr(>F)
+Residuals 23 0.5128 0.02229               
+
+Error: n2num
+      Df Sum Sq Mean Sq
+n2num  1 0.1269  0.1269
+
+Error: item:related
+          Df Sum Sq Mean Sq F value    Pr(>F)    
+related    1 0.4916  0.4916   22.05 0.0000993 ***
+Residuals 23 0.5128  0.0223                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Error: item:n2num
+          Df Sum Sq Mean Sq F value Pr(>F)
+Residuals 23 0.5635  0.0245               
+
+Error: item:related:n2num
+              Df Sum Sq Mean Sq F value Pr(>F)  
+related:n2num  1 0.1269  0.1269   5.178 0.0325 *
+Residuals     23 0.5635  0.0245                 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+ASSOC & UNRELATED SING 
+
+Error: item
+          Df Sum Sq Mean Sq F value Pr(>F)
+Residuals 23 0.5624 0.02445               
+
+Error: item:related
+          Df Sum Sq Mean Sq F value    Pr(>F)    
+related    1 0.5590  0.5590   22.86 0.0000803 ***
+Residuals 23 0.5624  0.0245                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+ASSOC & UNRELATED PLUR 
+
+Error: item
+          Df Sum Sq Mean Sq F value Pr(>F)
+Residuals 23  0.759   0.033               
+
+Error: item:related
+          Df Sum Sq Mean Sq F value  Pr(>F)   
+related    1 0.3852  0.3852   11.67 0.00236 **
+Residuals 23 0.7590  0.0330                   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+ASSOC PARAGRAPH 
+A 3 (relatedness) $\times$ 2 (local noun number) ANOVA on the data revealed a main effect of relatedness (\textit{F}(2,46)=17.182, \textit{MS$_e$}=0.04375, \textit{p}\textless.001) and a marginally significant interaction between relatedness and local noun number (\textit{F}(2,46)=2.4935, \textit{MS$_e$}=0.0328, \textit{p}\textless.10).Proportions were significantly greater for attribute associates than for pure associates, evidenced by a main effect of relatedness when the subset ofattribute associates and pure associates were analyzed (\textit{F}(1,23)=4.746, \textit{MS$_e$}=0.05709, \textit{p}\textless.05);Comparing the subset of attribute associates with unrelated items also revealed a main effect of relatedness, with attribute associates generating higher association proportions than the unrelated items, (\textit{F}(1,23)=28.78, \textit{MS$_e$}=0.05186, \textit{p}, as well as a marginally significant interaction between relatedness and local noun number  (\textit{F}(1,23)=4.147, \textit{MS$_e$}=0.028529, \textit{p}\textless.10).The interaction in this case is due to the fact that association proportions for singular attribute associates were significantly larger than for singular unrelated items  (\textit{F}(1,23)=25.863, \textit{MS$_e$}=0.04739, \textit{p}\textless.001, and proportions for plural attribute associates were also larger than for the unrelated items (\textit{F}(1,23)=11.673, \textit{MS$_e$}=0.033, \textit{p}\textless.01.A comparison of pure assocciates and unrelated items also revealed a main effect of relatedness, with pure associates generating higher proportions than the unrelated items, (\textit{F}(1,23)=22.051, \textit{MS$_e$}=0.022295, \textit{p}, as well as a significant interaction between relatedness and local noun number  (\textit{F}(1,23)=5.178, \textit{MS$_e$}=0.024502, \textit{p}\textless.05).In this case, the interaction iwas being driven by a significant different in proportions for the singular  associates relative to the singular unrelated items  (\textit{F}(1,23)=22.862, \textit{MS$_e$}=0.024452, \textit{p}\textless.001.

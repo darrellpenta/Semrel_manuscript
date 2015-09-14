@@ -1,4 +1,4 @@
-Table 16: PROP F1 2 x 2 ANOVASep. 10, 2015 at 16:50:20
+Table 16: PROP F1 2 x 2 ANOVASep. 14, 2015 at 17:32:25
 
 Error: subj
            Df  Sum Sq Mean Sq F value Pr(>F)

@@ -1,4 +1,4 @@
-Table 18: F2 Uninflected 2 x 2 x 2 ANOVASep. 10, 2015 at 16:51:03
+Table 18: F2 Uninflected 2 x 2 x 2 ANOVASep. 14, 2015 at 17:33:08
 
 Error: item
           Df  Sum Sq Mean Sq F value Pr(>F)

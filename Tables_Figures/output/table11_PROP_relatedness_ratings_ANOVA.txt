@@ -1,34 +1,87 @@
 Table 11: Experiment 2 CAT Critical Item Mean Relatedness Ratings ANOVA
-Sep. 10, 2015 at 16:50:17
-FULL ANOVA 
+Sep. 14, 2015 at 17:32:22
+PROP: RELATEDNESS NORMING - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+ATTRIBUTES & ASSOCIATES 
 
 Error: item
           Df Sum Sq Mean Sq F value Pr(>F)
-Residuals 23  49.76   2.164               
+Residuals 23  23.16   1.007               
 
 Error: n2num
-      Df Sum Sq Mean Sq
-n2num  1 0.2952  0.2952
+      Df   Sum Sq  Mean Sq
+n2num  1 0.009801 0.009801
 
 Error: item:related
-          Df Sum Sq Mean Sq F value Pr(>F)    
-related    2 187.31   93.66   90.19 <2e-16 ***
-Residuals 46  47.77    1.04                   
+          Df Sum Sq Mean Sq F value   Pr(>F)    
+related    1  37.34   37.34   50.92 2.87e-07 ***
+Residuals 23  16.86    0.73                     
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Error: item:n2num
           Df Sum Sq Mean Sq F value Pr(>F)
-Residuals 23  6.232   0.271               
+Residuals 23  3.664  0.1593               
+
+Error: item:related:n2num
+              Df Sum Sq Mean Sq F value Pr(>F)
+related:n2num  1  0.389  0.3889   2.673  0.116
+Residuals     23  3.346  0.1455               
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+ASSOCIATES & UNRELATED 
+
+Error: item
+          Df Sum Sq Mean Sq F value Pr(>F)
+Residuals 23  60.15   2.615               
+
+Error: n2num
+      Df Sum Sq Mean Sq
+n2num  1  1.054   1.054
+
+Error: item:related
+          Df Sum Sq Mean Sq F value   Pr(>F)    
+related    1  57.01   57.01   43.54 9.87e-07 ***
+Residuals 23  30.12    1.31                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Error: item:n2num
+          Df Sum Sq Mean Sq F value Pr(>F)
+Residuals 23  8.183  0.3558               
+
+Error: item:related:n2num
+              Df Sum Sq Mean Sq F value Pr(>F)
+related:n2num  1  0.252  0.2521    0.88  0.358
+Residuals     23  6.594  0.2867               
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+ATTRIBUTES & UNRELATED 
+
+Error: item
+          Df Sum Sq Mean Sq F value Pr(>F)
+Residuals 23   40.1   1.744               
+
+Error: n2num
+      Df Sum Sq Mean Sq
+n2num  1 0.1625  0.1625
+
+Error: item:related
+          Df Sum Sq Mean Sq F value   Pr(>F)    
+related    1 186.62  186.62     174 3.27e-12 ***
+Residuals 23  24.67    1.07                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Error: item:n2num
+          Df Sum Sq Mean Sq F value Pr(>F)
+Residuals 23  5.343  0.2323               
 
 Error: item:related:n2num
               Df Sum Sq Mean Sq F value Pr(>F)  
-related:n2num  2  1.272  0.6361   3.096 0.0548 .
-Residuals     46  9.450  0.2054                 
+related:n2num  1  1.267  1.2673   6.883 0.0152 *
+Residuals     23  4.235  0.1841                 
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-ASSOC & UNREL 
+ASSOCIATES & UNRELATED: N2NUM 
 
 Error: item
           Df Sum Sq Mean Sq F value Pr(>F)
@@ -45,7 +98,7 @@ Error: Within
           Df Sum Sq Mean Sq F value Pr(>F)
 Residuals 48  93.97   1.958               
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-ASSOC UNREL SING 
+ASSOCIATES & UNRELATED: SINGULAR 
 
 Error: item
           Df Sum Sq Mean Sq F value Pr(>F)
@@ -58,8 +111,7 @@ Residuals 23  15.40    0.67
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-ASSOC UNREL PLUR 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+ASSOCIATES & UNRELATED: PLURAL 
 
 Error: item
           Df Sum Sq Mean Sq F value Pr(>F)
@@ -71,4 +123,6 @@ related    1  32.42   32.42      35 4.96e-06 ***
 Residuals 23  21.31    0.93                     
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-A 2 (relatedness) $\times$ 2 (local noun number) ANOVA on the data revealed a main effect of relatedness (\textit{F}(2,46)=90.19, \textit{MS$_e$}=1.0384, \textit{p}\textless.001), as well as a marginally significant interaction between relatedness and local noun number (\textit{F}(2,46)=90.19, \textit{MS$_e$}=0.20544, \textit{p}\textless.10). Analyses of singular vs. plural conditions for each combination of the levels of relatedness revealed a marginally significant effect of local noun number when associates were compared with unrelated items (\textit{F}(1,23)=2.9629, \textit{MS$_e$}=0.3558, \textit{p}\textless.10.: Relatedness ratings for singular associates were significantly larger than for singular unrelated items  (\textit{F}(1,23)=37.09, \textit{MS$_e$}=0.6698, \textit{p}\textless.001,and ratings for plural associates were significantly larger than for plural unrelated items  (\textit{F}(1,23)=35, \textit{MS$_e$}=0.9264, \textit{p}\textless.001.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+RELATEDNESS PARAGRAPH (ROUGH DRAFT) 
+A 3 (relatedness) $\times$ 2 (local noun number) ANOVA on the data revealed a main effect of relatedness (\textit{F}(2,46)=90.19, \textit{MS$_e$}=1.0384, \textit{p}\textless.001), as well as a marginally significant interaction between relatedness and local noun number (\textit{F}(2,46)=90.19, \textit{MS$_e$}=0.20544, \textit{p}\textless.10).A comparison of attribute associates and pure associates showed a signficant main effect of relatedness (\textit{F}(1,23)=50.92, \textit{MS$_e$}=0.7332, \textit{p}\textless.001), with attribute associates receiving higher relatedness ratings than associatesPure associates were also rated as significantly more related than the unrelated control items (\textit{F}(1,23)=43.54, \textit{MS$_e$}=1.3095, \textit{p}\textless.001). Attribute associates were also rated as significantly more related than the unrelated control items (\textit{F}(1,23)=173.99, \textit{MS$_e$}=1.0726, \textit{p}\textless.001).  Analyses of singular vs. plural conditions for each combination of the levels of relatedness revealed a marginally significant effect of local noun number when associates were compared with unrelated items (\textit{F}(1,23)=2.9629, \textit{MS$_e$}=0.3558, \textit{p}\textless.10.: Relatedness ratings for singular associates were significantly larger than for singular unrelated items  (\textit{F}(1,23)=37.09, \textit{MS$_e$}=0.6698, \textit{p}\textless.001,and ratings for plural associates were significantly larger than for plural unrelated items  (\textit{F}(1,23)=35, \textit{MS$_e$}=0.9264, \textit{p}\textless.001.
