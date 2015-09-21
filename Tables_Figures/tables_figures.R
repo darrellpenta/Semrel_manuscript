@@ -625,16 +625,15 @@ exp2.prop.example = data.frame(
   ),
   
   Singular = c(
-    "The atlas by the detailed map",
-    "The atlas by the detailed globe",
-    "The atlas by the detailed journal"
-
+    "The jar near the sticky lid",
+    "The jar near the sticky cookie",
+    "The jar near the stale bagel"
   ),
   
   Plural = c(
-    "The atlas by the detailed maps",
-    "The atlas by the detailed globes",
-    "The atlas by the detailed journals"
+    "The jar near the sticky lids",
+    "The jar near the sticky cookies",
+    "The jar near the stale bagels"
   ))
 
 

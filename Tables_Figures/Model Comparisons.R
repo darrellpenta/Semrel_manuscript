@@ -3,13 +3,13 @@
 
 library( package = languageR)
 library( package = lmerTest)
-library( lme4)
+library( package = lme4)
 source( "Model Comparisons_dataframe_setup.R")
 
 # ---------------------- 1. REL * INT ---------------------------------------------------------------
 #F1
 m1.f1 <- lmer( elog ~  1 + len.phon + len.syll + lf.head + lf.prep + lf.adj + lf.noun + plaus + rel * int + ( 1 +  rel * int | subject), data = f1.sr, weights = ( 1/v), REML = FALSE)
-
+summary(m1.f1)
 #F2
 m1.f2 <- lmer( elog ~  1 + len.phon + len.syll + lf.head + lf.prep + lf.adj + lf.noun + plaus + rel * int  + ( 1 +  rel+int| item), data = f2.sr, weights = ( 1/v), REML = FALSE)
 
