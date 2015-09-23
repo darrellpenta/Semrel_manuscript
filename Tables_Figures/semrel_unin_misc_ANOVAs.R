@@ -247,7 +247,7 @@ error.rate.ANOVA.1 <- data.frame(
 
 
 # F2
-source( file = "semrel_miscellaneous_f2_read_in_dataframe.R")
+source( file = "semrel_uninflected_f2_read_in_dataframe.R")
 a.2x2x2.f2 <- aov(misc ~ semint * related * n2num + Error( item / ( semint * related * n2num)), data = d.sr)
 
 sink("output/table18_SR_miscellaneous_f2_anova.txt")

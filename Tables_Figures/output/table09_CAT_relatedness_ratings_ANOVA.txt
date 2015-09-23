@@ -1,5 +1,5 @@
 Table 09: Experiment 2 CAT Critical Item Mean Relatedness Ratings ANOVA
-Sep. 22, 2015 at 21:19:56
+Sep. 22, 2015 at 22:13:16
 FULL ANOVA 
 
 Error: item
