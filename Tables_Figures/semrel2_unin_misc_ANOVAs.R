@@ -94,7 +94,7 @@ error.rate.ANOVA.2 <- data.frame(
 
 error.rate.ANOVA <- cbind(error.rate.ANOVA.1,error.rate.ANOVA.2[,c(2:3)])
 
-write.xlsx(error.rate.ANOVA, file="output/table19_SR2_CAT__uninflected_anovas.xlsx", col.names = TRUE, row.names = TRUE, append = FALSE)
+write.xlsx(error.rate.ANOVA, file="output/table19_SR2_CAT__uninflected_anovas.xlsx", col.names = TRUE, row.names = FALSE, append = FALSE)
 
 # ------------------------------------- PROP UNINFL F1 ------------------------------
 source( file = "clear_and_setup.R")
@@ -190,7 +190,7 @@ error.rate.ANOVA.2 <- data.frame(
 
 error.rate.ANOVA <- cbind(error.rate.ANOVA.1,error.rate.ANOVA.2[,c(2:3)])
 
-write.xlsx(error.rate.ANOVA, file="output/table21_SR2_PROP_uninflected_anovas.xlsx", col.names = TRUE, row.names = TRUE, append = FALSE)
+write.xlsx(error.rate.ANOVA, file="output/table21_SR2_PROP_uninflected_anovas.xlsx", col.names = TRUE, row.names = FALSE, append = FALSE)
 
 # ------------------------------------- CAT MISC ------------------------------
 source( file = "clear_and_setup.R")
@@ -284,7 +284,7 @@ error.rate.ANOVA.2 <- data.frame(
 
 
 error.rate.ANOVA <- cbind(error.rate.ANOVA.1,error.rate.ANOVA.2[,c(2:3)])
-write.xlsx(error.rate.ANOVA, file="output/table20_SR2_CAT__miscellaneous_anovas.xlsx", col.names = TRUE, row.names = TRUE, append = FALSE)
+write.xlsx(error.rate.ANOVA, file="output/table20_SR2_CAT__miscellaneous_anovas.xlsx", col.names = TRUE, row.names = FALSE, append = FALSE)
 
 
 # 
@@ -378,6 +378,6 @@ error.rate.ANOVA.2 <- data.frame(
 
 
 error.rate.ANOVA <- cbind(error.rate.ANOVA.1,error.rate.ANOVA.2[,c(2:3)])
-write.xlsx(error.rate.ANOVA, file="output/table22_SR2_PROP_miscellaneous_anovas.xlsx", col.names = TRUE, row.names = TRUE, append = FALSE)
+write.xlsx(error.rate.ANOVA, file="output/table22_SR2_PROP_miscellaneous_anovas.xlsx", col.names = TRUE, row.names = FALSE, append = FALSE)
 
 

@@ -32,7 +32,7 @@ exp1.example = data.frame(
     "The necklace near the colorful feathers"
   ))
 
-write.xlsx( exp1.example, file = "output/table01_example_stimulus.xlsx", col.names = TRUE, row.names = TRUE, append = FALSE)
+write.xlsx( exp1.example, file = "output/table01_example_stimulus.xlsx", col.names = TRUE, row.names = FALSE, append = FALSE)
 
 # -------------------- TABLE 02 SEMREL: RELATEDNESS -----------------------------
 source( file = "clear_and_setup.R")
@@ -62,7 +62,7 @@ exp1.related <- data.frame(
 )
 
 
-write.xlsx( exp1.related, file = "output/table02_SR_relatedness_ratings.xlsx", col.names = TRUE, row.names = TRUE, append = FALSE)
+write.xlsx( exp1.related, file = "output/table02_SR_relatedness_ratings.xlsx", col.names = TRUE, row.names = FALSE, append = FALSE)
 # ------------------------------ RELATEDNESS ANOVA: Set up and Print ---------------
 sink("output/table02_SR_relatedness_ratings_ANOVA.txt")
 cat("Table 02: Experiment 1 Critical Item Mean Relatedness Ratings ANOVA", format( Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
@@ -127,7 +127,7 @@ exp1.integration <- data.frame(
     " "))
 
 # ----------------------------- INTEGRATION DATAFRAME: Write to excel ---------------
-write.xlsx(exp1.integration, file ="output/table03_SR_integration_ratings.xlsx", col.names = TRUE, row.names = TRUE, append = FALSE)
+write.xlsx(exp1.integration, file ="output/table03_SR_integration_ratings.xlsx", col.names = TRUE, row.names = FALSE, append = FALSE)
 # ----------------------------- INTEGRATION ANOVA SUMMARIES: Set up & Print ---------------
 sink( "output/table03_SR_integration_ratings_ANOVA.txt")
 cat("Table 03: Experiment 1 Critical Item Mean Integration Ratings ANOVA", format( Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
@@ -251,7 +251,7 @@ exp1.assoc <- data.frame(
 )
 # ----------------------------- ASSOCIATION DATAFRAME: Write to excel ---------------
 
-write.xlsx(exp1.related, file="output/table04_SR_association_proportions.xlsx", col.names = TRUE, row.names = TRUE, append = FALSE)
+write.xlsx(exp1.related, file="output/table04_SR_association_proportions.xlsx", col.names = TRUE, row.names = FALSE, append = FALSE)
 # ----------------------------- ASSOCIATION ANOVAS SUMMARIES: Set up & Print ---------------
 
 sink("output/table4_SR_association_proportions_ANOVA.txt")
@@ -401,7 +401,7 @@ exp1.err.rates <- data.frame(
 )    
 # ----------------------------- ERROR RATE DATAFRAME: Write to excel ---------------
 
-write.xlsx(exp1.err.rates, file="output/table05_SR_error_rates_response_counts.xlsx",  col.names = TRUE, row.names = TRUE, append = FALSE)
+write.xlsx(exp1.err.rates, file="output/table05_SR_error_rates_response_counts.xlsx",  col.names = TRUE, row.names = FALSE, append = FALSE)
 # ----------------------------- ERROR RATE SUMMARIES: Set up ---------------
 
 sink("output/table05_SR_response_summary.txt")
@@ -588,7 +588,7 @@ error.rate.ANOVA.2 <- data.frame(
 
 error.rate.ANOVA <- cbind(error.rate.ANOVA.1,error.rate.ANOVA.2[,c(2:3)])
 # ----------------------------- F1 & F2 ANALYSIS WRITE TO EXCEL -----------------
-write.xlsx(error.rate.ANOVA, file="output/table06_SR_error_rate_anovas.xlsx", col.names = TRUE, row.names = TRUE, append = FALSE)
+write.xlsx(error.rate.ANOVA, file="output/table06_SR_error_rate_anovas.xlsx", col.names = TRUE, row.names = FALSE, append = FALSE)
 
 
 # ------------------------------------------- EXP. 2-------------------------------------------------------------
@@ -613,7 +613,7 @@ exp2.cat.example = data.frame(
   ))
 
 
-write.xlsx( exp2.cat.example, file = "output/table07_CAT_example_stimulus.xlsx", col.names = TRUE, row.names = TRUE, append = FALSE)
+write.xlsx( exp2.cat.example, file = "output/table07_CAT_example_stimulus.xlsx", col.names = TRUE, row.names = FALSE, append = FALSE)
 # -------------------- TABLE 08 SEMREL2: PROPERTY ITEM VERSIONS -----------------------------
 
 exp2.prop.example = data.frame(
@@ -637,7 +637,7 @@ exp2.prop.example = data.frame(
   ))
 
 
-write.xlsx( exp2.prop.example, file = "output/table08_PROP_example_stimulus.xlsx", col.names = TRUE, row.names = TRUE, append = FALSE)
+write.xlsx( exp2.prop.example, file = "output/table08_PROP_example_stimulus.xlsx", col.names = TRUE, row.names = FALSE, append = FALSE)
 
 # -------------------- TABLE 09 SEMREL2: CATEGORY COORDINATE RELATEDNESS -----------------------------
 source( file = "clear_and_setup.R")
@@ -669,7 +669,7 @@ exp2.related <- data.frame(
   )
 )
 # ----------------------------- RELATEDNESS DATAFRAME: Write to excel ----------- 
-write.xlsx( exp2.related, file = "output/table09_CAT_relatedness_ratings.xlsx", col.names = TRUE, row.names = TRUE, append = FALSE)
+write.xlsx( exp2.related, file = "output/table09_CAT_relatedness_ratings.xlsx", col.names = TRUE, row.names = FALSE, append = FALSE)
 # ----------------------------- RELATEDNESS ANOVA SUMMARIES: Set up & Print  ----------- 
 
 sink("output/table09_CAT_relatedness_ratings_ANOVA.txt")
@@ -723,7 +723,7 @@ exp2.integration <- data.frame(
 )
 # ----------------------------- INTEGRATION DATAFRAME: Write to excel -----------  
 write.xlsx(exp2.integration, file ="output/table10_CAT_integration_ratings.xlsx", 
-           col.names = TRUE, row.names = TRUE, append = FALSE)
+           col.names = TRUE, row.names = FALSE, append = FALSE)
 # ----------------------------- INTEGRATION ANOVA SUMMARIES: Set up & Print -----------  
 
 sink("output/table10_CAT_integration_ratings_ANOVA.txt")
@@ -783,7 +783,7 @@ exp2.related <- data.frame(
     "" 
   ))
 # ----------------------------- RELATEDNES DATAFRAME: Write to excel ---------
-write.xlsx( exp2.related, file = "output/table11_PROP_relatedness_ratings.xlsx", col.names = TRUE, row.names = TRUE, append = FALSE)
+write.xlsx( exp2.related, file = "output/table11_PROP_relatedness_ratings.xlsx", col.names = TRUE, row.names = FALSE, append = FALSE)
 # ----------------------------- RELATEDNESS ANOVA SUMMARIES: Set up & Print ------
 sink("output/table11_PROP_relatedness_ratings_ANOVA.txt")
 cat("Table 11: Experiment 2 CAT Critical Item Mean Relatedness Ratings ANOVA", format( Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
@@ -943,7 +943,7 @@ exp2.integration <- data.frame(
   ))
 # ----------------------------- INTEGRATION DATAFRAME: Write to excel ----------
 write.xlsx(exp2.integration, file ="output/table12_PROP_integration_ratings.xlsx", 
-           col.names = TRUE, row.names = TRUE, append = FALSE)
+           col.names = TRUE, row.names = FALSE, append = FALSE)
 # ----------------------------- INTEGRATION ANOVA SUMMARIES: Set up & Print -------
 sink("output/table12_PROP_integration_ratings_ANOVA.txt")
 cat("Table 12: Experiment 2 Property Item Mean Inteagration Ratings ANOVA", format( Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
@@ -1055,7 +1055,7 @@ exp2.association <- data.frame(
 # ----------------------------- ASSOCIATION DATAFRAME: Write to excel ---------------
 
 write.xlsx(exp2.integration, file ="output/table13_PROP_association_proportions.xlsx", 
-           col.names = TRUE, row.names = TRUE, append = FALSE)
+           col.names = TRUE, row.names = FALSE, append = FALSE)
 # ----------------------------- ASSOCIATION ANOVA SUMMARIES: Set up & Print ---------------
 
 sink("output/table13_PROP_association_proportions_ANOVA.txt")
@@ -1334,7 +1334,7 @@ exp2.prop.err.rates <- data.frame(
 )    
 # ----------------------------- CAT & PROP ERROR RATE DATAFRAME: Combine to Excel ---------------
 exp2.err.rates <-  rbind(exp2.cat.err.rates, exp2.prop.err.rates)
-write.xlsx(exp2.err.rates, file="output/table14_SR2_error_rates_response_counts.xlsx",  col.names = TRUE, row.names = TRUE, append = FALSE)
+write.xlsx(exp2.err.rates, file="output/table14_SR2_error_rates_response_counts.xlsx",  col.names = TRUE, row.names = FALSE, append = FALSE)
 # ----------------------------- CAT & PROP ERROR RATE SUMMARIES: Set up ---------------
 sink("output/table14_SR_response_summary.txt")
 cat("Table 14: Experiment 2 Response Summaries", format( Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
@@ -1451,7 +1451,7 @@ error.rate.ANOVA.2 <- data.frame(
 )
 error.rate.ANOVA <- cbind(error.rate.ANOVA.1,error.rate.ANOVA.2[,c(2:3)])
 # ----------------------------- F1 & F2 ANALYSIS WRITE TO EXCEL --------
-write.xlsx(error.rate.ANOVA, file="output/table15_SR2_CAT_error_rate_anovas.xlsx", col.names = TRUE, row.names = TRUE, append = FALSE)
+write.xlsx(error.rate.ANOVA, file="output/table15_SR2_CAT_error_rate_anovas.xlsx", col.names = TRUE, row.names = FALSE, append = FALSE)
 
 
 # -------------------- TABLE 16 SEMREL2: PROPERTY ERROR RATE ANOVA RESULTS ------------
@@ -1541,7 +1541,7 @@ error.rate.ANOVA.2 <- data.frame(
 )
 error.rate.ANOVA <- cbind(error.rate.ANOVA.1,error.rate.ANOVA.2[,c(2:3)])
 # ----------------------------- F1 & F2 ANALYSIS TO EXCEL ------
-write.xlsx(error.rate.ANOVA, file="output/table16_SR2_PROP_error_rate_anovas.xlsx", col.names = TRUE, row.names = TRUE, append = FALSE)
+write.xlsx(error.rate.ANOVA, file="output/table16_SR2_PROP_error_rate_anovas.xlsx", col.names = TRUE, row.names = FALSE, append = FALSE)
 
 # -------------------- TABLE 17 SEMREL: UNINFLECTED ANOVA RESULTS --------------------
 source(file="semrel_unin_misc_ANOVAs.R")
@@ -3326,6 +3326,7 @@ regressions2.ds <-data.frame(
   ))
 # ----------------------------- MODEL 2 OUTPUT TO EXCEL
 write.xlsx( regressions2.ds, file = "output/table24_SR1 & 2_regression_model2_comparisons.xlsx", col.names = TRUE, row.names = FALSE, append = FALSE)
+
 # ------------------------------------------- EXP. 1 NUISANCE FACTOR NORMING ------------------------------------
 
 # # -------------------- SEMREL: SET UP INPUT FILE( s) -----------------------------------
