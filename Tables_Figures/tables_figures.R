@@ -229,31 +229,26 @@ exp1.assoc <- data.frame(
   Local.Noun.Number= c(
     "Singular",
     "Plural",
-    paste("Note: Back transofmred proportions of ASIN transformed proportions.")    
+    paste("Note: Back transformed proportions ( (sin(p))^2) of ASIN transformed proportions.")    
   ),
 # ----------------------------- INTEGRATION DATAFRAME: Related --------  
   Related =     c(
-    paste( round( mean( relat.sing$back.trans), 2), " (", round( sd( relat.sing$back.trans), 2), ")", sep = ""),
-    paste( round( mean(relat.plur$back.trans), 2),  " (", round( sd( relat.plur$back.trans), 2), ")", sep = ""),
+    paste( round( (mean( (sin(relat.sing$AssArc.H.L))^2)), 2), " (", round( (sd( (sin(relat.sing$AssArc.H.L))^2)), 2), ")", sep = ""),
+    paste( round( (mean( (sin(relat.plur$AssArc.H.L))^2)), 2),  " (", round( (sd( (sin(relat.plur$AssArc.H.L))^2)), 2), ")", sep = ""),
     paste("SD in parens.")   
   ),
 # ----------------------------- INTEGRATION DATAFRAME: Unrelated --------  
   Unrelated =   c(
-    paste( round( mean( unrel.sing$back.trans), 2), " (", round( sd( unrel.sing$back.trans), 2), ")", sep = ""),
-    paste( round( mean(unrel.plur$back.trans), 2),  " (", round( sd( unrel.plur$back.trans), 2), ")", sep = ""),
+    paste( round( (mean( (sin(unrel.sing$AssArc.H.L))^2)), 2), " (", round( (sd( (sin( unrel.sing$AssArc.H.L))^2)), 2), ")", sep = ""),
+    paste( round( (mean( (sin(unrel.plur$AssArc.H.L))^2)), 2),  " (", round( (sd( (sin(unrel.plur$AssArc.H.L))^2)), 2), ")", sep = ""),
     " "  
-  ),
-  
-  pval =       c(
-    paste(" ", sep = ""),
-    paste( p, get_stars( p)),
-    " " )
-)
+  ))
 # ----------------------------- ASSOCIATION DATAFRAME: Write to excel ---------------
-
-write.xlsx(exp1.related, file="output/table04_SR_association_proportions.xlsx", col.names = TRUE, row.names = FALSE, append = FALSE)
+exp1.assoc
+write.xlsx(exp1.assoc, file="output/table04_SR_association_proportions.xlsx", col.names = TRUE, row.names = FALSE, append = FALSE)
 # ----------------------------- ASSOCIATION ANOVAS SUMMARIES: Set up & Print ---------------
-
+source( file = "clear_and_setup.R")
+source( file = "semrel_ratings_data_read_in_dataframe.R")
 sink("output/table4_SR_association_proportions_ANOVA.txt")
 cat("Table 04: Experiment 1 Critical Item Mean Head-to-Local Association Proportions ANOVA", format( Sys.time(), "%b. %d, %Y at %T"), sep = "", fill = 80)
 # ----------------------------- ASSOCIATION DATAFRAME: ANOVAs ---------------
@@ -1025,36 +1020,33 @@ exp2.association <- data.frame(
   Local.Noun.Number = c(
     "Singular",
     "Plural", 
-    "Mean",               
-    paste("Note: Back transofmred proportions of ASIN transformed proportions.")
+    paste("Note: Back transofmred ((sin(p))^2)proportions of ASIN transformed proportions.")
   ), 
 
 # ----------------------------- ASSOCIATION DATAFRAME: Attribute means--------
     Attribute =            c(
-    paste( round( mean( attrb.sing$back.trans), 2), " (", round( sd( attrb.sing$back.trans), 2), ")", sep = ""),
-    paste( round( mean( attrb.plur$back.trans), 2), " (", round( sd( attrb.plur$back.trans), 2), ")", sep = ""),
-    paste( round( mean( attrb$back.trans), 2)),
-    paste("SD in parens." )
+      paste( round( (mean( (sin(attrb.sing$AssArc.H.L))^2)), 2), " (", round( (sd( (sin( attrb.sing$AssArc.H.L))^2)), 2), ")", sep = ""),
+      paste( round( (mean( (sin(attrb.plur$AssArc.H.L))^2)), 2),  " (", round( (sd( (sin(attrb.plur$AssArc.H.L))^2)), 2), ")", sep = ""),
+      paste("SD in parens." )
   ),
 
 # ----------------------------- ASSOCIATION DATAFRAME: Associate means--------
   Associate =            c(
-    paste( round( mean( assoc.sing$back.trans), 2), " (", round( sd( assoc.sing$back.trans), 2), ")", sep = ""),
-    paste( round( mean( assoc.plur$back.trans), 2), " (", round( sd( assoc.plur$back.trans), 2), ")", sep = ""),
-    paste( round( mean( assoc$back.trans), 2)),
-    ""
+    paste( round( (mean( (sin(assoc.sing$AssArc.H.L))^2)), 2), " (", round( (sd( (sin( assoc.sing$AssArc.H.L))^2)), 2), ")", sep = ""),
+    paste( round( (mean( (sin(assoc.plur$AssArc.H.L))^2)), 2),  " (", round( (sd( (sin(assoc.plur$AssArc.H.L))^2)), 2), ")", sep = ""),
+   ""
   ),
 
 # ----------------------------- ASSOCIATION DATAFRAME: Unrelated means--------  
   Unrelated =           c(
-    paste( round( mean( unrel.sing$back.trans), 2), " (", round( sd( unrel.sing$back.trans), 2), ")", sep = ""),
-    paste( round( mean( unrel.plur$back.trans), 2), " (", round( sd( unrel.plur$back.trans), 2), ")", sep = ""),
-    paste( round( mean( unrel$back.trans), 2)),
+    paste( round( (mean( (sin(unrel.sing$AssArc.H.L))^2)), 2), " (", round( (sd( (sin( unrel.sing$AssArc.H.L))^2)), 2), ")", sep = ""),
+    paste( round( (mean( (sin(unrel.plur$AssArc.H.L))^2)), 2),  " (", round( (sd( (sin(unrel.plur$AssArc.H.L))^2)), 2), ")", sep = ""),
     ""
   ))
 # ----------------------------- ASSOCIATION DATAFRAME: Write to excel ---------------
+View(exp2.association)
 
-write.xlsx(exp2.integration, file ="output/table13_PROP_association_proportions.xlsx", 
+write.xlsx(exp2.association, file ="output/table13_PROP_association_proportions.xlsx", 
            col.names = TRUE, row.names = FALSE, append = FALSE)
 # ----------------------------- ASSOCIATION ANOVA SUMMARIES: Set up & Print ---------------
 
