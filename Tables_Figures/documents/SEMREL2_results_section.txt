@@ -1,0 +1,73 @@
+CAT: RELATEDNESS NORMING A 2 (relatedness) $\times$ 2 (local noun number) ANOVA on the data revealed a main effect of relatedness (\textit{F}(1,23)=81.53, \textit{MS$_e$}=1.1138, \textit{p}.001). There was no main effect of local noun number, nor an interaction between the two factors.CAT: RELATEDNESS NORMING PARAA 2 (relatedness) $\times$ 2 (local noun number) ANOVA on the data revealed a main effect of relatedness (\textit{F}(1,23)=16.878, \textit{MS$_e$}=0.3437, \textit{p}.001). There was no main effect of local noun number, nor an interaction between the two factors.PROP: RELATEDNESS NORMING A 3 (relatedness) $\times$ 2 (local noun number) ANOVA on the data revealed a main effect of relatedness (\textit{F}(2,46)=90.19, \textit{MS$_e$}=1.0384, \textit{p}.001), as well as a marginally significant interaction between relatedness and local noun number (\textit{F}(2,46)=90.19, \textit{MS$_e$}=0.20544, \textit{p}.10).A comparison of attribute associates and pure associates showed a signficant main effect of relatedness (\textit{F}(1,23)=50.92, \textit{MS$_e$}=0.7332, \textit{p}.001), with attribute associates receiving higher relatedness ratings than associatesPure associates were also rated as significantly more related than the unrelated control items (\textit{F}(1,23)=43.54, \textit{MS$_e$}=1.3095, \textit{p}.001). Attribute associates were also rated as significantly more related than the unrelated control items (\textit{F}(1,23)=173.99, \textit{MS$_e$}=1.0726, \textit{p}.001).  Analyses of singular vs. plural conditions for each combination of the levels of relatedness revealed a marginally significant effect of local noun number when associates were compared with unrelated items (\textit{F}(1,23)=2.9629, \textit{MS$_e$}=0.3558, \textit{p}.10.: Relatedness ratings for singular associates were significantly larger than for singular unrelated items  (\textit{F}(1,23)=37.09, \textit{MS$_e$}=0.6698, \textit{p}.001,PROP: Integration NORMINGA 3 (relatedness) $\times$ 2 (local noun number) ANOVA on the data revealed a main effect of relatedness (\textit{F}(2,46)=56.55, \textit{MS$_e$}=0.6473, \textit{p}.001);A comparison of Attribute and Associates showed a signficant main effect of relatedness (\textit{F}(1,23)=11.116, \textit{MS$_e$}=0.4664, \textit{p}.01), with attribute ratings higher than associates Associates were also rated higher than the unrelated items (\textit{F}(1,23)=43.62, \textit{MS$_e$}=0.8265, \textit{p}.001),  as were attributes  (\textit{F}(1,23)=105.65, \textit{MS$_e$}=0.6491, \textit{p}.001), PROP: ASSOCIATION NORMING A 3 (relatedness) $\times$ 2 (local noun number) ANOVA on the data revealed a main effect of relatedness (\textit{F}(2,46)=17.182, \textit{MS$_e$}=0.04375, \textit{p}.001) and a marginally significant interaction between relatedness and local noun number (\textit{F}(2,46)=2.4935, \textit{MS$_e$}=0.0328, \textit{p}.10).Proportions were significantly greater for attribute associates than for pure associates, evidenced by a main effect of relatedness when the subset ofattribute associates and pure associates were analyzed (\textit{F}(1,23)=4.746, \textit{MS$_e$}=0.05709, \textit{p}.05);Comparing the subset of attribute associates with unrelated items also revealed a main effect of relatedness, with attribute associates generating higher association proportions than the unrelated items, (\textit{F}(1,23)=28.78, \textit{MS$_e$}=0.05186, \textit{p},.001) as well as a marginally significant interaction between relatedness and local noun number  (\textit{F}(1,23)=4.147, \textit{MS$_e$}=0.028529, \textit{p}.10).The interaction in this case is due to the fact that association proportions for singular attribute associates were significantly larger than for singular unrelated items  (\textit{F}(1,23)=25.863, \textit{MS$_e$}=0.04739, \textit{p}.001, and proportions for plural attribute associates were also larger than for the unrelated items (\textit{F}(1,23)=11.673, \textit{MS$_e$}=0.033, \textit{p}.01.A comparison of pure assocciates and unrelated items also revealed a main effect of relatedness, with pure associates generating higher proportions than the unrelated items, (\textit{F}(1,23)=22.051, \textit{MS$_e$}=0.022295, \textit{p}.001) as well as a significant interaction between relatedness and local noun number  (\textit{F}(1,23)=5.178, \textit{MS$_e$}=0.024502, \textit{p}.05).In this case, the interaction iwas being driven by a significant different in proportions for the singular  associates relative to the singular unrelated items  (\textit{F}(1,23)=22.862, \textit{MS$_e$}=0.024452, \textit{p}.001.SEMREL 2 RESULTS 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+Comparing property associates and pure associates, there was a main effect of relationship, with pure associates generating more errors than property associates (\Fs[1]{128}{4.812}{121.83}\showp{, \p{.05}}; \Fi[1]{23}{4.683}{22.024}\showp{, \p{.05}}).There was also a marginally significant interaction between relatedness and local noun number  (\Fs[1]{128}{2.945}{123.57}\showp{, \p{.10}}; \Fi[1]{23}{2.149}{27.441}\showp{, \p{.10}}), the mismatch effect being larger for pure associates  (\Fs[1]{128}{26.175}{193.01}\showp{, \p{.001}};\Fi[1]{23}{20.922}{47.57}\showp{, \p{.001}})  than for property associates (\Fs[1]{128}{14.14}{137.53}\showp{, \p{.001}}; \Fi[1]{23}{15.872}{26.967}\showp{, \p{.001}}). 
+
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+===== MAIN EFFECT OF RELATEDNESS 
+===== 1. ARCSIN TRANSFORMED PROPORTIONS: (\Fs[1]{128}{5.635}{0.13692}\showp{, \p{.05}}; \Fi[1]{23}{5.25}{0.04658}\showp{, \p{.05}} 
+===== 2. ERRORS NO DYSFLUENCIES: (\Fs[1]{128}{9.217}{98.18}\showp{, \p{.01}}; \Fi[1]{23}{4.105}{29.551}\showp{, \p{.10}} 
+===== 3. ERROR COUNTS: (\Fs[1]{128}{8.488}{0.08242}\showp{, \p{.01}}; \Fi[1]{23}{9.114}{0.4126}\showp{, \p{.01}} 
+
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+===== RELATEDNESS X N2NUM  
+===== 1. ARCSIN TRANSFORMED PROPORTIONS: (\Fs[1]{128}{3.296}{0.13936}\showp{, \p{.10}}; \Fi[1]{23}{1.2243}{0.06934}\showp{, \p{.10}} 
+===== 2. ERRORS NO DYSFLUENCIES: (\Fs[1]{128}{6.199}{100.39}\showp{, \p{.05}}; \Fi[1]{23}{2.0381}{35.14}\showp{, \p{.10}} 
+===== 3. ERROR COUNTS: (\Fs[1]{128}{5.161}{0.08448}\showp{, \p{.05}}; \Fi[1]{23}{4.177}{0.5611}\showp{, \p{.10}} 
+
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+===== ASSOCIATES X ATTRIBUTES MISMATCH EFFECTS 
+===== 1. ARCSIN TRANSFORMED PROPORTIONS: ASSOCIATED (\Fs[1]{128}{27.51}{0.21012}\showp{, \p{.001}}; \Fi[1]{23}{25.629}{0.1007}\showp{, \p{.001}}; ATTRIBUTE(\Fs[1]{128}{15.018}{0.13918}\showp{, \p{.001}}; \Fi[1]{23}{20.58}{0.06933}\showp{, \p{.001}}. 
+===== 2. ERRORS NO DYSFLUENCIES: ASSOCIATED (\Fs[1]{23}{20.58}{0.06933}\showp{, \p{.001}}; \Fi[1]{23}{18.214}{51.36}\showp{, \p{.001}}; ATTRIBUTE(\Fs[1]{128}{11.605}{86.31}\showp{, \p{.001}}; \Fi[1]{23}{12.365}{28.027}\showp{, \p{.01}}. 
+===== 3. ERRORS COUNTS: ASSOCIATED (\Fs[1]{23}{12.365}{28.027}\showp{, \p{.01}}; \Fi[1]{23}{19.117}{1.1159}\showp{, \p{.001}}; ATTRIBUTE(\Fs[1]{128}{15.286}{0.07328}\showp{, \p{.001}}; \Fi[1]{23}{18.515}{0.3252}\showp{, \p{.001}}. 
+
+ 
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+Pure associates also generated more agreement errors than unrelated items (\Fs[1]{128}{12.717}{107.95}\showp{, \p{.001}}; \Fi[1]{23}{11.887}{24.499}\showp{, \p{.01}}),and there was a local noun number by associate interaction (\Fs[1]{128}{11.844}{120.55}\showp{, \p{.001}}; \Fi[1]{23}{14.883}{20.762}\showp{, \p{.001}}), the mismatch effect being larger for pure associates than for unrelated items (\Fs[1]{128}{3.76}{82.75}\showp{, \p{.10}}; \Fi[1]{23}{4.543}{9.849}\showp{, \p{.05}}). 
+
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+===== MAIN EFFECT OF RELATEDNESS 
+===== 1. ARCSIN TRANSFORMED PROPORTIONS: (\Fs[1]{128}{13.487}{0.11788}\showp{, \p{.001}}; \Fi[1]{23}{10.988}{0.05907}\showp{, \p{.01}} 
+===== 2. ERRORS NO DYSFLUENCIES: (\Fs[1]{128}{10.338}{107.8}\showp{, \p{.01}}; \Fi[1]{23}{10.007}{25.663}\showp{, \p{.01}} 
+===== 3. ERROR COUNTS: (\Fs[1]{128}{17.306}{0.0757}\showp{, \p{.001}}; \Fi[1]{23}{12.498}{0.5634}\showp{, \p{.01}} 
+
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+===== RELATEDNESS X N2NUM  
+===== 1. ARCSIN TRANSFORMED PROPORTIONS: (\Fs[1]{128}{12.294}{0.13266}\showp{, \p{.001}}; \Fi[1]{23}{15.749}{0.04318}\showp{, \p{.001}} 
+===== 2. ERRORS NO DYSFLUENCIES: (\Fs[1]{128}{10.584}{119.64}\showp{, \p{.01}}; \Fi[1]{23}{12.623}{22.135}\showp{, \p{.01}} 
+===== 3. ERROR COUNTS: (\Fs[1]{128}{15.687}{0.08352}\showp{, \p{.001}}; \Fi[1]{23}{4.177}{0.5611}\showp{, \p{.10}} 
+
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+===== ASSOCIATES X UNRELEATED MISMATCH EFFECTS 
+===== 1. ARCSIN TRANSFORMED PROPORTIONS: UNRELATED (\Fs[1]{128}{3.84}{0.0932}\showp{, \p{.10}}; \Fi[1]{23}{4.522}{0.04286}\showp{, \p{.05}} 
+===== 2. ERRORS NO DYSFLUENCIES: UNRELATED (\Fs[1]{23}{4.522}{0.04286}\showp{, \p{.05}}; \Fi[1]{23}{4.356}{11.072}\showp{, \p{.05}} 
+===== 3. ERRORS COUNTS: UNRELATED (\Fs[1]{23}{4.356}{11.072}\showp{, \p{.05}}; \Fi[1]{23}{5.308}{0.1413}\showp{, \p{.05}} 
+
+ 
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+A comparison of property associates and unrelated items revealed a marginal main effect of relatedness, as items in the property associate condition generated more errors than items in the unrelated condition overall (\Fs[1]{128}{2.8975}{56.9}\showp{, \p{.10}}; \Fi[1]{23}{3.168}{15.068}\showp{, \p{.10}}).There was also an interaction that was significant by items and marginally significant by subjects (\Fs[1]{128}{3.541}{98.85}\showp{, \p{.10}}; \Fi[1]{23}{5.74}{17.072}\showp{, \p{.05}}),  the mismatch effect being larger for property associates than for unrelated items. 
+
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+===== MAIN EFFECT OF RELATEDNESS 
+===== 1. ARCSIN TRANSFORMED PROPORTIONS: (\Fs[1]{128}{2.4701}{0.05924}\showp{, \p{.10}}; \Fi[1]{23}{1.8632}{0.05196}\showp{, \p{.10}} 
+===== 2. ERRORS NO DYSFLUENCIES: (\Fs[1]{128}{0.17015}{64.07}\showp{, \p{.10}}; \Fi[1]{23}{1.539}{16.317}\showp{, \p{.10}} 
+===== 3. ERROR COUNTS: (\Fs[1]{128}{3.326}{0.028555}\showp{, \p{.10}}; \Fi[1]{23}{1.7419}{0.29303}\showp{, \p{.10}} 
+
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+===== RELATEDNESS X N2NUM  
+===== 1. ARCSIN TRANSFORMED PROPORTIONS: (\Fs[1]{128}{3.383}{0.10617}\showp{, \p{.10}}; \Fi[1]{23}{5.489}{0.05182}\showp{, \p{.05}} 
+===== 2. ERRORS NO DYSFLUENCIES: (\Fs[1]{128}{1.4037}{80.63}\showp{, \p{.10}}; \Fi[1]{23}{3.546}{19.208}\showp{, \p{.10}} 
+===== 3. ERROR COUNTS: (\Fs[1]{128}{4.607}{0.0509}\showp{, \p{.05}}; \Fi[1]{23}{4.177}{0.5611}\showp{, \p{.10}} 

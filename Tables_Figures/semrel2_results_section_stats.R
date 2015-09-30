@@ -1,6 +1,5 @@
-
+# 9/29 Changed LaTex 
 # ============================================== SEMREL 2 Part 1==========================================
-
 
 sink(file = "documents/SEMREL2_results_section.txt")
 # ================== CAT. RELATEDNESS NORMING ============
@@ -15,11 +14,13 @@ dfr2 <- (d0.s[[3]][[1]][["Df"]][[2]])
 f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
+
+
 rel.norm  <- paste(
-  "A 2 (relatedness) $\\times$ 2 (local noun number) ANOVA on the data revealed a main effect of relatedness (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),"). There was no main effect of local noun number, nor an interaction between the two factors.", sep="" )
+  "A 2 (relatedness) $\\times$ 2 (local noun number) ANOVA on the data revealed a main effect of relatedness (\\Fval{", dfr1,"}{",dfr2,"}{",f,"}, \\MSe{",m,"}\\showp{, \\p{",get_range.tex(p),"}}","). There was no main effect of local noun number, nor an interaction between the two factors.", sep="" )
 
 cat(rel.norm)
-
+cat(br,line,br)
 # ================== CAT. INTEGRATION NORMING ============
 source( file = "clear_and_setup.R")
 source( file = "semrel2_CAT_ratings_data_read_in_dataframe.R")
@@ -32,10 +33,11 @@ dfr2 <- (d0.s[[3]][[1]][["Df"]][[2]])
 f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
-int.norm  <- paste(
-  "A 2 (relatedness) $\\times$ 2 (local noun number) ANOVA on the data revealed a main effect of relatedness (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),"). There was no main effect of local noun number, nor an interaction between the two factors.", sep="" )
-cat(int.norm)
 
+int.norm  <- paste(
+  "Although the  difference in integration between related and unrelated items was minimal for these items, a 2 (relatedness) $\\times$ 2 (local noun number) ANOVA on the data revealed a main effect of relatedness (\\Fval{", dfr1,"}{",dfr2,"}{",f,"}, \\MSe{",m,"}\\showp{, \\p{",get_range.tex(p),"}}","), with related items being rated as more integrated than unrelated times. There was no main effect of local noun number, nor an interaction between the two factors.", sep="" )
+cat(int.norm)
+cat(br,line,br)
 # ================== PROP. RELATEDNESS NORMING ============
 source( file = "clear_and_setup.R")
 source( file = "semrel2_PROP_ratings_data_read_in_dataframe.R")
@@ -55,7 +57,9 @@ f.rn    <- zapsmall( d0.s[[5]][[1]][["F value"]][1], digits = 4)
 m.rn    <- zapsmall( d0.s[[5]][[1]][["Mean Sq"]][2], digits = 4)
 p.rn    <- zapsmall( d0.s[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-rel.norm1  <- paste("A 3 (relatedness) $\\times$ 2 (local noun number) ANOVA on the data revealed a main effect of relatedness (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),"), as well as a marginally significant interaction between relatedness and local noun number (\\textit{F}(", dfr1.rn,",",dfr2.rn,")=",f,", \\textit{MS$_e$}=",m.rn,", \\textit{p}", get_range.tex(p.rn),").", sep="" )
+
+
+rel.norm1  <- paste("A 3 (relatedness) $\\times$ 2 (local noun number) ANOVA on the data revealed a main effect of relatedness (\\Fval{", dfr1,"}{",dfr2,"}{",f,"}, \\MSe{",m,"}\\showp{, \\p{",get_range.tex(p),"}}","), as well as a marginally significant interaction between relatedness and local noun number (\\Fval{", dfr1.rn,"}{",dfr2.rn,"}{",f,"}, \\MSe{",m.rn,"}\\showp{, \\p{",get_range.tex(p.rn),"}}",").", sep="" )
 ########
 d0    <-  aov( RelatedHL ~ related * n2num + Error(item /related * n2num), data = attrb.assoc)
 d0.s <-summary(d0)
@@ -66,7 +70,9 @@ f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-rel.norm2  <- paste(rel.norm1, "A comparison of attribute associates and pure associates showed a signficant main effect of relatedness (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),"), with attribute associates receiving higher relatedness ratings than associates", sep="" )
+
+
+rel.norm2  <- paste(rel.norm1, " A comparison of property associates and pure associates showed a significant main effect of relatedness  (\\Fval{", dfr1,"}{",dfr2,"}{",f,"}, \\MSe{",m,"}\\showp{, \\p{",get_range.tex(p),"}}","), with property associates receiving higher relatedness ratings than pure associates,", sep="" )
 
 # cat(line,br)
 # cat("ATTRIBUTES & ASSOCIATES", br)
@@ -81,7 +87,7 @@ f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-rel.norm3  <- paste(rel.norm2, "Pure associates were also rated as significantly more related than the unrelated control items (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),"). ", sep="" )
+rel.norm3  <- paste(rel.norm2, "  which were also rated as significantly more related than the unrelated control items (\\Fval{", dfr1,"}{",dfr2,"}{",f,"}, \\MSe{",m,"}\\showp{, \\p{",get_range.tex(p),"}}","). ", sep="" )
 
 # cat(line,br)
 # cat("ASSOCIATES & UNRELATED", br)
@@ -97,7 +103,7 @@ f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-rel.norm4  <- paste(rel.norm3, "Attribute associates were also rated as significantly more related than the unrelated control items (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),"). ", sep="" )
+rel.norm4  <- paste(rel.norm3, " Property associates were also rated as significantly more related than the unrelated control items (\\Fval{", dfr1,"}{",dfr2,"}{",f,"}, \\MSe{",m,"}\\showp{, \\p{",get_range.tex(p),"}}","). ", sep="" )
 
 # cat(line,br)
 # cat("ATTRIBUTES & UNRELATED", br)
@@ -112,7 +118,7 @@ f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-rel.norm5   <- paste(rel.norm4, " Analyses of singular vs. plural conditions for each combination of the levels of relatedness revealed a marginally significant effect of local noun number when associates were compared with unrelated items (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),".", sep = "")
+rel.norm5   <- paste(rel.norm4, " Analyses of singular vs. plural conditions for each combination of the levels of relatedness revealed a marginally significant effect of local noun number when pure associates were compared with unrelated items (\\Fval{", dfr1,"}{",dfr2,"}{",f,"}, \\MSe{",m,"}\\showp{, \\p{",get_range.tex(p),"}}",": ", sep = "")
 
 
 # cat(line,br)
@@ -128,7 +134,8 @@ f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-rel.norm6   <- paste(rel.norm5, ": Relatedness ratings for singular associates were significantly larger than for singular unrelated items  (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),",", sep = "")
+                                                                                                           
+rel.norm6   <- paste(rel.norm5, "Relatedness ratings for singular associates were significantly larger than for singular unrelated items   (\\Fval{", dfr1,"}{",dfr2,"}{",f,"}, \\MSe{",m,"}\\showp{, \\p{",get_range.tex(p),"}}",",", sep = "")
 
 # cat(line,br)
 # cat("ASSOCIATES & UNRELATED: SINGULAR", br)
@@ -143,13 +150,13 @@ f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-rel.norm7   <- paste(rel.norm6, "and ratings for plural associates were significantly larger than for plural unrelated items  (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),".", sep = "")
+rel.norm7   <- paste(rel.norm6, "and ratings for plural associates were significantly larger than for plural unrelated items  (\\Fval{", dfr1,"}{",dfr2,"}{",f,"}, \\MSe{",m,"}\\showp{, \\p{",get_range.tex(p),"}}",".", sep = "")
 
 # cat(line,br)
 # cat("ASSOCIATES & UNRELATED: PLURAL", br)
 # print(d0.s)
 cat(rel.norm6)
-
+cat(br,line,br,line,br)
 
 
 
@@ -166,7 +173,10 @@ f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-int.norm1  <- paste("A 3 (relatedness) $\\times$ 2 (local noun number) ANOVA on the data revealed a main effect of relatedness (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),");", sep="" )
+
+
+
+int.norm1  <- paste("Property associates were rated as more integrated than the pure associates, while unrelated items had a lowest average rating. A 3 (relatedness) $\\times$ 2 (local noun number) ANOVA on the data revealed a main effect of relatedness (\\Fval{", dfr1,"}{",dfr2,"}{",f,"}, \\MSe{",m,"}\\showp{, \\p{",get_range.tex(p),"}}",");", sep="" )
 
 # cat(line,br)
 # cat("FULL 3X2")
@@ -181,7 +191,10 @@ f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-int.norm2  <- paste(int.norm1, "A comparison of Attribute and Associates showed a signficant main effect of relatedness (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),"), with attribute ratings higher than associates", sep="" )
+ 
+
+
+int.norm2  <- paste(int.norm1, "A comparison of property associates and pure associates showed a significant main effect of relatedness (\\Fval{", dfr1,"}{",dfr2,"}{",f,"}, \\MSe{",m,"}\\showp{, \\p{",get_range.tex(p),"}}","),  with the former receiving higher ratings higher than the latter.", sep="" )
 
 # cat(line,br)
 # cat("ATTRIBUTES & ASSOCIATES", br)
@@ -196,7 +209,8 @@ f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-int.norm3  <- paste(int.norm2, " Associates were also rated higher than the unrelated items (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),"), ", sep="" )
+
+int.norm3  <- paste(int.norm2, " Pure associates were also rated higher than the unrelated items (\\Fval{", dfr1,"}{",dfr2,"}{",f,"}, \\MSe{",m,"}\\showp{, \\p{",get_range.tex(p),"}}","), ", sep="" )
 
 # cat(line,br)
 # cat("ASSOCIATES & UNRELATED", br)
@@ -211,13 +225,14 @@ f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-int.norm4  <- paste(int.norm3, " as were attributes  (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),"), ", sep="" )
+int.norm4  <- paste(int.norm3, "  as were attribute associates  (\\Fval{", dfr1,"}{",dfr2,"}{",f,"}, \\MSe{",m,"}\\showp{, \\p{",get_range.tex(p),"}}",").", sep="" )
 
 # cat(line,br)
 # cat("ATTRIBUTES & UNRELATED",br)
 # print(d0.s)
 # cat(line, br)
 cat(int.norm4)
+cat(br,line,br)
 
 
 # ================== PROP. ASSOCIATION NORMING ============
@@ -239,7 +254,7 @@ f.an    <- zapsmall( d0.s[[5]][[1]][["F value"]][1], digits = 4)
 m.an    <- zapsmall( d0.s[[5]][[1]][["Mean Sq"]][2], digits = 4)
 p.an    <- zapsmall( d0.s[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-ass.norm1  <- paste("A 3 (relatedness) $\\times$ 2 (local noun number) ANOVA on the data revealed a main effect of relatedness (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),") and a marginally significant interaction between relatedness and local noun number (\\textit{F}(", dfr1.an,",",dfr2.an,")=",f.an,", \\textit{MS$_e$}=",m.an,", \\textit{p}", get_range.tex(p.an),").", sep="")
+ass.norm1  <- paste("A 3 (relatedness) $\\times$ 2 (local noun number) ANOVA on the data revealed a main effect of relatedness (\\Fval{", dfr1,"}{",dfr2,"}{",f,"}, \\MSe{",m,"}\\showp{, \\p{",get_range.tex(p),"}}",") and a marginally significant interaction between relatedness and local noun number (\\Fval{", dfr1.an,"}{",dfr2.an,"}{",f.an,"}, \\MSe{",m.an,"}\\showp{, \\p{",get_range.tex(p.an),"}}",").", sep="")
 
 # cat(line,br)
 # cat("FULL 3X2", br)
@@ -254,7 +269,8 @@ f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-ass.norm2  <- paste(ass.norm1, "Proportions were significantly greater for attribute associates than for pure associates, evidenced by a main effect of relatedness when the subset ofattribute associates and pure associates were analyzed (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),");", sep="")
+
+ass.norm2  <- paste(ass.norm1, "Proportions were significantly greater for property associates than for pure associates, evidenced by a main effect of relatedness when the subset of property associates and pure associates were analyzed (\\Fval{", dfr1,"}{",dfr2,"}{",f,"}, \\MSe{",m,"}\\showp{, \\p{",get_range.tex(p),"}}","). ", sep="")
 
 # cat(line,br)
 # cat("ATTRB & ASSOC", br)
@@ -277,7 +293,7 @@ p.rn    <- zapsmall( d0.s[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
 
 
 
-ass.norm3  <- paste(ass.norm2, "Comparing the subset of attribute associates with unrelated items also revealed a main effect of relatedness, with attribute associates generating higher association proportions than the unrelated items, (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p},", get_range.tex(p),") as well as a marginally significant interaction between relatedness and local noun number  (\\textit{F}(", dfr1.rn,",",dfr2.rn,")=",f.rn,", \\textit{MS$_e$}=",m.rn,", \\textit{p}", get_range.tex(p.rn),").", sep="")
+ass.norm3  <- paste(ass.norm2, "Comparing the subset of property associates with unrelated items also revealed a main effect of relatedness, with the former generating higher association proportions than the latter (\\Fval{", dfr1,"}{",dfr2,"}{",f,"}, \\MSe{",m,", \\textit{p},", get_range.tex(p),"}}","), as well as a marginally significant interaction between relatedness and local noun number  (\\Fval{", dfr1.rn,"}{",dfr2.rn,"}{",f.rn,"}, \\MSe{",m.rn,"}\\showp{, \\p{",get_range.tex(p.rn),"}}","). ", sep="")
 
 # cat(line,br)
 # cat("ATTRB & UNREL", br)
@@ -300,9 +316,7 @@ f.p    <- zapsmall( d1.s[[2]][[1]][["F value"]][1], digits = 4)
 m.p    <- zapsmall( d1.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
 p.p    <- zapsmall( d1.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-
-
-ass.norm4  <- paste(ass.norm3, "The interaction in this case is due to the fact that association proportions for singular attribute associates were significantly larger than for singular unrelated items  (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),", and proportions for plural attribute associates were also larger than for the unrelated items (\\textit{F}(", dfr1.p,",",dfr2.p,")=",f.p,", \\textit{MS$_e$}=",m.p,", \\textit{p}", get_range.tex(p.p),".", sep = "")
+ass.norm4  <- paste(ass.norm3, "The interaction in this case was due to the fact that association proportions for singular property associates were significantly larger than for singular unrelated items  (\\Fval{", dfr1,"}{",dfr2,"}{",f,"}, \\MSe{",m,"}\\showp{, \\p{",get_range.tex(p),"}}",",  and proportions for plural property associates were also larger than for the unrelated items (\\Fval{", dfr1.p,"}{",dfr2.p,"}{",f.p,"}, \\MSe{",m.p,"},\\showp{, \\p{",get_range.tex(p.p),"}}",".", sep = "")
 
 # cat(line,br)
 # cat("ATTRIBUTE & UNRELATED SING", br)
@@ -329,9 +343,7 @@ f.rn    <- zapsmall( d0.s[[5]][[1]][["F value"]][1], digits = 4)
 m.rn    <- zapsmall( d0.s[[5]][[1]][["Mean Sq"]][2], digits = 4)
 p.rn    <- zapsmall( d0.s[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-
-
-ass.norm5  <- paste(ass.norm4, "A comparison of pure assocciates and unrelated items also revealed a main effect of relatedness, with pure associates generating higher proportions than the unrelated items, (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex(p),") as well as a significant interaction between relatedness and local noun number  (\\textit{F}(", dfr1.rn,",",dfr2.rn,")=",f.rn,", \\textit{MS$_e$}=",m.rn,", \\textit{p}", get_range.tex(p.rn),").", sep="")
+ass.norm5  <- paste(ass.norm4, "A comparison of pure associates and unrelated items also revealed a main effect of relatedness, with pure associates generating higher proportions than the unrelated items, (\\Fval{", dfr1,"}{",dfr2,"}{",f,"}, \\MSe{",m,"}, \\showp{, \\p{",get_range.tex(p),"}}",")  as well as a significant interaction between relatedness and local noun number  (\\Fval{", dfr1.rn,"}{",dfr2.rn,"}{",f.rn,"}, \\MSe{",m.rn,"}, \\showp{, \\p{",get_range.tex(p.rn),"}}","). ", sep="")
            
 # cat(line,br)
 # cat("ASSOC & UNREL", br)
@@ -348,8 +360,7 @@ m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
 
 
-
-ass.norm6  <- paste(ass.norm5, "In this case, the interaction iwas being driven by a significant different in proportions for the singular  associates relative to the singular unrelated items  (\\textit{F}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex(p),".", sep = "")
+ass.norm6  <- paste(ass.norm5, "In this case, the interaction was being driven by a significant different in proportions for the singular pure associates relative to the singular unrelated items (\\Fval{", dfr1,"}{",dfr2,"}{",f,"}, \\MSe{",m,"}\\showp{, \\p{",get_range.tex(p),"}}",".", sep = "")
 
 # cat(line,br)
 # cat("ASSOC & UNRELATED SING", br)
@@ -360,7 +371,7 @@ ass.norm6  <- paste(ass.norm5, "In this case, the interaction iwas being driven 
 # print(d1.s)
 
 cat(ass.norm6)
-
+cat(br,line,br,line)
 
 
 # ================== SUMMARY PARAGRAPH ============
@@ -382,7 +393,10 @@ f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect1 <-paste("Comparing attributes and associates, there was a main effect of relationship, with associates generating more errors than attributes (\\textit{F$_1$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),"; ", sep="" )     
+
+ 
+
+main_effect1 <-paste("Comparing property associates and pure associates, there was a main effect of relationship, with pure associates generating more errors than property associates (\\Fs[",dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","; ", sep="" )     
 # ================== RELATEDNESS MAIN EFFECT F2 ==============
 source(file = "semrel2_PROP_f2_ANOVAS_read_in_dataframe.R")
 d0   <- aov(error ~ related * n2num + Error(item / related * n2num), data = relat.assoc)
@@ -393,7 +407,8 @@ f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect2 <-paste(main_effect1,"\\textit{F$_2$}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex( p),").", sep="" )
+
+main_effect2 <-paste(main_effect1,"\\Fi[", dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}",").", sep="" )
 
 # ================== RELATEDNESS X N2NUM  F1 ==============
 
@@ -407,7 +422,9 @@ f    <- zapsmall( d0.s[[5]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[5]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect3 <-paste(main_effect2, "There was also a marginally significant interaction between relatedness and local noun number  (\\textit{F$_1$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),"; ", sep="" )     
+ 
+
+main_effect3 <-paste(main_effect2, "There was also a marginally significant interaction between relatedness and local noun number  (\\Fs[",dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","; ", sep="" )     
 # ================== RELATEDNESS X N2NUM  F2 ==============
 
 source(file = "semrel2_PROP_f2_ANOVAS_read_in_dataframe.R")
@@ -419,7 +436,7 @@ f    <- zapsmall( d0.s[[5]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[5]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect4 <-paste(main_effect3,"\\textit{F$_2$}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex( p),"), the mismatch effect being larger for associates (\\textit{F$_1$}(", sep="" )
+main_effect4 <-paste(main_effect3,"\\Fi[", dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","), the mismatch effect being larger for pure associates  (\\Fs[", sep="" )
 
 
 # ================== ASSOCIATES MISMATCH F1 ==============
@@ -433,7 +450,7 @@ f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect5 <-paste(main_effect4, dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),";", sep="")
+main_effect5 <-paste(main_effect4, dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}",";", sep="")
 # ================== ASSOCIATES MISMATCH F1 ==============
 source(file = "semrel2_PROP_f2_ANOVAS_read_in_dataframe.R")
 d0   <- aov(error ~ n2num + Error(item / n2num), data = assoc)
@@ -445,7 +462,7 @@ f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect6 <-paste(main_effect5,"\\textit{F$_2$}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex( p),") than for attributes (\\textit{F$_1$}(", sep="" )
+main_effect6 <-paste(main_effect5,"\\Fi[", dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}",")  than for property associates (\\Fs[", sep="" )
 
 # ================== ATTRIBUTES MISMATCH F1 ==============
 source(file = "semrel2_PROP_f1_ANOVAS_read_in_dataframe.R")
@@ -458,7 +475,7 @@ f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect7 <-paste(main_effect6, dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),"; ", sep="" )
+main_effect7 <-paste(main_effect6, dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","; ", sep="" )
 # ================== ATTRIBUTES MISMATCH F2 ==============
 source(file = "semrel2_PROP_f2_ANOVAS_read_in_dataframe.R")
 d0   <- aov(error ~ n2num + Error(item / n2num), data = relat)
@@ -470,7 +487,7 @@ f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect8 <-paste(main_effect7,"\\textit{F$_2$}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex( p),").", sep="" )
+main_effect8 <-paste(main_effect7,"\\Fi[", dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}",").", sep="" )
 cat(main_effect8,br)
 
 # =============================================== SEMREL2 : ALTENRATIVE ANALYSES Part 1========================
@@ -489,7 +506,7 @@ m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
 
 
-main_effect1 <-paste("===== 1. ARCSIN TRANSFORMED PROPORTIONS: (\\textit{F$_1$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),"; ", sep="" )     
+main_effect1 <-paste("===== 1. ARCSIN TRANSFORMED PROPORTIONS: (\\Fs[",dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","; ", sep="" )     
 # ------------------ ARCSINE RELATEDNESS ME F2 -----------
 
 source(file = "semrel2_PROP_f2_ANOVAS_read_in_dataframe.R")
@@ -501,7 +518,7 @@ f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect2 <-paste(main_effect1,"\\textit{F$_2$}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex( p), sep="" )
+main_effect2 <-paste(main_effect1,"\\Fi[", dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}", sep="" )
 
 cat(main_effect2,br)
 
@@ -515,7 +532,7 @@ f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect1 <-paste("===== 2. ERRORS NO DYSFLUENCIES: (\\textit{F$_1$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),"; ", sep="" )     
+main_effect1 <-paste("===== 2. ERRORS NO DYSFLUENCIES: (\\Fs[",dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","; ", sep="" )     
 # ------------------ ERR NO DYS RELATEDNESS ME F2 -----------
 source(file = "semrel2_PROP_f2_ANOVAS_read_in_dataframe.R")
 d0   <- aov(nodys ~ related * n2num + Error(item / related * n2num), data = nodys.relat.assoc)
@@ -526,7 +543,7 @@ f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect2 <-paste(main_effect1,"\\textit{F$_2$}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex( p), sep="" )
+main_effect2 <-paste(main_effect1,"\\Fi[", dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}", sep="" )
 
 cat(main_effect2,br)
 
@@ -540,7 +557,7 @@ f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect1 <-paste("===== 3. ERROR COUNTS: (\\textit{F$_1$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),"; ", sep="" )   
+main_effect1 <-paste("===== 3. ERROR COUNTS: (\\Fs[",dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","; ", sep="" )   
 # ------------------ ERR COUNTS RELATEDNESS ME F2 -----------
 source(file = "semrel2_PROP_f2_ANOVAS_read_in_dataframe.R")
 d0   <- aov(count ~ related * n2num + Error(item / related * n2num), data = cnt.relat.assoc)
@@ -551,7 +568,7 @@ f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect2 <-paste(main_effect1,"\\textit{F$_2$}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex( p), sep="" )
+main_effect2 <-paste(main_effect1,"\\Fi[", dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}", sep="" )
 cat(main_effect2,br)
 
 
@@ -570,7 +587,7 @@ m    <- zapsmall( d0.s[[5]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
 
 
-main_effect1 <-paste("===== 1. ARCSIN TRANSFORMED PROPORTIONS: (\\textit{F$_1$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),"; ", sep="" )     
+main_effect1 <-paste("===== 1. ARCSIN TRANSFORMED PROPORTIONS: (\\Fs[",dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","; ", sep="" )     
 # ------------------ ARCSINE RELATED X N2NUM F2 -----------
 
 source(file = "semrel2_PROP_f2_ANOVAS_read_in_dataframe.R")
@@ -583,7 +600,7 @@ f    <- zapsmall( d0.s[[5]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[5]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect2 <-paste(main_effect1,"\\textit{F$_2$}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex( p), sep="" )
+main_effect2 <-paste(main_effect1,"\\Fi[", dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}", sep="" )
 
 cat(main_effect2, br)
 
@@ -599,7 +616,7 @@ m    <- zapsmall( d0.s[[5]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
 
 
-main_effect1 <-paste("===== 2. ERRORS NO DYSFLUENCIES: (\\textit{F$_1$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),"; ", sep="" )     
+main_effect1 <-paste("===== 2. ERRORS NO DYSFLUENCIES: (\\Fs[",dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","; ", sep="" )     
 # ------------------ ERR NO DYS RELATED X N2NUM F1 -----------
 source(file = "semrel2_PROP_f2_ANOVAS_read_in_dataframe.R")
 d0   <- aov(nodys ~ related * n2num + Error(item / related * n2num), data = nodys.relat.assoc)
@@ -610,7 +627,7 @@ f    <- zapsmall( d0.s[[5]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[5]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect2 <-paste(main_effect1,"\\textit{F$_2$}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex( p), sep="" )
+main_effect2 <-paste(main_effect1,"\\Fi[", dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}", sep="" )
 
 cat(main_effect2, br)
 
@@ -625,7 +642,7 @@ m    <- zapsmall( d0.s[[5]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
 
 
-main_effect1 <-paste("===== 3. ERROR COUNTS: (\\textit{F$_1$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),"; ", sep="" )   
+main_effect1 <-paste("===== 3. ERROR COUNTS: (\\Fs[",dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","; ", sep="" )   
 # ------------------ ERR COUNTS RELATED X N2NUM F2 -----------
 source(file = "semrel2_PROP_f2_ANOVAS_read_in_dataframe.R")
 d0   <- aov(count ~ related * n2num + Error(item / related * n2num), data = cnt.relat.assoc)
@@ -636,7 +653,7 @@ f    <- zapsmall( d0.s[[5]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[5]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect2 <-paste(main_effect1,"\\textit{F$_2$}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex( p), sep="" )
+main_effect2 <-paste(main_effect1,"\\Fi[", dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}", sep="" )
 cat(main_effect2, br)
 
 
@@ -654,7 +671,7 @@ f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect1 <-paste("===== 1. ARCSIN TRANSFORMED PROPORTIONS: ASSOCIATED (\\textit{F$_1$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),"; ", sep="" )     
+main_effect1 <-paste("===== 1. ARCSIN TRANSFORMED PROPORTIONS: ASSOCIATED (\\Fs[",dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","; ", sep="" )     
 # ------------------ ARCSINE ASSOCIATES MISMATCH F2 -----------
 source(file = "semrel2_PROP_f2_ANOVAS_read_in_dataframe.R")
 d0   <- aov(arcerr ~ n2num + Error(item / n2num), data = arc.assoc)
@@ -666,7 +683,7 @@ f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect2 <-paste(main_effect1,"\\textit{F$_2$}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex( p),"; ATTRIBUTE", sep="" )
+main_effect2 <-paste(main_effect1,"\\Fi[", dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","; ATTRIBUTE", sep="" )
 
 # ------------------ ARCSINE ATTRIBUTES MISMATCH F1 ---------
 source(file = "semrel2_PROP_f1_ANOVAS_read_in_dataframe.R")
@@ -679,7 +696,7 @@ f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect3 <- paste(main_effect2, "(\\textit{F$_1$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),"; ", sep="" )
+main_effect3 <- paste(main_effect2, "(\\Fs[",dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","; ", sep="" )
 # ------------------ ARCSINE ATTRIBUTES MISMATCH F2 ---------
 source(file = "semrel2_PROP_f2_ANOVAS_read_in_dataframe.R")
 d0   <- aov(arcerr ~ n2num + Error(item / n2num), data = arc.relat)
@@ -690,7 +707,7 @@ dfr2 <- (d0.s[[2]][[1]][["Df"]][[2]])
 f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
-main_effect4 <-paste(main_effect3,"\\textit{F$_2$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),".", sep="") 
+main_effect4 <-paste(main_effect3,"\\Fi[",dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}",".", sep="") 
 
 cat(main_effect4, br)
 
@@ -705,7 +722,7 @@ m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
 
 
-main_effect1 <-paste("===== 2. ERRORS NO DYSFLUENCIES: ASSOCIATED (\\textit{F$_1$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),"; ", sep="" )   
+main_effect1 <-paste("===== 2. ERRORS NO DYSFLUENCIES: ASSOCIATED (\\Fs[",dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","; ", sep="" )   
 # ------------------ ERR NO DYS ASSOCIATED MISMATCH F2 -----------
 source(file = "semrel2_PROP_f2_ANOVAS_read_in_dataframe.R")
 d0   <- aov(nodys ~ n2num + Error(item / n2num), data = nodys.assoc)
@@ -717,7 +734,7 @@ f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect2 <-paste(main_effect1,"\\textit{F$_2$}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex( p),"; ATTRIBUTE", sep="" )
+main_effect2 <-paste(main_effect1,"\\Fi[", dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","; ATTRIBUTE", sep="" )
 
 # ------------------ ERR NO DYS ATTRIBUTE MISMATCH F1 ---------
 source(file = "semrel2_PROP_f1_ANOVAS_read_in_dataframe.R")
@@ -730,7 +747,7 @@ f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect3 <- paste(main_effect2, "(\\textit{F$_1$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),"; ", sep="" )
+main_effect3 <- paste(main_effect2, "(\\Fs[",dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","; ", sep="" )
 # ------------------ ERR NO DYS ATTRIBUTE MISMATCH F2 ---------
 source(file = "semrel2_PROP_f2_ANOVAS_read_in_dataframe.R")
 d0   <- aov(nodys ~ n2num + Error(item / n2num), data = nodys.relat)
@@ -741,7 +758,7 @@ dfr2 <- (d0.s[[2]][[1]][["Df"]][[2]])
 f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
-main_effect4 <-paste(main_effect3,"\\textit{F$_2$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),".", sep="") 
+main_effect4 <-paste(main_effect3,"\\Fi[",dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}",".", sep="") 
 cat(main_effect4, br)
 
 # ------------------ ERR COUNTS ASSOCIATE MISMATCH F1 -----------
@@ -754,7 +771,7 @@ f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect1 <-paste("===== 3. ERRORS COUNTS: ASSOCIATED (\\textit{F$_1$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),"; ", sep="" )  
+main_effect1 <-paste("===== 3. ERRORS COUNTS: ASSOCIATED (\\Fs[",dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","; ", sep="" )  
 # ------------------ ERR COUNTS ASSOCIATE MISMATCH F2 -----------
 source(file = "semrel2_PROP_f2_ANOVAS_read_in_dataframe.R")
 d0   <- aov(count ~ n2num + Error(item / n2num), data = cnt.assoc)
@@ -766,7 +783,7 @@ f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect2 <-paste(main_effect1,"\\textit{F$_2$}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex( p),"; ATTRIBUTE", sep="" )
+main_effect2 <-paste(main_effect1,"\\Fi[", dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","; ATTRIBUTE", sep="" )
 
 # ------------------ ERR COUNTS ATTRIBUTE MISMATCH F1 -----------
 source(file = "semrel2_PROP_f1_ANOVAS_read_in_dataframe.R")
@@ -779,7 +796,7 @@ f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect3 <- paste(main_effect2, "(\\textit{F$_1$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),"; ", sep="" )
+main_effect3 <- paste(main_effect2, "(\\Fs[",dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","; ", sep="" )
 # ------------------ ERR COUNTS ATTRIBUTE MISMATCH F2 -----------
 source(file = "semrel2_PROP_f2_ANOVAS_read_in_dataframe.R")
 d0   <- aov(count ~ n2num + Error(item / n2num), data = cnt.relat)
@@ -790,7 +807,7 @@ dfr2 <- (d0.s[[2]][[1]][["Df"]][[2]])
 f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
-main_effect4 <-paste(main_effect3,"\\textit{F$_2$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),".", sep="") 
+main_effect4 <-paste(main_effect3,"\\Fi[",dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}",".", sep="") 
 cat(main_effect4, br)
 
 # ============================================== SEMREL 2 Part 2==========================================
@@ -809,7 +826,7 @@ f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect1 <-paste("Associates also generated more agreement errors than unrelated items (\\textit{F$_1$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),"; ", sep="" )     
+main_effect1 <-paste("Pure associates also generated more agreement errors than unrelated items (\\Fs[",dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","; ", sep="" )     
 # ================== ASSOCIATE vs. UNRELATED MAIN EFFECT F2 ==============
 source(file = "semrel2_PROP_f2_ANOVAS_read_in_dataframe.R")
 d0   <- aov(error ~ related * n2num + Error(item / related * n2num), data = assoc.unrel)
@@ -820,7 +837,7 @@ f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect2 <-paste(main_effect1,"\\textit{F$_2$}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex( p),"),", sep="" )
+main_effect2 <-paste(main_effect1,"\\Fi[", dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","),", sep="" )
 
 # ================== ASSOCIATE X N2NUM  F1 ==============
 
@@ -834,7 +851,7 @@ f    <- zapsmall( d0.s[[5]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[5]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect3 <-paste(main_effect2, "and there was a local noun number by associate interaction (\\textit{F$_1$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),"; ", sep="" )     
+main_effect3 <-paste(main_effect2, "and there was a local noun number by associate interaction (\\Fs[",dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","; ", sep="" )     
 # ================== ASSOCIATE X N2NUM  F2 ==============
 
 source(file = "semrel2_PROP_f2_ANOVAS_read_in_dataframe.R")
@@ -846,7 +863,7 @@ f    <- zapsmall( d0.s[[5]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[5]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect4 <-paste(main_effect3,"\\textit{F$_2$}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex( p),"), the mismatch effect being larger for associates than for unrelated items (\\textit{F$_1$}(", sep="" )
+main_effect4 <-paste(main_effect3,"\\Fi[", dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","), the mismatch effect being larger for pure associates than for unrelated items (\\Fs[", sep="" )
 
 # ================== UNRELATED MISMATCH F1 ==============
 source(file = "semrel2_PROP_f1_ANOVAS_read_in_dataframe.R")
@@ -859,7 +876,7 @@ f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect5 <-paste(main_effect4, dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),"; ", sep="" )
+main_effect5 <-paste(main_effect4, dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","; ", sep="" )
 # ================== UNRELATED MISMATCH F2 ==============
 source(file = "semrel2_PROP_f2_ANOVAS_read_in_dataframe.R")
 d0   <- aov(error ~ n2num + Error(item / n2num), data = unrel)
@@ -871,7 +888,7 @@ f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect6 <-paste(main_effect5,"\\textit{F$_2$}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex( p),").", sep="" )
+main_effect6 <-paste(main_effect5,"\\Fi[", dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}",").", sep="" )
 cat(main_effect6, br)
 
 # ============================================== SEMREL 2 ALTERNATIVE ANALYSES Part 2 ================
@@ -889,7 +906,7 @@ m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
 
 
-main_effect1 <-paste("===== 1. ARCSIN TRANSFORMED PROPORTIONS: (\\textit{F$_1$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),"; ", sep="" )     
+main_effect1 <-paste("===== 1. ARCSIN TRANSFORMED PROPORTIONS: (\\Fs[",dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","; ", sep="" )     
 # ------------------ ARCSINE RELATEDNESS ME F2 -----------
 
 source(file = "semrel2_PROP_f2_ANOVAS_read_in_dataframe.R")
@@ -901,7 +918,7 @@ f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect2 <-paste(main_effect1,"\\textit{F$_2$}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex( p), sep="" )
+main_effect2 <-paste(main_effect1,"\\Fi[", dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}", sep="" )
 
 cat(main_effect2,br)
 
@@ -915,7 +932,7 @@ f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect1 <-paste("===== 2. ERRORS NO DYSFLUENCIES: (\\textit{F$_1$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),"; ", sep="" )     
+main_effect1 <-paste("===== 2. ERRORS NO DYSFLUENCIES: (\\Fs[",dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","; ", sep="" )     
 # ------------------ ERR NO DYS RELATEDNESS ME F2 -----------
 source(file = "semrel2_PROP_f2_ANOVAS_read_in_dataframe.R")
 d0   <- aov(nodys ~ related * n2num + Error(item / related * n2num), data = nodys.assoc.unrel)
@@ -926,7 +943,7 @@ f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect2 <-paste(main_effect1,"\\textit{F$_2$}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex( p), sep="" )
+main_effect2 <-paste(main_effect1,"\\Fi[", dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}", sep="" )
 
 cat(main_effect2,br)
 
@@ -940,7 +957,7 @@ f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect1 <-paste("===== 3. ERROR COUNTS: (\\textit{F$_1$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),"; ", sep="" )   
+main_effect1 <-paste("===== 3. ERROR COUNTS: (\\Fs[",dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","; ", sep="" )   
 # ------------------ ERR COUNTS RELATEDNESS ME F2 -----------
 source(file = "semrel2_PROP_f2_ANOVAS_read_in_dataframe.R")
 d0   <- aov(count ~ related * n2num + Error(item / related * n2num), data = cnt.assoc.unrel)
@@ -951,7 +968,7 @@ f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect2 <-paste(main_effect1,"\\textit{F$_2$}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex( p), sep="" )
+main_effect2 <-paste(main_effect1,"\\Fi[", dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}", sep="" )
 cat(main_effect2,br)
 
 # ------------------ ARCSINE RELATED X N2NUM F1 -----------
@@ -969,7 +986,7 @@ m    <- zapsmall( d0.s[[5]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
 
 
-main_effect1 <-paste("===== 1. ARCSIN TRANSFORMED PROPORTIONS: (\\textit{F$_1$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),"; ", sep="" )     
+main_effect1 <-paste("===== 1. ARCSIN TRANSFORMED PROPORTIONS: (\\Fs[",dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","; ", sep="" )     
 # ------------------ ARCSINE RELATED X N2NUM F2 -----------
 
 source(file = "semrel2_PROP_f2_ANOVAS_read_in_dataframe.R")
@@ -982,7 +999,7 @@ f    <- zapsmall( d0.s[[5]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[5]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect2 <-paste(main_effect1,"\\textit{F$_2$}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex( p), sep="" )
+main_effect2 <-paste(main_effect1,"\\Fi[", dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}", sep="" )
 
 cat(main_effect2, br)
 
@@ -998,7 +1015,7 @@ m    <- zapsmall( d0.s[[5]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
 
 
-main_effect1 <-paste("===== 2. ERRORS NO DYSFLUENCIES: (\\textit{F$_1$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),"; ", sep="" )     
+main_effect1 <-paste("===== 2. ERRORS NO DYSFLUENCIES: (\\Fs[",dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","; ", sep="" )     
 # ------------------ ERR NO DYS RELATED X N2NUM F1 -----------
 source(file = "semrel2_PROP_f2_ANOVAS_read_in_dataframe.R")
 d0   <- aov(nodys ~ related * n2num + Error(item / related * n2num), data = nodys.assoc.unrel)
@@ -1009,7 +1026,7 @@ f    <- zapsmall( d0.s[[5]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[5]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect2 <-paste(main_effect1,"\\textit{F$_2$}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex( p), sep="" )
+main_effect2 <-paste(main_effect1,"\\Fi[", dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}", sep="" )
 
 cat(main_effect2, br)
 
@@ -1024,7 +1041,7 @@ m    <- zapsmall( d0.s[[5]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
 
 
-main_effect1 <-paste("===== 3. ERROR COUNTS: (\\textit{F$_1$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),"; ", sep="" )   
+main_effect1 <-paste("===== 3. ERROR COUNTS: (\\Fs[",dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","; ", sep="" )   
 # ------------------ ERR COUNTS RELATED X N2NUM F2 -----------
 source(file = "semrel2_PROP_f2_ANOVAS_read_in_dataframe.R")
 d0   <- aov(count ~ related * n2num + Error(item / related * n2num), data = cnt.relat.assoc)
@@ -1035,7 +1052,7 @@ f    <- zapsmall( d0.s[[5]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[5]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect2 <-paste(main_effect1,"\\textit{F$_2$}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex( p), sep="" )
+main_effect2 <-paste(main_effect1,"\\Fi[", dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}", sep="" )
 cat(main_effect2, br)
 
 # ------------------ ARCSINE UNRELATED MISMATCH F1 -----------
@@ -1052,7 +1069,7 @@ f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect1 <-paste("===== 1. ARCSIN TRANSFORMED PROPORTIONS: UNRELATED (\\textit{F$_1$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),"; ", sep="" )     
+main_effect1 <-paste("===== 1. ARCSIN TRANSFORMED PROPORTIONS: UNRELATED (\\Fs[",dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","; ", sep="" )     
 # ------------------ ARCSINE UNRELATED MISMATCH F2 -----------
 source(file = "semrel2_PROP_f2_ANOVAS_read_in_dataframe.R")
 d0   <- aov(arcerr ~ n2num + Error(item / n2num), data = arc.unrel)
@@ -1064,7 +1081,7 @@ f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect2 <-paste(main_effect1,"\\textit{F$_2$}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex( p), sep="" )
+main_effect2 <-paste(main_effect1,"\\Fi[", dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}", sep="" )
 
 cat(main_effect2, br)
 
@@ -1079,7 +1096,7 @@ m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
 
 
-main_effect1 <-paste("===== 2. ERRORS NO DYSFLUENCIES: UNRELATED (\\textit{F$_1$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),"; ", sep="" )   
+main_effect1 <-paste("===== 2. ERRORS NO DYSFLUENCIES: UNRELATED (\\Fs[",dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","; ", sep="" )   
 # ------------------ ERR NO DYS UNRELATED MISMATCH F2 -----------
 source(file = "semrel2_PROP_f2_ANOVAS_read_in_dataframe.R")
 d0   <- aov(nodys ~ n2num + Error(item / n2num), data = nodys.unrel)
@@ -1091,7 +1108,7 @@ f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect2 <-paste(main_effect1,"\\textit{F$_2$}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex( p), sep="" )
+main_effect2 <-paste(main_effect1,"\\Fi[", dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}", sep="" )
 
 cat(main_effect2, br)
 
@@ -1105,7 +1122,7 @@ f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect1 <-paste("===== 3. ERRORS COUNTS: UNRELATED (\\textit{F$_1$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),"; ", sep="" )  
+main_effect1 <-paste("===== 3. ERRORS COUNTS: UNRELATED (\\Fs[",dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","; ", sep="" )  
 # ------------------ ERR COUNTS ASSOCIATE MISMATCH F2 -----------
 source(file = "semrel2_PROP_f2_ANOVAS_read_in_dataframe.R")
 d0   <- aov(count ~ n2num + Error(item / n2num), data = cnt.unrel)
@@ -1117,7 +1134,7 @@ f    <- zapsmall( d0.s[[2]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[2]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[2]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect2 <-paste(main_effect1,"\\textit{F$_2$}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex( p), sep="" )
+main_effect2 <-paste(main_effect1,"\\Fi[", dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}", sep="" )
 
 cat(main_effect2, br)
 
@@ -1139,7 +1156,8 @@ f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect1 <-paste("A comparison of attribute and unrelated items revealed a marginal main effect of relationship, as related items generated more errors than unrelated items (\\textit{F$_1$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),"; ", sep="" )     
+ 
+main_effect1 <-paste("A comparison of property associates and unrelated items revealed a marginal main effect of relatedness, as items in the property associate condition generated more errors than items in the unrelated condition overall (\\Fs[",dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","; ", sep="" )     
 # ================== ATTRIBUTE vs. UNRELATED MAIN EFFECT F2 ==============
 source(file = "semrel2_PROP_f2_ANOVAS_read_in_dataframe.R")
 d0   <- aov(error ~ related * n2num + Error(item / related * n2num), data = relat.unrel)
@@ -1150,7 +1168,7 @@ f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect2 <-paste(main_effect1,"\\textit{F$_2$}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex( p),").", sep="" )
+main_effect2 <-paste(main_effect1,"\\Fi[", dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}",").", sep="" )
 
 # ================== ATTRIBUTE X N2NUM  F1 ==============
 
@@ -1164,7 +1182,7 @@ f    <- zapsmall( d0.s[[5]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[5]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect3 <-paste(main_effect2, "There was also an interaction that was significant by items and marginally significant by subjects (\\textit{F$_1$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),"; ", sep="" )     
+main_effect3 <-paste(main_effect2, "There was also an interaction that was significant by items and marginally significant by subjects (\\Fs[",dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","; ", sep="" )     
 # ================== ATTRIBUTE X N2NUM  F2 ==============
 
 source(file = "semrel2_PROP_f2_ANOVAS_read_in_dataframe.R")
@@ -1176,7 +1194,7 @@ f    <- zapsmall( d0.s[[5]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[5]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect4 <-paste(main_effect3,"\\textit{F$_2$}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex( p),"), the mismatch effect being larger for attributes than for unrelated items.", sep="")
+main_effect4 <-paste(main_effect3,"\\Fi[", dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","),  the mismatch effect being larger for property associates than for unrelated items.", sep="")
 
 cat(main_effect4, br)
 
@@ -1195,7 +1213,7 @@ m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
 
 
-main_effect1 <-paste("===== 1. ARCSIN TRANSFORMED PROPORTIONS: (\\textit{F$_1$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),"; ", sep="" )     
+main_effect1 <-paste("===== 1. ARCSIN TRANSFORMED PROPORTIONS: (\\Fs[",dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","; ", sep="" )     
 # ------------------ ARCSINE RELATEDNESS ME F2 -----------
 
 source(file = "semrel2_PROP_f2_ANOVAS_read_in_dataframe.R")
@@ -1207,7 +1225,7 @@ f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect2 <-paste(main_effect1,"\\textit{F$_2$}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex( p), sep="" )
+main_effect2 <-paste(main_effect1,"\\Fi[", dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}", sep="" )
 
 cat(main_effect2,br)
 
@@ -1221,7 +1239,7 @@ f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect1 <-paste("===== 2. ERRORS NO DYSFLUENCIES: (\\textit{F$_1$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),"; ", sep="" )     
+main_effect1 <-paste("===== 2. ERRORS NO DYSFLUENCIES: (\\Fs[",dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","; ", sep="" )     
 # ------------------ ERR NO DYS RELATEDNESS ME F2 -----------
 source(file = "semrel2_PROP_f2_ANOVAS_read_in_dataframe.R")
 d0   <- aov(nodys ~ related * n2num + Error(item / related * n2num), data = nodys.relat.unrel)
@@ -1232,7 +1250,7 @@ f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect2 <-paste(main_effect1,"\\textit{F$_2$}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex( p), sep="" )
+main_effect2 <-paste(main_effect1,"\\Fi[", dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}", sep="" )
 
 cat(main_effect2,br)
 
@@ -1246,7 +1264,7 @@ f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect1 <-paste("===== 3. ERROR COUNTS: (\\textit{F$_1$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),"; ", sep="" )   
+main_effect1 <-paste("===== 3. ERROR COUNTS: (\\Fs[",dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","; ", sep="" )   
 # ------------------ ERR COUNTS RELATEDNESS ME F2 -----------
 source(file = "semrel2_PROP_f2_ANOVAS_read_in_dataframe.R")
 d0   <- aov(count ~ related * n2num + Error(item / related * n2num), data = cnt.relat.unrel)
@@ -1257,7 +1275,7 @@ f    <- zapsmall( d0.s[[3]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[3]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[3]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect2 <-paste(main_effect1,"\\textit{F$_2$}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex( p), sep="" )
+main_effect2 <-paste(main_effect1,"\\Fi[", dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}", sep="" )
 cat(main_effect2,br)
 
 # ------------------ ARCSINE RELATED X N2NUM F1 -----------
@@ -1275,7 +1293,7 @@ m    <- zapsmall( d0.s[[5]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
 
 
-main_effect1 <-paste("===== 1. ARCSIN TRANSFORMED PROPORTIONS: (\\textit{F$_1$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),"; ", sep="" )     
+main_effect1 <-paste("===== 1. ARCSIN TRANSFORMED PROPORTIONS: (\\Fs[",dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","; ", sep="" )     
 # ------------------ ARCSINE RELATED X N2NUM F2 -----------
 
 source(file = "semrel2_PROP_f2_ANOVAS_read_in_dataframe.R")
@@ -1288,7 +1306,7 @@ f    <- zapsmall( d0.s[[5]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[5]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect2 <-paste(main_effect1,"\\textit{F$_2$}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex( p), sep="" )
+main_effect2 <-paste(main_effect1,"\\Fi[", dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}", sep="" )
 
 cat(main_effect2, br)
 
@@ -1304,7 +1322,7 @@ m    <- zapsmall( d0.s[[5]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
 
 
-main_effect1 <-paste("===== 2. ERRORS NO DYSFLUENCIES: (\\textit{F$_1$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),"; ", sep="" )     
+main_effect1 <-paste("===== 2. ERRORS NO DYSFLUENCIES: (\\Fs[",dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","; ", sep="" )     
 # ------------------ ERR NO DYS RELATED X N2NUM F1 -----------
 source(file = "semrel2_PROP_f2_ANOVAS_read_in_dataframe.R")
 d0   <- aov(nodys ~ related * n2num + Error(item / related * n2num), data = nodys.relat.unrel)
@@ -1315,7 +1333,7 @@ f    <- zapsmall( d0.s[[5]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[5]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect2 <-paste(main_effect1,"\\textit{F$_2$}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex( p), sep="" )
+main_effect2 <-paste(main_effect1,"\\Fi[", dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}", sep="" )
 
 cat(main_effect2, br)
 
@@ -1330,7 +1348,7 @@ m    <- zapsmall( d0.s[[5]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
 
 
-main_effect1 <-paste("===== 3. ERROR COUNTS: (\\textit{F$_1$}(",dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}",get_range.tex( p),"; ", sep="" )   
+main_effect1 <-paste("===== 3. ERROR COUNTS: (\\Fs[",dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}","; ", sep="" )   
 # ------------------ ERR COUNTS RELATED X N2NUM F2 -----------
 source(file = "semrel2_PROP_f2_ANOVAS_read_in_dataframe.R")
 d0   <- aov(count ~ related * n2num + Error(item / related * n2num), data = cnt.relat.assoc)
@@ -1341,7 +1359,7 @@ f    <- zapsmall( d0.s[[5]][[1]][["F value"]][1], digits = 4)
 m    <- zapsmall( d0.s[[5]][[1]][["Mean Sq"]][2], digits = 4)
 p    <- zapsmall( d0.s[[5]][[1]][["Pr(>F)"]][1],  digits = 4)
 
-main_effect2 <-paste(main_effect1,"\\textit{F$_2$}(", dfr1,",",dfr2,")=",f,", \\textit{MS$_e$}=",m,", \\textit{p}", get_range.tex( p), sep="" )
+main_effect2 <-paste(main_effect1,"\\Fi[", dfr1,"]{",dfr2,"}{",f,"}{",m,"}\\showp{, \\p{",get_range.tex( p),"}}", sep="" )
 cat(main_effect2, br)
 
 sink()
