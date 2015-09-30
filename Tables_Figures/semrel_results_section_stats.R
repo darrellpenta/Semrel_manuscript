@@ -7,7 +7,7 @@ sink(file = "documents/SEMREL_results_section.txt")
 
 source( file = "clear_and_setup.R")
 source( file = "semrel_ratings_data_read_in_dataframe.R")
-cat("RELATEDNESS NORMING PARA")
+cat("RELATEDNESS NORMING PARA", br)
 d0    <-  aov( RelatedHL ~ related * n2num + Error(item /related * n2num), data = d.sr)
 
 d0.s <-summary(d0) 
@@ -26,7 +26,7 @@ cat(br,line,br)
 
 source( file = "clear_and_setup.R")
 source( file = "semrel_ratings_data_read_in_dataframe.R")
-cat("INTEG NORMING PARA")
+cat("INTEG NORMING PARA", br)
 d0    <-  aov( Integrated ~ (integrated + related + n2num)^3 + Error(item /(integrated + related + n2num)^3), data = d.sr)
 
 d0.s <-summary(d0) 
@@ -114,7 +114,7 @@ cat(br,line,br)
 # ================== ASSOCIATION NORMING ============
 source( file = "clear_and_setup.R")
 source( file = "semrel_ratings_data_read_in_dataframe.R")
-cat("ASSOCIATION NORMING PARA")
+cat("ASSOCIATION NORMING PARA", br)
 d0    <-  aov( AssArc.H.L ~  related * n2num + Error(item /(related * n2num)), data = d.sr)
 
 d0.s <-summary(d0) 
