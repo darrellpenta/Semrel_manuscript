@@ -3319,6 +3319,149 @@ regressions2.ds <-data.frame(
 # ----------------------------- MODEL 2 OUTPUT TO EXCEL
 write.xlsx( regressions2.ds, file = "output/table24_SR1 & 2_regression_model2_comparisons.xlsx", col.names = TRUE, row.names = FALSE, append = FALSE)
 
+
+
+# ---------------------  SOME FIGURES-------
+
+library(ggplot2)
+library(corrplot)
+library(languageR)
+library(lme4)
+library(lmerTest)
+library(grid)
+
+#NON RESID
+
+beta.table.1 <- data.frame (
+  GROUPING.FACTOR  = c("SUBJECT","SUBJECT","SUBJECT","ITEM","ITEM","ITEM"),
+  Predictor = c("Relatedness","Integration", "Relatedness X Integration", "Relatedness","Integration", "Relatedness X Integration"),
+  Beta  = c( s.m1000.f1[[10]][[9]],
+           s.m1000.f1[[10]][[10]], 
+           s.m1000.f1[[10]][[11]],
+           s.m1000.f2[[10]][[9]],
+           s.m1000.f2[[10]][[10]],
+           s.m1000.f2[[10]][[11]]))
+
+
+positions <- c("SUBJECT","SUBJECT","SUBJECT","ITEM","ITEM","ITEM")
+dodge <- position_dodge(width = 0.9)
+# p.text = grobTree(textGrob(expression(paste("\u2020", italic("p"), "<.10,", italic("*p"),"<.05")), x = 0.02, y = 0.09, hjust = 0, gp = gpar(col = "black", fontsize = 14)))
+
+
+g1   <- ggplot(data = beta.table.1, aes(x = GROUPING.FACTOR, y = Beta, fill = Predictor)) +
+  layer(geom="bar", stat="identity", position = position_dodge()) +
+  theme(text = element_text(size=18.5)) +
+  scale_x_discrete(limits = positions) +
+  ylab("Standardized Coefficients") +
+  xlab("Random Effects Grouping Factor") +
+  scale_fill_manual(values=c("#0000cc","#990000","#9999ff" )) +
+  geom_hline(yintercept = 0) +
+  ggtitle("Coefficients by Predictor and Random Effects Grouping Factor") +
+  theme(axis.title.y=element_text(vjust=1.5)) +
+  theme(plot.title = element_text(lineheight = 3, face = "bold", color="black", size = 15)) +
+  theme_classic() 
+g1
+
+# g1 <- g1 + annotation_custom(p.text) +
+#   annotate("text", x = 2.225, y = .0055, label = "\u2020", size = 6) +
+#   annotate("text", x = 4.775, y = -.00675, label = "\u2020", size = 6) +
+#   annotate("text", x = 5.200, y = -.00625, label ="\u2020", size = 6)
+# g1 <-  g1+scale_y_continuous(limits=c(-.018,.018), breaks=c(-.015, -.010, -.005, 0, .005, .01, .015))
+# ggsave("figures/Coefficients X Part of Speech (No Residuals).png", scale=1.5)
+g1
+
+
+#RESID REL AND NON RESID
+
+
+beta.table.2 <- data.frame (
+  GROUPING.FACTOR  = rep(c("SUBJECT", "SUBJECT", "SUBJECT", "ITEM", "ITEM", "ITEM"), times = 1),
+  Predictor = c(rep(c("Relatedness","Integration", "Relatedness X Integration"), times=0), rep(c("Related (Resid)","Integration(Raw)", "Relatedness(Resid) X Integration(Raw)"), times=2) ),
+  Beta  = c(             s.m1000a.f1[[10]][[9]],
+             s.m1000a.f1[[10]][[10]], 
+             s.m1000a.f1[[10]][[11]],
+             s.m1000a.f2[[10]][[9]],
+             s.m1000a.f2[[10]][[10]],
+             s.m1000a.f2[[10]][[11]]))
+
+beta.table.2$Predictor <- factor(beta.table.2$Predictor, levels=c("Related (Resid)","Integration(Raw)", "Relatedness(Resid) X Integration(Raw)"))
+
+
+
+# p.text = grobTree(textGrob(expression(paste("\u2020", italic("p"), "<.10,", italic("*p"),"<.05")), x = 0.02, y = 0.09, hjust = 0, gp = gpar(col = "black", fontsize = 14)))
+
+
+g2   <- ggplot(data = beta.table.2, aes(x = GROUPING.FACTOR, y = Beta, fill = Predictor)) +
+  geom_bar(width=.6, stat="identity", position = position_dodge(width = 0.7)) +
+  theme(text = element_text(size=18.5)) +
+  scale_x_discrete(limits = c("SUBJECT","ITEM")) +
+  ylab("Standardized Coefficients") +
+  xlab("Random Effects Grouping Factor") +
+  scale_fill_manual(values=c("#d69999", "#0000cc", "#333333" )) +
+  geom_hline(yintercept = 0) +
+  ggtitle("Coefficients by Predictor and Random Effects Grouping Factor") +
+  theme(axis.title.y=element_text(vjust=1.5)) +
+  theme(plot.title = element_text(lineheight = 3, face = "bold", color="black", size = 15)) +
+  theme_classic() 
+g2
+
+
+
+
+
+
+
+
+
+
+beta.table.3 <- data.frame (
+  GROUPING.FACTOR  = rep(c("SUBJECT", "SUBJECT", "SUBJECT", "ITEM", "ITEM", "ITEM"), times = 1),
+  Predictor = c(rep(c("Relatedness","Integration", "Relatedness X Integration"), times=0), rep(c("Related (Resid)","Integration(Raw)", "Relatedness(Resid) X Integration(Raw)"), times=0),rep(c("Related (Raw)","Integration(Resid)", "Relatedness(Raw) X Integration(Resid)"), times=2) ),
+  Beta  = c( s.m1000b.f1[[10]][[9]],
+             s.m1000b.f1[[10]][[10]], 
+             s.m1000b.f1[[10]][[11]],
+             s.m1000b.f2[[10]][[9]],
+             s.m1000b.f2[[10]][[10]],
+             s.m1000b.f2[[10]][[11]] ))
+
+beta.table.3$Predictor <- factor(beta.table.3$Predictor, levels=c("Relatedness","Integration", "Relatedness X Integration","Related (Resid)","Integration(Raw)", "Relatedness(Resid) X Integration(Raw)", "Related (Raw)","Integration(Resid)", "Relatedness(Raw) X Integration(Resid)"))
+
+
+
+# p.text = grobTree(textGrob(expression(paste("\u2020", italic("p"), "<.10,", italic("*p"),"<.05")), x = 0.02, y = 0.09, hjust = 0, gp = gpar(col = "black", fontsize = 14)))
+
+
+g1   <- ggplot(data = beta.table.2, aes(x = GROUPING.FACTOR, y = Beta, fill = Predictor)) +
+  geom_bar(width=.6, stat="identity", position = position_dodge(width = 0.7)) +
+  theme(text = element_text(size=18.5)) +
+  scale_x_discrete(limits = c("SUBJECT","ITEM")) +
+  ylab("Standardized Coefficients") +
+  xlab("Random Effects Grouping Factor") +
+  scale_fill_manual(values=c("#0000cc","#990000","#9999ff", "#333333", "#666666", "#bbbbaa" )) +
+  geom_hline(yintercept = 0) +
+  ggtitle("Coefficients by Predictor and Random Effects Grouping Factor") +
+  theme(axis.title.y=element_text(vjust=1.5)) +
+  theme(plot.title = element_text(lineheight = 3, face = "bold", color="black", size = 15)) +
+  theme_classic() 
+g1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # ------------------------------------------- EXP. 1 NUISANCE FACTOR NORMING ------------------------------------
 
 # # -------------------- SEMREL: SET UP INPUT FILE( s) -----------------------------------
