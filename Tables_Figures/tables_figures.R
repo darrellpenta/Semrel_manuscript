@@ -3331,7 +3331,7 @@ library(lmerTest)
 library(grid)
 
 positions <- c("SUBJECT","ITEM")
-p.text = grobTree(textGrob(expression(paste("\u2020", italic("p"), "<.10, ", italic("*p"),"<.05", italic("**p"),"<.01", italic("***p"),"<.001")), x = 0.02, y = .975, hjust = 0, gp = gpar(col = "black", fontsize = 14)))
+# p.text = grobTree(textGrob(expression(paste("\u2020", italic("p"), "<.10, ", italic("*p"),"<.05", italic("**p"),"<.01", italic("***p"),"<.001")), x = 0.02, y = .975, hjust = 0, gp = gpar(col = "black", fontsize = 12)))
 
 
 # -------TABLE 1: RELATE AND INTEG ---------
@@ -3360,22 +3360,25 @@ g1   <- ggplot(data = beta.table.1, aes(x = GROUPING.FACTOR, y = Beta, fill = Pr
         theme_classic() +
         theme(text = element_text(size=18)) +
 # Axis details
-        xlab("Random Effects Grouping Factor") +
-        theme(axis.title.x=element_text(vjust=-.75, size=18)) +      
+        xlab("Random Effects Grouping Factor\n") +
+        theme(axis.title.x=element_text(vjust=-.45, size=18)) +      
         coord_cartesian(ylim = c(-0.04, .375)) +
         scale_y_continuous(breaks=seq(-0.04, .375, .05)) +
         ylab("Standardized Coefficients") +
         theme(axis.title.y=element_text(vjust=1.5, size=18)) +
 #Legend
-        theme(legend.title=element_text(size = 18)) +
-        theme(legend.text=element_text(size = 18)) +
+        theme(legend.title=element_text(size = 14)) +
+        theme(legend.text=element_text(size = 14)) +
 # Pvalue text and stars
-        annotation_custom(p.text) +
+        # annotation_custom(p.text) +
         annotate("text", x = .76666667, y = .091, label = "**", size = 6) +
         annotate("text", x = 1, y = .194, label = "***", size = 6) +
         annotate("text", x = 1.233333, y = .0640, label ="**", size = 6) +
         annotate("text", x = 2, y = .252, label ="*", size = 6) 
 
+
+g1
+#USE GGPLOT_BUILD(PLOT) TO GET SPECS 
 
 # -------TABLE 2: RELATED (RESID) AND INTEG  ---------
 beta.table.2 <- data.frame (
@@ -3399,24 +3402,25 @@ g2   <- ggplot(data = beta.table.2, aes(x = GROUPING.FACTOR, y = Beta, fill = Pr
 # Change aesthetics of bar graph
   theme_classic() +
   theme(text = element_text(size=18)) +
-# Axis details
-  xlab("Random Effects Grouping Factor") +
-  theme(axis.title.x=element_text(vjust=-.75, size=18)) +      
+  # Axis details
+  xlab("Random Effects Grouping Factor\n") +
+  theme(axis.title.x=element_text(vjust=-.45, size=18)) +      
   coord_cartesian(ylim = c(-0.04, .375)) +
   scale_y_continuous(breaks=seq(-0.04, .375, .05)) +
   ylab("Standardized Coefficients") +
   theme(axis.title.y=element_text(vjust=1.5, size=18)) +
-#Legend
-  theme(legend.title=element_text(size = 18)) +
-  theme(legend.text=element_text(size = 18)) +
+  #Legend
+  theme(legend.title=element_text(size = 14)) +
+  theme(legend.text=element_text(size = 14)) +
 # Pvalue text and stars
-  annotation_custom(p.text) +
+  # annotation_custom(p.text) +
   annotate("text", x = .7666667, y = .227, label = "***", size = 6) +
   annotate("text", x = 1, y = .132, label = "***", size = 6) +
   annotate("text", x = 1.2333333, y = .079, label ="***", size = 6) +
   annotate("text", x = 1.7666667, y = .236, label ="***", size = 6) + 
   annotate("text", x = 2, y = .163, label ="**", size = 6) 
 
+g2
 # -------TABLE 3: RELATED AND INTEG (RESID) ---------
 beta.table.3 <- data.frame (
   GROUPING.FACTOR  = rep(c("SUBJECT","ITEM"), times = 1),
@@ -3441,21 +3445,23 @@ g3   <- ggplot(data = beta.table.3, aes(x = GROUPING.FACTOR, y = Beta, fill = Pr
   theme_classic() +
   theme(text = element_text(size=18)) +
 # Axis details
-  xlab("Random Effects Grouping Factor") +
-  theme(axis.title.x=element_text(vjust=-.75, size=18)) +      
+  xlab("Random Effects Grouping Factor\n") +
+  theme(axis.title.x=element_text(vjust=-.45, size=18)) +      
   coord_cartesian(ylim = c(-0.04, .375)) +
   scale_y_continuous(breaks=seq(-0.04, .375, .05)) +
   ylab("Standardized Coefficients") +
   theme(axis.title.y=element_text(vjust=1.5, size=18)) +
-#Legend
-  theme(legend.title=element_text(size = 18)) +
-  theme(legend.text=element_text(size = 18)) +
+  #Legend
+  theme(legend.title=element_text(size = 14)) +
+  theme(legend.text=element_text(size = 14)) +
 # Pvalue text and stars
-  annotation_custom(p.text) +
+  # annotation_custom(p.text) +
   annotate("text", x = .7666667, y = .046, label = "*", size = 6) +
   annotate("text", x = 1, y = .265, label = "***", size = 6) +
   annotate("text", x = 1.2333333, y = .096, label ="***", size = 6) +
   annotate("text", x = 2, y = .309, label ="**", size = 6) 
+
+g3
 
 
 # -------TABLE 4: INTEG AND ASSOC ---------
@@ -3484,22 +3490,22 @@ g4   <- ggplot(data = beta.table.4, aes(x = GROUPING.FACTOR, y = Beta, fill = Pr
   theme_classic() +
   theme(text = element_text(size=18)) +
 # Axis details
-  xlab("Random Effects Grouping Factor") +
-  theme(axis.title.x=element_text(vjust=-.75, size=18)) +      
+  xlab("Random Effects Grouping Factor\n") +
+  theme(axis.title.x=element_text(vjust=-.45, size=18)) +      
   coord_cartesian(ylim = c(-0.04, .375)) +
   scale_y_continuous(breaks=seq(-0.04, .375, .05)) +
   ylab("Standardized Coefficients") +
   theme(axis.title.y=element_text(vjust=1.5, size=18)) +
 #Legend
-  theme(legend.title=element_text(size = 18)) +
-  theme(legend.text=element_text(size = 18)) 
-g4           
+  theme(legend.title=element_text(size = 14)) +
+  theme(legend.text=element_text(size = 14)) +
 # Pvalue text and stars
-g4 + annotation_custom(p.text) +
+# annotation_custom(p.text) +
   annotate("text", x = 1, y = .226, label = "***", size = 6) +
   annotate("text", x = 1.2333333, y = .120, label ="***", size = 6) +
   annotate("text", x = 2, y = .255, label ="**", size = 6) 
 
+g4
 
 
 # -------TABLE 5: REL AND ASSOC ---------
@@ -3507,10 +3513,10 @@ beta.table.5 <- data.frame (
   GROUPING.FACTOR  = c("SUBJECT","SUBJECT","SUBJECT","ITEM","ITEM","ITEM"),
   Predictor = c("Relatedness","Association", "Relatedness X Association", "Relatedness","Association", "Relatedness X Association"),
   Beta  = c( s.m3000.f1[[10]][[9]],
-             s.m3000.f2[[10]][[10]],
+             s.m3000.f1[[10]][[10]],
              s.m3000.f1[[10]][[11]],
              s.m3000.f2[[10]][[9]],
-             s.m3000.f1[[10]][[10]],
+             s.m3000.f2[[10]][[10]],
              s.m3000.f2[[10]][[11]]))
 
 # Order factors
@@ -3524,21 +3530,21 @@ g5   <- ggplot(data = beta.table.5, aes(x = GROUPING.FACTOR, y = Beta, fill = Pr
   scale_fill_manual(values=c("#990000","#FFA500","#b0a1a2" )) +
   scale_x_discrete(limits = positions) +
   geom_hline(yintercept = 0) +
-  # Change aesthetics of bar graph
+# Change aesthetics of bar graph
   theme_classic() +
   theme(text = element_text(size=18)) +
-  # Axis details
-  xlab("Random Effects Grouping Factor") +
-  theme(axis.title.x=element_text(vjust=-.75, size=18)) +      
-  coord_cartesian(ylim = c(-0.28, .375)) +
-  scale_y_continuous(breaks=seq(-0.28, .375, .05)) +
+# Axis details
+  xlab("Random Effects Grouping Factor\n") +
+  theme(axis.title.x=element_text(vjust=-.45, size=18)) +      
+  coord_cartesian(ylim = c(-0.04, .375)) +
+  scale_y_continuous(breaks=seq(-0.04, .375, .05)) +
   ylab("Standardized Coefficients") +
   theme(axis.title.y=element_text(vjust=1.5, size=18)) +
-  #Legend
-  theme(legend.title=element_text(size = 18)) +
-  theme(legend.text=element_text(size = 18)) +
-  # Pvalue text and stars
-  annotation_custom(p.text) +
+#Legend
+  theme(legend.title=element_text(size = 14)) +
+  theme(legend.text=element_text(size = 14)) +
+# Pvalue text and stars
+  # annotation_custom(p.text) +
   annotate("text", x = .76666667, y = .115, label = "***", size = 6) +
   annotate("text", x = 1, y = .144, label = "*", size = 6) +
   annotate("text", x = 2.233333, y = -.27, label ="\u2020", size = 6) +
@@ -3564,25 +3570,27 @@ g6   <- ggplot(data = beta.table.6, aes(x = GROUPING.FACTOR, y = Beta, fill = Pr
   scale_fill_manual(values=c("#d69999", "#FFA500","#b0a166" )) +
   scale_x_discrete(limits = positions) +
   geom_hline(yintercept = 0) +
-  # Change aesthetics of bar graph
+# Change aesthetics of bar graph
   theme_classic() +
   theme(text = element_text(size=18)) +
-  # Axis details
-  xlab("Random Effects Grouping Factor") +
-  theme(axis.title.x=element_text(vjust=-.75, size=18)) +      
-  coord_cartesian(ylim = c(-0.28, .375)) +
-  scale_y_continuous(breaks=seq(-0.28, .375, .05)) +
+# Axis details
+  xlab("Random Effects Grouping Factor\n") +
+  theme(axis.title.x=element_text(vjust=-.45, size=18)) +      
+  coord_cartesian(ylim = c(-0.04, .375)) +
+  scale_y_continuous(breaks=seq(-0.04, .375, .05)) +
   ylab("Standardized Coefficients") +
   theme(axis.title.y=element_text(vjust=1.5, size=18)) +
-  #Legend
-  theme(legend.title=element_text(size = 18)) +
-  theme(legend.text=element_text(size = 18)) +
-  # Pvalue text and stars
-  annotation_custom(p.text) +
+#Legend
+  theme(legend.title=element_text(size = 14)) +
+  theme(legend.text=element_text(size = 14)) +
+# Pvalue text and stars
+  # annotation_custom(p.text) +
   annotate("text", x = .7666667, y = .204, label = "***", size = 6) +
   annotate("text", x = 1, y = -.104, label = "***", size = 6) +
   annotate("text", x = 1.2333333, y = -.124, label ="***", size = 6) +
   annotate("text", x = 1.7666667, y = .190, label = "**", size = 6) 
+
+g6
 
 # -------TABLE 7: RELAT AND ASSOC (RESID) ---------
 
@@ -3602,32 +3610,38 @@ beta.table.7$Predictor <- factor(beta.table.7$Predictor, levels=c("Relatedness",
 
 g7  <- ggplot(data = beta.table.7, aes(x = GROUPING.FACTOR, y = Beta, fill = Predictor)) +
   geom_bar(width=.65, stat="identity", position = position_dodge(width = 0.7)) +
-  scale_fill_manual(values=c("#990000", "#FFdb99", "#e7e2d1" )) +
+  scale_fill_manual(values=c("#990000", "#FFdb99", "#525252" )) +
   scale_x_discrete(limits = positions) +
   geom_hline(yintercept = 0) +
-  # Change aesthetics of bar graph
+# Change aesthetics of bar graph
   theme_classic() +
   theme(text = element_text(size=18)) +
-  # Axis details
-  xlab("Random Effects Grouping Factor") +
-  theme(axis.title.x=element_text(vjust=-.75, size=18)) +      
-  coord_cartesian(ylim = c(-0.28, .375)) +
-  scale_y_continuous(breaks=seq(-0.28, .375, .05)) +
+# Axis details
+  xlab("Random Effects Grouping Factor\n") +
+  theme(axis.title.x=element_text(vjust=-.45, size=18)) +      
+  coord_cartesian(ylim = c(-0.04, .375)) +
+  scale_y_continuous(breaks=seq(-0.04, .375, .05)) +
   ylab("Standardized Coefficients") +
   theme(axis.title.y=element_text(vjust=1.5, size=18)) +
-  #Legend
-  theme(legend.title=element_text(size = 18)) +
-  theme(legend.text=element_text(size = 18)) +
-  # Pvalue text and stars
-  annotation_custom(p.text) +
+#Legend
+  theme(legend.title=element_text(size = 14)) +
+  theme(legend.text=element_text(size = 14)) +
+# Pvalue text and stars
+  # annotation_custom(p.text) +
   annotate("text", x = .7666667, y = .181, label = "***", size = 6) +
   annotate("text", x = 1, y = .056, label = "\u2020", size = 6) +
   annotate("text", x = 1.2333333, y = .150, label ="***", size = 6) +
   annotate("text", x = 1.7666667, y = .182, label = "***", size = 6) 
 g7
 
-
-
+#FIGURES
+g1
+g2
+g3
+g4
+g5
+g6
+g7
 
 
 
