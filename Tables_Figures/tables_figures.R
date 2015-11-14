@@ -3323,12 +3323,15 @@ write.xlsx( regressions2.ds, file = "output/table24_SR1 & 2_regression_model2_co
 
 # ---------------------  SOME FIGURES-------
 
+
+library(LMERConvenienceFunctions)
 library(ggplot2)
 library(corrplot)
 library(languageR)
 library(lme4)
 library(lmerTest)
 library(grid)
+library(package = sjPlot)
 
 positions <- c("SUBJECT","ITEM")
 # p.text = grobTree(textGrob(expression(paste("\u2020", italic("p"), "<.10, ", italic("*p"),"<.05", italic("**p"),"<.01", italic("***p"),"<.001")), x = 0.02, y = .975, hjust = 0, gp = gpar(col = "black", fontsize = 12)))
@@ -3347,28 +3350,34 @@ beta.table.1 <- data.frame (
 
 # Order factors
 
+sjp.int(m1000.f1,
+        facet.grid = FALSE,
+        moderatorValues = "meansd", 
+        plevel = 0.1)
+
 beta.table.1$Predictor <- factor(beta.table.1$Predictor, levels=c("Relatedness","Integration", "Relatedness X Integration"))
 
 # Add data and set up bar graph
 
 g1   <- ggplot(data = beta.table.1, aes(x = GROUPING.FACTOR, y = Beta, fill = Predictor)) +
-        geom_bar(width=.65, stat="identity", position = position_dodge(width = 0.7)) +
+        geom_bar(width=.65, stat="identity", position = position_dodge(width = .7)) +
+       labs(fill="Fixed Effects") +     
         scale_fill_manual(values=c("#990000","#0000cc","#333333" )) +
         scale_x_discrete(limits = positions) +
         geom_hline(yintercept = 0) +
 # Change aesthetics of bar graph
-        theme_classic() +
-        theme(text = element_text(size=18)) +
-# Axis details
-        xlab("Random Effects Grouping Factor\n") +
-        theme(axis.title.x=element_text(vjust=-.45, size=18)) +      
-        coord_cartesian(ylim = c(-0.04, .375)) +
-        scale_y_continuous(breaks=seq(-0.04, .375, .05)) +
-        ylab("Standardized Coefficients") +
-        theme(axis.title.y=element_text(vjust=1.5, size=18)) +
+       theme_classic() +
+       theme(text = element_text(size=22)) +
+  # Axis details
+       xlab("Random Effects\n") +
+       theme(axis.title.x=element_text(vjust=-.45, size=22, face="bold")) +      
+       coord_cartesian(ylim = c(-0.0475, .2575)) +
+       scale_y_continuous(breaks=seq(-0.05, .2575, .0275)) +
+       ylab("Standardized Coefficients") +
+       theme(axis.title.y=element_text(vjust=1.5, size=22, face="bold")) +
 #Legend
-        theme(legend.title=element_text(size = 14)) +
-        theme(legend.text=element_text(size = 14)) +
+       theme(legend.text=element_text(size = 22)) +
+       theme(legend.title=element_text(size = 22)) +
 # Pvalue text and stars
         # annotation_custom(p.text) +
         annotate("text", x = .76666667, y = .091, label = "**", size = 6) +
@@ -3377,7 +3386,7 @@ g1   <- ggplot(data = beta.table.1, aes(x = GROUPING.FACTOR, y = Beta, fill = Pr
         annotate("text", x = 2, y = .252, label ="*", size = 6) 
 
 
-g1
+g1 
 #USE GGPLOT_BUILD(PLOT) TO GET SPECS 
 
 # -------TABLE 2: RELATED (RESID) AND INTEG  ---------
@@ -3478,34 +3487,42 @@ beta.table.4 <- data.frame (
              s.m2000.f2[[10]][[11]] ))
 
 
+
 beta.table.4$Predictor <- factor(beta.table.4$Predictor, levels=c("Association","Integration", "Association X Integration"))
+
+ggplot(mtcars, aes(factor(cyl), fill=factor(cyl))) + geom_bar() + labs(fill="label here")
 
 
 g4   <- ggplot(data = beta.table.4, aes(x = GROUPING.FACTOR, y = Beta, fill = Predictor)) +
   geom_bar(width=.65, stat="identity", position = position_dodge(width = 0.7)) +
-  scale_fill_manual(values=c("#FFA500", "#0000cc", "#bbcc44" )) +
+  labs(fill="Fixed Effects") +
+  scale_fill_manual(values=c("#9975b9", "#0000cc", "#999999" )) +
   scale_x_discrete(limits = positions) +
   geom_hline(yintercept = 0) +
 # Change aesthetics of bar graph
   theme_classic() +
-  theme(text = element_text(size=18)) +
+  theme(text = element_text(size=22)) +
 # Axis details
-  xlab("Random Effects Grouping Factor\n") +
-  theme(axis.title.x=element_text(vjust=-.45, size=18)) +      
-  coord_cartesian(ylim = c(-0.04, .375)) +
-  scale_y_continuous(breaks=seq(-0.04, .375, .05)) +
+  xlab("Random Effects\n") +
+  theme(axis.title.x=element_text(vjust=-.45, size=22, face="bold")) +      
+  coord_cartesian(ylim = c(-0.0475, .2575)) +
+  scale_y_continuous(breaks=seq(-0.05, .2575, .0275)) +
   ylab("Standardized Coefficients") +
-  theme(axis.title.y=element_text(vjust=1.5, size=18)) +
+  theme(axis.title.y=element_text(vjust=1.5, size=22, face="bold")) +
 #Legend
-  theme(legend.title=element_text(size = 14)) +
-  theme(legend.text=element_text(size = 14)) +
+  theme(legend.text=element_text(size = 22)) +
+  theme(legend.title=element_text(size = 22)) +
 # Pvalue text and stars
-# annotation_custom(p.text) +
-  annotate("text", x = 1, y = .226, label = "***", size = 6) +
+  annotate("text", x = 1, y = .226, label = "***", size = 6) +  
   annotate("text", x = 1.2333333, y = .120, label ="***", size = 6) +
   annotate("text", x = 2, y = .255, label ="**", size = 6) 
 
 g4
+
+# sjp.int(m2000.f2,
+#         facet.grid = FALSE,
+#         moderatorValues = "meansd", 
+#         plevel = 0.1)
 
 
 # -------TABLE 5: REL AND ASSOC ---------
@@ -3524,25 +3541,25 @@ beta.table.5 <- data.frame (
 beta.table.5$Predictor <- factor(beta.table.5$Predictor, levels=c("Relatedness","Association", "Relatedness X Association"))
 
 # Add data and set up bar graph
+options(scipen=3)
 
 g5   <- ggplot(data = beta.table.5, aes(x = GROUPING.FACTOR, y = Beta, fill = Predictor)) +
   geom_bar(width=.65, stat="identity", position = position_dodge(width = 0.7)) +
-  scale_fill_manual(values=c("#990000","#FFA500","#b0a1a2" )) +
+  labs(fill="Fixed Effects") +     
+  scale_fill_manual(values=c("#990000","#9975b9","#cccccc" )) +
   scale_x_discrete(limits = positions) +
   geom_hline(yintercept = 0) +
-# Change aesthetics of bar graph
+  # Change aesthetics of bar graph
   theme_classic() +
-  theme(text = element_text(size=18)) +
-# Axis details
-  xlab("Random Effects Grouping Factor\n") +
-  theme(axis.title.x=element_text(vjust=-.45, size=18)) +      
-  coord_cartesian(ylim = c(-0.04, .375)) +
-  scale_y_continuous(breaks=seq(-0.04, .375, .05)) +
+  theme(text = element_text(size=22)) +
+  # Axis details
+  xlab("Random Effects\n") +
+  theme(axis.title.x=element_text(vjust=-.45, size=22, face="bold")) +      
   ylab("Standardized Coefficients") +
-  theme(axis.title.y=element_text(vjust=1.5, size=18)) +
-#Legend
-  theme(legend.title=element_text(size = 14)) +
-  theme(legend.text=element_text(size = 14)) +
+  theme(axis.title.y=element_text(vjust=1.5, size=22, face="bold")) +
+  #Legend
+  theme(legend.text=element_text(size = 22)) +
+  theme(legend.title=element_text(size = 22)) +
 # Pvalue text and stars
   # annotation_custom(p.text) +
   annotate("text", x = .76666667, y = .115, label = "***", size = 6) +
@@ -3550,6 +3567,18 @@ g5   <- ggplot(data = beta.table.5, aes(x = GROUPING.FACTOR, y = Beta, fill = Pr
   annotate("text", x = 2.233333, y = -.27, label ="\u2020", size = 6) +
   annotate("text", x = 2, y = .324, label ="\u2020", size = 6) 
 g5
+
+install.packages(scales)
+library(scales)
+
+
+
+
+
+sjp.int(m3000.f2,
+        facet.grid = FALSE,
+        moderatorValues = "meansd", 
+        plevel = 0.1)
 
 
 # -------TABLE 6: RELAT(RESID) AND ASSOC ---------
